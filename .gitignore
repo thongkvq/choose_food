@@ -6,3 +6,4 @@ tools/screenshots/
 .dsh-project-memory/
 *.log
 .deploy-cli
+package-lock.json
