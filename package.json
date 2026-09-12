@@ -4,9 +4,6 @@
   "private": true,
   "type": "module",
   "description": "Máy gacha chọn món ăn — quay là có kèo ăn",
-  "scripts": {
-    "start": "node server.js"
-  },
   "engines": {
     "node": ">=20"
   }
