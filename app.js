@@ -182,9 +182,7 @@ async function getPosition() {
       return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps', acc: Math.round(pos.coords.accuracy) };
     } catch (e) { /* rơi xuống IP */ }
   }
-  const r = await fetch('/api/whereami', { cache: 'no-store' });
-  if (!r.ok) throw new Error('không lấy được vị trí');
-  const j = await r.json();
+  const j = await apiJSON('/api/whereami', dirWhereAmI);
   if (!isFinite(j.lat)) throw new Error(j.error || 'không có toạ độ');
   return { lat: j.lat, lng: j.lng, source: 'ip', city: j.city, region: j.region, country: j.country };
 }
@@ -199,8 +197,7 @@ async function locateManual(text) {
     if (isFinite(lat) && isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180)
       return { lat, lng, source: 'manual', label: 'toạ độ bạn nhập' };
   }
-  const r = await fetch('/api/geocode?q=' + encodeURIComponent(t), { cache: 'no-store' });
-  const j = await r.json();
+  const j = await apiJSON('/api/geocode?q=' + encodeURIComponent(t), () => dirGeocode(t));
   if (j.error) throw new Error(j.error);
   return { lat: j.lat, lng: j.lng, source: 'manual', label: j.label };
 }
@@ -250,12 +247,11 @@ async function findNearby(d, forcePos) {
     const timer = setTimeout(() => ctl.abort(), 70000);
     let j;
     try {
-      const r = await fetch('/api/nearby?' + params.toString(), { cache: 'no-store', signal: ctl.signal });
-      j = await r.json();
+      j = await apiJSON('/api/nearby?' + params.toString(), () => dirNearby(pos.lat, pos.lng, 2500, params.get('q'), params.get('kw'), params.get('cuisine')));
     } finally { clearTimeout(timer); }
     if (j.error) throw new Error(j.error);
     // chưa có quán khớp tên món -> hỏi thêm quán gần nhất (chậm hơn nên chỉ gọi khi cần)
-    if (!(j.matched || []).length) {
+    if (!(j.matched || []).length && await apiMode() === 'server') {
       try {
         const r2 = await fetch('/api/nearby?' + params.toString() + '&ov=1', { cache: 'no-store' });
         const j2 = await r2.json();
@@ -876,7 +872,7 @@ function saveMenu() { LS.set('mgd.menu', state.menu); }
 function loadWeather() {
   return getPosition().then((pos) => {
     state.pos = pos;
-    return fetch('/api/weather?lat=' + pos.lat + '&lng=' + pos.lng, { cache: 'no-store' }).then(r => r.json());
+    return apiJSON('/api/weather?lat=' + pos.lat + '&lng=' + pos.lng, () => dirWeather(pos.lat, pos.lng));
   }).then((w) => {
     if (w && !w.error && isFinite(w.temp)) { state.wx = w; LS.set('mgd.wx', w); }
     renderCtxChip();
@@ -1126,6 +1122,148 @@ function updateDiaryBadge() {
   b.textContent = String(n); b.hidden = n === 0;
 }
 function closeToday() { const b = $('#todayBackdrop'); if (b) b.hidden = true; document.body.style.overflow = ''; }
+
+
+/* ============================================================================
+   LỚP API: ưu tiên /api của server LAN (có cache), nếu không có thì gọi thẳng
+   các dịch vụ công khai từ trình duyệt (Photon, Open-Meteo, ipapi.co) — nhờ vậy
+   bản deploy tĩnh trên Vercel vẫn chạy đủ tính năng mà không cần serverless.
+   ============================================================================ */
+let API_MODE = null;                       // 'server' | 'direct'
+const LS_TTL = (k, ms) => { try { const v = JSON.parse(localStorage.getItem(k) || 'null'); if (v && Date.now() - v.t < ms) return v.d; } catch (e) {} return null; };
+const LS_PUT = (k, d) => { try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} };
+
+async function apiMode() {
+  if (API_MODE) return API_MODE;
+  try {
+    const r = await fetch('/api/whereami', { cache: 'no-store' });
+    const ct = r.headers.get('content-type') || '';
+    if (r.ok && ct.indexOf('json') >= 0) {
+      const j = await r.json();
+      if (isFinite(j.lat)) { API_MODE = 'server'; return API_MODE; }
+    }
+  } catch (e) {}
+  API_MODE = 'direct';
+  return API_MODE;
+}
+async function apiJSON(path, directFn) {
+  if (await apiMode() === 'server') {
+    try {
+      const r = await fetch(path, { cache: 'no-store' });
+      const ct = r.headers.get('content-type') || '';
+      if (r.ok && ct.indexOf('json') >= 0) { const j = await r.json(); if (!j.error) return j; }
+    } catch (e) {}
+  }
+  return directFn();
+}
+
+/* ---------- gọi thẳng dịch vụ ---------- */
+async function dirWhereAmI() {
+  const c = LS_TTL('mgd.geo', 6 * 3600 * 1000);
+  if (c) return c;
+  const j = await (await fetch('https://ipapi.co/json/', { cache: 'no-store' })).json();
+  if (!isFinite(j.latitude)) throw new Error('không lấy được vị trí theo IP');
+  const out = { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, source: 'ip' };
+  LS_PUT('mgd.geo', out);
+  return out;
+}
+async function dirWeather(lat, lng) {
+  const key = 'mgd.wx.' + Number(lat).toFixed(2) + ',' + Number(lng).toFixed(2);
+  const c = LS_TTL(key, 15 * 60 * 1000);
+  if (c) return c;
+  const j = await (await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lng +
+    '&current=temperature_2m,apparent_temperature,precipitation,weather_code,is_day,wind_speed_10m&timezone=auto')).json();
+  const cur = j.current || {}, code = Number(cur.weather_code);
+  const rain = code >= 51 || Number(cur.precipitation) > 0.15;
+  const snow = (code >= 71 && code <= 77) || code === 85 || code === 86;
+  const storm = code >= 95;
+  const out = {
+    temp: cur.temperature_2m, feels: cur.apparent_temperature, code: code,
+    desc: storm ? 'giông bão' : snow ? 'có tuyết' : rain ? (code >= 63 ? 'mưa to' : 'mưa nhẹ')
+      : (code === 45 || code === 48) ? 'có sương mù' : code === 3 ? 'nhiều mây' : code === 2 ? 'ít mây' : code === 1 ? 'trời quang' : 'trời trong',
+    rain: rain, snow: snow, storm: storm, isDay: cur.is_day === 1, wind: cur.wind_speed_10m, hour: new Date().getHours()
+  };
+  LS_PUT(key, out);
+  return out;
+}
+async function dirGeocode(q) {
+  const key = 'mgd.geo.q.' + q.toLowerCase();
+  const c = LS_TTL(key, 24 * 3600 * 1000);
+  if (c) return c;
+  const j = await (await fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(q) + '&limit=1')).json();
+  const f = (j.features || [])[0];
+  if (!f) throw new Error('không tìm thấy địa chỉ');
+  const pr = f.properties || {}, co = (f.geometry && f.geometry.coordinates) || [];
+  if (co.length < 2) throw new Error('không có toạ độ');
+  const out = { lat: co[1], lng: co[0], label: [pr.name, pr.street, pr.district, pr.city, pr.country].filter(Boolean).join(', ') };
+  LS_PUT(key, out);
+  return out;
+}
+const FOOD_KINDS = ['restaurant', 'fast_food', 'cafe', 'food_court', 'ice_cream', 'bar', 'pub', 'bakery', 'deli', 'canteen'];
+async function dirPhotonSearch(query, lat, lng, radiusM) {
+  const dLat = radiusM / 111000;
+  const dLng = dLat / Math.max(0.2, Math.cos(lat * Math.PI / 180));
+  const bbox = (lng - dLng) + ',' + (lat - dLat) + ',' + (lng + dLng) + ',' + (lat + dLat);
+  const j = await (await fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(query) +
+    '&lat=' + lat + '&lon=' + lng + '&limit=20&bbox=' + bbox)).json();
+  const out = [];
+  for (const f of (j.features || [])) {
+    const pr = f.properties || {};
+    const kind = String(pr.osm_value || pr.type || '').toLowerCase();
+    if (pr.osm_key !== 'amenity' || FOOD_KINDS.indexOf(kind) < 0) continue;
+    const co = (f.geometry && f.geometry.coordinates) || [];
+    const name = pr.name || pr.street;
+    if (!name || co.length < 2) continue;
+    out.push({
+      name: String(name).slice(0, 90), lat: co[1], lng: co[0], type: pr.osm_value || '',
+      cuisine: (pr.extra && pr.extra.cuisine) || '',
+      address: [pr.housenumber, pr.street, pr.district, pr.city].filter(Boolean).join(' '),
+      phone: (pr.extra && (pr.extra.phone || pr.extra['contact:phone'])) || ''
+    });
+  }
+  return out;
+}
+function dirDistM(a, b, c, d) {
+  const R = 6371000, t = (x) => x * Math.PI / 180;
+  const dLat = t(c - a), dLon = t(d - b);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(t(a)) * Math.cos(t(c)) * Math.sin(dLon / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(h)));
+}
+function dirNorm(s) {
+  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
+    .toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
+  const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
+  const queries = [...new Set([dish, (kw || '').split('|')[0], words.slice(0, 2).join(' ')].filter((q) => q && q.trim().length >= 3))].slice(0, 3);
+  let matched = [], usedRadius = radius;
+  for (const rad of [radius, Math.max(radius * 2, 5000), Math.max(radius * 4, 10000)]) {
+    const seen = new Map();
+    const got = await Promise.all(queries.map((q) => dirPhotonSearch(q, lat, lng, rad).catch(() => [])));
+    for (const arr of got) for (const pl of arr) {
+      const k = pl.name + '@' + pl.lat.toFixed(4) + ',' + pl.lng.toFixed(4);
+      if (seen.has(k)) continue;
+      const n = dirNorm(pl.name), cu = dirNorm(cuisine);
+      const hitName = words.filter((t) => n.includes(t));
+      const hitCuisine = cu && dirNorm(pl.cuisine).includes(cu) ? [cu] : [];
+      if (!hitName.length && !hitCuisine.length) continue;
+      seen.set(k, Object.assign({}, pl, {
+        dist: dirDistM(lat, lng, pl.lat, pl.lng), score: hitName.length * 3 + hitCuisine.length * 2,
+        maps: 'https://www.google.com/maps/dir/?api=1&destination=' + pl.lat + ',' + pl.lng + '&travelmode=driving'
+      }));
+    }
+    matched = [...seen.values()].sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
+    usedRadius = rad;
+    if (matched.length >= 3 || rad >= 10000) break;
+  }
+  return {
+    center: { lat: lat, lng: lng }, radius: radius, usedRadius: usedRadius,
+    matched: matched.slice(0, 12), nearest: [], sameCuisine: [],
+    mapsUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish + ' gần đây') + '/@' + lat + ',' + lng + ',13z',
+    mapsKeywordUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish) + '/@' + lat + ',' + lng + ',13z',
+    osmUrl: 'https://www.openstreetmap.org/#map=14/' + lat + '/' + lng
+  };
+}
 
 /* ============================ KHỞI ĐỘNG ============================ */
 (async function init() {
