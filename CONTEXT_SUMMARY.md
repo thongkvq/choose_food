@@ -112,10 +112,22 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - **ĐÃ DEPLOY THẬT** (2026-09-12): Vercel bot deploy cả 4 commit cuối, commit status `success`.
   - Deploy URL: `https://choose-food-c3gpyxdko-paroda.vercel.app` (dpl_GPtUbvGrw93ULvT34oYBSKcLxJAc)
   - Alias production: `https://choose-food-paroda.vercel.app` (team/scope **paroda**)
+  - ✅ **SITE ĐÃ CHẠY CÔNG KHAI: https://choose-food-paroda.vercel.app** (đã tắt Vercel Authentication)
+  - ⚠️ **Kiến trúc trên Vercel = tĩnh thuần**, không dùng serverless function (xem mục 13). Ảnh/JS/CSS/dishes.json tải 200; `/api/*` trả 404 và client tự chuyển sang gọi thẳng dịch vụ.
   - ⚠️ **Đang bật Vercel Authentication (Deployment Protection)** → mọi path trả về trang "Login – Vercel". Muốn public phải vào Settings → Deployment Protection → Vercel Authentication → **Disabled**. Kiểm tra lại bằng `node tools/test-live.mjs <url>` sau khi tắt.
   - Cách tìm URL deploy khi không có dashboard: `curl -s https://api.github.com/repos/thongkvq/choose_food/deployments` rồi lấy `statuses` → `environment_url`.
 
-## 13. Việc còn lại / bước kế tiếp
+## 13. Vì sao Vercel phải là tĩnh thuần (đã sửa xong)
+1. Repo có `package.json` với `"scripts": {"start": "node server.js"}` ⇒ Vercel coi đây là **Node app** và tạo một catch-all function. Vì `server.js` bị `.vercelignore` loại nên function đó chết ⇒ **mọi path 500 FUNCTION_INVOCATION_FAILED** (kể cả `/`, `/app.js`).
+2. Thử cấu hình hiện đại (`functions`, `headers`) ⇒ vẫn 500.
+3. Thử legacy `builds` (`api/*.js` = @vercel/node, `**/*` = @vercel/static) + `routes` ⇒ file tĩnh 200 nhưng `/api/*` **404** (function không được build).
+4. **Giải pháp chốt**: bỏ serverless.
+   - `vercel.json`: `{ "version": 2, "builds": [{ "src": "**/*", "use": "@vercel/static" }], "routes": [{ "handle": "filesystem" }] }`
+   - `app.js` thêm **lớp API**: `apiMode()` thử `/api/whereami` → nếu không trả JSON thì `API_MODE='direct'`; `apiJSON(path, directFn)` ưu tiên server (LAN có cache), fallback gọi thẳng Photon / Open-Meteo / ipapi.co (cả ba đều CORS `*`), có cache localStorage (weather 15 phút, toạ độ 6 giờ, geocode 24 giờ).
+   - Xoá `start` khỏi `package.json`; `api/` vẫn giữ cho server LAN.
+5. **Đã kiểm chứng bằng browser thật trên link deploy**: trang nạp, chip thời tiết 25°C (Open-Meteo trực tiếp), quay ra popup (12 dòng thông tin + giới thiệu), GPS → **8 quán "Bánh canh cua" quanh 3km** (Photon trực tiếp), 0 lỗi JS, 0 request lỗi. Script: `tools/test-vercel-live.mjs`.
+
+## 14. Việc còn lại / bước kế tiếp
 - 14 món chưa có bài Wikipedia (com-nieu, mien-cua, pho-tron, hu-tieu-kho, bo-ne, chao-dau-xanh…) — hiện chỉ có điểm + ước tính.
 - 13 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons).
 - Có thể thêm: lưu "thực đơn hôm nay" 3 bữa, chia sẻ ảnh kết quả, lọc theo quán đã lưu, cache ảnh offline (SW không chạy được trên http LAN).
