@@ -1,0 +1,2469 @@
+{
+ "stats": {
+  "vi-wiki": 146,
+  "en-wiki": 69,
+  "none": 7,
+  "commons": 26
+ },
+ "results": [
+  {
+   "id": "baklava",
+   "name": "Baklava",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Baklava_-_Turkish_special%2C_80-ply.JPEG/960px-Baklava_-_Turkish_special%2C_80-ply.JPEG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Baklava",
+   "score": 1,
+   "query": "Baklava"
+  },
+  {
+   "id": "butter-chicken",
+   "name": "Butter Chicken",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/960px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Butter chicken",
+   "score": 1,
+   "query": "Butter chicken"
+  },
+  {
+   "id": "banh-bia",
+   "name": "Bánh bía",
+   "style": "nuong",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "banh-canh-ghe",
+   "name": "Bánh canh ghẹ",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh canh",
+   "score": 1,
+   "query": "Bánh canh"
+  },
+  {
+   "id": "banh-cuon-chay",
+   "name": "Bánh cuốn chay",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Banh_cuon.jpg/960px-Banh_cuon.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh cuốn",
+   "score": 1,
+   "query": "Bánh cuốn"
+  },
+  {
+   "id": "banh-mi-xui",
+   "name": "Bánh mì chấm sữa",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-chay-nam",
+   "name": "Bánh mì nấm chay",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-plan",
+   "name": "Bánh plan",
+   "style": "ngot",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "banh-trung-thu",
+   "name": "Bánh trung thu",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Mooncake1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh trung thu",
+   "score": 1,
+   "query": "Bánh trung thu"
+  },
+  {
+   "id": "banh-ut-tre",
+   "name": "Bánh ít trần",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/B%C3%A1nh_%C3%ADt_tr%E1%BA%A7n.JPG/960px-B%C3%A1nh_%C3%ADt_tr%E1%BA%A7n.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh ít trần",
+   "score": 1,
+   "query": "Bánh ít trần"
+  },
+  {
+   "id": "banh-duc-ngot",
+   "name": "Bánh đúc ngọt",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Banhduc-northern.jpg/960px-Banhduc-northern.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh đúc",
+   "score": 1,
+   "query": "Bánh đúc"
+  },
+  {
+   "id": "banh-duc",
+   "name": "Bánh đúc nóng",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Banhduc-northern.jpg/960px-Banhduc-northern.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh đúc",
+   "score": 1,
+   "query": "Bánh đúc"
+  },
+  {
+   "id": "banh-uot-chay",
+   "name": "Bánh ướt chay",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Banh_Uot_Tom_Chay_Kim_Long.jpg/960px-Banh_Uot_Tom_Chay_Kim_Long.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Banh Uot Tom Chay Kim Long.jpg",
+   "score": 1,
+   "query": "Bánh ướt chay"
+  },
+  {
+   "id": "canh-ga-ham",
+   "name": "Canh gà hầm sâm",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Samgye-tang_2.jpg/960px-Samgye-tang_2.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Samgyetang",
+   "score": 1,
+   "query": "Samgyetang"
+  },
+  {
+   "id": "churros",
+   "name": "Churros socola",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Chocolate_with_churros.jpg/960px-Chocolate_with_churros.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Churro",
+   "score": 1,
+   "query": "Churro"
+  },
+  {
+   "id": "cha-com",
+   "name": "Chả cốm",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Chalua.jpg/960px-Chalua.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Chả",
+   "score": 1,
+   "query": "Chả"
+  },
+  {
+   "id": "cuon-ca-hoi",
+   "name": "Cuốn cá hồi rau củ",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/960px-Sushi_platter.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Sushi",
+   "score": 1,
+   "query": "Sushi"
+  },
+  {
+   "id": "com-nieu",
+   "name": "Cơm niêu đập",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/C%C6%A1m_ni%C3%AAu_Kombo.jpg/960px-C%C6%A1m_ni%C3%AAu_Kombo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Cơm niêu Kombo.jpg",
+   "score": 1,
+   "query": "Cơm niêu"
+  },
+  {
+   "id": "elote",
+   "name": "Elote nướng",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/Elote_recipe.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "via": "commons",
+   "source": "File:Elote recipe.jpg",
+   "score": 1,
+   "query": "Elote"
+  },
+  {
+   "id": "gio-thu",
+   "name": "Giò thủ",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Foodlogo2.svg/960px-Foodlogo2.svg.png?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Giò",
+   "score": 1,
+   "query": "Giò"
+  },
+  {
+   "id": "heo-quay",
+   "name": "Heo quay nguyên con",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/12/RoastPig.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Siu yuk",
+   "score": 1,
+   "query": "Siu yuk"
+  },
+  {
+   "id": "lau-gao-lut-chay",
+   "name": "Lẩu chay gạo lứt",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-cua",
+   "name": "Lẩu cua đồng",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/M%C3%B3n_l%E1%BA%A9u_%C4%83n_v%E1%BB%9Bi_th%E1%BB%8Bt_b%C3%B2_%E1%BB%9F_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg/960px-M%C3%B3n_l%E1%BA%A9u_%C4%83n_v%E1%BB%9Bi_th%E1%BB%8Bt_b%C3%B2_%E1%BB%9F_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Lẩu cua đồng",
+   "score": 1,
+   "query": "Lẩu cua đồng"
+  },
+  {
+   "id": "lau-de",
+   "name": "Lẩu dê tía tô",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "macaron",
+   "name": "Macaron",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/VanillaMacaron.jpg/960px-VanillaMacaron.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Macaron",
+   "score": 1,
+   "query": "Macaron"
+  },
+  {
+   "id": "mien-cua",
+   "name": "Miến cua",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Mi%E1%BA%BFn_ch%E1%BA%A3_cua_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_n%C4%83m_2016_%282%29.jpg/960px-Mi%E1%BA%BFn_ch%E1%BA%A3_cua_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_n%C4%83m_2016_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Miến chả cua Nguyễn Nhữ Lãm năm 2016 (2).jpg",
+   "score": 1,
+   "query": "Miến cua"
+  },
+  {
+   "id": "nuoc-dau",
+   "name": "Nước đậu đỏ",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Red_bean_paste_pie.jpg/960px-Red_bean_paste_pie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Red bean paste pie.jpg",
+   "score": 1,
+   "query": "Red bean"
+  },
+  {
+   "id": "pudding-xoai",
+   "name": "Pudding xoài",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Mango_sticy_rice_%283859549574%29.jpg/960px-Mango_sticy_rice_%283859549574%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Mango sticky rice",
+   "score": 1,
+   "query": "Mango sticky rice"
+  },
+  {
+   "id": "samosa",
+   "name": "Samosa",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Samosachutney.jpg/960px-Samosachutney.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Samosa",
+   "score": 1,
+   "query": "Samosa"
+  },
+  {
+   "id": "shakshuka",
+   "name": "Shakshuka",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Shakshuka_%28Unsplash%29.jpg/960px-Shakshuka_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Shakshuka (Unsplash).jpg",
+   "score": 1,
+   "query": "Shakshuka"
+  },
+  {
+   "id": "sup-mang-tay",
+   "name": "Súp măng tây cua",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Cr%C3%A8me_d%27asperge_%C3%A0_la_truffe.jpg/960px-Cr%C3%A8me_d%27asperge_%C3%A0_la_truffe.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Cream of asparagus soup",
+   "score": 1,
+   "query": "Asparagus soup"
+  },
+  {
+   "id": "ruou-vang",
+   "name": "Vang đỏ & phô mai",
+   "style": "uong",
+   "image": "https://upload.wikimedia.org/wikipedia/en/c/c0/Red_Wine_Glass.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Red wine",
+   "score": 1,
+   "query": "Red wine"
+  },
+  {
+   "id": "vit-quay",
+   "name": "Vịt quay Bắc Kinh",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Roasted_Beijing_Duck_sliced.jpg/960px-Roasted_Beijing_Duck_sliced.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Vịt quay Bắc Kinh",
+   "score": 1,
+   "query": "Vịt quay Bắc Kinh"
+  },
+  {
+   "id": "vit-tiem-thuoc-bac",
+   "name": "Vịt tiềm thuốc bắc",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/M%C3%AC_v%E1%BB%8Bt_ti%E1%BB%81m.jpg/960px-M%C3%AC_v%E1%BB%8Bt_ti%E1%BB%81m.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Mì vịt tiềm.jpg",
+   "score": 1,
+   "query": "Vịt tiềm"
+  },
+  {
+   "id": "bia-hoi",
+   "name": "Bia hơi & lạc rang",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Jeju_beer_09_%28cropped%29.jpg/960px-Jeju_beer_09_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Beer",
+   "score": 1,
+   "query": "Beer"
+  },
+  {
+   "id": "burrito",
+   "name": "Burrito",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Burrito.JPG/960px-Burrito.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Burrito",
+   "score": 1,
+   "query": "Burrito"
+  },
+  {
+   "id": "banh-beo",
+   "name": "Bánh bèo",
+   "style": "hap",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d3/B%C3%A1nh_b%C3%A8o.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh bèo",
+   "score": 1,
+   "query": "Bánh bèo"
+  },
+  {
+   "id": "banh-bot-loc",
+   "name": "Bánh bột lọc",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/B%C3%A1nh_b%C3%A8o%2C_b%E1%BB%99t_l%E1%BB%8Dc%2C_nem_chua.jpg/960px-B%C3%A1nh_b%C3%A8o%2C_b%E1%BB%99t_l%E1%BB%8Dc%2C_nem_chua.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh bột lọc",
+   "score": 1,
+   "query": "Bánh bột lọc"
+  },
+  {
+   "id": "banh-cam",
+   "name": "Bánh cam / bánh vừng",
+   "style": "chien",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/12/Banh_Cam_-_Vietnamese_fried_sesame_balls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "via": "commons",
+   "source": "File:Banh Cam - Vietnamese fried sesame balls.jpg",
+   "score": 1,
+   "query": "Bánh cam"
+  },
+  {
+   "id": "banh-canh-cua",
+   "name": "Bánh canh cua miền Tây",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh canh",
+   "score": 1,
+   "query": "Bánh canh"
+  },
+  {
+   "id": "banh-canh-tom",
+   "name": "Bánh canh tôm",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh canh",
+   "score": 1,
+   "query": "Bánh canh"
+  },
+  {
+   "id": "banh-chung",
+   "name": "Bánh chưng",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Banh_chung_vuong.jpg/960px-Banh_chung_vuong.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh chưng",
+   "score": 1,
+   "query": "Bánh chưng"
+  },
+  {
+   "id": "banh-can-chay",
+   "name": "Bánh căn",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/B%C3%A1nh_c%C4%83n_1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh căn",
+   "score": 1,
+   "query": "Bánh căn"
+  },
+  {
+   "id": "banh-flan",
+   "name": "Bánh flan",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Homemade_Flan.jpg/960px-Homemade_Flan.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh flan",
+   "score": 1,
+   "query": "Bánh flan"
+  },
+  {
+   "id": "banh-gio",
+   "name": "Bánh giò",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/B%C3%A1nh_gi%C3%B2.jpg/960px-B%C3%A1nh_gi%C3%B2.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh giò",
+   "score": 1,
+   "query": "Bánh giò"
+  },
+  {
+   "id": "banh-hoi",
+   "name": "Bánh hỏi heo quay",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/B%C3%A1nh_h%E1%BB%8Fi_tr%C3%ACnh_b%C3%A0y_tr%C3%AAn_%C4%91%C4%A9a.jpg/960px-B%C3%A1nh_h%E1%BB%8Fi_tr%C3%ACnh_b%C3%A0y_tr%C3%AAn_%C4%91%C4%A9a.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh hỏi",
+   "score": 1,
+   "query": "Bánh hỏi"
+  },
+  {
+   "id": "banh-mi-bo",
+   "name": "Bánh mì bò né",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-nuong-bo",
+   "name": "Bánh mì bơ tỏi",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Garlicbread.jpg/960px-Garlicbread.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì bơ tỏi",
+   "score": 1,
+   "query": "Bánh mì bơ tỏi"
+  },
+  {
+   "id": "banh-mi-chay",
+   "name": "Bánh mì chay",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-chao-bo",
+   "name": "Bánh mì chảo bò",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%281%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Nhà mình dịp Lễ 2th9n2023 (bánh canh bột mì nhà làm, trong chảo) (1).jpg",
+   "score": 1,
+   "query": "Bánh mì chảo"
+  },
+  {
+   "id": "banh-mi-chao-pho-mai",
+   "name": "Bánh mì chảo phô mai",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%282%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Nhà mình dịp Lễ 2th9n2023 (bánh canh bột mì nhà làm, trong chảo) (2).jpg",
+   "score": 1,
+   "query": "Bánh mì chảo"
+  },
+  {
+   "id": "banh-mi-chao-trung",
+   "name": "Bánh mì chảo trứng",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/M%E1%BB%99t_ph%E1%BA%A7n_b%C3%A1nh_m%C3%AC_ch%E1%BA%A3o_v%E1%BB%9Bi_tr%E1%BB%A9ng_v%C3%A0_ch%E1%BA%A3_%2838657217774%29.jpg/960px-M%E1%BB%99t_ph%E1%BA%A7n_b%C3%A1nh_m%C3%AC_ch%E1%BA%A3o_v%E1%BB%9Bi_tr%E1%BB%A9ng_v%C3%A0_ch%E1%BA%A3_%2838657217774%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Một phần bánh mì chảo với trứng và chả (38657217774).jpg",
+   "score": 1,
+   "query": "Bánh mì chảo trứng"
+  },
+  {
+   "id": "banh-mi-heo-quay",
+   "name": "Bánh mì heo quay",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-kep-kem",
+   "name": "Bánh mì kẹp kem",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-ngot",
+   "name": "Bánh mì ngọt",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Banh_mi_ngot_nhan_Pudding_va_nho_kho.jpg/960px-Banh_mi_ngot_nhan_Pudding_va_nho_kho.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Banh mi ngot nhan Pudding va nho kho.jpg",
+   "score": 1,
+   "query": "Bánh mì ngọt"
+  },
+  {
+   "id": "banh-mi-nuong",
+   "name": "Bánh mì nướng muối ớt",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-op-la-2",
+   "name": "Bánh mì trứng xúc xích",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-xa-xiu",
+   "name": "Bánh mì xá xíu",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-quy",
+   "name": "Bánh quy bơ",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Shortbread_House_round_biscuit_.jpg/960px-Shortbread_House_round_biscuit_.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh quy bơ",
+   "score": 1,
+   "query": "Bánh quy bơ"
+  },
+  {
+   "id": "banh-socola",
+   "name": "Bánh socola lava",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Chocolate_fudge_cake.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Chocolate cake",
+   "score": 1,
+   "query": "Chocolate cake"
+  },
+  {
+   "id": "banh-tieu",
+   "name": "Bánh tiêu",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Pepper_bun_at_Raohe_Street_Night_Market_20070622.jpg/960px-Pepper_bun_at_Raohe_Street_Night_Market_20070622.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh tiêu",
+   "score": 1,
+   "query": "Bánh tiêu"
+  },
+  {
+   "id": "banh-trang-sua",
+   "name": "Bánh tráng sữa",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/3/36/B%C3%A1nh_tr%C3%A1ng_1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh tráng",
+   "score": 1,
+   "query": "Bánh tráng"
+  },
+  {
+   "id": "banh-troi-nuoc",
+   "name": "Bánh trôi nước",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Banhchay.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh trôi - bánh chay",
+   "score": 1,
+   "query": "Bánh trôi"
+  },
+  {
+   "id": "banh-tet",
+   "name": "Bánh tét",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Banhtet.jpg/960px-Banhtet.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh tét",
+   "score": 1,
+   "query": "Bánh tét"
+  },
+  {
+   "id": "banh-xeo-nhat",
+   "name": "Bánh xèo giòn chay",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg/960px-B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh xèo",
+   "score": 1,
+   "query": "Bánh xèo"
+  },
+  {
+   "id": "banh-uot",
+   "name": "Bánh ướt thịt nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Nh%C3%A0_m%C3%ACnh_L%E1%BB%85_30th4n2023_%28b%C3%A1nh_%C6%B0%E1%BB%9Bt_Ph%C6%B0%C6%A1ng_Lang%2C_th%E1%BB%8Bt_heo_n%C6%B0%E1%BB%9Bng_%C4%83n_k%C3%A8m%29_%282%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_L%E1%BB%85_30th4n2023_%28b%C3%A1nh_%C6%B0%E1%BB%9Bt_Ph%C6%B0%C6%A1ng_Lang%2C_th%E1%BB%8Bt_heo_n%C6%B0%E1%BB%9Bng_%C4%83n_k%C3%A8m%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Nhà mình Lễ 30th4n2023 (bánh ướt Phương Lang, thịt heo nướng ăn kèm) (2).jpg",
+   "score": 1,
+   "query": "Bánh ướt thịt nướng"
+  },
+  {
+   "id": "bo-ne",
+   "name": "Bò né chảo gang",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/B%C3%B2_b%C3%ADt_t%E1%BA%BFt_%E1%BB%9F_SG_th4n2024_%28b%C3%B2_n%C3%A9_ch%E1%BA%A3o_gang%29_%281%29.jpg/960px-B%C3%B2_b%C3%ADt_t%E1%BA%BFt_%E1%BB%9F_SG_th4n2024_%28b%C3%B2_n%C3%A9_ch%E1%BA%A3o_gang%29_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Bò bít tết ở SG th4n2024 (bò né chảo gang) (1).jpg",
+   "score": 1,
+   "query": "Bò né chảo gang"
+  },
+  {
+   "id": "bo-nuong-la-lot",
+   "name": "Bò nướng lá lốt",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/B%C3%B2_n%C6%B0%E1%BB%9Bng_l%C3%A1_l%E1%BB%91t_t%E1%BA%A1i_Manchester.jpg/960px-B%C3%B2_n%C6%B0%E1%BB%9Bng_l%C3%A1_l%E1%BB%91t_t%E1%BA%A1i_Manchester.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bò nướng lá lốt",
+   "score": 1,
+   "query": "Bò nướng lá lốt"
+  },
+  {
+   "id": "bo-vien-nuong",
+   "name": "Bò viên nướng",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Beefball_closeup.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Beef ball",
+   "score": 1,
+   "query": "Beef ball"
+  },
+  {
+   "id": "bo-xao-hanh",
+   "name": "Bò xào hành tây",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Cafe_UK_ng2th10n2022_%28B%C3%B2_x%C3%A0o_h%C3%A0nh_t%C3%A2y%2C_khoai_t%C3%A2y%29.jpg/960px-Cafe_UK_ng2th10n2022_%28B%C3%B2_x%C3%A0o_h%C3%A0nh_t%C3%A2y%2C_khoai_t%C3%A2y%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Cafe UK ng2th10n2022 (Bò xào hành tây, khoai tây).jpg",
+   "score": 1,
+   "query": "Bò xào hành tây"
+  },
+  {
+   "id": "bun-mam",
+   "name": "Bún mắm miền Tây",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/B%C3%BAn_m%E1%BA%AFm.jpg/960px-B%C3%BAn_m%E1%BA%AFm.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún mắm",
+   "score": 1,
+   "query": "Bún mắm"
+  },
+  {
+   "id": "bun-tron",
+   "name": "Bún trộn chay",
+   "style": "tron",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "bun-oc",
+   "name": "Bún ốc",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/B%C3%BAn_%E1%BB%91c.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bún ốc",
+   "score": 1,
+   "query": "Bún ốc"
+  },
+  {
+   "id": "bac-xiu",
+   "name": "Bạc xỉu",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Ly_p%E1%BA%B7c_x%E1%BB%89u_s%E1%BB%AFa_%C4%91%C3%A1_%E1%BB%9F_Q1_ng18th8n2022.jpg/960px-Ly_p%E1%BA%B7c_x%E1%BB%89u_s%E1%BB%AFa_%C4%91%C3%A1_%E1%BB%9F_Q1_ng18th8n2022.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bạc xỉu",
+   "score": 1,
+   "query": "Bạc xỉu"
+  },
+  {
+   "id": "canh-bi-do",
+   "name": "Canh bí đỏ thịt bằm",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG/960px-K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Pumpkin soup",
+   "score": 1,
+   "query": "Pumpkin soup"
+  },
+  {
+   "id": "canh-kho-qua",
+   "name": "Canh khổ qua nhồi thịt",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Canh_kh%E1%BB%95_qua.JPG/960px-Canh_kh%E1%BB%95_qua.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Canh khổ qua nhồi thịt",
+   "score": 1,
+   "query": "Canh khổ qua nhồi thịt"
+  },
+  {
+   "id": "canh-rong-bien",
+   "name": "Canh rong biển thịt bò",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Miyeok-guk.jpg/960px-Miyeok-guk.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Miyeok-guk",
+   "score": 1,
+   "query": "Miyeok-guk"
+  },
+  {
+   "id": "cao-lau",
+   "name": "Cao lầu Hội An",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Cao_l%E1%BA%A7u_%28144854_994%29.jpg/960px-Cao_l%E1%BA%A7u_%28144854_994%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cao lầu",
+   "score": 1,
+   "query": "Cao lầu"
+  },
+  {
+   "id": "carbonara",
+   "name": "Carbonara",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Spaghetti_carbonara.jpg/960px-Spaghetti_carbonara.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Spaghetti alla carbonara",
+   "score": 1,
+   "query": "Carbonara"
+  },
+  {
+   "id": "cheesecake",
+   "name": "Cheesecake",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Baked_cheesecake_with_raspberries_and_blueberries.jpg/960px-Baked_cheesecake_with_raspberries_and_blueberries.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Cheesecake",
+   "score": 1,
+   "query": "Cheesecake"
+  },
+  {
+   "id": "chao-ga",
+   "name": "Cháo gà nấm",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/N%E1%BB%93i_ch%C3%A1o_g%C3%A0_ta_h%E1%BA%A7m_s%C3%A2m_nh%C3%A0_m%C3%ACnh_ng7th11n2020_%281%29.jpg/960px-N%E1%BB%93i_ch%C3%A1o_g%C3%A0_ta_h%E1%BA%A7m_s%C3%A2m_nh%C3%A0_m%C3%ACnh_ng7th11n2020_%281%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cháo gà",
+   "score": 1,
+   "query": "Cháo gà"
+  },
+  {
+   "id": "chao-trai",
+   "name": "Cháo trai",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Vietnamese_chao.JPG/960px-Vietnamese_chao.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cháo",
+   "score": 1,
+   "query": "Cháo"
+  },
+  {
+   "id": "chao-dau-xanh",
+   "name": "Cháo đậu xanh",
+   "style": "nuoc",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "che-khuc-bach",
+   "name": "Chè khúc bạch",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Ch%C3%A8_kh%C3%BAc_b%E1%BA%A1ch_%E1%BB%9F_qu%C3%A1n_Th%E1%BA%A3o_Vy_2020_09_06.jpg/960px-Ch%C3%A8_kh%C3%BAc_b%E1%BA%A1ch_%E1%BB%9F_qu%C3%A1n_Th%E1%BA%A3o_Vy_2020_09_06.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Chè khúc bạch",
+   "score": 1,
+   "query": "Chè khúc bạch"
+  },
+  {
+   "id": "che-dau-den",
+   "name": "Chè đậu đen",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ch%C3%A8_xo%C3%A0i.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Chè",
+   "score": 1,
+   "query": "Chè"
+  },
+  {
+   "id": "cha-ca-la-vong",
+   "name": "Chả cá Lã Vọng",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Fishcake_on_salad.jpg/960px-Fishcake_on_salad.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Chả cá",
+   "score": 1,
+   "query": "Chả cá"
+  },
+  {
+   "id": "cha-lua",
+   "name": "Chả lụa",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Gi%C3%B2_l%E1%BB%A5a_2.jpg/960px-Gi%C3%B2_l%E1%BB%A5a_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Chả lụa",
+   "score": 1,
+   "query": "Chả lụa"
+  },
+  {
+   "id": "croissant",
+   "name": "Croissant bơ",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/960px-Croissant-Petr_Kratochvil.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Croissant",
+   "score": 1,
+   "query": "Croissant"
+  },
+  {
+   "id": "cuon-diep-ca",
+   "name": "Cuốn diếp cá thịt bò",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Summer_roll.jpg/960px-Summer_roll.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Gỏi cuốn",
+   "score": 1,
+   "query": "Gỏi cuốn"
+  },
+  {
+   "id": "cuon-ram",
+   "name": "Cuốn rế chiên giòn",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Spring_Rolls_%283357696061%29.jpg/960px-Spring_Rolls_%283357696061%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Spring roll",
+   "score": 1,
+   "query": "Spring roll"
+  },
+  {
+   "id": "ca-phe-trung",
+   "name": "Cà phê trứng",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg/960px-C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cà phê trứng",
+   "score": 1,
+   "query": "Cà phê trứng"
+  },
+  {
+   "id": "ca-ri-chay",
+   "name": "Cà ri chay",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Taj_Mahal_-_Lamb_Curry_Madras.jpg/960px-Taj_Mahal_-_Lamb_Curry_Madras.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Curry",
+   "score": 1,
+   "query": "Curry"
+  },
+  {
+   "id": "ca-hap-xi-dau",
+   "name": "Cá hấp xì dầu",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Steamed_fish_head_with_diced_hot_red_peppers_20211206.jpg/960px-Steamed_fish_head_with_diced_hot_red_peppers_20211206.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Steamed fish head with diced hot red peppers 20211206.jpg",
+   "score": 1,
+   "query": "Steamed fish"
+  },
+  {
+   "id": "biryani",
+   "name": "Cơm Biryani",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Biriyani1.jpg/960px-Biriyani1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Biryani",
+   "score": 1,
+   "query": "Biryani"
+  },
+  {
+   "id": "cơm-chay",
+   "name": "Cơm chay thập cẩm",
+   "style": "hap",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "com-ga-hai-nam",
+   "name": "Cơm gà Hải Nam",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cơm gà Hải Nam",
+   "score": 1,
+   "query": "Cơm gà Hải Nam"
+  },
+  {
+   "id": "com-ga-xoi-mo",
+   "name": "Cơm gà xối mỡ",
+   "style": "chien",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Lunch_plate_with_salads.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Cơm gà",
+   "score": 1,
+   "query": "Cơm gà"
+  },
+  {
+   "id": "com-gao-lut-ca-hoi",
+   "name": "Cơm gạo lứt cá hồi",
+   "style": "hap",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Reis_-_Sorte_C_voll.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Brown rice",
+   "score": 1,
+   "query": "Brown rice"
+  },
+  {
+   "id": "com-gao-lut",
+   "name": "Cơm gạo lứt ức gà",
+   "style": "hap",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Reis_-_Sorte_C_voll.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Brown rice",
+   "score": 1,
+   "query": "Brown rice"
+  },
+  {
+   "id": "com-heo-quay",
+   "name": "Cơm heo quay",
+   "style": "nuong",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "com-thai",
+   "name": "Cơm rang Thái",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/960px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Fried rice",
+   "score": 1,
+   "query": "Fried rice"
+  },
+  {
+   "id": "com-trang-trung",
+   "name": "Cơm trắng trứng chiên",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Half_a_cup_of_rice._Brown_rice_is_the_best_choice.JPG/960px-Half_a_cup_of_rice._Brown_rice_is_the_best_choice.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "White rice",
+   "score": 1,
+   "query": "White rice"
+  },
+  {
+   "id": "dimsum-tong-hop",
+   "name": "Dimsum thập cẩm",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Chinese_DimSum_%289023590541%29.jpg/960px-Chinese_DimSum_%289023590541%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Dim sum",
+   "score": 1,
+   "query": "Dim sum"
+  },
+  {
+   "id": "donut",
+   "name": "Donut",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Donuts_with_chocolate_banana_and_strawberry.jpg/960px-Donuts_with_chocolate_banana_and_strawberry.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh Donut",
+   "score": 1,
+   "query": "Doughnut"
+  },
+  {
+   "id": "falafel",
+   "name": "Falafel",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Falafel_%2849728839526%29.jpg/960px-Falafel_%2849728839526%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Falafel",
+   "score": 1,
+   "query": "Falafel"
+  },
+  {
+   "id": "fish-chips",
+   "name": "Fish and Chips",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Fish_and_chips_blackpool.jpg/960px-Fish_and_chips_blackpool.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Fish and chips",
+   "score": 1,
+   "query": "Fish and chips"
+  },
+  {
+   "id": "ga-hap-gung",
+   "name": "Gà hấp gừng hành",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hainanese chicken rice",
+   "score": 1,
+   "query": "Hainanese chicken rice"
+  },
+  {
+   "id": "ga-kho-gung",
+   "name": "Gà kho gừng",
+   "style": "kho",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "ga-nuong-la-chanh",
+   "name": "Gà nướng lá chanh",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg/960px-Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Roast chicken",
+   "score": 1,
+   "query": "Roast chicken"
+  },
+  {
+   "id": "hummus",
+   "name": "Hummus & Pita",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Hummus_from_The_Nile.jpg/960px-Hummus_from_The_Nile.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Hummus",
+   "score": 1,
+   "query": "Hummus"
+  },
+  {
+   "id": "kebab",
+   "name": "Kebab / Doner",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/D%C3%B6ner_Kebab.jpg/960px-D%C3%B6ner_Kebab.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Doner kebab",
+   "score": 1,
+   "query": "Doner kebab"
+  },
+  {
+   "id": "kem-bo",
+   "name": "Kem bơ / Kem dừa",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Persea_americana_fruit_2.JPG/960px-Persea_americana_fruit_2.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Avocado",
+   "score": 1,
+   "query": "Avocado"
+  },
+  {
+   "id": "kem-tuoi",
+   "name": "Kem tươi",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Cr%C3%A8me_Chantilly.jpg/960px-Cr%C3%A8me_Chantilly.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Kem tươi",
+   "score": 1,
+   "query": "Kem tươi"
+  },
+  {
+   "id": "khoai-lang-chien",
+   "name": "Khoai lang kén",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Ipomoea_batatas_006.JPG/960px-Ipomoea_batatas_006.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Sweet potato",
+   "score": 1,
+   "query": "Sweet potato"
+  },
+  {
+   "id": "lau-bo-nhung-dam",
+   "name": "Lẩu bò nhúng dấm",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-chao-ga",
+   "name": "Lẩu cháo gà",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-ca-keo",
+   "name": "Lẩu cá kèo",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-ga-la-e",
+   "name": "Lẩu gà lá é",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-ga-nam",
+   "name": "Lẩu gà nấm",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "lau-nam",
+   "name": "Lẩu nấm chay",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Hot pot",
+   "score": 1,
+   "query": "Hot pot"
+  },
+  {
+   "id": "mien-tron",
+   "name": "Miến trộn chua ngọt",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Dongfen.JPG/960px-Dongfen.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Miến",
+   "score": 1,
+   "query": "Miến"
+  },
+  {
+   "id": "mi-tom",
+   "name": "Mì tôm chua cay",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Instant_noodle_balls.jpg/960px-Instant_noodle_balls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Instant noodle balls.jpg",
+   "score": 1,
+   "query": "Instant noodle"
+  },
+  {
+   "id": "mi-xao-gion",
+   "name": "Mì xào giòn",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Chow mein",
+   "score": 1,
+   "query": "Chow mein"
+  },
+  {
+   "id": "nachos",
+   "name": "Nachos phô mai",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Nachos-cheese.jpg/960px-Nachos-cheese.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Nachos",
+   "score": 1,
+   "query": "Nachos"
+  },
+  {
+   "id": "nem-chua",
+   "name": "Nem chua rán",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Fermented_pork_wrapped_in_leaves.jpg/960px-Fermented_pork_wrapped_in_leaves.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Nem chua",
+   "score": 1,
+   "query": "Nem chua"
+  },
+  {
+   "id": "so-hap-sa",
+   "name": "Nghêu hấp sả",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/M%C3%B3n_%C4%83n_C%E1%BB%ADa_Vi%E1%BB%87t%2C_T%E1%BA%BFt_2022_%28ngh%C3%AAu_h%E1%BA%A5p_s%E1%BA%A3%2C_v%E1%BB%8F_ngh%C3%AAu%29_%284%29.jpg/960px-M%C3%B3n_%C4%83n_C%E1%BB%ADa_Vi%E1%BB%87t%2C_T%E1%BA%BFt_2022_%28ngh%C3%AAu_h%E1%BA%A5p_s%E1%BA%A3%2C_v%E1%BB%8F_ngh%C3%AAu%29_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Món ăn Cửa Việt, Tết 2022 (nghêu hấp sả, vỏ nghêu) (4).jpg",
+   "score": 1,
+   "query": "Nghêu hấp sả"
+  },
+  {
+   "id": "nuoc-chanh",
+   "name": "Nước chanh dây",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Lemonade_-_27682817724.jpg/960px-Lemonade_-_27682817724.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Lemonade",
+   "score": 1,
+   "query": "Lemonade"
+  },
+  {
+   "id": "nuoc-mia",
+   "name": "Nước mía",
+   "style": "uong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/6/63/Sugarcanejuice.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Nước mía",
+   "score": 1,
+   "query": "Nước mía"
+  },
+  {
+   "id": "nuoc-rau-ma",
+   "name": "Nước rau má",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Starr_020803-0094_Centella_asiatica.jpg/960px-Starr_020803-0094_Centella_asiatica.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Rau má",
+   "score": 0.67,
+   "query": "Centella asiatica"
+  },
+  {
+   "id": "okonomiyaki",
+   "name": "Okonomiyaki",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Okonomiyaki_001.jpg/960px-Okonomiyaki_001.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Okonomiyaki",
+   "score": 1,
+   "query": "Okonomiyaki"
+  },
+  {
+   "id": "pancake",
+   "name": "Pancake mật ong",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg/960px-Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Pancake",
+   "score": 1,
+   "query": "Pancake"
+  },
+  {
+   "id": "pho-chien-phong",
+   "name": "Phở chiên phồng",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Phở",
+   "score": 1,
+   "query": "Phở"
+  },
+  {
+   "id": "pho-tron",
+   "name": "Phở trộn",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Ph%E1%BB%9F_tr%E1%BB%99n_n%C6%B0%E1%BB%9Bc_t%C6%B0%C6%A1ng_t%C3%A0u_%28th%E1%BB%A9c_%C4%83n_nhanh%29_%284%29.jpg/960px-Ph%E1%BB%9F_tr%E1%BB%99n_n%C6%B0%E1%BB%9Bc_t%C6%B0%C6%A1ng_t%C3%A0u_%28th%E1%BB%A9c_%C4%83n_nhanh%29_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Phở trộn nước tương tàu (thức ăn nhanh) (4).jpg",
+   "score": 1,
+   "query": "Phở trộn"
+  },
+  {
+   "id": "poke-bowl",
+   "name": "Poke bowl",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Salmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg/960px-Salmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Salmon & Tuna Poke Bowl (M) with Spicy Mayo sauce - Kitokito 2025-04-25.jpg",
+   "score": 1,
+   "query": "Poke bowl"
+  },
+  {
+   "id": "quesadilla",
+   "name": "Quesadilla",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Quesadilla_2.jpg/960px-Quesadilla_2.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Quesadilla",
+   "score": 1,
+   "query": "Quesadilla"
+  },
+  {
+   "id": "quay-thua",
+   "name": "Quẩy giòn",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Youtiao.jpg/960px-Youtiao.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Youtiao",
+   "score": 1,
+   "query": "Youtiao"
+  },
+  {
+   "id": "rau-cau-dua",
+   "name": "Rau câu dừa",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Youkan_mizuyoukan.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Agar",
+   "score": 1,
+   "query": "Agar"
+  },
+  {
+   "id": "salad-ca-ngu",
+   "name": "Salad cá ngừ",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tuna_fish_sandwiches_for_the_National_School_Lunch_Program_%281%29.jpg/960px-Tuna_fish_sandwiches_for_the_National_School_Lunch_Program_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Tuna salad",
+   "score": 1,
+   "query": "Tuna salad"
+  },
+  {
+   "id": "salad-ga-nuong",
+   "name": "Salad gà nướng",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Chicken_Salad_Chick_Classic_Carol_scoop%2C_Jan_2020.jpg/960px-Chicken_Salad_Chick_Classic_Carol_scoop%2C_Jan_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Chicken salad",
+   "score": 1,
+   "query": "Chicken salad"
+  },
+  {
+   "id": "shawarma",
+   "name": "Shawarma gà",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Shawarma-Kebab_stand_in_central_Aleppo%2C_Syria.jpg/960px-Shawarma-Kebab_stand_in_central_Aleppo%2C_Syria.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Shawarma",
+   "score": 1,
+   "query": "Shawarma"
+  },
+  {
+   "id": "sinh-to-bo",
+   "name": "Sinh tố bơ",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Kiwi_Smoothie.jpg/960px-Kiwi_Smoothie.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Smoothie",
+   "score": 1,
+   "query": "Smoothie"
+  },
+  {
+   "id": "sinh-to-xoai",
+   "name": "Sinh tố xoài",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/World_location_map_%28equirectangular_180%29.svg/960px-World_location_map_%28equirectangular_180%29.svg.png?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Mango (Jamshedpur)",
+   "score": 1,
+   "query": "Mango"
+  },
+  {
+   "id": "soba",
+   "name": "Soba lạnh",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Mori-soba_002.jpg/960px-Mori-soba_002.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Soba",
+   "score": 1,
+   "query": "Soba"
+  },
+  {
+   "id": "som-tam",
+   "name": "Som Tam",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Som_Tam_green_papaya_salad%2C_Bangkok%2C_Thailand.jpg/960px-Som_Tam_green_papaya_salad%2C_Bangkok%2C_Thailand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Som Tam green papaya salad, Bangkok, Thailand.jpg",
+   "score": 1,
+   "query": "Som Tam"
+  },
+  {
+   "id": "sup-bi-do",
+   "name": "Súp bí đỏ kem",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG/960px-K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Pumpkin soup",
+   "score": 1,
+   "query": "Pumpkin soup"
+  },
+  {
+   "id": "sup-cua",
+   "name": "Súp cua trứng",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Shangsi_Crab_Soup_%28413730864%29.jpg/960px-Shangsi_Crab_Soup_%28413730864%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Shangsi Crab Soup (413730864).jpg",
+   "score": 1,
+   "query": "Crab soup"
+  },
+  {
+   "id": "sua-chua",
+   "name": "Sữa chua nếp cẩm",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Joghurt.jpg/960px-Joghurt.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Yogurt",
+   "score": 1,
+   "query": "Yogurt"
+  },
+  {
+   "id": "sua-dau-nanh",
+   "name": "Sữa đậu nành",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/001-soymilk.jpg/960px-001-soymilk.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Sữa đậu nành",
+   "score": 1,
+   "query": "Sữa đậu nành"
+  },
+  {
+   "id": "tempura",
+   "name": "Tempura",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Tempurainjapan-ikebukuro-dec312007.jpg/960px-Tempurainjapan-ikebukuro-dec312007.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Tempura",
+   "score": 1,
+   "query": "Tempura"
+  },
+  {
+   "id": "thit-kho-tau",
+   "name": "Thịt kho tàu",
+   "style": "kho",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Caramelized_Pork_and_Eggs.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Thịt kho trứng",
+   "score": 0.67,
+   "query": "Thịt kho tàu"
+  },
+  {
+   "id": "tiramisu",
+   "name": "Tiramisu",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Tiramisu_-_Raffaele_Diomede.jpg/960px-Tiramisu_-_Raffaele_Diomede.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Tiramisu",
+   "score": 1,
+   "query": "Tiramisu"
+  },
+  {
+   "id": "tra-gung",
+   "name": "Trà gừng mật ong",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Ginger_tea.jpg/960px-Ginger_tea.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Ginger tea",
+   "score": 1,
+   "query": "Ginger tea"
+  },
+  {
+   "id": "trung-chien-thit",
+   "name": "Trứng chiên thịt bằm",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Gorgonzola_%2B_Bacon_Omelette_%40_Omelegg_%40_Amsterdam_%2816600947041%29.jpg/960px-Gorgonzola_%2B_Bacon_Omelette_%40_Omelegg_%40_Amsterdam_%2816600947041%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Omelette",
+   "score": 1,
+   "query": "Omelette"
+  },
+  {
+   "id": "trung-hap",
+   "name": "Trứng hấp kiểu Nhật",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Chawan-mushi.JPG/960px-Chawan-mushi.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Chawanmushi",
+   "score": 1,
+   "query": "Chawanmushi"
+  },
+  {
+   "id": "tau-hu-ngot",
+   "name": "Tàu hũ nước đường",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/David_enjoying_D%C3%B2uhu%C4%81.jpg/960px-David_enjoying_D%C3%B2uhu%C4%81.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Douhua",
+   "score": 1,
+   "query": "Douhua"
+  },
+  {
+   "id": "udon",
+   "name": "Udon",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Kakeudon.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Udon",
+   "score": 1,
+   "query": "Udon"
+  },
+  {
+   "id": "waffle",
+   "name": "Waffle",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Waffles_with_Strawberries.jpg/960px-Waffles_with_Strawberries.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Waffle",
+   "score": 1,
+   "query": "Waffle"
+  },
+  {
+   "id": "xoi-chien",
+   "name": "Xôi chiên phồng",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Xôi",
+   "score": 1,
+   "query": "Xôi"
+  },
+  {
+   "id": "xoi-ga",
+   "name": "Xôi gà",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Xôi",
+   "score": 1,
+   "query": "Xôi"
+  },
+  {
+   "id": "xoi-gac",
+   "name": "Xôi gấc",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/X%C3%B4i_g%E1%BA%A5c.JPG/960px-X%C3%B4i_g%E1%BA%A5c.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Xôi gấc",
+   "score": 1,
+   "query": "Xôi gấc"
+  },
+  {
+   "id": "xuc-xich-nuong",
+   "name": "Xúc xích nướng than",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Wurstplatte.jpg/960px-Wurstplatte.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Sausage",
+   "score": 1,
+   "query": "Sausage"
+  },
+  {
+   "id": "chao-yen-mach",
+   "name": "Yến mạch sữa chuối",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Oatmeal_%281%29.jpg/960px-Oatmeal_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Porridge",
+   "score": 1,
+   "query": "Porridge"
+  },
+  {
+   "id": "trai-cay-dia",
+   "name": "Đĩa trái cây",
+   "style": "tron",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Fruit_Platter-_Seasonal_Fruits.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Fruit",
+   "score": 1,
+   "query": "Fruit"
+  },
+  {
+   "id": "dau-hu-chien",
+   "name": "Đậu hũ chiên sả",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG/960px-Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Tofu",
+   "score": 1,
+   "query": "Tofu"
+  },
+  {
+   "id": "dau-hu-non",
+   "name": "Đậu hũ non sốt trứng",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG/960px-Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Tofu",
+   "score": 1,
+   "query": "Tofu"
+  },
+  {
+   "id": "dau-hu-sot-ca",
+   "name": "Đậu hũ sốt cà",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG/960px-Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Tofu",
+   "score": 1,
+   "query": "Tofu"
+  },
+  {
+   "id": "oc-nhoi",
+   "name": "Ốc nhồi thịt",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Common_snail.jpg/960px-Common_snail.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Ốc",
+   "score": 1,
+   "query": "Ốc"
+  },
+  {
+   "id": "burger",
+   "name": "Burger bò",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/NCI_Visuals_Food_Hamburger.jpg/960px-NCI_Visuals_Food_Hamburger.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Hamburger",
+   "score": 1,
+   "query": "Hamburger"
+  },
+  {
+   "id": "banh-bao",
+   "name": "Bánh bao",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/960px-Baozi_Chengdu.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh bao",
+   "score": 1,
+   "query": "Bánh bao"
+  },
+  {
+   "id": "banh-canh",
+   "name": "Bánh canh cua",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh canh",
+   "score": 1,
+   "query": "Bánh canh"
+  },
+  {
+   "id": "banh-cuon",
+   "name": "Bánh cuốn nóng",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Banh_cuon.jpg/960px-Banh_cuon.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh cuốn",
+   "score": 1,
+   "query": "Bánh cuốn"
+  },
+  {
+   "id": "banh-khot",
+   "name": "Bánh khọt",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/B%C3%A1nh_kh%E1%BB%8Dt.jpg/960px-B%C3%A1nh_kh%E1%BB%8Dt.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh khọt",
+   "score": 1,
+   "query": "Bánh khọt"
+  },
+  {
+   "id": "banh-mi-chao",
+   "name": "Bánh mì chảo",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-ga-nuong",
+   "name": "Bánh mì gà nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-pate",
+   "name": "Bánh mì pate chả",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-thit-nuong",
+   "name": "Bánh mì thịt nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-trung",
+   "name": "Bánh mì ốp la",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-trang-nuong",
+   "name": "Bánh tráng nướng",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/3/36/B%C3%A1nh_tr%C3%A1ng_1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh tráng",
+   "score": 0.67,
+   "query": "Bánh tráng nướng"
+  },
+  {
+   "id": "steak",
+   "name": "Bò bít tết",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Beef_fillet_steak_with_mushrooms.jpg/960px-Beef_fillet_steak_with_mushrooms.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bít tết",
+   "score": 0.67,
+   "query": "Bò bít tết"
+  },
+  {
+   "id": "bo-kho",
+   "name": "Bò khô & cóc",
+   "style": "kho",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Beef-jerky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "via": "commons",
+   "source": "File:Beef-jerky.jpg",
+   "score": 1,
+   "query": "Beef jerky"
+  },
+  {
+   "id": "bo-luc-lac",
+   "name": "Bò lúc lắc",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Product_Shots_of_Food-Bo_Luc_Lac.jpg/960px-Product_Shots_of_Food-Bo_Luc_Lac.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bò lúc lắc",
+   "score": 1,
+   "query": "Bò lúc lắc"
+  },
+  {
+   "id": "bun-cha-ca",
+   "name": "Bún chả cá",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/B%C3%BAn_ch%E1%BA%A3_c%C3%A1%2C_th%C3%A1ng_8_n%C4%83m_2018.JPG/960px-B%C3%BAn_ch%E1%BA%A3_c%C3%A1%2C_th%C3%A1ng_8_n%C4%83m_2018.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún chả cá",
+   "score": 1,
+   "query": "Bún chả cá"
+  },
+  {
+   "id": "bun-rieu",
+   "name": "Bún riêu cua",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg/960px-B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún riêu cua",
+   "score": 1,
+   "query": "Bún riêu cua"
+  },
+  {
+   "id": "bun-dau-mam-tom",
+   "name": "Bún đậu mắm tôm",
+   "style": "chien",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/B%C3%BAn_%C4%91%E1%BA%ADu_m%E1%BA%AFm_t%C3%B4m_%282019%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bún đậu mắm tôm",
+   "score": 1,
+   "query": "Bún đậu mắm tôm"
+  },
+  {
+   "id": "bot-chieu",
+   "name": "Bột chiên",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Botchien_in_Vietnam.jpg/960px-Botchien_in_Vietnam.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh bột chiên",
+   "score": 1,
+   "query": "Bột chiên"
+  },
+  {
+   "id": "canh-chua",
+   "name": "Canh chua cá",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Canhchua2.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Canh chua",
+   "score": 1,
+   "query": "Canh chua"
+  },
+  {
+   "id": "chao-long",
+   "name": "Cháo lòng",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Ch%C3%A1o_l%C3%B2ng.jpg/960px-Ch%C3%A1o_l%C3%B2ng.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cháo lòng",
+   "score": 1,
+   "query": "Cháo lòng"
+  },
+  {
+   "id": "che-thai",
+   "name": "Chè Thái",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ch%C3%A8_xo%C3%A0i.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Chè",
+   "score": 1,
+   "query": "Chè"
+  },
+  {
+   "id": "che-ba-mau",
+   "name": "Chè ba màu",
+   "style": "ngot",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ch%C3%A8_xo%C3%A0i.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Chè",
+   "score": 1,
+   "query": "Chè"
+  },
+  {
+   "id": "cha-gio",
+   "name": "Chả giò / Nem rán",
+   "style": "chien",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Cha_gio.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "en-wiki",
+   "source": "Chả giò",
+   "score": 1,
+   "query": "Chả giò"
+  },
+  {
+   "id": "ca-ri-ga",
+   "name": "Cà ri gà",
+   "style": "kho",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Indian_Curry_Chicken.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Cà ri gà",
+   "score": 1,
+   "query": "Cà ri gà"
+  },
+  {
+   "id": "ca-kho-to",
+   "name": "Cá kho tộ",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Ph%C3%BA_Qu%E1%BB%91c_2022_%28c%C3%A1_kho_t%E1%BB%99%29_%281%29.jpg/960px-Ph%C3%BA_Qu%E1%BB%91c_2022_%28c%C3%A1_kho_t%E1%BB%99%29_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Phú Quốc 2022 (cá kho tộ) (1).jpg",
+   "score": 1,
+   "query": "Cá kho tộ"
+  },
+  {
+   "id": "ca-vien-chien",
+   "name": "Cá viên chiên",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Processed_seafood_clipped.jpg/960px-Processed_seafood_clipped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Fish ball",
+   "score": 1,
+   "query": "Fish ball"
+  },
+  {
+   "id": "gyudon",
+   "name": "Cơm bò Gyudon",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Gyuu-don_003.jpg/960px-Gyuu-don_003.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Gyūdon",
+   "score": 1,
+   "query": "Gyudon"
+  },
+  {
+   "id": "com-chien",
+   "name": "Cơm chiên Dương Châu",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg/960px-Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cơm chiên Dương Châu",
+   "score": 1,
+   "query": "Cơm chiên Dương Châu"
+  },
+  {
+   "id": "com-curry-nhat",
+   "name": "Cơm cà ri Nhật",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Beef_curry_rice_003.jpg/960px-Beef_curry_rice_003.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Japanese curry",
+   "score": 1,
+   "query": "Japanese curry"
+  },
+  {
+   "id": "com-ga",
+   "name": "Cơm gà Hội An",
+   "style": "kho",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Lunch_plate_with_salads.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Cơm gà",
+   "score": 1,
+   "query": "Cơm gà"
+  },
+  {
+   "id": "com-rang",
+   "name": "Cơm rang dưa bò",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/960px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Fried rice",
+   "score": 1,
+   "query": "Fried rice"
+  },
+  {
+   "id": "com-rang-hai-san",
+   "name": "Cơm rang hải sản",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/960px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Fried rice",
+   "score": 1,
+   "query": "Fried rice"
+  },
+  {
+   "id": "bokkeumbap",
+   "name": "Cơm trộn Hàn Quốc",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bibimbap",
+   "score": 1,
+   "query": "Bibimbap"
+  },
+  {
+   "id": "ga-nuong-mat-ong",
+   "name": "Gà nướng mật ong",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg/960px-Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Roast chicken",
+   "score": 1,
+   "query": "Roast chicken"
+  },
+  {
+   "id": "ga-sot-cay",
+   "name": "Gà sốt cay Hàn",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Iksan_City_48_Korean_Style_Fried_chicken.jpg/960px-Iksan_City_48_Korean_Style_Fried_chicken.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Korean fried chicken",
+   "score": 1,
+   "query": "Korean fried chicken"
+  },
+  {
+   "id": "ga-xien-nuong",
+   "name": "Gà xiên nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Yakitori_by_MShades_in_Kujo%2C_Kyoto.jpg/960px-Yakitori_by_MShades_in_Kujo%2C_Kyoto.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Yakitori",
+   "score": 1,
+   "query": "Yakitori"
+  },
+  {
+   "id": "goi-cuon",
+   "name": "Gỏi cuốn",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Summer_roll.jpg/960px-Summer_roll.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Gỏi cuốn",
+   "score": 1,
+   "query": "Gỏi cuốn"
+  },
+  {
+   "id": "ha-cao",
+   "name": "Há cảo / Sủi cảo",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Shrimp_dumplings.jpg/960px-Shrimp_dumplings.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Há cảo",
+   "score": 1,
+   "query": "Há cảo"
+  },
+  {
+   "id": "hai-san-nuong",
+   "name": "Hải sản nướng than",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Mid_City_Yacht_Club_Crawfish.jpg/960px-Mid_City_Yacht_Club_Crawfish.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Seafood boil",
+   "score": 1,
+   "query": "Seafood boil"
+  },
+  {
+   "id": "hu-tieu-nam-vang",
+   "name": "Hủ tiếu Nam Vang",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/H%E1%BB%A7_ti%E1%BA%BFu_nam_vang_gi%C3%B2_4.jpg/960px-H%E1%BB%A7_ti%E1%BA%BFu_nam_vang_gi%C3%B2_4.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Hủ tiếu Nam Vang",
+   "score": 1,
+   "query": "Hủ tiếu Nam Vang"
+  },
+  {
+   "id": "hu-tieu-kho",
+   "name": "Hủ tiếu khô",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/H%E1%BB%A7_ti%E1%BA%BFu_h%E1%BA%A3i_s%E1%BA%A3n_kh%C3%B4_h%C3%A0_ti%C3%AAn.jpg/960px-H%E1%BB%A7_ti%E1%BA%BFu_h%E1%BA%A3i_s%E1%BA%A3n_kh%C3%B4_h%C3%A0_ti%C3%AAn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Hủ tiếu hải sản khô hà tiên.jpg",
+   "score": 1,
+   "query": "Hủ tiếu khô"
+  },
+  {
+   "id": "kho-muc-nuong",
+   "name": "Khô mực nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E5%B4%97_Longgang_%E9%BE%8D%E5%B4%97%E5%A4%A7%E9%81%93_Longgang_Avenue_%E6%B2%83%E7%88%BE%E7%91%AA%E8%B6%85%E5%B8%82_Walmart_Supermarket_Dried_shredded_squid_October_2023_R12S.jpg/960px-SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E5%B4%97_Longgang_%E9%BE%8D%E5%B4%97%E5%A4%A7%E9%81%93_Longgang_Avenue_%E6%B2%83%E7%88%BE%E7%91%AA%E8%B6%85%E5%B8%82_Walmart_Supermarket_Dried_shredded_squid_October_2023_R12S.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Dried shredded squid",
+   "score": 1,
+   "query": "Dried squid"
+  },
+  {
+   "id": "kimbap",
+   "name": "Kimbap",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Vegetable_gimbap.jpg/960px-Vegetable_gimbap.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Kimbap",
+   "score": 1,
+   "query": "Gimbap"
+  },
+  {
+   "id": "lau-thai",
+   "name": "Lẩu Thái",
+   "style": "lau",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Hotpot.jpg/960px-Hotpot.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Lẩu Thái",
+   "score": 1,
+   "query": "Lẩu Thái"
+  },
+  {
+   "id": "mien-ga",
+   "name": "Miến gà",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Dongfen.JPG/960px-Dongfen.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Miến",
+   "score": 1,
+   "query": "Miến"
+  },
+  {
+   "id": "mi-quang",
+   "name": "Mì Quảng",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Mi_Quang_1A_Danang.jpg/960px-Mi_Quang_1A_Danang.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Mì Quảng",
+   "score": 1,
+   "query": "Mì Quảng"
+  },
+  {
+   "id": "mi-cay",
+   "name": "Mì cay 7 cấp độ",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Shoyu_Ramen.jpg/960px-Shoyu_Ramen.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Ramen",
+   "score": 1,
+   "query": "Ramen"
+  },
+  {
+   "id": "mi-ga",
+   "name": "Mì gà trứng",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Demae_Itcho_%28instant_cup_noodle%29.jpg/960px-Demae_Itcho_%28instant_cup_noodle%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "via": "commons",
+   "source": "File:Demae Itcho (instant cup noodle).jpg",
+   "score": 1,
+   "query": "Instant noodle"
+  },
+  {
+   "id": "mi-xao-bo",
+   "name": "Mì xào bò",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Chow mein",
+   "score": 1,
+   "query": "Chow mein"
+  },
+  {
+   "id": "xao-hai-san",
+   "name": "Mì xào hải sản",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Chow mein",
+   "score": 1,
+   "query": "Chow mein"
+  },
+  {
+   "id": "nem-nuong",
+   "name": "Nem nướng Ninh Hòa",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg/960px-Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Nem nướng",
+   "score": 1,
+   "query": "Nem nướng"
+  },
+  {
+   "id": "pad-thai",
+   "name": "Pad Thái",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg/960px-Phat_Thai_kung_Chang_Khien_street_stall.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Pad Thái",
+   "score": 1,
+   "query": "Pad Thái"
+  },
+  {
+   "id": "pho-mai-que",
+   "name": "Phô mai que",
+   "style": "chien",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Mozzarella_394.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Phô mai que",
+   "score": 1,
+   "query": "Phô mai que"
+  },
+  {
+   "id": "pho-xao",
+   "name": "Phở xào bò",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Phở",
+   "score": 1,
+   "query": "Phở"
+  },
+  {
+   "id": "pizza",
+   "name": "Pizza",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Pizza_Vi%E1%BB%87t_Nam_%C4%91%E1%BA%BF_d%C3%A0y%2C_x%C3%BAc_x%C3%ADch_%28SNaT_2018%29_%287%29.jpg/960px-Pizza_Vi%E1%BB%87t_Nam_%C4%91%E1%BA%BF_d%C3%A0y%2C_x%C3%BAc_x%C3%ADch_%28SNaT_2018%29_%287%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Pizza",
+   "score": 1,
+   "query": "Pizza"
+  },
+  {
+   "id": "mi-ramen",
+   "name": "Ramen Nhật",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Shoyu_Ramen.jpg/960px-Shoyu_Ramen.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Ramen",
+   "score": 1,
+   "query": "Ramen"
+  },
+  {
+   "id": "spaghetti",
+   "name": "Spaghetti bò bằm",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Spaghettoni.jpg/960px-Spaghettoni.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Spaghetti",
+   "score": 1,
+   "query": "Spaghetti"
+  },
+  {
+   "id": "sushi",
+   "name": "Sushi",
+   "style": "cuon",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/960px-Sushi_platter.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Sushi",
+   "score": 1,
+   "query": "Sushi"
+  },
+  {
+   "id": "suon-xao-chua-ngot",
+   "name": "Sườn xào chua ngọt",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Sweet_and_sour_pork.jpg/960px-Sweet_and_sour_pork.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Sweet and sour pork",
+   "score": 1,
+   "query": "Sweet and sour pork"
+  },
+  {
+   "id": "taco",
+   "name": "Taco bò",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg/960px-001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Taco",
+   "score": 1,
+   "query": "Taco"
+  },
+  {
+   "id": "takoyaki",
+   "name": "Takoyaki",
+   "style": "nuong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Takoyaki_by_yomi955.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Takoyaki",
+   "score": 1,
+   "query": "Takoyaki"
+  },
+  {
+   "id": "thit-kho-trung",
+   "name": "Thịt kho trứng",
+   "style": "kho",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Thit-kho-tieu-1.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Thịt lợn kho",
+   "score": 1,
+   "query": "Thịt kho"
+  },
+  {
+   "id": "tokbokki",
+   "name": "Tokbokki",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/960px-Tteokbokki.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Tteokbokki",
+   "score": 1,
+   "query": "Tteokbokki"
+  },
+  {
+   "id": "tom-yum",
+   "name": "Tom Yum",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Tom_yam_kung_maenam.jpg/960px-Tom_yam_kung_maenam.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Tom yum",
+   "score": 1,
+   "query": "Tom yum"
+  },
+  {
+   "id": "tra-sua",
+   "name": "Trà sữa trân châu",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/%D7%9E%D7%A9%D7%A7%D7%94_%D7%A2%D7%9D_%D7%9B%D7%93%D7%95%D7%A8%D7%99_%D7%98%D7%A4%D7%99%D7%95%D7%A7%D7%94_%28cropped%29.jpg/960px-%D7%9E%D7%A9%D7%A7%D7%94_%D7%A2%D7%9D_%D7%9B%D7%93%D7%95%D7%A8%D7%99_%D7%98%D7%A4%D7%99%D7%95%D7%A7%D7%94_%28cropped%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Trà sữa trân châu",
+   "score": 1,
+   "query": "Trà sữa trân châu"
+  },
+  {
+   "id": "tra-dao",
+   "name": "Trà đào cam sả",
+   "style": "uong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Iced_Tea_from_flickr.jpg/960px-Iced_Tea_from_flickr.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Iced tea",
+   "score": 1,
+   "query": "Iced tea"
+  },
+  {
+   "id": "op-la",
+   "name": "Trứng ốp la",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/N%E1%BA%A5u_tr%E1%BB%A9ng_%E1%BB%91p_la_2_tr%E1%BB%A9ng%2C_ng2th9n2019_%28t%E1%BB%AB_Long_%C4%90%E1%BA%A5t_v%E1%BB%81%29_%283%29.jpg/960px-N%E1%BA%A5u_tr%E1%BB%A9ng_%E1%BB%91p_la_2_tr%E1%BB%A9ng%2C_ng2th9n2019_%28t%E1%BB%AB_Long_%C4%90%E1%BA%A5t_v%E1%BB%81%29_%283%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Trứng ốp la",
+   "score": 1,
+   "query": "Trứng ốp la"
+  },
+  {
+   "id": "xoi-man",
+   "name": "Xôi mặn",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Xôi",
+   "score": 1,
+   "query": "Xôi"
+  },
+  {
+   "id": "xoi-xeo",
+   "name": "Xôi xéo",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Xôi",
+   "score": 1,
+   "query": "Xôi"
+  },
+  {
+   "id": "banh-mi-thit",
+   "name": "Bánh mì thịt",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-trang-tron",
+   "name": "Bánh tráng trộn",
+   "style": "tron",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Vietnamese_%22banh_trang_tron%22.JPG/960px-Vietnamese_%22banh_trang_tron%22.JPG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh tráng trộn",
+   "score": 1,
+   "query": "Bánh tráng trộn"
+  },
+  {
+   "id": "banh-xeo",
+   "name": "Bánh xèo",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg/960px-B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh xèo",
+   "score": 1,
+   "query": "Bánh xèo"
+  },
+  {
+   "id": "bun-bo-hue",
+   "name": "Bún bò Huế",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bun-Bo-Hue-from-Huong-Giang-2011.jpg/960px-Bun-Bo-Hue-from-Huong-Giang-2011.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún bò Huế",
+   "score": 1,
+   "query": "Bún bò Huế"
+  },
+  {
+   "id": "bun-cha",
+   "name": "Bún chả Hà Nội",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg/960px-B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún chả",
+   "score": 1,
+   "query": "Bún chả"
+  },
+  {
+   "id": "bun-thit-nuong",
+   "name": "Bún thịt nướng",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Bun_thit_nuong.jpg/960px-Bun_thit_nuong.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bún thịt nướng",
+   "score": 1,
+   "query": "Bún thịt nướng"
+  },
+  {
+   "id": "ca-phe-sua-da",
+   "name": "Cà phê sữa đá",
+   "style": "uong",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Viet-coffee.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Cà phê sữa đá",
+   "score": 1,
+   "query": "Cà phê sữa đá"
+  },
+  {
+   "id": "com-tam-suon",
+   "name": "Cơm tấm sườn bì chả",
+   "style": "nuong",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg/960px-C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Cơm tấm",
+   "score": 1,
+   "query": "Cơm tấm"
+  },
+  {
+   "id": "ga-ran",
+   "name": "Gà rán giòn",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Fried-Chicken-Set.jpg/960px-Fried-Chicken-Set.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Fried chicken",
+   "score": 1,
+   "query": "Fried chicken"
+  },
+  {
+   "id": "khoai-tay-chien",
+   "name": "Khoai tây chiên",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/%E3%83%9E%E3%83%83%E3%82%AF%E3%83%95%E3%83%A9%E3%82%A4%E3%83%9D%E3%83%86%E3%83%88_%E3%83%9E%E3%82%AF%E3%83%89%E3%83%8A%E3%83%AB%E3%83%89%E6%B8%8B%E8%B0%B7MIYASHITA_PARK%E5%BA%97_2024%E5%B9%B411%E6%9C%8812%E6%97%A5%E3%81%AE%E6%B8%8B%E8%B0%B7_202411121301_IMG_9087.jpg/960px-%E3%83%9E%E3%83%83%E3%82%AF%E3%83%95%E3%83%A9%E3%82%A4%E3%83%9D%E3%83%86%E3%83%88_%E3%83%9E%E3%82%AF%E3%83%89%E3%83%8A%E3%83%AB%E3%83%89%E6%B8%8B%E8%B0%B7MIYASHITA_PARK%E5%BA%97_2024%E5%B9%B411%E6%9C%8812%E6%97%A5%E3%81%AE%E6%B8%8B%E8%B0%B7_202411121301_IMG_9087.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Khoai tây chiên",
+   "score": 1,
+   "query": "Khoai tây chiên"
+  },
+  {
+   "id": "pho-bo",
+   "name": "Phở bò",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Phở",
+   "score": 1,
+   "query": "Phở"
+  },
+  {
+   "id": "pho-ga",
+   "name": "Phở gà",
+   "style": "nuoc",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Phở",
+   "score": 1,
+   "query": "Phở"
+  }
+ ]
+}

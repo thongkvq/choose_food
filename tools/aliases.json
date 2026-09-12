@@ -1,0 +1,776 @@
+{
+ "pho-bo": [
+  "Phở bò",
+  "Phở"
+ ],
+ "pho-ga": [
+  "Phở gà",
+  "Phở"
+ ],
+ "pho-chien-phong": [
+  "Phở chiên phồng",
+  "Phở"
+ ],
+ "bun-bo-hue": [
+  "Bún bò Huế"
+ ],
+ "bun-rieu": [
+  "Bún riêu"
+ ],
+ "bun-mam": [
+  "Bún mắm"
+ ],
+ "bun-cha": [
+  "Bún chả"
+ ],
+ "bun-thit-nuong": [
+  "Bún thịt nướng"
+ ],
+ "bun-dau-mam-tom": [
+  "Bún đậu mắm tôm"
+ ],
+ "bun-cha-ca": [
+  "Bún chả cá"
+ ],
+ "bun-oc": [
+  "Bún ốc"
+ ],
+ "mien-ga": [
+  "Miến gà",
+  "Miến"
+ ],
+ "mien-tron": [
+  "Miến"
+ ],
+ "mi-quang": [
+  "Mì Quảng"
+ ],
+ "cao-lau": [
+  "Cao lầu"
+ ],
+ "hu-tieu-nam-vang": [
+  "Hủ tiếu"
+ ],
+ "hu-tieu-kho": [
+  "Hủ tiếu khô"
+ ],
+ "banh-canh": [
+  "Bánh canh"
+ ],
+ "banh-canh-ghe": [
+  "Bánh canh"
+ ],
+ "banh-canh-tom": [
+  "Bánh canh"
+ ],
+ "banh-canh-cua": [
+  "Bánh canh"
+ ],
+ "chao-long": [
+  "Cháo lòng"
+ ],
+ "chao-ga": [
+  "Cháo gà"
+ ],
+ "chao-trai": [
+  "Cháo"
+ ],
+ "chao-dau-xanh": [
+  "Cháo đậu xanh"
+ ],
+ "chao-yen-mach": [
+  "Oatmeal",
+  "Porridge"
+ ],
+ "com-tam-suon": [
+  "Cơm tấm"
+ ],
+ "com-ga": [
+  "Cơm gà"
+ ],
+ "com-ga-xoi-mo": [
+  "Cơm gà"
+ ],
+ "com-rang": [
+  "Cơm rang",
+  "Fried rice"
+ ],
+ "com-rang-hai-san": [
+  "Fried rice"
+ ],
+ "com-chien": [
+  "Cơm chiên Dương Châu",
+  "Yangzhou fried rice"
+ ],
+ "com-gao-lut": [
+  "Brown rice"
+ ],
+ "com-nieu": [
+  "Cơm niêu"
+ ],
+ "com-heo-quay": [
+  "Cơm heo quay"
+ ],
+ "com-ga-hai-nam": [
+  "Hainanese chicken rice"
+ ],
+ "com-curry-nhat": [
+  "Japanese curry"
+ ],
+ "com-thai": [
+  "Fried rice"
+ ],
+ "com-chay": [
+  "Cơm chay"
+ ],
+ "com-trang-trung": [
+  "White rice",
+  "Fried egg"
+ ],
+ "com-gao-lut-ca-hoi": [
+  "Brown rice",
+  "Salmon"
+ ],
+ "xoi-xeo": [
+  "Xôi xéo",
+  "Xôi"
+ ],
+ "xoi-gac": [
+  "Xôi gấc",
+  "Xôi"
+ ],
+ "xoi-man": [
+  "Xôi"
+ ],
+ "xoi-chien": [
+  "Xôi"
+ ],
+ "xoi-ga": [
+  "Xôi gà",
+  "Xôi"
+ ],
+ "banh-mi-thit": [
+  "Bánh mì"
+ ],
+ "banh-mi-trung": [
+  "Bánh mì"
+ ],
+ "banh-mi-chao": [
+  "Bánh mì chảo",
+  "Bánh mì"
+ ],
+ "banh-mi-heo-quay": [
+  "Bánh mì"
+ ],
+ "banh-mi-ga-nuong": [
+  "Bánh mì"
+ ],
+ "banh-mi-chay": [
+  "Bánh mì"
+ ],
+ "banh-mi-xa-xiu": [
+  "Bánh mì"
+ ],
+ "banh-mi-nuong": [
+  "Bánh mì"
+ ],
+ "banh-mi-chao-trung": [
+  "Bánh mì chảo"
+ ],
+ "banh-mi-chao-pho-mai": [
+  "Bánh mì chảo"
+ ],
+ "banh-mi-pate": [
+  "Bánh mì"
+ ],
+ "banh-mi-op-la-2": [
+  "Bánh mì"
+ ],
+ "banh-mi-chay-nam": [
+  "Bánh mì"
+ ],
+ "banh-mi-bo": [
+  "Bánh mì"
+ ],
+ "banh-mi-xui": [
+  "Bánh mì"
+ ],
+ "banh-mi-nuong-bo": [
+  "Garlic bread",
+  "Bánh mì"
+ ],
+ "banh-mi-chao-bo": [
+  "Bánh mì chảo"
+ ],
+ "banh-mi-thit-nuong": [
+  "Bánh mì"
+ ],
+ "banh-mi-kep-kem": [
+  "Bánh mì"
+ ],
+ "banh-cuon": [
+  "Bánh cuốn"
+ ],
+ "banh-uot": [
+  "Bánh ướt"
+ ],
+ "banh-khot": [
+  "Bánh khọt"
+ ],
+ "banh-xeo": [
+  "Bánh xèo"
+ ],
+ "banh-can-chay": [
+  "Bánh căn"
+ ],
+ "banh-beo": [
+  "Bánh bèo"
+ ],
+ "banh-bot-loc": [
+  "Bánh bột lọc"
+ ],
+ "banh-gio": [
+  "Bánh giò"
+ ],
+ "banh-bao": [
+  "Bánh bao"
+ ],
+ "ha-cao": [
+  "Há cảo",
+  "Har gow"
+ ],
+ "dimsum-tong-hop": [
+  "Dim sum"
+ ],
+ "banh-ut-tre": [
+  "Bánh ít"
+ ],
+ "banh-xeo-nhat": [
+  "Bánh xèo"
+ ],
+ "banh-cuon-chay": [
+  "Bánh cuốn"
+ ],
+ "banh-hoi": [
+  "Bánh hỏi"
+ ],
+ "banh-uot-chay": [
+  "Bánh ướt"
+ ],
+ "banh-duc": [
+  "Bánh đúc"
+ ],
+ "banh-duc-ngot": [
+  "Bánh đúc"
+ ],
+ "goi-cuon": [
+  "Gỏi cuốn"
+ ],
+ "nem-nuong": [
+  "Nem nướng"
+ ],
+ "nem-chua": [
+  "Nem chua"
+ ],
+ "cha-gio": [
+  "Chả giò",
+  "Spring roll"
+ ],
+ "kimbap": [
+  "Gimbap"
+ ],
+ "sushi": [
+  "Sushi"
+ ],
+ "cuon-diep-ca": [
+  "Gỏi cuốn"
+ ],
+ "cuon-ram": [
+  "Chả giò",
+  "Spring roll"
+ ],
+ "cuon-ca-hoi": [
+  "Sushi"
+ ],
+ "banh-trang-tron": [
+  "Bánh tráng trộn"
+ ],
+ "banh-trang-nuong": [
+  "Bánh tráng nướng"
+ ],
+ "bot-chieu": [
+  "Bột chiên"
+ ],
+ "khoai-tay-chien": [
+  "French fries"
+ ],
+ "khoai-lang-chien": [
+  "Sweet potato"
+ ],
+ "ca-vien-chien": [
+  "Fish ball"
+ ],
+ "pho-mai-que": [
+  "Mozzarella sticks"
+ ],
+ "tokbokki": [
+  "Tteokbokki"
+ ],
+ "takoyaki": [
+  "Takoyaki"
+ ],
+ "tempura": [
+  "Tempura"
+ ],
+ "okonomiyaki": [
+  "Okonomiyaki"
+ ],
+ "thit-kho-trung": [
+  "Thịt kho",
+  "Vietnamese caramel pork"
+ ],
+ "thit-kho-tau": [
+  "Thịt kho tàu"
+ ],
+ "ca-kho-to": [
+  "Cá kho",
+  "Fish in caramel sauce"
+ ],
+ "ga-kho-gung": [
+  "Gà kho gừng"
+ ],
+ "suon-xao-chua-ngot": [
+  "Sweet and sour pork"
+ ],
+ "bo-xao-hanh": [
+  "Stir-fried beef",
+  "Bò xào"
+ ],
+ "bo-luc-lac": [
+  "Bò lúc lắc",
+  "Shaking beef"
+ ],
+ "xao-hai-san": [
+  "Chow mein"
+ ],
+ "mi-xao-bo": [
+  "Chow mein"
+ ],
+ "mi-xao-gion": [
+  "Chow mein",
+  "Crispy noodles"
+ ],
+ "pho-xao": [
+  "Phở"
+ ],
+ "pad-thai": [
+  "Pad thai"
+ ],
+ "mi-ramen": [
+  "Ramen"
+ ],
+ "udon": [
+  "Udon"
+ ],
+ "soba": [
+  "Soba"
+ ],
+ "mi-cay": [
+  "Ramen"
+ ],
+ "mi-ga": [
+  "Instant noodle"
+ ],
+ "mi-tom": [
+  "Instant noodle"
+ ],
+ "ga-nuong-mat-ong": [
+  "Roast chicken"
+ ],
+ "ga-ran": [
+  "Fried chicken"
+ ],
+ "ga-sot-cay": [
+  "Korean fried chicken"
+ ],
+ "hai-san-nuong": [
+  "Seafood boil"
+ ],
+ "bo-nuong-la-lot": [
+  "Bò lá lốt"
+ ],
+ "ga-nuong-la-chanh": [
+  "Roast chicken"
+ ],
+ "vit-quay": [
+  "Peking duck",
+  "Vịt quay"
+ ],
+ "heo-quay": [
+  "Siu yuk",
+  "Lechon"
+ ],
+ "xuc-xich-nuong": [
+  "Sausage"
+ ],
+ "bo-vien-nuong": [
+  "Beef ball"
+ ],
+ "ga-xien-nuong": [
+  "Yakitori"
+ ],
+ "kho-muc-nuong": [
+  "Dried squid"
+ ],
+ "elote": [
+  "Elote"
+ ],
+ "lau-thai": [
+  "Thai suki",
+  "Hot pot"
+ ],
+ "lau-bo-nhung-dam": [
+  "Hot pot"
+ ],
+ "lau-ga-la-e": [
+  "Hot pot"
+ ],
+ "lau-nam": [
+  "Hot pot"
+ ],
+ "lau-cua": [
+  "Hot pot"
+ ],
+ "lau-ca-keo": [
+  "Hot pot"
+ ],
+ "lau-chao-ga": [
+  "Hot pot"
+ ],
+ "lau-de": [
+  "Hot pot"
+ ],
+ "lau-ga-nam": [
+  "Hot pot"
+ ],
+ "lau-gao-lut-chay": [
+  "Hot pot"
+ ],
+ "canh-ga-ham": [
+  "Samgyetang"
+ ],
+ "tom-yum": [
+  "Tom yum"
+ ],
+ "canh-chua": [
+  "Canh chua"
+ ],
+ "canh-kho-qua": [
+  "Bitter melon"
+ ],
+ "canh-bi-do": [
+  "Pumpkin soup"
+ ],
+ "canh-rong-bien": [
+  "Miyeok-guk"
+ ],
+ "vit-tiem-thuoc-bac": [
+  "Vịt tiềm"
+ ],
+ "burger": [
+  "Hamburger"
+ ],
+ "pizza": [
+  "Pizza"
+ ],
+ "spaghetti": [
+  "Spaghetti"
+ ],
+ "carbonara": [
+  "Carbonara"
+ ],
+ "steak": [
+  "Steak"
+ ],
+ "fish-chips": [
+  "Fish and chips"
+ ],
+ "taco": [
+  "Taco"
+ ],
+ "burrito": [
+  "Burrito"
+ ],
+ "nachos": [
+  "Nachos"
+ ],
+ "quesadilla": [
+  "Quesadilla"
+ ],
+ "ca-ri-ga": [
+  "Curry"
+ ],
+ "ca-ri-chay": [
+  "Curry"
+ ],
+ "butter-chicken": [
+  "Butter chicken"
+ ],
+ "samosa": [
+  "Samosa"
+ ],
+ "kebab": [
+  "Doner kebab"
+ ],
+ "shawarma": [
+  "Shawarma"
+ ],
+ "hummus": [
+  "Hummus"
+ ],
+ "falafel": [
+  "Falafel"
+ ],
+ "shakshuka": [
+  "Shakshuka"
+ ],
+ "biryani": [
+  "Biryani"
+ ],
+ "bokkeumbap": [
+  "Bibimbap"
+ ],
+ "poke-bowl": [
+  "Poke"
+ ],
+ "gyudon": [
+  "Gyudon"
+ ],
+ "banh-flan": [
+  "Crème caramel",
+  "Flan"
+ ],
+ "che-ba-mau": [
+  "Chè"
+ ],
+ "che-thai": [
+  "Chè"
+ ],
+ "che-khuc-bach": [
+  "Chè"
+ ],
+ "che-dau-den": [
+  "Chè"
+ ],
+ "rau-cau-dua": [
+  "Agar"
+ ],
+ "kem-bo": [
+  "Avocado"
+ ],
+ "kem-tuoi": [
+  "Gelato",
+  "Ice cream"
+ ],
+ "tiramisu": [
+  "Tiramisu"
+ ],
+ "cheesecake": [
+  "Cheesecake"
+ ],
+ "donut": [
+  "Doughnut"
+ ],
+ "croissant": [
+  "Croissant"
+ ],
+ "pancake": [
+  "Pancake"
+ ],
+ "waffle": [
+  "Waffle"
+ ],
+ "churros": [
+  "Churro"
+ ],
+ "baklava": [
+  "Baklava"
+ ],
+ "banh-socola": [
+  "Chocolate cake"
+ ],
+ "macaron": [
+  "Macaron"
+ ],
+ "banh-quy": [
+  "Cookie"
+ ],
+ "banh-trung-thu": [
+  "Mooncake"
+ ],
+ "banh-bia": [
+  "Bánh bía"
+ ],
+ "banh-chung": [
+  "Bánh chưng"
+ ],
+ "banh-tet": [
+  "Bánh tét"
+ ],
+ "banh-troi-nuoc": [
+  "Bánh trôi"
+ ],
+ "sua-chua": [
+  "Yogurt"
+ ],
+ "banh-cam": [
+  "Bánh cam"
+ ],
+ "banh-tieu": [
+  "Bánh tiêu"
+ ],
+ "quay-thua": [
+  "Youtiao"
+ ],
+ "tau-hu-ngot": [
+  "Douhua"
+ ],
+ "ca-phe-sua-da": [
+  "Vietnamese iced coffee",
+  "Cà phê sữa đá"
+ ],
+ "bac-xiu": [
+  "Cà phê"
+ ],
+ "ca-phe-trung": [
+  "Egg coffee"
+ ],
+ "tra-sua": [
+  "Bubble tea"
+ ],
+ "tra-dao": [
+  "Iced tea"
+ ],
+ "sinh-to-bo": [
+  "Smoothie"
+ ],
+ "sinh-to-xoai": [
+  "Mango"
+ ],
+ "nuoc-mia": [
+  "Sugarcane juice"
+ ],
+ "nuoc-chanh": [
+  "Lemonade"
+ ],
+ "sua-dau-nanh": [
+  "Soy milk"
+ ],
+ "nuoc-rau-ma": [
+  "Centella asiatica"
+ ],
+ "bia-hoi": [
+  "Beer"
+ ],
+ "ruou-vang": [
+  "Red wine"
+ ],
+ "nuoc-dau": [
+  "Red bean"
+ ],
+ "tra-gung": [
+  "Ginger tea"
+ ],
+ "dau-hu-chien": [
+  "Tofu"
+ ],
+ "dau-hu-sot-ca": [
+  "Tofu"
+ ],
+ "dau-hu-non": [
+  "Tofu"
+ ],
+ "trung-chien-thit": [
+  "Omelette"
+ ],
+ "op-la": [
+  "Fried egg"
+ ],
+ "trung-hap": [
+  "Chawanmushi"
+ ],
+ "ga-hap-gung": [
+  "Hainanese chicken rice"
+ ],
+ "ca-hap-xi-dau": [
+  "Steamed fish"
+ ],
+ "so-hap-sa": [
+  "Clam"
+ ],
+ "oc-nhoi": [
+  "Ốc"
+ ],
+ "cha-ca-la-vong": [
+  "Chả cá"
+ ],
+ "cha-com": [
+  "Chả cốm",
+  "Chả"
+ ],
+ "gio-thu": [
+  "Giò"
+ ],
+ "cha-lua": [
+  "Chả lụa",
+  "Vietnamese sausage"
+ ],
+ "sup-bi-do": [
+  "Pumpkin soup"
+ ],
+ "sup-cua": [
+  "Crab soup"
+ ],
+ "sup-mang-tay": [
+  "Asparagus soup"
+ ],
+ "salad-ca-ngu": [
+  "Tuna salad"
+ ],
+ "salad-ga-nuong": [
+  "Chicken salad"
+ ],
+ "som-tam": [
+  "Som tam"
+ ],
+ "trai-cay-dia": [
+  "Fruit"
+ ],
+ "bo-kho": [
+  "Beef jerky"
+ ],
+ "banh-trang-sua": [
+  "Bánh tráng"
+ ],
+ "pudding-xoai": [
+  "Mango sticky rice"
+ ],
+ "cơm-chay": [
+  "Cơm chay"
+ ],
+ "cơm-curry-nhat": [
+  "Japanese curry"
+ ],
+ "cơm-thái": [
+  "Fried rice"
+ ],
+ "mì-ramen": [
+  "Ramen"
+ ],
+ "gà-hap": [
+  "Hainanese chicken rice"
+ ],
+ "sua-chua-nep-cam": [
+  "Yogurt"
+ ]
+}

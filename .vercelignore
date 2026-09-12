@@ -1,0 +1,9 @@
+node_modules
+tools/screenshots
+tools/.translate-cache.json
+certs
+.dsh-project-memory
+.git
+*.md
+server.js
+package-lock.json

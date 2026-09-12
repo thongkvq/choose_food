@@ -1,0 +1,7189 @@
+{
+ "generatedAt": "2026-09-12T12:27:43.658Z",
+ "count": 248,
+ "dishes": [
+  {
+   "id": "baklava",
+   "name": "Baklava",
+   "emoji": "🍯",
+   "region": "tr",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#d4a017",
+   "c2": "#f5e0a0",
+   "tags": [
+    "mật ong",
+    "hạt dẻo",
+    "Thổ"
+   ],
+   "descr": "Bánh ngàn lớp hạt dẻ mật ong, ngọt đậm kiểu Thổ Nhĩ Kỳ.",
+   "price": 2,
+   "minutes": 60,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Baklava_-_Turkish_special%2C_80-ply.JPEG/960px-Baklava_-_Turkish_special%2C_80-ply.JPEG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Baklava"
+  },
+  {
+   "id": "butter-chicken",
+   "name": "Butter Chicken",
+   "emoji": "🍛",
+   "region": "in",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "Ấn",
+    "bơ",
+    "cà ri"
+   ],
+   "descr": "Gà sốt bơ cà chua sánh mịn, ăn cùng naan và cơm basmati.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/960px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Butter chicken"
+  },
+  {
+   "id": "banh-bia",
+   "name": "Bánh bía",
+   "emoji": "🥮",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "nuong",
+   "art": "pastry",
+   "c1": "#d4a017",
+   "c2": "#f5e0b0",
+   "tags": [
+    "dừa",
+    "đậu xanh",
+    "Tết"
+   ],
+   "descr": "Bánh bía vỏ mềm nhân đậu xanh dừa, ngọt dịu.",
+   "price": 2,
+   "minutes": 50,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4
+  },
+  {
+   "id": "banh-canh-ghe",
+   "name": "Bánh canh ghẹ",
+   "emoji": "🦀",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "ghẹ",
+    "cay nhẹ"
+   ],
+   "descr": "Ghẹ tươi nấu nước dùng cay nhẹ, thơm sả.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Banh-Canh-Noodle-Soup.jpg/960px-Banh-Canh-Noodle-Soup.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh canh"
+  },
+  {
+   "id": "banh-cuon-chay",
+   "name": "Bánh cuốn chay",
+   "emoji": "🌱",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "roll",
+   "c1": "#e0f0d0",
+   "c2": "#a8d8a0",
+   "tags": [
+    "chay",
+    "nhẹ",
+    "sáng"
+   ],
+   "descr": "Bánh cuốn nhân nấm mộc nhĩ, hành phi, nước tương.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Banh_cuon.jpg/960px-Banh_cuon.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh cuốn"
+  },
+  {
+   "id": "banh-mi-xui",
+   "name": "Bánh mì chấm sữa",
+   "emoji": "🥛",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "vat"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#e8c070",
+   "c2": "#fdf0d0",
+   "tags": [
+    "sữa đặc",
+    "tuổi thơ",
+    "rẻ"
+   ],
+   "descr": "Bánh mì nóng chấm sữa đặc — sáng kiểu sinh viên.",
+   "price": 1,
+   "minutes": 3,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-chay-nam",
+   "name": "Bánh mì nấm chay",
+   "emoji": "🍄",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "banhmi",
+   "c1": "#8e7a4a",
+   "c2": "#d8c890",
+   "tags": [
+    "chay",
+    "nấm",
+    "giòn"
+   ],
+   "descr": "Nấm đùi gà xào sả, đậu hũ, đồ chua, bánh mì giòn.",
+   "price": 2,
+   "minutes": 12,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Vietnamese_B%C3%A1nh_m%C3%AC_%28Banh_Mi%29_Sandwich.jpg/960px-Vietnamese_B%C3%A1nh_m%C3%AC_%28Banh_Mi%29_Sandwich.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Vietnamese Bánh mì (Banh Mi) Sandwich.jpg"
+  },
+  {
+   "id": "banh-plan",
+   "name": "Bánh plan",
+   "emoji": "🍮",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#c98a2b",
+   "c2": "#f7e0a0",
+   "tags": [
+    "caramel",
+    "béo"
+   ],
+   "descr": "Bánh plan mềm béo, caramel đắng nhẹ, ăn kèm đá.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4
+  },
+  {
+   "id": "banh-trung-thu",
+   "name": "Bánh trung thu",
+   "emoji": "🥮",
+   "region": "cn",
+   "meals": [
+    "vat",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "pastry",
+   "c1": "#c0871f",
+   "c2": "#f0d9a0",
+   "tags": [
+    "Trung thu",
+    "hộp quà",
+    "tàu"
+   ],
+   "descr": "Bánh nướng nhân thập cẩm, trứng muối, hộp quà sang.",
+   "price": 3,
+   "minutes": 60,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Mooncake1.jpg/960px-Mooncake1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh trung thu"
+  },
+  {
+   "id": "banh-ut-tre",
+   "name": "Bánh ít trần",
+   "emoji": "🍡",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#dff0d8",
+   "c2": "#8fbf6f",
+   "tags": [
+    "dân dã",
+    "tôm",
+    "Bình Định"
+   ],
+   "descr": "Vỏ nếp xanh, nhân tôm thịt, chấm mắm ớt tỏi.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/B%C3%A1nh_%C3%ADt_tr%E1%BA%A7n.JPG/960px-B%C3%A1nh_%C3%ADt_tr%E1%BA%A7n.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh ít trần"
+  },
+  {
+   "id": "banh-duc-ngot",
+   "name": "Bánh đúc ngọt",
+   "emoji": "🍮",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f5f0e1",
+   "c2": "#d4a017",
+   "tags": [
+    "dừa",
+    "ngọt",
+    "mát"
+   ],
+   "descr": "Bánh đúc nước dừa ngọt mát, rắc đậu phộng, ăn lạnh.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Banhduc-northern.jpg/960px-Banhduc-northern.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh đúc"
+  },
+  {
+   "id": "banh-duc",
+   "name": "Bánh đúc nóng",
+   "emoji": "🥣",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#f0e6d2",
+   "c2": "#c9a227",
+   "tags": [
+    "dân dã",
+    "nóng",
+    "mặn"
+   ],
+   "descr": "Bánh đúc nóng chan thịt băm mộc nhĩ, hành phi.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Banh_te_My_Duc_2.png/960px-Banh_te_My_Duc_2.png",
+   "imageVia": "commons",
+   "imageSource": "File:Banh te My Duc 2.png"
+  },
+  {
+   "id": "banh-uot-chay",
+   "name": "Bánh ướt chay",
+   "emoji": "🌿",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "roll",
+   "c1": "#e0f0d0",
+   "c2": "#c9d67a",
+   "tags": [
+    "chay",
+    "nhẹ",
+    "sáng"
+   ],
+   "descr": "Bánh ướt cuốn nấm, đậu hũ, rau thơm, nước tương.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Banh_Uot_Tom_Chay_Kim_Long.jpg/960px-Banh_Uot_Tom_Chay_Kim_Long.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Banh Uot Tom Chay Kim Long.jpg"
+  },
+  {
+   "id": "canh-ga-ham",
+   "name": "Canh gà hầm sâm",
+   "emoji": "🍲",
+   "region": "kr",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e0c070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "sam",
+    "bổ",
+    "Hàn"
+   ],
+   "descr": "Samgyetang — gà nhồi nếp sâm, thuốc bắc, bổ dưỡng.",
+   "price": 3,
+   "minutes": 90,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Samgye-tang_2.jpg/960px-Samgye-tang_2.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Samgyetang"
+  },
+  {
+   "id": "churros",
+   "name": "Churros socola",
+   "emoji": "🍫",
+   "region": "mx",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#c98a2b",
+   "c2": "#f0d9a0",
+   "tags": [
+    "giòn",
+    "socola",
+    "Tây Ban Nha"
+   ],
+   "descr": "Churros chiên giòn lăn đường quế, chấm socola nóng.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Chocolate_with_churros.jpg/960px-Chocolate_with_churros.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Churro"
+  },
+  {
+   "id": "cha-com",
+   "name": "Chả cốm",
+   "emoji": "🍃",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#7d8c3a",
+   "c2": "#c9d67a",
+   "tags": [
+    "Hà Nội",
+    "cốm",
+    "giòn"
+   ],
+   "descr": "Chả cốm Hà Nội dai giòn, thơm mùi cốm non, chấm tương.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Chalua.jpg/960px-Chalua.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Chả"
+  },
+  {
+   "id": "cuon-ca-hoi",
+   "name": "Cuốn cá hồi rau củ",
+   "emoji": "🐟",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "vat"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#e8845a",
+   "c2": "#c9d67a",
+   "tags": [
+    "healthy",
+    "cá hồi",
+    "tươi"
+   ],
+   "descr": "Cá hồi tươi cuốn rau củ, sốt mè rang, ít cơm — eatclean.",
+   "price": 3,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/960px-Sushi_platter.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Sushi"
+  },
+  {
+   "id": "com-nieu",
+   "name": "Cơm niêu đập",
+   "emoji": "🍚",
+   "region": "vn",
+   "meals": [
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "plate-rice",
+   "c1": "#8e5a2b",
+   "c2": "#d8b06a",
+   "tags": [
+    "niêu đất",
+    "cháy giòn"
+   ],
+   "descr": "Cơm niêu đập lấy cháy, chan mỡ hành tép rang.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/C%C6%A1m_ni%C3%AAu_Kombo.jpg/960px-C%C6%A1m_ni%C3%AAu_Kombo.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Cơm niêu Kombo.jpg"
+  },
+  {
+   "id": "elote",
+   "name": "Elote nướng",
+   "emoji": "🌽",
+   "region": "mx",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#e6b422",
+   "c2": "#f7dc6f",
+   "tags": [
+    "bắp",
+    "Mexico",
+    "cay"
+   ],
+   "descr": "Bắp nướng phết mayo, phô mai cotija, ớt bột, chanh xanh.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 2,
+   "veg": 1,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Elote_recipe.jpg/960px-Elote_recipe.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Elote recipe.jpg"
+  },
+  {
+   "id": "gio-thu",
+   "name": "Giò thủ",
+   "emoji": "🥓",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#8e5a2b",
+   "c2": "#e0b070",
+   "tags": [
+    "Tết",
+    "nguội",
+    "nhậu"
+   ],
+   "descr": "Giò thủ dai sần sật, mộc nhĩ, tiêu — món Tết cổ truyền.",
+   "price": 2,
+   "minutes": 90,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Foodlogo2.svg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Giò"
+  },
+  {
+   "id": "heo-quay",
+   "name": "Heo quay nguyên con",
+   "emoji": "🐖",
+   "region": "cn",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#b03a2e",
+   "c2": "#f5b041",
+   "tags": [
+    "tiệc",
+    "crispy",
+    "tàu"
+   ],
+   "descr": "Heo quay da rụm, lớp mỡ mỏng, chấm tương ngọt.",
+   "price": 4,
+   "minutes": 120,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 30,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/RoastPig.jpg/960px-RoastPig.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Siu yuk"
+  },
+  {
+   "id": "lau-gao-lut-chay",
+   "name": "Lẩu chay gạo lứt",
+   "emoji": "🥬",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#7d8c3a",
+   "c2": "#dff0c0",
+   "tags": [
+    "chay",
+    "healthy",
+    "rau củ"
+   ],
+   "descr": "Nước dùng rau củ, nấm, đậu hũ, gạo lứt — chay mà đầy đủ.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hot_Pot.jpg/960px-Hot_Pot.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Hot pot"
+  },
+  {
+   "id": "lau-cua",
+   "name": "Lẩu cua đồng",
+   "emoji": "🦀",
+   "region": "vn",
+   "meals": [
+    "toi"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#d35400",
+   "c2": "#f5b041",
+   "tags": [
+    "cua",
+    "riêu",
+    "rau muống"
+   ],
+   "descr": "Cua đồng giã nấu lẩu, rau muống, hoa chuối, bún.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/M%C3%B3n_l%E1%BA%A9u_%C4%83n_v%E1%BB%9Bi_th%E1%BB%8Bt_b%C3%B2_%E1%BB%9F_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg/960px-M%C3%B3n_l%E1%BA%A9u_%C4%83n_v%E1%BB%9Bi_th%E1%BB%8Bt_b%C3%B2_%E1%BB%9F_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Lẩu cua đồng"
+  },
+  {
+   "id": "lau-de",
+   "name": "Lẩu dê tía tô",
+   "emoji": "🐐",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#8e4a1f",
+   "c2": "#e0a860",
+   "tags": [
+    "dê",
+    "tía tô",
+    "nhậu"
+   ],
+   "descr": "Thịt dê mềm, nước dùng tía tô sả, chấm mắm tôm cay.",
+   "price": 3,
+   "minutes": 55,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Mushroom_hot_pot.jpg/960px-Mushroom_hot_pot.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Mushroom hot pot.jpg"
+  },
+  {
+   "id": "macaron",
+   "name": "Macaron",
+   "emoji": "🍬",
+   "region": "fr",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#f1948a",
+   "c2": "#a8d8e8",
+   "tags": [
+    "Pháp",
+    "ngọt",
+    "màu"
+   ],
+   "descr": "Macaron Pháp vỏ giòn ruột mềm, nhân ganache mịn.",
+   "price": 3,
+   "minutes": 60,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 30,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/VanillaMacaron.jpg/960px-VanillaMacaron.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Macaron"
+  },
+  {
+   "id": "mien-cua",
+   "name": "Miến cua",
+   "emoji": "🦀",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e17055",
+   "c2": "#f8c471",
+   "tags": [
+    "cua",
+    "miến",
+    "thanh"
+   ],
+   "descr": "Miến cua đồng, nước dùng ngọt, hành ngò, tiêu.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Mi%E1%BA%BFn_ch%E1%BA%A3_cua_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_n%C4%83m_2016_%282%29.jpg/960px-Mi%E1%BA%BFn_ch%E1%BA%A3_cua_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_n%C4%83m_2016_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Miến chả cua Nguyễn Nhữ Lãm năm 2016 (2).jpg"
+  },
+  {
+   "id": "nuoc-dau",
+   "name": "Nước đậu đỏ",
+   "emoji": "🫘",
+   "region": "kr",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#8e4a6a",
+   "c2": "#e0c0d0",
+   "tags": [
+    "Hàn",
+    "ngọt",
+    "ấm"
+   ],
+   "descr": "Nước đậu đỏ Hàn Quốc, ngọt nhẹ, ấm bụng mùa đông.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Red_bean_paste_pie.jpg/960px-Red_bean_paste_pie.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Red bean paste pie.jpg"
+  },
+  {
+   "id": "pudding-xoai",
+   "name": "Pudding xoài",
+   "emoji": "🥭",
+   "region": "th",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f39c12",
+   "c2": "#fdebd0",
+   "tags": [
+    "xoai",
+    "mát",
+    "Thái"
+   ],
+   "descr": "Pudding xoài chua ngọt, nước cốt dừa, nếp than.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Mango_sticy_rice_%283859549574%29.jpg/960px-Mango_sticy_rice_%283859549574%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Mango sticky rice"
+  },
+  {
+   "id": "samosa",
+   "name": "Samosa",
+   "emoji": "🥟",
+   "region": "in",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "dumpling",
+   "c1": "#d4a017",
+   "c2": "#f7dc6f",
+   "tags": [
+    "Ấn",
+    "chiên giòn",
+    "khoai"
+   ],
+   "descr": "Bánh gói nhân khoai cà ri chiên giòn, chấm sốt bạc hà.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Samosachutney.jpg/960px-Samosachutney.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Samosa"
+  },
+  {
+   "id": "shakshuka",
+   "name": "Shakshuka",
+   "emoji": "🍳",
+   "region": "tr",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#c0392b",
+   "c2": "#f0a868",
+   "tags": [
+    "trứng",
+    "cà chua",
+    "Trung Đông"
+   ],
+   "descr": "Trứng lòng đào nấu sốt cà chua ớt, ăn với bánh pita.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 40,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Shakshuka_%28Unsplash%29.jpg/960px-Shakshuka_%28Unsplash%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Shakshuka (Unsplash).jpg"
+  },
+  {
+   "id": "sup-mang-tay",
+   "name": "Súp măng tây cua",
+   "emoji": "🦀",
+   "region": "fr",
+   "meals": [
+    "toi",
+    "sang"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e8b04b",
+   "c2": "#dff0c0",
+   "tags": [
+    "sang",
+    "kem",
+    "cua"
+   ],
+   "descr": "Súp măng tây kem, thịt cua, bánh mì nướng giòn.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Cr%C3%A8me_d%27asperge_%C3%A0_la_truffe.jpg/960px-Cr%C3%A8me_d%27asperge_%C3%A0_la_truffe.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Cream of asparagus soup"
+  },
+  {
+   "id": "ruou-vang",
+   "name": "Vang đỏ & phô mai",
+   "emoji": "🍷",
+   "region": "fr",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#7b2d3a",
+   "c2": "#c98a8a",
+   "tags": [
+    "sang",
+    "party",
+    "Tây"
+   ],
+   "descr": "Vang đỏ, phô mai, hạt — bữa tối kiểu Âu chậm rãi.",
+   "price": 4,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 25,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/Red_Wine_Glass.jpg/960px-Red_Wine_Glass.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Red wine"
+  },
+  {
+   "id": "vit-quay",
+   "name": "Vịt quay Bắc Kinh",
+   "emoji": "🦆",
+   "region": "cn",
+   "meals": [
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#8e3b1f",
+   "c2": "#f0a868",
+   "tags": [
+    "da giòn",
+    "tàu",
+    "sang"
+   ],
+   "descr": "Vịt quay da giòn bóng, cuốn bánh tráng, sốt hoisin.",
+   "price": 4,
+   "minutes": 90,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Roasted_Beijing_Duck_sliced.jpg/960px-Roasted_Beijing_Duck_sliced.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Vịt quay Bắc Kinh"
+  },
+  {
+   "id": "vit-tiem-thuoc-bac",
+   "name": "Vịt tiềm thuốc bắc",
+   "emoji": "🍲",
+   "region": "cn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "hap",
+   "art": "bowl-soup",
+   "c1": "#8e5a2b",
+   "c2": "#e0c070",
+   "tags": [
+    "bổ",
+    "thuốc bắc",
+    "tàu"
+   ],
+   "descr": "Vịt tiềm thuốc bắc, hạt sen, táo đỏ — bồi bổ cực đã.",
+   "price": 4,
+   "minutes": 120,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 30,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/M%C3%AC_v%E1%BB%8Bt_ti%E1%BB%81m.jpg/960px-M%C3%AC_v%E1%BB%8Bt_ti%E1%BB%81m.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Mì vịt tiềm.jpg"
+  },
+  {
+   "id": "bia-hoi",
+   "name": "Bia hơi & lạc rang",
+   "emoji": "🍺",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya",
+    "vat"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#d4a017",
+   "c2": "#f0e0a0",
+   "tags": [
+    "vỉa hè",
+    "nhậu",
+    "hè"
+   ],
+   "descr": "Bia hơi mát lạnh, lạc rang muối, mồi vỉa hè Hà Nội.",
+   "price": 2,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Jeju_beer_09_%28cropped%29.jpg/960px-Jeju_beer_09_%28cropped%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Beer"
+  },
+  {
+   "id": "burrito",
+   "name": "Burrito",
+   "emoji": "🌯",
+   "region": "mx",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "cuon",
+   "art": "taco",
+   "c1": "#c0871f",
+   "c2": "#f5d76e",
+   "tags": [
+    "cuộn",
+    "đầy đặn",
+    "Mexico"
+   ],
+   "descr": "Tortilla cuộn cơm, đậu, bò, phô mai, salsa — chắc bụng.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Burrito.JPG/960px-Burrito.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Burrito"
+  },
+  {
+   "id": "banh-beo",
+   "name": "Bánh bèo",
+   "emoji": "🌸",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "flatcake",
+   "c1": "#f7f0dd",
+   "c2": "#e8b04b",
+   "tags": [
+    "Huế",
+    "chén nhỏ",
+    "tôm chấy"
+   ],
+   "descr": "Chén bánh bèo trắng ngần, tôm chấy, mỡ hành, nước mắm ngọt.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/B%C3%A1nh_b%C3%A8o.jpg/960px-B%C3%A1nh_b%C3%A8o.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh bèo"
+  },
+  {
+   "id": "banh-bot-loc",
+   "name": "Bánh bột lọc",
+   "emoji": "💎",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#e8e0d0",
+   "c2": "#c98a2b",
+   "tags": [
+    "trong suốt",
+    "tôm",
+    "Huế"
+   ],
+   "descr": "Vỏ trong veo dai, nhân tôm thịt, rắc hành phi.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/B%C3%A1nh_b%C3%A8o%2C_b%E1%BB%99t_l%E1%BB%8Dc%2C_nem_chua.jpg/960px-B%C3%A1nh_b%C3%A8o%2C_b%E1%BB%99t_l%E1%BB%8Dc%2C_nem_chua.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh bột lọc"
+  },
+  {
+   "id": "banh-cam",
+   "name": "Bánh cam / bánh vừng",
+   "emoji": "🍊",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#e67e22",
+   "c2": "#f5cba7",
+   "tags": [
+    "chiên",
+    "vừng",
+    "dẻo"
+   ],
+   "descr": "Bánh cam vỏ vừng giòn, nhân đậu xanh, ngọt dẻo.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Banh_Cam_-_Vietnamese_fried_sesame_balls.jpg/960px-Banh_Cam_-_Vietnamese_fried_sesame_balls.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Banh Cam - Vietnamese fried sesame balls.jpg"
+  },
+  {
+   "id": "banh-canh-cua",
+   "name": "Bánh canh cua miền Tây",
+   "emoji": "🦀",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#d35400",
+   "c2": "#f8c471",
+   "tags": [
+    "miền Tây",
+    "cua",
+    "dẻo"
+   ],
+   "descr": "Sợi bánh canh dẻo, riêu cua, chả cá thác lác.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/T%C3%B4_b%C3%A1nh_canh_cua_%E1%BB%9F_Q1_ng6th1n2022_%28b%C3%A1nh_canh_b%E1%BB%99t_g%E1%BA%A1o_n%C4%83ng%29_%282%29.jpg/960px-T%C3%B4_b%C3%A1nh_canh_cua_%E1%BB%9F_Q1_ng6th1n2022_%28b%C3%A1nh_canh_b%E1%BB%99t_g%E1%BA%A1o_n%C4%83ng%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Tô bánh canh cua ở Q1 ng6th1n2022 (bánh canh bột gạo năng) (2).jpg"
+  },
+  {
+   "id": "banh-canh-tom",
+   "name": "Bánh canh tôm",
+   "emoji": "🍤",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e17055",
+   "c2": "#fad7a0",
+   "tags": [
+    "tôm",
+    "sợi dẻo"
+   ],
+   "descr": "Sợi bánh canh dẻo, tôm tươi, hành phi, tiêu.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/M%C3%B3n_%C4%83n_T%E1%BA%BFt_2023_%28b%C3%A1nh_canh_t%C3%B4m_th%E1%BB%8Bt%29_%282%29.jpg/960px-M%C3%B3n_%C4%83n_T%E1%BA%BFt_2023_%28b%C3%A1nh_canh_t%C3%B4m_th%E1%BB%8Bt%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Món ăn Tết 2023 (bánh canh tôm thịt) (2).jpg"
+  },
+  {
+   "id": "banh-chung",
+   "name": "Bánh chưng",
+   "emoji": "🎋",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#2e7d32",
+   "c2": "#c9d67a",
+   "tags": [
+    "Tết",
+    "lá dong",
+    "nếp"
+   ],
+   "descr": "Bánh chưng lá dong, nhân đậu xanh thịt mỡ, ăn với dưa hành.",
+   "price": 2,
+   "minutes": 300,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Banh_chung_vuong.jpg/960px-Banh_chung_vuong.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh chưng"
+  },
+  {
+   "id": "banh-can-chay",
+   "name": "Bánh căn",
+   "emoji": "🧁",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "nuong",
+   "art": "flatcake",
+   "c1": "#f0d9a0",
+   "c2": "#c9a227",
+   "tags": [
+    "Phan Rang",
+    "trứng",
+    "khuôn đất"
+   ],
+   "descr": "Bánh căn khuôn đất, trứng cút, tôm, chấm nước mắm xoài.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/B%C3%A1nh_c%C4%83n_1.jpg/960px-B%C3%A1nh_c%C4%83n_1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh căn"
+  },
+  {
+   "id": "banh-flan",
+   "name": "Bánh flan",
+   "emoji": "🍮",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#d4a017",
+   "c2": "#f7e0a0",
+   "tags": [
+    "caramel",
+    "mềm",
+    "tráng miệng"
+   ],
+   "descr": "Flan caramel mềm mịn, thơm vani, ăn lạnh.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Homemade_Flan.jpg/960px-Homemade_Flan.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh flan"
+  },
+  {
+   "id": "banh-gio",
+   "name": "Bánh giò",
+   "emoji": "🎁",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#8fbf6f",
+   "c2": "#dff0c0",
+   "tags": [
+    "lá chuối",
+    "mộc nhĩ"
+   ],
+   "descr": "Bọc lá chuối, nhân thịt mộc nhĩ, chấm tương ớt.",
+   "price": 1,
+   "minutes": 35,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/B%C3%A1nh_gi%C3%B2.jpg/960px-B%C3%A1nh_gi%C3%B2.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh giò"
+  },
+  {
+   "id": "banh-hoi",
+   "name": "Bánh hỏi heo quay",
+   "emoji": "🍜",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#f5f0dd",
+   "c2": "#c9a227",
+   "tags": [
+    "Bình Định",
+    "heo quay",
+    "mỡ hành"
+   ],
+   "descr": "Bánh hỏi sợi mảnh, mỡ hành xanh, heo quay, chấm mắm.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/B%C3%A1nh_h%E1%BB%8Fi_tr%C3%ACnh_b%C3%A0y_tr%C3%AAn_%C4%91%C4%A9a.jpg/960px-B%C3%A1nh_h%E1%BB%8Fi_tr%C3%ACnh_b%C3%A0y_tr%C3%AAn_%C4%91%C4%A9a.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh hỏi"
+  },
+  {
+   "id": "banh-mi-bo",
+   "name": "Bánh mì bò né",
+   "emoji": "🥩",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#b03a2e",
+   "c2": "#f0a868",
+   "tags": [
+    "chảo",
+    "bò",
+    "đặc sản"
+   ],
+   "descr": "Bò né chảo gang bốc khói, trứng, pate, bánh mì nóng giòn.",
+   "price": 3,
+   "minutes": 18,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/M%C5%A9i_N%C3%A9_th7n2023%2C_Khu_ND_%28b%E1%BB%AFa_s%C3%A1ng_ki%E1%BB%83u_l%E1%BB%A5c_%C4%91%E1%BB%8Ba-Vietnam_Continental_breakfast-b%C3%A1nh_m%C3%AC_%E1%BB%95_nh%E1%BB%8F_ph%E1%BA%BFt_b%C6%A1%29_%282%29.jpg/960px-M%C5%A9i_N%C3%A9_th7n2023%2C_Khu_ND_%28b%E1%BB%AFa_s%C3%A1ng_ki%E1%BB%83u_l%E1%BB%A5c_%C4%91%E1%BB%8Ba-Vietnam_Continental_breakfast-b%C3%A1nh_m%C3%AC_%E1%BB%95_nh%E1%BB%8F_ph%E1%BA%BFt_b%C6%A1%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Mũi Né th7n2023, Khu ND (bữa sáng kiểu lục địa-Vietnam Continental breakfast-bánh mì ổ nhỏ phết bơ) (2).jpg"
+  },
+  {
+   "id": "banh-mi-nuong-bo",
+   "name": "Bánh mì bơ tỏi",
+   "emoji": "🧄",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "fries",
+   "c1": "#e8b04b",
+   "c2": "#f7dc6f",
+   "tags": [
+    "bơ tỏi",
+    "giòn",
+    "nhanh"
+   ],
+   "descr": "Bánh mì bơ tỏi nướng giòn, thơm nức, ăn kèm bò bít tết.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Garlicbread.jpg/960px-Garlicbread.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh mì bơ tỏi"
+  },
+  {
+   "id": "banh-mi-chay",
+   "name": "Bánh mì chay",
+   "emoji": "🌱",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "kho",
+   "art": "banhmi",
+   "c1": "#7d8c3a",
+   "c2": "#c9d67a",
+   "tags": [
+    "chay",
+    "nấm",
+    "healthy"
+   ],
+   "descr": "Nấm xào sả, đậu hũ chiên, đồ chua — chay mà đã.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/B%C3%A1nh_m%C3%AC_ch%C3%A0_b%C3%B4ng_Staff.jpg/960px-B%C3%A1nh_m%C3%AC_ch%C3%A0_b%C3%B4ng_Staff.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì chà bông Staff.jpg"
+  },
+  {
+   "id": "banh-mi-chao-bo",
+   "name": "Bánh mì chảo bò",
+   "emoji": "🥘",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#a04000",
+   "c2": "#f0a868",
+   "tags": [
+    "chảo",
+    "bò",
+    "sáng"
+   ],
+   "descr": "Chảo bò trứng pate xíu mại, bánh mì nóng — sáng đầy đủ.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%281%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Nhà mình dịp Lễ 2th9n2023 (bánh canh bột mì nhà làm, trong chảo) (1).jpg"
+  },
+  {
+   "id": "banh-mi-chao-pho-mai",
+   "name": "Bánh mì chảo phô mai",
+   "emoji": "🧀",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#e8b04b",
+   "c2": "#f7dc6f",
+   "tags": [
+    "phô mai",
+    "kéo sợi"
+   ],
+   "descr": "Chảo gang phô mai kéo sợi, trứng, pate, bánh mì nóng.",
+   "price": 3,
+   "minutes": 18,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%282%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_d%E1%BB%8Bp_L%E1%BB%85_2th9n2023_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC_nh%C3%A0_l%C3%A0m%2C_trong_ch%E1%BA%A3o%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Nhà mình dịp Lễ 2th9n2023 (bánh canh bột mì nhà làm, trong chảo) (2).jpg"
+  },
+  {
+   "id": "banh-mi-chao-trung",
+   "name": "Bánh mì chảo trứng",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#c0871f",
+   "c2": "#f7dc6f",
+   "tags": [
+    "sáng",
+    "nhanh"
+   ],
+   "descr": "Chảo trứng pate xíu mại, bánh mì giòn ăn kèm.",
+   "price": 2,
+   "minutes": 12,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/M%E1%BB%99t_ph%E1%BA%A7n_b%C3%A1nh_m%C3%AC_ch%E1%BA%A3o_v%E1%BB%9Bi_tr%E1%BB%A9ng_v%C3%A0_ch%E1%BA%A3_%2838657217774%29.jpg/960px-M%E1%BB%99t_ph%E1%BA%A7n_b%C3%A1nh_m%C3%AC_ch%E1%BA%A3o_v%E1%BB%9Bi_tr%E1%BB%A9ng_v%C3%A0_ch%E1%BA%A3_%2838657217774%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Một phần bánh mì chảo với trứng và chả (38657217774).jpg"
+  },
+  {
+   "id": "banh-mi-heo-quay",
+   "name": "Bánh mì heo quay",
+   "emoji": "🐷",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "kho",
+   "art": "banhmi",
+   "c1": "#b03a2e",
+   "c2": "#f5b041",
+   "tags": [
+    "da giòn",
+    "hội an"
+   ],
+   "descr": "Heo quay cắt lát, nước sốt, dưa chua, rau răm.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/B%C3%A1nh_M%C3%AC_with_Spicy_Miso_Aubergine%2C_Kimchi_-_Earl%27s_Sandwiches_2023-09-25.jpg/960px-B%C3%A1nh_M%C3%AC_with_Spicy_Miso_Aubergine%2C_Kimchi_-_Earl%27s_Sandwiches_2023-09-25.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh Mì with Spicy Miso Aubergine, Kimchi - Earl's Sandwiches 2023-09-25.jpg"
+  },
+  {
+   "id": "banh-mi-kep-kem",
+   "name": "Bánh mì kẹp kem",
+   "emoji": "🍦",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#f5e0b0",
+   "c2": "#c98a2b",
+   "tags": [
+    "kem",
+    "tuổi thơ",
+    "ngọt"
+   ],
+   "descr": "Bánh mì giòn kẹp kem dừa, đậu phộng, sữa đặc — huyền thoại.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/B%C3%A1nh_m%C3%AC_k%E1%BA%B9p_b%C3%A1nh_l%E1%BB%8Dc_%E1%BB%9F_%C4%90%C3%B4ng_H%C3%A0_n%C4%83m_2018.jpg/960px-B%C3%A1nh_m%C3%AC_k%E1%BA%B9p_b%C3%A1nh_l%E1%BB%8Dc_%E1%BB%9F_%C4%90%C3%B4ng_H%C3%A0_n%C4%83m_2018.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì kẹp bánh lọc ở Đông Hà năm 2018.jpg"
+  },
+  {
+   "id": "banh-mi-ngot",
+   "name": "Bánh mì ngọt",
+   "emoji": "🍞",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#e8c070",
+   "c2": "#f7e0a0",
+   "tags": [
+    "dừa",
+    "sữa",
+    "tuổi thơ"
+   ],
+   "descr": "Bánh mì ngọt nhân dừa sữa, mềm thơm, ăn sáng nhanh.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Banh_mi_ngot_nhan_Pudding_va_nho_kho.jpg/960px-Banh_mi_ngot_nhan_Pudding_va_nho_kho.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Banh mi ngot nhan Pudding va nho kho.jpg"
+  },
+  {
+   "id": "banh-mi-nuong",
+   "name": "Bánh mì nướng muối ớt",
+   "emoji": "🌶️",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "fries",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "hot trend",
+    "muối ớt"
+   ],
+   "descr": "Bánh mì nướng giòn phết bơ muối ớt, phô mai, khô gà.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/B%C3%A1nh_m%C3%AC_n%C6%B0%E1%BB%9Bng_mu%E1%BB%91i_%E1%BB%9Bt.jpg/960px-B%C3%A1nh_m%C3%AC_n%C6%B0%E1%BB%9Bng_mu%E1%BB%91i_%E1%BB%9Bt.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì nướng muối ớt.jpg"
+  },
+  {
+   "id": "banh-mi-op-la-2",
+   "name": "Bánh mì trứng xúc xích",
+   "emoji": "🌭",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "banhmi",
+   "c1": "#d35400",
+   "c2": "#f5b041",
+   "tags": [
+    "xúc xích",
+    "trứng",
+    "sáng"
+   ],
+   "descr": "Xúc xích nướng, trứng ốp, tương cà, bánh mì giòn.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/B%C3%A1nh_m%C3%AC.jpg/960px-B%C3%A1nh_m%C3%AC.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì.jpg"
+  },
+  {
+   "id": "banh-mi-xa-xiu",
+   "name": "Bánh mì xá xíu",
+   "emoji": "🥩",
+   "region": "cn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "kho",
+   "art": "banhmi",
+   "c1": "#c0392b",
+   "c2": "#f1948a",
+   "tags": [
+    "xá xíu",
+    "tàu"
+   ],
+   "descr": "Xá xíu đỏ mật, dưa leo, tương hoisin, sốt ớt.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/B%C3%A1nh_m%C3%AC_%C4%91%E1%BA%ADu_h%C5%A9.jpg/960px-B%C3%A1nh_m%C3%AC_%C4%91%E1%BA%ADu_h%C5%A9.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì đậu hũ.jpg"
+  },
+  {
+   "id": "banh-quy",
+   "name": "Bánh quy bơ",
+   "emoji": "🍪",
+   "region": "fr",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#d4a017",
+   "c2": "#f0d9a0",
+   "tags": [
+    "giòn",
+    "trà",
+    "bơ"
+   ],
+   "descr": "Bánh quy bơ giòn tan, ăn cùng trà nóng buổi chiều.",
+   "price": 1,
+   "minutes": 35,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Shortbread_House_round_biscuit_.jpg/960px-Shortbread_House_round_biscuit_.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh quy bơ"
+  },
+  {
+   "id": "banh-socola",
+   "name": "Bánh socola lava",
+   "emoji": "🍫",
+   "region": "fr",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#4e2a1a",
+   "c2": "#c98a2b",
+   "tags": [
+    "chảy nhân",
+    "nóng",
+    "Tây"
+   ],
+   "descr": "Socola lava chảy nhân nóng, kem vani, dâu tươi.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Chocolate_fudge_cake.jpg/960px-Chocolate_fudge_cake.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chocolate cake"
+  },
+  {
+   "id": "banh-tieu",
+   "name": "Bánh tiêu",
+   "emoji": "⚪",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#e8c070",
+   "c2": "#fdf0d0",
+   "tags": [
+    "giòn",
+    "rỗng",
+    "sáng"
+   ],
+   "descr": "Bánh tiêu phồng rỗng, rắc mè, ăn với xôi hoặc cháo.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Pepper_bun_at_Raohe_Street_Night_Market_20070622.jpg/960px-Pepper_bun_at_Raohe_Street_Night_Market_20070622.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh tiêu"
+  },
+  {
+   "id": "banh-trang-sua",
+   "name": "Bánh tráng sữa",
+   "emoji": "🥛",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f7f0dd",
+   "c2": "#e0b070",
+   "tags": [
+    "tuổi thơ",
+    "sữa đặc",
+    "dẻo"
+   ],
+   "descr": "Bánh tráng phơi sương cuốn sữa đặc, dẻo ngọt tuổi thơ.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/B%C3%A1nh_tr%C3%A1ng_1.jpg/960px-B%C3%A1nh_tr%C3%A1ng_1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh tráng"
+  },
+  {
+   "id": "banh-troi-nuoc",
+   "name": "Bánh trôi nước",
+   "emoji": "⚪",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f7f0dd",
+   "c2": "#e8b04b",
+   "tags": [
+    "Tết Hàn Thực",
+    "gừng",
+    "dẻo"
+   ],
+   "descr": "Bánh trôi nhân đường thẻ, nước gừng ấm, rắc mè.",
+   "price": 1,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Banhchay.JPG/960px-Banhchay.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh trôi - bánh chay"
+  },
+  {
+   "id": "banh-tet",
+   "name": "Bánh tét",
+   "emoji": "🎋",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#2e7d32",
+   "c2": "#dff0c0",
+   "tags": [
+    "miền Nam",
+    "Tết",
+    "nếp"
+   ],
+   "descr": "Bánh tét cuộn tròn, nhân đậu thịt, ăn kèm củ kiệu.",
+   "price": 2,
+   "minutes": 240,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Banhtet.jpg/960px-Banhtet.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh tét"
+  },
+  {
+   "id": "banh-xeo-nhat",
+   "name": "Bánh xèo giòn chay",
+   "emoji": "🥬",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "flatcake",
+   "c1": "#8fbf6f",
+   "c2": "#f0e0a0",
+   "tags": [
+    "chay",
+    "giòn",
+    "rau"
+   ],
+   "descr": "Bánh xèo chay nhân nấm, giá, đậu hũ, nước tương chua ngọt.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg/960px-B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh xèo"
+  },
+  {
+   "id": "banh-uot",
+   "name": "Bánh ướt thịt nướng",
+   "emoji": "🍽️",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "roll",
+   "c1": "#e8d5a8",
+   "c2": "#c98a2b",
+   "tags": [
+    "thịt nướng",
+    "nem"
+   ],
+   "descr": "Bánh ướt cuốn thịt nướng, nem chua, rau sống, mắm nêm.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nh%C3%A0_m%C3%ACnh_L%E1%BB%85_30th4n2023_%28b%C3%A1nh_%C6%B0%E1%BB%9Bt_Ph%C6%B0%C6%A1ng_Lang%2C_th%E1%BB%8Bt_heo_n%C6%B0%E1%BB%9Bng_%C4%83n_k%C3%A8m%29_%282%29.jpg/960px-Nh%C3%A0_m%C3%ACnh_L%E1%BB%85_30th4n2023_%28b%C3%A1nh_%C6%B0%E1%BB%9Bt_Ph%C6%B0%C6%A1ng_Lang%2C_th%E1%BB%8Bt_heo_n%C6%B0%E1%BB%9Bng_%C4%83n_k%C3%A8m%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Nhà mình Lễ 30th4n2023 (bánh ướt Phương Lang, thịt heo nướng ăn kèm) (2).jpg"
+  },
+  {
+   "id": "bo-ne",
+   "name": "Bò né chảo gang",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "grill-plate",
+   "c1": "#8e3b1f",
+   "c2": "#f0a868",
+   "tags": [
+    "bốc khói",
+    "bò",
+    "chảo"
+   ],
+   "descr": "Bò né kèm trứng, xúc xích, hành tây, bánh mì — sôi sục.",
+   "price": 3,
+   "minutes": 18,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/B%C3%B2_b%C3%ADt_t%E1%BA%BFt_%E1%BB%9F_SG_th4n2024_%28b%C3%B2_n%C3%A9_ch%E1%BA%A3o_gang%29_%281%29.jpg/960px-B%C3%B2_b%C3%ADt_t%E1%BA%BFt_%E1%BB%9F_SG_th4n2024_%28b%C3%B2_n%C3%A9_ch%E1%BA%A3o_gang%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bò bít tết ở SG th4n2024 (bò né chảo gang) (1).jpg"
+  },
+  {
+   "id": "bo-nuong-la-lot",
+   "name": "Bò nướng lá lốt",
+   "emoji": "🍃",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "vat"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#7d6608",
+   "c2": "#e0a860",
+   "tags": [
+    "lá lốt",
+    "mỡ",
+    "thơm"
+   ],
+   "descr": "Bò cuộn lá lốt nướng, mỡ chài, chấm mắm nêm.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/B%C3%B2_n%C6%B0%E1%BB%9Bng_l%C3%A1_l%E1%BB%91t_t%E1%BA%A1i_Manchester.jpg/960px-B%C3%B2_n%C6%B0%E1%BB%9Bng_l%C3%A1_l%E1%BB%91t_t%E1%BA%A1i_Manchester.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bò nướng lá lốt"
+  },
+  {
+   "id": "bo-vien-nuong",
+   "name": "Bò viên nướng",
+   "emoji": "🍡",
+   "region": "cn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#8e5a2b",
+   "c2": "#e0a860",
+   "tags": [
+    "xiên",
+    "nhậu",
+    "tàu"
+   ],
+   "descr": "Bò viên xiên nướng sốt sa tế, rắc mè, thơm khói.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Beefball_closeup.jpg/960px-Beefball_closeup.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Beef ball"
+  },
+  {
+   "id": "bo-xao-hanh",
+   "name": "Bò xào hành tây",
+   "emoji": "🥩",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "grill-plate",
+   "c1": "#a04000",
+   "c2": "#f0932b",
+   "tags": [
+    "bò",
+    "nhanh",
+    "lửa lớn"
+   ],
+   "descr": "Bò xào lửa lớn mềm ngọt, hành tây, tiêu đen.",
+   "price": 3,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Cafe_UK_ng2th10n2022_%28B%C3%B2_x%C3%A0o_h%C3%A0nh_t%C3%A2y%2C_khoai_t%C3%A2y%29.jpg/960px-Cafe_UK_ng2th10n2022_%28B%C3%B2_x%C3%A0o_h%C3%A0nh_t%C3%A2y%2C_khoai_t%C3%A2y%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Cafe UK ng2th10n2022 (Bò xào hành tây, khoai tây).jpg"
+  },
+  {
+   "id": "bun-mam",
+   "name": "Bún mắm miền Tây",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#8e6e3c",
+   "c2": "#d1a054",
+   "tags": [
+    "đậm đà",
+    "miền Tây"
+   ],
+   "descr": "Mắm cá linh, tôm, mực, heo quay — dậy mùi cả miền Tây.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/B%C3%BAn_m%E1%BA%AFm.jpg/960px-B%C3%BAn_m%E1%BA%AFm.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún mắm"
+  },
+  {
+   "id": "bun-tron",
+   "name": "Bún trộn chay",
+   "emoji": "🥗",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "xe"
+   ],
+   "style": "tron",
+   "art": "noodle-dry",
+   "c1": "#8fbf6f",
+   "c2": "#e0f0c0",
+   "tags": [
+    "chay",
+    "trộn",
+    "healthy"
+   ],
+   "descr": "Bún trộn rau củ, đậu hũ chiên, nước tương mè, đậu phộng.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/B%C3%BAn_tr%E1%BB%99n%2C_James_Bun%2C_Paris_27_August_2016_002.jpg/960px-B%C3%BAn_tr%E1%BB%99n%2C_James_Bun%2C_Paris_27_August_2016_002.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bún trộn, James Bun, Paris 27 August 2016 002.jpg"
+  },
+  {
+   "id": "bun-oc",
+   "name": "Bún ốc",
+   "emoji": "🐌",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "xe"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#7f8c8d",
+   "c2": "#e8b04b",
+   "tags": [
+    "ốc",
+    "giấm bỗng"
+   ],
+   "descr": "Ốc bươu giòn, giấm bỗng chua nhẹ, cà chua, tía tô.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/B%C3%BAn_%E1%BB%91c.jpg/960px-B%C3%BAn_%E1%BB%91c.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún ốc"
+  },
+  {
+   "id": "bac-xiu",
+   "name": "Bạc xỉu",
+   "emoji": "🥛",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#e0c8a0",
+   "c2": "#f7f0dd",
+   "tags": [
+    "sữa nhiều",
+    "nhẹ",
+    "sáng"
+   ],
+   "descr": "Nhiều sữa ít cà phê, êm dịu cho người mới uống.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ly_p%E1%BA%B7c_x%E1%BB%89u_s%E1%BB%AFa_%C4%91%C3%A1_%E1%BB%9F_Q1_ng18th8n2022.jpg/960px-Ly_p%E1%BA%B7c_x%E1%BB%89u_s%E1%BB%AFa_%C4%91%C3%A1_%E1%BB%9F_Q1_ng18th8n2022.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bạc xỉu"
+  },
+  {
+   "id": "canh-bi-do",
+   "name": "Canh bí đỏ thịt bằm",
+   "emoji": "🎃",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e67e22",
+   "c2": "#f5cba7",
+   "tags": [
+    "ngọt",
+    "trẻ em",
+    "cơm nhà"
+   ],
+   "descr": "Canh bí đỏ ngọt tự nhiên, thịt bằm, hành ngò.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG/960px-K%C3%BCrbissuppe_mit_Kern%C3%B6l.JPG",
+   "imageVia": "en-wiki",
+   "imageSource": "Pumpkin soup"
+  },
+  {
+   "id": "canh-kho-qua",
+   "name": "Canh khổ qua nhồi thịt",
+   "emoji": "🥒",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#7d8c3a",
+   "c2": "#dff0c0",
+   "tags": [
+    "đắng",
+    "giải nhiệt",
+    "nhồi"
+   ],
+   "descr": "Khổ qua nhồi thịt nấm, nước dùng trong, đắng thanh mát.",
+   "price": 2,
+   "minutes": 35,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Canh_kh%E1%BB%95_qua.JPG/960px-Canh_kh%E1%BB%95_qua.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Canh khổ qua nhồi thịt"
+  },
+  {
+   "id": "canh-rong-bien",
+   "name": "Canh rong biển thịt bò",
+   "emoji": "🌊",
+   "region": "kr",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#2e7d6a",
+   "c2": "#a8d8c0",
+   "tags": [
+    "Hàn",
+    "bổ",
+    "sinh nhật"
+   ],
+   "descr": "Miyeokguk — canh rong biển bò, món sinh nhật Hàn Quốc.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Miyeok-guk.jpg/960px-Miyeok-guk.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Miyeok-guk"
+  },
+  {
+   "id": "cao-lau",
+   "name": "Cao lầu Hội An",
+   "emoji": "🍜",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#935116",
+   "c2": "#dcb064",
+   "tags": [
+    "Hội An",
+    "tro",
+    "giòn"
+   ],
+   "descr": "Sợi mì tro Hội An, thịt xá xíu, da heo giòn.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Cao_l%E1%BA%A7u_%28144854_994%29.jpg/960px-Cao_l%E1%BA%A7u_%28144854_994%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cao lầu"
+  },
+  {
+   "id": "carbonara",
+   "name": "Carbonara",
+   "emoji": "🥓",
+   "region": "it",
+   "meals": [
+    "toi"
+   ],
+   "style": "kho",
+   "art": "fried-noodle",
+   "c1": "#e8d5a0",
+   "c2": "#f0c060",
+   "tags": [
+    "kem",
+    "bacon",
+    "Ý"
+   ],
+   "descr": "Mì Ý sốt kem trứng, bacon giòn, tiêu đen, parmesan.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Spaghetti_carbonara.jpg/960px-Spaghetti_carbonara.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Spaghetti alla carbonara"
+  },
+  {
+   "id": "cheesecake",
+   "name": "Cheesecake",
+   "emoji": "🍰",
+   "region": "us",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f0d9a0",
+   "c2": "#c98a2b",
+   "tags": [
+    "phô mai",
+    "béo",
+    "ngọt"
+   ],
+   "descr": "Cheesecake phô mai béo, đế quy giòn, sốt dâu.",
+   "price": 3,
+   "minutes": 60,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Baked_cheesecake_with_raspberries_and_blueberries.jpg/960px-Baked_cheesecake_with_raspberries_and_blueberries.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Cheesecake"
+  },
+  {
+   "id": "chao-ga",
+   "name": "Cháo gà nấm",
+   "emoji": "🍄",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e0b070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "nhẹ bụng",
+    "ốm"
+   ],
+   "descr": "Ấm bụng, dễ ăn, tốt cho người mệt.",
+   "price": 1,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/N%E1%BB%93i_ch%C3%A1o_g%C3%A0_ta_h%E1%BA%A7m_s%C3%A2m_nh%C3%A0_m%C3%ACnh_ng7th11n2020_%281%29.jpg/960px-N%E1%BB%93i_ch%C3%A1o_g%C3%A0_ta_h%E1%BA%A7m_s%C3%A2m_nh%C3%A0_m%C3%ACnh_ng7th11n2020_%281%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cháo gà"
+  },
+  {
+   "id": "chao-trai",
+   "name": "Cháo trai",
+   "emoji": "🐚",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#b3a17a",
+   "c2": "#e8dcc0",
+   "tags": [
+    "trai",
+    "ngò",
+    "thì là"
+   ],
+   "descr": "Trai hến nấu cháo, rắc rau thơm, thêm quẩy giòn.",
+   "price": 1,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Vietnamese_chao.JPG/960px-Vietnamese_chao.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cháo"
+  },
+  {
+   "id": "chao-dau-xanh",
+   "name": "Cháo đậu xanh",
+   "emoji": "🥣",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#b8a03c",
+   "c2": "#e8d98a",
+   "tags": [
+    "chay",
+    "mát"
+   ],
+   "descr": "Cháo đậu xanh bùi bùi, ăn với dưa món.",
+   "price": 1,
+   "minutes": 35,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3
+  },
+  {
+   "id": "che-khuc-bach",
+   "name": "Chè khúc bạch",
+   "emoji": "🤍",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f5f0e1",
+   "c2": "#e8b04b",
+   "tags": [
+    "mát",
+    "hạnh nhân",
+    "nhã"
+   ],
+   "descr": "Khúc bạch mềm mát, nhãn, hạnh nhân, sữa tươi.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Ch%C3%A8_kh%C3%BAc_b%E1%BA%A1ch_%E1%BB%9F_qu%C3%A1n_Th%E1%BA%A3o_Vy_2020_09_06.jpg/960px-Ch%C3%A8_kh%C3%BAc_b%E1%BA%A1ch_%E1%BB%9F_qu%C3%A1n_Th%E1%BA%A3o_Vy_2020_09_06.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Chè khúc bạch"
+  },
+  {
+   "id": "che-dau-den",
+   "name": "Chè đậu đen",
+   "emoji": "🫘",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#2e2e4e",
+   "c2": "#8e8ec0",
+   "tags": [
+    "mát",
+    "bổ thận",
+    "dân dã"
+   ],
+   "descr": "Chè đậu đen nước dừa, mát bổ, ăn đêm rất hợp.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Ch%C3%A8_xo%C3%A0i.jpg/960px-Ch%C3%A8_xo%C3%A0i.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chè"
+  },
+  {
+   "id": "cha-ca-la-vong",
+   "name": "Chả cá Lã Vọng",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "toi"
+   ],
+   "style": "chien",
+   "art": "grill-plate",
+   "c1": "#e8b04b",
+   "c2": "#f9e79f",
+   "tags": [
+    "Hà Nội",
+    "thì là",
+    "mắm tôm"
+   ],
+   "descr": "Chả cá nghệ nướng chảo mỡ, thì là, bún, mắm tôm.",
+   "price": 3,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Fishcake_on_salad.jpg/960px-Fishcake_on_salad.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Chả cá"
+  },
+  {
+   "id": "cha-lua",
+   "name": "Chả lụa",
+   "emoji": "🍥",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#f0e6d2",
+   "c2": "#e0c8a0",
+   "tags": [
+    "Tết",
+    "nguội",
+    "mềm"
+   ],
+   "descr": "Chả lụa mịn dai, gói lá chuối, ăn với bánh cuốn.",
+   "price": 2,
+   "minutes": 60,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Gi%C3%B2_l%E1%BB%A5a_2.jpg/960px-Gi%C3%B2_l%E1%BB%A5a_2.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chả lụa"
+  },
+  {
+   "id": "croissant",
+   "name": "Croissant bơ",
+   "emoji": "🥐",
+   "region": "fr",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#e0b070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "bơ",
+    "Pháp",
+    "giòn"
+   ],
+   "descr": "Croissant ngàn lớp bơ Pháp, vỏ giòn, ruột mềm thơm.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/960px-Croissant-Petr_Kratochvil.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Croissant"
+  },
+  {
+   "id": "cuon-diep-ca",
+   "name": "Cuốn diếp cá thịt bò",
+   "emoji": "🌿",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "toi",
+    "trua"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#5aa832",
+   "c2": "#c9e88a",
+   "tags": [
+    "diếp cá",
+    "bò",
+    "nhúng"
+   ],
+   "descr": "Bò nhúng cuốn diếp cá, chuối chát, khế, mắm nêm.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Summer_roll.jpg/960px-Summer_roll.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Gỏi cuốn"
+  },
+  {
+   "id": "cuon-ram",
+   "name": "Cuốn rế chiên giòn",
+   "emoji": "🍤",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe",
+    "trua"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#d4a017",
+   "c2": "#f7dc6f",
+   "tags": [
+    "giòn rụm",
+    "tôm thịt",
+    "chấm"
+   ],
+   "descr": "Cuốn rế chiên vàng rụm, nhân tôm thịt, chấm tương xoài.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Spring_Rolls_%283357696061%29.jpg/960px-Spring_Rolls_%283357696061%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Spring roll"
+  },
+  {
+   "id": "ca-phe-trung",
+   "name": "Cà phê trứng",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#c98a2b",
+   "c2": "#f5e0b0",
+   "tags": [
+    "Hà Nội",
+    "kem trứng",
+    "béo"
+   ],
+   "descr": "Cà phê trứng Hà Nội — kem trứng béo mịn trên nền đắng.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg/960px-C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cà phê trứng"
+  },
+  {
+   "id": "ca-ri-chay",
+   "name": "Cà ri chay",
+   "emoji": "🥕",
+   "region": "in",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#c9a227",
+   "c2": "#f0e0a0",
+   "tags": [
+    "chay",
+    "khoai",
+    "cốt dừa"
+   ],
+   "descr": "Cà ri rau củ cốt dừa, khoai môn, đậu hũ, thơm.",
+   "price": 2,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Taj_Mahal_-_Lamb_Curry_Madras.jpg/960px-Taj_Mahal_-_Lamb_Curry_Madras.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Curry"
+  },
+  {
+   "id": "ca-hap-xi-dau",
+   "name": "Cá hấp xì dầu",
+   "emoji": "🐟",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "grill-plate",
+   "c1": "#8e6e3c",
+   "c2": "#e0c070",
+   "tags": [
+    "tàu",
+    "hấp",
+    "hành gừng"
+   ],
+   "descr": "Cá hấp xì dầu hành gừng, dầu nóng rưới — thịt ngọt mềm.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Steamed_fish_head_with_diced_hot_red_peppers_20211206.jpg/960px-Steamed_fish_head_with_diced_hot_red_peppers_20211206.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Steamed fish head with diced hot red peppers 20211206.jpg"
+  },
+  {
+   "id": "biryani",
+   "name": "Cơm Biryani",
+   "emoji": "🍚",
+   "region": "in",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#d4ac0d",
+   "c2": "#f0c060",
+   "tags": [
+    "nghệ",
+    "Ấn",
+    "thơm"
+   ],
+   "descr": "Cơm gạo basmati tầng thịt, nghệ, saffron, sữa chua.",
+   "price": 3,
+   "minutes": 60,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Biriyani1.jpg/960px-Biriyani1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Biryani"
+  },
+  {
+   "id": "cơm-chay",
+   "name": "Cơm chay thập cẩm",
+   "emoji": "🥬",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#7d8c3a",
+   "c2": "#e0d0a0",
+   "tags": [
+    "chay",
+    "healthy",
+    "đủ vị"
+   ],
+   "descr": "Cơm gạo lứt, đậu hũ, rau luộc, nấm kho, canh rong biển.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3
+  },
+  {
+   "id": "com-ga-hai-nam",
+   "name": "Cơm gà Hải Nam",
+   "emoji": "🐔",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#e8b04b",
+   "c2": "#f7e7b0",
+   "tags": [
+    "gà luộc",
+    "cơm dầu",
+    "gừng"
+   ],
+   "descr": "Gà luộc mềm, cơm nấu nước luộc gà, sốt gừng hành.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cơm gà Hải Nam"
+  },
+  {
+   "id": "com-ga-xoi-mo",
+   "name": "Cơm gà xối mỡ",
+   "emoji": "🔥",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "plate-rice",
+   "c1": "#c0871f",
+   "c2": "#f5d76e",
+   "tags": [
+    "giòn da",
+    "dầu sôi"
+   ],
+   "descr": "Gà luộc xối mỡ sôi — da vàng giòn, thịt ngọt mềm.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Lunch_plate_with_salads.jpg/960px-Lunch_plate_with_salads.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cơm gà"
+  },
+  {
+   "id": "com-gao-lut-ca-hoi",
+   "name": "Cơm gạo lứt cá hồi",
+   "emoji": "🐟",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#e8845a",
+   "c2": "#c9d67a",
+   "tags": [
+    "healthy",
+    "omega",
+    "eatclean"
+   ],
+   "descr": "Cá hồi áp chảo, cơm gạo lứt, bông cải, sốt chanh bơ.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Reis_-_Sorte_C_voll.jpg/960px-Reis_-_Sorte_C_voll.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Brown rice"
+  },
+  {
+   "id": "com-gao-lut",
+   "name": "Cơm gạo lứt ức gà",
+   "emoji": "🥗",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#7d8c3a",
+   "c2": "#c9d67a",
+   "tags": [
+    "healthy",
+    "eatclean"
+   ],
+   "descr": "Ức gà áp chảo, gạo lứt, bông cải — ăn sạch sống khỏe.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Germinated_brown_rice_-_medium_grain.jpg/960px-Germinated_brown_rice_-_medium_grain.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Germinated brown rice - medium grain.jpg"
+  },
+  {
+   "id": "com-heo-quay",
+   "name": "Cơm heo quay",
+   "emoji": "🐖",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "plate-rice",
+   "c1": "#b03a2e",
+   "c2": "#f0a868",
+   "tags": [
+    "da giòn",
+    "heo quay"
+   ],
+   "descr": "Heo quay da rụm, thịt mỡ mềm, ăn cùng dưa leo chua.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3
+  },
+  {
+   "id": "com-thai",
+   "name": "Cơm rang Thái",
+   "emoji": "🍍",
+   "region": "th",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "plate-rice",
+   "c1": "#d4ac0d",
+   "c2": "#f7c873",
+   "tags": [
+    "dứa",
+    "hạt điều",
+    "Thái"
+   ],
+   "descr": "Cơm rang dứa hạt điều, tôm khô, sốt cà — ngọt thơm.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg/960px-Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Fried rice"
+  },
+  {
+   "id": "com-trang-trung",
+   "name": "Cơm trắng trứng chiên",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "khuya",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#e8b04b",
+   "c2": "#f7dc6f",
+   "tags": [
+    "sinh viên",
+    "rẻ",
+    "nhanh"
+   ],
+   "descr": "Cơm nóng trứng chiên nước tương — món cứu đói sinh viên.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Half_a_cup_of_rice._Brown_rice_is_the_best_choice.JPG/960px-Half_a_cup_of_rice._Brown_rice_is_the_best_choice.JPG",
+   "imageVia": "en-wiki",
+   "imageSource": "White rice"
+  },
+  {
+   "id": "dimsum-tong-hop",
+   "name": "Dimsum thập cẩm",
+   "emoji": "🍤",
+   "region": "cn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#e8d5b0",
+   "c2": "#d35400",
+   "tags": [
+    "điểm tâm",
+    "trà",
+    "Hong Kong"
+   ],
+   "descr": "Xửu xíu, phụng trảo, xíu mại, cuốn tôm — ăn cùng trà nóng.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Chinese_DimSum_%289023590541%29.jpg/960px-Chinese_DimSum_%289023590541%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Dim sum"
+  },
+  {
+   "id": "donut",
+   "name": "Donut",
+   "emoji": "🍩",
+   "region": "us",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "ngot",
+   "art": "pastry",
+   "c1": "#f1948a",
+   "c2": "#f7c873",
+   "tags": [
+    "socola",
+    "glaze",
+    "ngọt"
+   ],
+   "descr": "Donut phủ glaze socola, rắc cốm màu, mềm xốp.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Donuts_with_chocolate_banana_and_strawberry.jpg/960px-Donuts_with_chocolate_banana_and_strawberry.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh Donut"
+  },
+  {
+   "id": "falafel",
+   "name": "Falafel",
+   "emoji": "🧆",
+   "region": "tr",
+   "meals": [
+    "vat",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#8fbf6f",
+   "c2": "#e0d0a0",
+   "tags": [
+    "chay",
+    "đậu gà",
+    "giòn"
+   ],
+   "descr": "Viên đậu gà chiên giòn, rau thơm, sốt tahini.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Falafel_%2849728839526%29.jpg/960px-Falafel_%2849728839526%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Falafel"
+  },
+  {
+   "id": "fish-chips",
+   "name": "Fish and Chips",
+   "emoji": "🐟",
+   "region": "us",
+   "meals": [
+    "toi",
+    "vat",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#e6b422",
+   "c2": "#f7dc6f",
+   "tags": [
+    "giòn",
+    "khoai",
+    "sốt tartar"
+   ],
+   "descr": "Cá tuyết chiên bia giòn, khoai chiên, sốt tartar, chanh.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fish_and_chips_blackpool.jpg/960px-Fish_and_chips_blackpool.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Fish and chips"
+  },
+  {
+   "id": "ga-hap-gung",
+   "name": "Gà hấp gừng hành",
+   "emoji": "🐔",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "grill-plate",
+   "c1": "#e8c070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "thanh đạm",
+    "gừng",
+    "ít dầu"
+   ],
+   "descr": "Gà hấp gừng hành, da giòn, thịt ngọt, chấm muối tiêu chanh.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Hainanese chicken rice"
+  },
+  {
+   "id": "ga-kho-gung",
+   "name": "Gà kho gừng",
+   "emoji": "🫚",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#b9770e",
+   "c2": "#f0c060",
+   "tags": [
+    "gừng",
+    "ấm",
+    "cơm nhà"
+   ],
+   "descr": "Gà kho gừng thơm nồng, nước sốt sánh, ăn với cơm.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/G%C3%A0_kho_ng%C5%A9_v%E1%BB%8B_h%C6%B0%C6%A1ng_c%C3%BAng_%C4%91%C6%B0a_T%E1%BA%BFt_2018.jpg/960px-G%C3%A0_kho_ng%C5%A9_v%E1%BB%8B_h%C6%B0%C6%A1ng_c%C3%BAng_%C4%91%C6%B0a_T%E1%BA%BFt_2018.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Gà kho ngũ vị hương cúng đưa Tết 2018.jpg"
+  },
+  {
+   "id": "ga-nuong-la-chanh",
+   "name": "Gà nướng lá chanh",
+   "emoji": "🍋",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#8e6e3c",
+   "c2": "#e8c070",
+   "tags": [
+    "lá chanh",
+    "nướng",
+    "thơm"
+   ],
+   "descr": "Gà ta ướp lá chanh nướng, da giòn, thịt ngọt.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg/960px-Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Roast chicken"
+  },
+  {
+   "id": "hummus",
+   "name": "Hummus & Pita",
+   "emoji": "🧆",
+   "region": "tr",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#d4b483",
+   "c2": "#f0e0b0",
+   "tags": [
+    "chay",
+    "đậu gà",
+    "Trung Đông"
+   ],
+   "descr": "Hummus đậu gà mịn, dầu olive, bánh pita nướng nóng.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hummus_from_The_Nile.jpg/960px-Hummus_from_The_Nile.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Hummus"
+  },
+  {
+   "id": "kebab",
+   "name": "Kebab / Doner",
+   "emoji": "🌯",
+   "region": "tr",
+   "meals": [
+    "khuya",
+    "vat",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "taco",
+   "c1": "#b9770e",
+   "c2": "#f0c060",
+   "tags": [
+    "Thổ",
+    "cuộn",
+    "nhanh"
+   ],
+   "descr": "Thịt nướng trục cuộn bánh, sốt tỏi, rau, khoai chiên.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/D%C3%B6ner_Kebab.jpg/960px-D%C3%B6ner_Kebab.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Doner kebab"
+  },
+  {
+   "id": "kem-bo",
+   "name": "Kem bơ / Kem dừa",
+   "emoji": "🥑",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#7d8c3a",
+   "c2": "#f0e6d2",
+   "tags": [
+    "béo",
+    "mát",
+    "dừa"
+   ],
+   "descr": "Kem bơ đặc sánh, dừa xiêm, đậu phộng rang, sữa đặc.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Persea_americana_fruit_2.JPG/960px-Persea_americana_fruit_2.JPG",
+   "imageVia": "en-wiki",
+   "imageSource": "Avocado"
+  },
+  {
+   "id": "kem-tuoi",
+   "name": "Kem tươi",
+   "emoji": "🍨",
+   "region": "it",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f1948a",
+   "c2": "#f7dc6f",
+   "tags": [
+    "Ý",
+    "gelato",
+    "mát"
+   ],
+   "descr": "Gelato Ý mịn mượt, vị vani, socola, dâu — mát lịm.",
+   "price": 2,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Cr%C3%A8me_Chantilly.jpg/960px-Cr%C3%A8me_Chantilly.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Kem tươi"
+  },
+  {
+   "id": "khoai-lang-chien",
+   "name": "Khoai lang kén",
+   "emoji": "🍠",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#c0701f",
+   "c2": "#f5cba7",
+   "tags": [
+    "ngọt",
+    "kén",
+    "dân dã"
+   ],
+   "descr": "Khoai lang bọc bột chiên vàng, ngọt bùi, chấm sữa đặc.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ipomoea_batatas_006.JPG/960px-Ipomoea_batatas_006.JPG",
+   "imageVia": "en-wiki",
+   "imageSource": "Sweet potato"
+  },
+  {
+   "id": "lau-bo-nhung-dam",
+   "name": "Lẩu bò nhúng dấm",
+   "emoji": "🥩",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#a04000",
+   "c2": "#f0c060",
+   "tags": [
+    "dấm",
+    "bò",
+    "nhóm bạn"
+   ],
+   "descr": "Bò nhúng dấm chua nhẹ, chuối xanh, rau sống, bún.",
+   "price": 3,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Mushroom_hot_pot_2.jpg/960px-Mushroom_hot_pot_2.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Mushroom hot pot 2.jpg"
+  },
+  {
+   "id": "lau-chao-ga",
+   "name": "Lẩu cháo gà",
+   "emoji": "🐔",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#e0b070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "ấm bụng",
+    "gà ta",
+    "nhóm"
+   ],
+   "descr": "Cháo gà nấu lẩu, nấm, rau, quẩy — ấm cả bàn tay mùa lạnh.",
+   "price": 2,
+   "minutes": 45,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Thai_suki%2C_Thai_hot_pot_preparation%2C_Dining_in_Bangkok%2C_Thailand.jpg/960px-Thai_suki%2C_Thai_hot_pot_preparation%2C_Dining_in_Bangkok%2C_Thailand.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Thai suki, Thai hot pot preparation, Dining in Bangkok, Thailand.jpg"
+  },
+  {
+   "id": "lau-ca-keo",
+   "name": "Lẩu cá kèo",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#8e6e3c",
+   "c2": "#e8d98a",
+   "tags": [
+    "miền Tây",
+    "lá giang",
+    "chua cay"
+   ],
+   "descr": "Cá kèo nấu lá giang chua thanh, ăn với bún và rau đồng.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Copper_hot_pot_%22tong_guo%22.jpg/960px-Copper_hot_pot_%22tong_guo%22.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Copper hot pot \"tong guo\".jpg"
+  },
+  {
+   "id": "lau-ga-la-e",
+   "name": "Lẩu gà lá é",
+   "emoji": "🌿",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#7d8c3a",
+   "c2": "#e8d98a",
+   "tags": [
+    "lá é",
+    "Nha Trang",
+    "cay"
+   ],
+   "descr": "Gà ta nấu lá é the nồng, ăn với bún và mắm ớt.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Hot_pot_dinner.jpg/960px-Hot_pot_dinner.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Hot pot dinner.jpg"
+  },
+  {
+   "id": "lau-ga-nam",
+   "name": "Lẩu gà nấm",
+   "emoji": "🍄",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#c9a227",
+   "c2": "#f0e0a0",
+   "tags": [
+    "thanh ngọt",
+    "nấm",
+    "healthy"
+   ],
+   "descr": "Gà ta nấu nấm tươi, nước dùng ngọt tự nhiên, ít dầu mỡ.",
+   "price": 2,
+   "minutes": 45,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Hot_pot_restaurant.jpg/960px-Hot_pot_restaurant.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Hot pot restaurant.jpg"
+  },
+  {
+   "id": "lau-nam",
+   "name": "Lẩu nấm chay",
+   "emoji": "🍄",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#8e7a4a",
+   "c2": "#e8dcc0",
+   "tags": [
+    "chay",
+    "nấm",
+    "thanh"
+   ],
+   "descr": "Nước dùng nấm ngọt tự nhiên, rau củ tươi, đậu hũ.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Thai_suki%2C_Thai_hot_pot_ingredients%2C_Bangkok%2C_Thailand.jpg/960px-Thai_suki%2C_Thai_hot_pot_ingredients%2C_Bangkok%2C_Thailand.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Thai suki, Thai hot pot ingredients, Bangkok, Thailand.jpg"
+  },
+  {
+   "id": "mien-tron",
+   "name": "Miến trộn chua ngọt",
+   "emoji": "🥢",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "xe"
+   ],
+   "style": "tron",
+   "art": "noodle-dry",
+   "c1": "#d68910",
+   "c2": "#f7dc6f",
+   "tags": [
+    "trộn",
+    "chua ngọt"
+   ],
+   "descr": "Miến trộn kiểu Hàn-Việt, chua ngọt cay, ăn là ghiền.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dongfen.JPG/960px-Dongfen.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Miến"
+  },
+  {
+   "id": "mi-tom",
+   "name": "Mì tôm chua cay",
+   "emoji": "🍤",
+   "region": "vn",
+   "meals": [
+    "khuya",
+    "sang"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "mì gói",
+    "đêm",
+    "nhanh"
+   ],
+   "descr": "Mì tôm chua cay, tôm khô, trứng, rau — cứu đói lúc 2h sáng.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Instant_noodle_balls.jpg/960px-Instant_noodle_balls.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Instant noodle balls.jpg"
+  },
+  {
+   "id": "mi-xao-gion",
+   "name": "Mì xào giòn",
+   "emoji": "🥡",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-noodle",
+   "c1": "#c0871f",
+   "c2": "#f7dc6f",
+   "tags": [
+    "giòn",
+    "sốt",
+    "tàu"
+   ],
+   "descr": "Mì chiên phồng giòn, sốt rau thịt sánh — nghe rộp rộp.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chow mein"
+  },
+  {
+   "id": "nachos",
+   "name": "Nachos phô mai",
+   "emoji": "🧀",
+   "region": "mx",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "fries",
+   "c1": "#e6b422",
+   "c2": "#f5b041",
+   "tags": [
+    "phô mai",
+    "giòn",
+    "chia sẻ"
+   ],
+   "descr": "Bánh ngô giòn phủ sốt phô mai, jalapeño, salsa, kem chua.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 2,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nachos-cheese.jpg/960px-Nachos-cheese.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Nachos"
+  },
+  {
+   "id": "nem-chua",
+   "name": "Nem chua rán",
+   "emoji": "🧆",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#d35400",
+   "c2": "#f5b041",
+   "tags": [
+    "nhậu",
+    "giòn",
+    "nem"
+   ],
+   "descr": "Nem chua rán vỏ giòn ruột chua nhẹ, chấm tương ớt.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Fermented_pork_wrapped_in_leaves.jpg/960px-Fermented_pork_wrapped_in_leaves.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Nem chua"
+  },
+  {
+   "id": "so-hap-sa",
+   "name": "Nghêu hấp sả",
+   "emoji": "🐚",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "hotpot",
+   "c1": "#7d8c3a",
+   "c2": "#e0e0a0",
+   "tags": [
+    "hải sản",
+    "sả",
+    "bia"
+   ],
+   "descr": "Nghêu hấp sả ớt, nước dùng chua cay, ăn với bánh mì.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/M%C3%B3n_%C4%83n_C%E1%BB%ADa_Vi%E1%BB%87t%2C_T%E1%BA%BFt_2022_%28ngh%C3%AAu_h%E1%BA%A5p_s%E1%BA%A3%2C_v%E1%BB%8F_ngh%C3%AAu%29_%284%29.jpg/960px-M%C3%B3n_%C4%83n_C%E1%BB%ADa_Vi%E1%BB%87t%2C_T%E1%BA%BFt_2022_%28ngh%C3%AAu_h%E1%BA%A5p_s%E1%BA%A3%2C_v%E1%BB%8F_ngh%C3%AAu%29_%284%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Món ăn Cửa Việt, Tết 2022 (nghêu hấp sả, vỏ nghêu) (4).jpg"
+  },
+  {
+   "id": "nuoc-chanh",
+   "name": "Nước chanh dây",
+   "emoji": "🍋",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "trua"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#f1c40f",
+   "c2": "#fdebd0",
+   "tags": [
+    "chua",
+    "mát",
+    "vitamin"
+   ],
+   "descr": "Chanh dây chua ngọt, mật ong, đá — sảng khoái tức thì.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lemonade_-_27682817724.jpg/960px-Lemonade_-_27682817724.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Lemonade"
+  },
+  {
+   "id": "nuoc-mia",
+   "name": "Nước mía",
+   "emoji": "🎍",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "trua"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#8fbf6f",
+   "c2": "#dff0c0",
+   "tags": [
+    "mát",
+    "vỉa hè",
+    "sảng khoái"
+   ],
+   "descr": "Nước mía ép tươi, tắc, đá — giải khát vỉa hè.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sugarcanejuice.jpg/960px-Sugarcanejuice.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Nước mía"
+  },
+  {
+   "id": "nuoc-rau-ma",
+   "name": "Nước rau má",
+   "emoji": "🌿",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "trua"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#2e7d32",
+   "c2": "#a8d8a0",
+   "tags": [
+    "mát",
+    "giải nhiệt",
+    "healthy"
+   ],
+   "descr": "Rau má xay đá, mát lạnh, giải nhiệt ngày nắng.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Starr_020803-0094_Centella_asiatica.jpg/960px-Starr_020803-0094_Centella_asiatica.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Rau má"
+  },
+  {
+   "id": "okonomiyaki",
+   "name": "Okonomiyaki",
+   "emoji": "🥞",
+   "region": "jp",
+   "meals": [
+    "toi",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "flatcake",
+   "c1": "#8e5a2b",
+   "c2": "#f0c060",
+   "tags": [
+    "bánh xèo Nhật",
+    "sốt",
+    "mayo"
+   ],
+   "descr": "Bánh xèo Nhật bắp cải, sốt okonomi, mayo, cá bào nhảy.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Okonomiyaki_001.jpg/960px-Okonomiyaki_001.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Okonomiyaki"
+  },
+  {
+   "id": "pancake",
+   "name": "Pancake mật ong",
+   "emoji": "🥞",
+   "region": "us",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "pancake",
+   "c1": "#d4a017",
+   "c2": "#f7e0a0",
+   "tags": [
+    "bơ",
+    "mật ong",
+    "sáng"
+   ],
+   "descr": "Pancake xốp bơ mật ong, chuối, việt quất, kem tươi.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 65,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg/960px-Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Pancake"
+  },
+  {
+   "id": "pho-chien-phong",
+   "name": "Phở chiên phồng",
+   "emoji": "🍤",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "bowl-noodle",
+   "c1": "#d35400",
+   "c2": "#f6b93b",
+   "tags": [
+    "giòn",
+    "độc lạ"
+   ],
+   "descr": "Sợi phở chiên nở như hoa, chan nước dùng nóng hổi.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Phở"
+  },
+  {
+   "id": "pho-tron",
+   "name": "Phở trộn",
+   "emoji": "🥢",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "tron",
+   "art": "noodle-dry",
+   "c1": "#b9770e",
+   "c2": "#f0c060",
+   "tags": [
+    "trộn",
+    "khô",
+    "nhanh"
+   ],
+   "descr": "Phở trộn nước tương, bò xào, rau, đậu phộng — lạ miệng.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ph%E1%BB%9F_tr%E1%BB%99n_n%C6%B0%E1%BB%9Bc_t%C6%B0%C6%A1ng_t%C3%A0u_%28th%E1%BB%A9c_%C4%83n_nhanh%29_%284%29.jpg/960px-Ph%E1%BB%9F_tr%E1%BB%99n_n%C6%B0%E1%BB%9Bc_t%C6%B0%C6%A1ng_t%C3%A0u_%28th%E1%BB%A9c_%C4%83n_nhanh%29_%284%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Phở trộn nước tương tàu (thức ăn nhanh) (4).jpg"
+  },
+  {
+   "id": "poke-bowl",
+   "name": "Poke bowl",
+   "emoji": "🍣",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "tron",
+   "art": "plate-rice",
+   "c1": "#2ecc71",
+   "c2": "#f1c40f",
+   "tags": [
+    "healthy",
+    "hải sản",
+    "bowl"
+   ],
+   "descr": "Cơm sushi, cá hồi, bơ, edamame, sốt ponzu — tươi mát.",
+   "price": 3,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Salmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg/960px-Salmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Salmon & Tuna Poke Bowl (M) with Spicy Mayo sauce - Kitokito 2025-04-25.jpg"
+  },
+  {
+   "id": "quesadilla",
+   "name": "Quesadilla",
+   "emoji": "🧀",
+   "region": "mx",
+   "meals": [
+    "vat",
+    "khuya",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "taco",
+   "c1": "#e6b422",
+   "c2": "#f5d76e",
+   "tags": [
+    "phô mai",
+    "giòn",
+    "Mexico"
+   ],
+   "descr": "Bánh tortilla kẹp phô mai gà nướng giòn, sốt salsa kem.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Quesadilla_2.jpg/960px-Quesadilla_2.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Quesadilla"
+  },
+  {
+   "id": "quay-thua",
+   "name": "Quẩy giòn",
+   "emoji": "🥖",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#d4a017",
+   "c2": "#f7e0a0",
+   "tags": [
+    "giòn",
+    "cháo",
+    "sáng"
+   ],
+   "descr": "Quẩy giòn vàng, chấm cháo hoặc cà phê sữa — combo sáng.",
+   "price": 1,
+   "minutes": 12,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Youtiao.jpg/960px-Youtiao.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Youtiao"
+  },
+  {
+   "id": "rau-cau-dua",
+   "name": "Rau câu dừa",
+   "emoji": "🥥",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f0e6d2",
+   "c2": "#c9a227",
+   "tags": [
+    "thạch",
+    "dừa",
+    "mát"
+   ],
+   "descr": "Thạch rau câu nước dừa, dai giòn, ngọt thanh.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Youkan_mizuyoukan.jpg/960px-Youkan_mizuyoukan.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Agar"
+  },
+  {
+   "id": "salad-ca-ngu",
+   "name": "Salad cá ngừ",
+   "emoji": "🥗",
+   "region": "fr",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#7d8c3a",
+   "c2": "#e74c3c",
+   "tags": [
+    "healthy",
+    "eatclean",
+    "nhanh"
+   ],
+   "descr": "Xà lách, cá ngừ, trứng, cà chua bi, sốt olive chanh.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Tuna_fish_sandwiches_for_the_National_School_Lunch_Program_%281%29.jpg/960px-Tuna_fish_sandwiches_for_the_National_School_Lunch_Program_%281%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Tuna salad"
+  },
+  {
+   "id": "salad-ga-nuong",
+   "name": "Salad gà nướng",
+   "emoji": "🥗",
+   "region": "us",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#8fbf6f",
+   "c2": "#e0a860",
+   "tags": [
+    "protein",
+    "healthy",
+    "giảm cân"
+   ],
+   "descr": "Gà nướng áp chảo, rau trộn, hạt, sốt mè rang.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Chicken_Salad_Chick_Classic_Carol_scoop%2C_Jan_2020.jpg/960px-Chicken_Salad_Chick_Classic_Carol_scoop%2C_Jan_2020.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chicken salad"
+  },
+  {
+   "id": "shawarma",
+   "name": "Shawarma gà",
+   "emoji": "🌯",
+   "region": "tr",
+   "meals": [
+    "khuya",
+    "trua",
+    "vat"
+   ],
+   "style": "nuong",
+   "art": "taco",
+   "c1": "#c0762b",
+   "c2": "#f0c060",
+   "tags": [
+    "Thổ",
+    "cuộn",
+    "sốt tỏi"
+   ],
+   "descr": "Gà nướng trục cuộn bánh pita, sốt tỏi, dưa chua, khoai.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Shawarma-Kebab_stand_in_central_Aleppo%2C_Syria.jpg/960px-Shawarma-Kebab_stand_in_central_Aleppo%2C_Syria.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Shawarma"
+  },
+  {
+   "id": "sinh-to-bo",
+   "name": "Sinh tố bơ",
+   "emoji": "🥑",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "vat"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#7d8c3a",
+   "c2": "#dff0c0",
+   "tags": [
+    "béo",
+    "mát",
+    "sáng"
+   ],
+   "descr": "Sinh tố bơ đặc sánh, sữa đặc, đá xay — bữa sáng nhanh.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Kiwi_Smoothie.jpg/960px-Kiwi_Smoothie.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Smoothie"
+  },
+  {
+   "id": "sinh-to-xoai",
+   "name": "Sinh tố xoài",
+   "emoji": "🥭",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "sang"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#f39c12",
+   "c2": "#fdebd0",
+   "tags": [
+    "xoai",
+    "ngọt",
+    "mát"
+   ],
+   "descr": "Sinh tố xoài chín vàng, sữa chua, đá xay mịn.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/World_location_map_%28equirectangular_180%29.svg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Mango (Jamshedpur)"
+  },
+  {
+   "id": "soba",
+   "name": "Soba lạnh",
+   "emoji": "🍜",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "xe"
+   ],
+   "style": "kho",
+   "art": "noodle-dry",
+   "c1": "#8e7a4a",
+   "c2": "#d8c890",
+   "tags": [
+    "lạnh",
+    "thanh",
+    "kiều mạch"
+   ],
+   "descr": "Soba kiều mạch chấm tsuyu, wasabi, hành lá — mát ruột.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mori-soba_002.jpg/960px-Mori-soba_002.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Soba"
+  },
+  {
+   "id": "som-tam",
+   "name": "Som Tam",
+   "emoji": "🥗",
+   "region": "th",
+   "meals": [
+    "trua",
+    "xe"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#7d8c3a",
+   "c2": "#e67e22",
+   "tags": [
+    "đu đủ",
+    "chua cay",
+    "Thái"
+   ],
+   "descr": "Nộm đu đủ xanh giã cối, chua cay mặn ngọt, đậu phộng.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 3,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Som_Tam_green_papaya_salad%2C_Bangkok%2C_Thailand.jpg/960px-Som_Tam_green_papaya_salad%2C_Bangkok%2C_Thailand.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Som Tam green papaya salad, Bangkok, Thailand.jpg"
+  },
+  {
+   "id": "sup-bi-do",
+   "name": "Súp bí đỏ kem",
+   "emoji": "🎃",
+   "region": "fr",
+   "meals": [
+    "sang",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e67e22",
+   "c2": "#f5cba7",
+   "tags": [
+    "kem",
+    "Tây",
+    "mịn"
+   ],
+   "descr": "Súp bí đỏ kem tươi, hạt bí, bánh mì nướng — ấm áp.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Pumpkin_soup_preparation.jpg/960px-Pumpkin_soup_preparation.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Pumpkin soup preparation.jpg"
+  },
+  {
+   "id": "sup-cua",
+   "name": "Súp cua trứng",
+   "emoji": "🦀",
+   "region": "cn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e8b04b",
+   "c2": "#f7e7b0",
+   "tags": [
+    "sánh",
+    "trứng",
+    "cầu kỳ"
+   ],
+   "descr": "Súp cua thịt trứng, bắp, nấm, rắc tiêu — nóng hổi.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Shangsi_Crab_Soup_%28413730864%29.jpg/960px-Shangsi_Crab_Soup_%28413730864%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Shangsi Crab Soup (413730864).jpg"
+  },
+  {
+   "id": "sua-chua",
+   "name": "Sữa chua nếp cẩm",
+   "emoji": "🥛",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#8e5a8e",
+   "c2": "#e8d0e8",
+   "tags": [
+    "mát",
+    "nếp cẩm",
+    "healthy"
+   ],
+   "descr": "Sữa chua mát chua nhẹ, nếp cẩm dẻo bùi, đá mát.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Joghurt.jpg/960px-Joghurt.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Yogurt"
+  },
+  {
+   "id": "sua-dau-nanh",
+   "name": "Sữa đậu nành",
+   "emoji": "🥛",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#f0e6c0",
+   "c2": "#fdf5d0",
+   "tags": [
+    "nóng",
+    "healthy",
+    "sáng"
+   ],
+   "descr": "Sữa đậu nành nóng, thơm bùi, ăn kèm quẩy giòn.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/001-soymilk.jpg/960px-001-soymilk.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Sữa đậu nành"
+  },
+  {
+   "id": "tempura",
+   "name": "Tempura",
+   "emoji": "🍤",
+   "region": "jp",
+   "meals": [
+    "vat",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#e8b04b",
+   "c2": "#fdebd0",
+   "tags": [
+    "chiên xù",
+    "giòn",
+    "tôm"
+   ],
+   "descr": "Tôm rau chiên bột tempura giòn tan, chấm tentsuyu.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tempurainjapan-ikebukuro-dec312007.jpg/960px-Tempurainjapan-ikebukuro-dec312007.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Tempura"
+  },
+  {
+   "id": "thit-kho-tau",
+   "name": "Thịt kho tàu",
+   "emoji": "🍯",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#7b3f00",
+   "c2": "#e0a860",
+   "tags": [
+    "tàu",
+    "ngọt",
+    "mềm"
+   ],
+   "descr": "Kho tàu ngọt nhẹ, thịt mềm rục, ăn với dưa giá.",
+   "price": 2,
+   "minutes": 80,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Caramelized_Pork_and_Eggs.jpg/960px-Caramelized_Pork_and_Eggs.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Thịt kho trứng"
+  },
+  {
+   "id": "tiramisu",
+   "name": "Tiramisu",
+   "emoji": "🍰",
+   "region": "it",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#6e4b2a",
+   "c2": "#e8d5b0",
+   "tags": [
+    "cà phê",
+    "mascarpone",
+    "Ý"
+   ],
+   "descr": "Bánh Ý vị cà phê, mascarpone béo mịn, bột cacao.",
+   "price": 3,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tiramisu_-_Raffaele_Diomede.jpg/960px-Tiramisu_-_Raffaele_Diomede.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Tiramisu"
+  },
+  {
+   "id": "tra-gung",
+   "name": "Trà gừng mật ong",
+   "emoji": "🫚",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#d4a017",
+   "c2": "#f5e0a0",
+   "tags": [
+    "ấm",
+    "cảm",
+    "healthy"
+   ],
+   "descr": "Trà gừng mật ong, chanh — ấm cổ họng ngày lạnh.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ginger_tea.jpg/960px-Ginger_tea.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Ginger tea"
+  },
+  {
+   "id": "trung-chien-thit",
+   "name": "Trứng chiên thịt bằm",
+   "emoji": "🥚",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#e8b04b",
+   "c2": "#fde3a7",
+   "tags": [
+    "cơm nhà",
+    "nhanh"
+   ],
+   "descr": "Trứng chiên vàng ươm, thịt băm, hành lá — món cơm nhà.",
+   "price": 1,
+   "minutes": 12,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Gorgonzola_%2B_Bacon_Omelette_%40_Omelegg_%40_Amsterdam_%2816600947041%29.jpg/960px-Gorgonzola_%2B_Bacon_Omelette_%40_Omelegg_%40_Amsterdam_%2816600947041%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Omelette"
+  },
+  {
+   "id": "trung-hap",
+   "name": "Trứng hấp kiểu Nhật",
+   "emoji": "🥚",
+   "region": "jp",
+   "meals": [
+    "sang",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "bowl-soup",
+   "c1": "#f5e8c0",
+   "c2": "#e8c070",
+   "tags": [
+    "mềm",
+    "dashi",
+    "Nhật"
+   ],
+   "descr": "Chawanmushi mịn như kem, dashi, tôm, nấm hương.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chawan-mushi.JPG/960px-Chawan-mushi.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Chawanmushi"
+  },
+  {
+   "id": "tau-hu-ngot",
+   "name": "Tàu hũ nước đường",
+   "emoji": "🍮",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f5e8c0",
+   "c2": "#d4a017",
+   "tags": [
+    "gừng",
+    "mềm",
+    "đêm"
+   ],
+   "descr": "Tàu hũ nóng mềm mịn, nước đường gừng, thạch đen.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/David_enjoying_D%C3%B2uhu%C4%81.jpg/960px-David_enjoying_D%C3%B2uhu%C4%81.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Douhua"
+  },
+  {
+   "id": "udon",
+   "name": "Udon",
+   "emoji": "🍲",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e0b070",
+   "c2": "#f7e7b0",
+   "tags": [
+    "sợi to",
+    "dashi",
+    "mềm"
+   ],
+   "descr": "Sợi udon mập mềm, nước dashi trong, tempura giòn.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kakeudon.jpg/960px-Kakeudon.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Udon"
+  },
+  {
+   "id": "waffle",
+   "name": "Waffle",
+   "emoji": "🧇",
+   "region": "fr",
+   "meals": [
+    "sang",
+    "vat"
+   ],
+   "style": "ngot",
+   "art": "pancake",
+   "c1": "#c98a2b",
+   "c2": "#f5d76e",
+   "tags": [
+    "giòn",
+    "sốt",
+    "sáng"
+   ],
+   "descr": "Waffle giòn rãnh, sốt socola, kem tươi, dâu.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Waffles_with_Strawberries.jpg/960px-Waffles_with_Strawberries.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Waffle"
+  },
+  {
+   "id": "xoi-chien",
+   "name": "Xôi chiên phồng",
+   "emoji": "⚪",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#d4ac0d",
+   "c2": "#fdf0c0",
+   "tags": [
+    "giòn rụm",
+    "ăn vặt"
+   ],
+   "descr": "Viên xôi chiên phồng giòn, nhân đậu xanh mặn ngọt.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Xôi"
+  },
+  {
+   "id": "xoi-ga",
+   "name": "Xôi gà",
+   "emoji": "🍗",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#d4ac0d",
+   "c2": "#f7dc6f",
+   "tags": [
+    "gà xé",
+    "nếp",
+    "sáng"
+   ],
+   "descr": "Xôi nếp dẻo, gà xé trộn hành phi, mỡ nước, tiêu.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/V%C3%B9ng_C%C3%B9a_%E1%BB%9F_Cam_L%E1%BB%99_th5n2023-Ph%C6%B0%C6%A1ng_Gia_Trang_%28X%C3%B4i_b%C3%B4ng_c%C3%BAc_v%E1%BB%9Bi_g%C3%A0_C%C3%B9a_kho_s%E1%BA%A3%29_%281%29.jpg/960px-V%C3%B9ng_C%C3%B9a_%E1%BB%9F_Cam_L%E1%BB%99_th5n2023-Ph%C6%B0%C6%A1ng_Gia_Trang_%28X%C3%B4i_b%C3%B4ng_c%C3%BAc_v%E1%BB%9Bi_g%C3%A0_C%C3%B9a_kho_s%E1%BA%A3%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Vùng Cùa ở Cam Lộ th5n2023-Phương Gia Trang (Xôi bông cúc với gà Cùa kho sả) (1).jpg"
+  },
+  {
+   "id": "xoi-gac",
+   "name": "Xôi gấc",
+   "emoji": "🔴",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "đỏ",
+    "đám cưới",
+    "cúng"
+   ],
+   "descr": "Gấc đỏ au, ngọt bùi, thường có trong mâm cúng.",
+   "price": 1,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/X%C3%B4i_g%E1%BA%A5c.JPG/960px-X%C3%B4i_g%E1%BA%A5c.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Xôi gấc"
+  },
+  {
+   "id": "xuc-xich-nuong",
+   "name": "Xúc xích nướng than",
+   "emoji": "🌭",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#c0392b",
+   "c2": "#f0a868",
+   "tags": [
+    "nhậu",
+    "nướng",
+    "đêm"
+   ],
+   "descr": "Xúc xích nướng than hoa, muối tiêu chanh, tương ớt.",
+   "price": 2,
+   "minutes": 12,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Wurstplatte.jpg/960px-Wurstplatte.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Sausage"
+  },
+  {
+   "id": "chao-yen-mach",
+   "name": "Yến mạch sữa chuối",
+   "emoji": "🥣",
+   "region": "us",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "bowl-soup",
+   "c1": "#e0d0a0",
+   "c2": "#f7f0dd",
+   "tags": [
+    "healthy",
+    "gym",
+    "nhanh"
+   ],
+   "descr": "Yến mạch nấu sữa, chuối, mật ong, hạnh nhân — eatclean.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Oatmeal_%281%29.jpg/960px-Oatmeal_%281%29.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Porridge"
+  },
+  {
+   "id": "trai-cay-dia",
+   "name": "Đĩa trái cây",
+   "emoji": "🍉",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#e74c3c",
+   "c2": "#7d8c3a",
+   "tags": [
+    "mát",
+    "healthy",
+    "tráng miệng"
+   ],
+   "descr": "Dưa hấu, xoài, thơm, thanh long — mát lành tráng miệng.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 60,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Fruit_Platter-_Seasonal_Fruits.jpg/960px-Fruit_Platter-_Seasonal_Fruits.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Fruit"
+  },
+  {
+   "id": "dau-hu-chien",
+   "name": "Đậu hũ chiên sả",
+   "emoji": "🌿",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#d4ac0d",
+   "c2": "#f7e7b0",
+   "tags": [
+    "chay",
+    "sả",
+    "giòn"
+   ],
+   "descr": "Đậu hũ chiên sả ớt, vỏ giòn ruột mềm, chấm nước tương.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 1,
+   "weight": 55,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG/960px-Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG",
+   "imageVia": "en-wiki",
+   "imageSource": "Tofu"
+  },
+  {
+   "id": "dau-hu-non",
+   "name": "Đậu hũ non sốt trứng",
+   "emoji": "🥚",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "hap",
+   "art": "bowl-soup",
+   "c1": "#f5f0e1",
+   "c2": "#e8b04b",
+   "tags": [
+    "tàu",
+    "mềm",
+    "sốt"
+   ],
+   "descr": "Đậu hũ non hấp sốt trứng muối, hành phi, dầu mè.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 45,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Making_Tofu_-_20170206_-_Spliting.jpg/960px-Making_Tofu_-_20170206_-_Spliting.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Making Tofu - 20170206 - Spliting.jpg"
+  },
+  {
+   "id": "dau-hu-sot-ca",
+   "name": "Đậu hũ sốt cà",
+   "emoji": "🍅",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#c0392b",
+   "c2": "#f1948a",
+   "tags": [
+    "cơm nhà",
+    "chay",
+    "mềm"
+   ],
+   "descr": "Đậu hũ non sốt cà chua hành ngò, ăn với cơm nóng.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/M%C3%B3n_%C4%83n_c%C3%BAng_T%E1%BA%A5t_Ni%C3%AAn_nh%C3%A0_m%C3%ACnh%2C_T%E1%BA%BFt_Nh%C3%A2m_D%E1%BA%A7n_2022_%28%C4%91%E1%BA%ADu_h%C5%A9_s%E1%BB%91t_c%C3%A0%29_%282%29.jpg/960px-M%C3%B3n_%C4%83n_c%C3%BAng_T%E1%BA%A5t_Ni%C3%AAn_nh%C3%A0_m%C3%ACnh%2C_T%E1%BA%BFt_Nh%C3%A2m_D%E1%BA%A7n_2022_%28%C4%91%E1%BA%ADu_h%C5%A9_s%E1%BB%91t_c%C3%A0%29_%282%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Món ăn cúng Tất Niên nhà mình, Tết Nhâm Dần 2022 (đậu hũ sốt cà) (2).jpg"
+  },
+  {
+   "id": "oc-nhoi",
+   "name": "Ốc nhồi thịt",
+   "emoji": "🐌",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "grill-plate",
+   "c1": "#8e6e3c",
+   "c2": "#d8b06a",
+   "tags": [
+    "ốc",
+    "nhồi",
+    "sả"
+   ],
+   "descr": "Ốc nhồi thịt mộc nhĩ, hấp sả, chấm mắm gừng.",
+   "price": 2,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 50,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Common_snail.jpg/960px-Common_snail.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Ốc"
+  },
+  {
+   "id": "burger",
+   "name": "Burger bò",
+   "emoji": "🍔",
+   "region": "us",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "banhmi",
+   "c1": "#8e5a2b",
+   "c2": "#f0c060",
+   "tags": [
+    "fastfood",
+    "phô mai",
+    "bò"
+   ],
+   "descr": "Bò nướng than, phô mai cheddar chảy, xà lách, sốt đặc biệt.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/NCI_Visuals_Food_Hamburger.jpg/960px-NCI_Visuals_Food_Hamburger.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Hamburger"
+  },
+  {
+   "id": "banh-bao",
+   "name": "Bánh bao",
+   "emoji": "🥟",
+   "region": "cn",
+   "meals": [
+    "sang",
+    "xe",
+    "khuya"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#f5f0e6",
+   "c2": "#e0cfa8",
+   "tags": [
+    "xá xíu",
+    "trứng cút",
+    "hấp"
+   ],
+   "descr": "Vỏ bột mềm xốp, nhân xá xíu trứng cút nóng hổi.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/960px-Baozi_Chengdu.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh bao"
+  },
+  {
+   "id": "banh-canh",
+   "name": "Bánh canh cua",
+   "emoji": "🍥",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#d35400",
+   "c2": "#f8c471",
+   "tags": [
+    "cua",
+    "sợi to",
+    "sệt"
+   ],
+   "descr": "Sợi bánh canh dẻo quánh, riêu cua, chả cá, trứng cút.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/B%C3%A1nh_canh_cua_t%E1%BA%A1i_Th%E1%BB%A7y_Tr%C3%BAc_qu%C3%A1n_%E1%BB%9F_ph%E1%BB%91_Nguy%E1%BB%85n_Nh%C6%B0_L%C3%A3m_%283%29.jpg/960px-B%C3%A1nh_canh_cua_t%E1%BA%A1i_Th%E1%BB%A7y_Tr%C3%BAc_qu%C3%A1n_%E1%BB%9F_ph%E1%BB%91_Nguy%E1%BB%85n_Nh%C6%B0_L%C3%A3m_%283%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh canh cua tại Thủy Trúc quán ở phố Nguyễn Như Lãm (3).jpg"
+  },
+  {
+   "id": "banh-cuon",
+   "name": "Bánh cuốn nóng",
+   "emoji": "🥟",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "roll",
+   "c1": "#f5f0e1",
+   "c2": "#d9c8a0",
+   "tags": [
+    "tráng tay",
+    "hành phi",
+    "chả"
+   ],
+   "descr": "Bánh tráng mỏng tang, nhân thịt mộc nhĩ, chả lụa, nước mắm.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Banh_cuon_nong_Viet_Nam_voi_hanh_phi_va_gio_lua.jpg/960px-Banh_cuon_nong_Viet_Nam_voi_hanh_phi_va_gio_lua.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Banh cuon nong Viet Nam voi hanh phi va gio lua.jpg"
+  },
+  {
+   "id": "banh-khot",
+   "name": "Bánh khọt",
+   "emoji": "🥮",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "flatcake",
+   "c1": "#d4a017",
+   "c2": "#f7dc6f",
+   "tags": [
+    "Vũng Tàu",
+    "tôm",
+    "giòn"
+   ],
+   "descr": "Bánh khọt tôm vàng giòn rìa, cuốn rau, chấm mắm ngọt.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/B%C3%A1nh_kh%E1%BB%8Dt.jpg/960px-B%C3%A1nh_kh%E1%BB%8Dt.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh khọt"
+  },
+  {
+   "id": "banh-mi-chao",
+   "name": "Bánh mì chảo",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#b9770e",
+   "c2": "#f5cba7",
+   "tags": [
+    "chảo gang",
+    "pate",
+    "xíu mại"
+   ],
+   "descr": "Chảo gang pate, trứng, xíu mại, xúc bánh mì nóng.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/B%C3%A1nh_m%C3%AC_Xin_Ch%C3%A0o_Tokyo.jpg/960px-B%C3%A1nh_m%C3%AC_Xin_Ch%C3%A0o_Tokyo.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì Xin Chào Tokyo.jpg"
+  },
+  {
+   "id": "banh-mi-ga-nuong",
+   "name": "Bánh mì gà nướng",
+   "emoji": "🍗",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "xe"
+   ],
+   "style": "nuong",
+   "art": "banhmi",
+   "c1": "#d35400",
+   "c2": "#f8c471",
+   "tags": [
+    "gà nướng",
+    "sả"
+   ],
+   "descr": "Gà nướng sả mật ong, sốt mayo, rau sống.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg/960px-Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Special Baguette (Bánh mì) - Banh Mi Ancient Saigon 2024-12-20.jpg"
+  },
+  {
+   "id": "banh-mi-pate",
+   "name": "Bánh mì pate chả",
+   "emoji": "🥖",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "kho",
+   "art": "banhmi",
+   "c1": "#c98a2b",
+   "c2": "#f0c060",
+   "tags": [
+    "pate",
+    "đêm",
+    "giòn"
+   ],
+   "descr": "Ổ bánh mì pate chả lụa, dưa leo, ngò, tương ớt — kinh điển.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/B%C3%A1nh_m%E1%BB%B9_pate_ch%E1%BA%A3_at_Osu%2C_Nagoya_-_2.jpg/960px-B%C3%A1nh_m%E1%BB%B9_pate_ch%E1%BA%A3_at_Osu%2C_Nagoya_-_2.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mỹ pate chả at Osu, Nagoya - 2.jpg"
+  },
+  {
+   "id": "banh-mi-thit-nuong",
+   "name": "Bánh mì thịt nướng",
+   "emoji": "🥖",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "banhmi",
+   "c1": "#c0762b",
+   "c2": "#f5b041",
+   "tags": [
+    "thịt nướng",
+    "sả",
+    "giòn"
+   ],
+   "descr": "Bánh mì thịt nướng sả, đồ chua, dưa leo, tương ớt.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png/960px-B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh mì thịt nướng.png"
+  },
+  {
+   "id": "banh-mi-trung",
+   "name": "Bánh mì ốp la",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "banhmi",
+   "c1": "#e8b04b",
+   "c2": "#fdebd0",
+   "tags": [
+    "trứng",
+    "hành",
+    "sáng"
+   ],
+   "descr": "Trứng ốp la chảy lòng, hành phi, tiêu, xì dầu.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/M%C5%A9i_N%C3%A9_th7n2023%2C_Khu_ND_%28b%E1%BB%AFa_s%C3%A1ng_ki%E1%BB%83u_l%E1%BB%A5c_%C4%91%E1%BB%8Ba-Vietnam_Continental_breakfast-b%C3%A1nh_m%C3%AC%2C_x%C3%BAc_x%C3%ADch%2C_th%E1%BB%8Bt_ngu%E1%BB%99i%2C_%E1%BB%91p_la%29_%281%29.jpg/960px-M%C5%A9i_N%C3%A9_th7n2023%2C_Khu_ND_%28b%E1%BB%AFa_s%C3%A1ng_ki%E1%BB%83u_l%E1%BB%A5c_%C4%91%E1%BB%8Ba-Vietnam_Continental_breakfast-b%C3%A1nh_m%C3%AC%2C_x%C3%BAc_x%C3%ADch%2C_th%E1%BB%8Bt_ngu%E1%BB%99i%2C_%E1%BB%91p_la%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Mũi Né th7n2023, Khu ND (bữa sáng kiểu lục địa-Vietnam Continental breakfast-bánh mì, xúc xích, thịt nguội, ốp la) (1).jpg"
+  },
+  {
+   "id": "banh-trang-nuong",
+   "name": "Bánh tráng nướng",
+   "emoji": "🔥",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "flatcake",
+   "c1": "#d35400",
+   "c2": "#f5b041",
+   "tags": [
+    "Đà Lạt",
+    "pizza Việt"
+   ],
+   "descr": "Bánh tráng nướng than, trứng, phô mai, xúc xích, ruốc.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/B%C3%A1nh_tr%C3%A1ng_1.jpg/960px-B%C3%A1nh_tr%C3%A1ng_1.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh tráng 1.jpg"
+  },
+  {
+   "id": "steak",
+   "name": "Bò bít tết",
+   "emoji": "🥩",
+   "region": "fr",
+   "meals": [
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#8e3b1f",
+   "c2": "#e0a060",
+   "tags": [
+    "sang",
+    "khoai tây",
+    "sốt tiêu"
+   ],
+   "descr": "Bò áp chảo sốt tiêu đen, khoai tây nghiền, bơ tỏi.",
+   "price": 4,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Beef_fillet_steak_with_mushrooms.jpg/960px-Beef_fillet_steak_with_mushrooms.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bít tết"
+  },
+  {
+   "id": "bo-kho",
+   "name": "Bò khô & cóc",
+   "emoji": "🥭",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "kho",
+   "art": "salad",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "học trò",
+    "chua",
+    "cay"
+   ],
+   "descr": "Bò khô trộn cóc xoài, tương ớt, đu đủ — ăn vặt kinh điển.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Beef-jerky.jpg/960px-Beef-jerky.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Beef-jerky.jpg"
+  },
+  {
+   "id": "bo-luc-lac",
+   "name": "Bò lúc lắc",
+   "emoji": "🥩",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "chien",
+   "art": "grill-plate",
+   "c1": "#8e3b1f",
+   "c2": "#f0a868",
+   "tags": [
+    "bít tết",
+    "khoai tây",
+    "sang"
+   ],
+   "descr": "Bò vuông lúc lắc, khoai tây chiên, xà lách, muối tiêu chanh.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Product_Shots_of_Food-Bo_Luc_Lac.jpg/960px-Product_Shots_of_Food-Bo_Luc_Lac.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bò lúc lắc"
+  },
+  {
+   "id": "bun-cha-ca",
+   "name": "Bún chả cá",
+   "emoji": "🐠",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e59866",
+   "c2": "#f8c471",
+   "tags": [
+    "chả cá",
+    "thì là"
+   ],
+   "descr": "Chả cá Nha Trang dai giòn, nước dùng thì là, cà chua.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/B%C3%BAn_ch%E1%BA%A3_c%C3%A1%2C_th%C3%A1ng_8_n%C4%83m_2018.JPG/960px-B%C3%BAn_ch%E1%BA%A3_c%C3%A1%2C_th%C3%A1ng_8_n%C4%83m_2018.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún chả cá"
+  },
+  {
+   "id": "bun-rieu",
+   "name": "Bún riêu cua",
+   "emoji": "🦀",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e17055",
+   "c2": "#fab1a0",
+   "tags": [
+    "cua",
+    "đậu hũ",
+    "cà chua"
+   ],
+   "descr": "Riêu cua đồng gạch, cà chua, đậu hũ, mắm tôm tùy chọn.",
+   "price": 2,
+   "minutes": 45,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg/960px-B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún riêu cua"
+  },
+  {
+   "id": "bun-dau-mam-tom",
+   "name": "Bún đậu mắm tôm",
+   "emoji": "🧆",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "noodle-dry",
+   "c1": "#7d6608",
+   "c2": "#d4ac0d",
+   "tags": [
+    "mắm tôm",
+    "chả cốm",
+    "nem"
+   ],
+   "descr": "Mâm bún đậu chả cốm, mắm tôm đánh bọt, rau thơm ê hề.",
+   "price": 3,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/B%C3%BAn_%C4%91%E1%BA%ADu_m%E1%BA%AFm_t%C3%B4m_%282019%29.jpg/960px-B%C3%BAn_%C4%91%E1%BA%ADu_m%E1%BA%AFm_t%C3%B4m_%282019%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún đậu mắm tôm"
+  },
+  {
+   "id": "bot-chieu",
+   "name": "Bột chiên",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#d4a017",
+   "c2": "#fdebd0",
+   "tags": [
+    "Sài Gòn",
+    "trứng",
+    "đu đủ"
+   ],
+   "descr": "Bột chiên trứng giòn rìa, ăn kèm đu đủ chua.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Botchien_in_Vietnam.jpg/960px-Botchien_in_Vietnam.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh bột chiên"
+  },
+  {
+   "id": "canh-chua",
+   "name": "Canh chua cá",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#e67e22",
+   "c2": "#f9e79f",
+   "tags": [
+    "me",
+    "cá lóc",
+    "miền Nam"
+   ],
+   "descr": "Canh chua me, cá lóc, bạc hà, giá, cà chua, ngò gai.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Canhchua2.jpg/960px-Canhchua2.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Canh chua"
+  },
+  {
+   "id": "chao-long",
+   "name": "Cháo lòng",
+   "emoji": "🍚",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#9c640c",
+   "c2": "#e0b070",
+   "tags": [
+    "lòng",
+    "lá hẹ",
+    "đêm"
+   ],
+   "descr": "Cháo trắng nấu lòng non, huyết, hẹ, tiêu — dân nhậu mê.",
+   "price": 2,
+   "minutes": 50,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ch%C3%A1o_l%C3%B2ng.jpg/960px-Ch%C3%A1o_l%C3%B2ng.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cháo lòng"
+  },
+  {
+   "id": "che-thai",
+   "name": "Chè Thái",
+   "emoji": "🍨",
+   "region": "th",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#f39c12",
+   "c2": "#f7dc6f",
+   "tags": [
+    "sầu riêng",
+    "mít",
+    "mát"
+   ],
+   "descr": "Chè Thái mít sầu riêng, thạch, nước cốt dừa, đá mát.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Ch%C3%A8_b%C3%A0_ba.jpg/960px-Ch%C3%A8_b%C3%A0_ba.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Chè bà ba.jpg"
+  },
+  {
+   "id": "che-ba-mau",
+   "name": "Chè ba màu",
+   "emoji": "🍧",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "ngot",
+   "art": "dessert",
+   "c1": "#e74c3c",
+   "c2": "#f1c40f",
+   "tags": [
+    "đá",
+    "đậu",
+    "mát"
+   ],
+   "descr": "Đậu đỏ, đậu xanh, thạch lá dứa, nước cốt dừa, đá.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Ch%C3%A8_%C4%91%E1%BB%97_xanh.jpg/960px-Ch%C3%A8_%C4%91%E1%BB%97_xanh.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Chè đỗ xanh.jpg"
+  },
+  {
+   "id": "cha-gio",
+   "name": "Chả giò / Nem rán",
+   "emoji": "🥢",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#d68910",
+   "c2": "#f7dc6f",
+   "tags": [
+    "giòn",
+    "nhân thịt",
+    "Tết"
+   ],
+   "descr": "Cuốn giòn rụm, nhân thịt mộc nhĩ miến, cuốn cải xà lách.",
+   "price": 2,
+   "minutes": 35,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Cha_gio.jpg/960px-Cha_gio.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Chả giò"
+  },
+  {
+   "id": "ca-ri-ga",
+   "name": "Cà ri gà",
+   "emoji": "🍛",
+   "region": "in",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#d4ac0d",
+   "c2": "#f5d76e",
+   "tags": [
+    "nghệ",
+    "cốt dừa",
+    "Ấn"
+   ],
+   "descr": "Cà ri gà cốt dừa, khoai tây, cà rốt, ăn với bánh mì.",
+   "price": 3,
+   "minutes": 40,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Indian_Curry_Chicken.jpg/960px-Indian_Curry_Chicken.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cà ri gà"
+  },
+  {
+   "id": "ca-kho-to",
+   "name": "Cá kho tộ",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#7b3f00",
+   "c2": "#d4a017",
+   "tags": [
+    "nồi đất",
+    "cá lóc",
+    "tiêu"
+   ],
+   "descr": "Cá lóc kho tộ nước dừa, tiêu, cay nhẹ, cơm trắng hết nồi.",
+   "price": 2,
+   "minutes": 60,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ph%C3%BA_Qu%E1%BB%91c_2022_%28c%C3%A1_kho_t%E1%BB%99%29_%281%29.jpg/960px-Ph%C3%BA_Qu%E1%BB%91c_2022_%28c%C3%A1_kho_t%E1%BB%99%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Phú Quốc 2022 (cá kho tộ) (1).jpg"
+  },
+  {
+   "id": "ca-vien-chien",
+   "name": "Cá viên chiên",
+   "emoji": "🐟",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#e8b04b",
+   "c2": "#f7dc6f",
+   "tags": [
+    "tuổi thơ",
+    "chiên",
+    "sốt"
+   ],
+   "descr": "Cá viên chiên giòn chấm tương ớt, món ăn vặt học trò.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Processed_seafood_clipped.jpg/960px-Processed_seafood_clipped.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Fish ball"
+  },
+  {
+   "id": "gyudon",
+   "name": "Cơm bò Gyudon",
+   "emoji": "🥩",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "kho",
+   "art": "plate-rice",
+   "c1": "#8e5a2b",
+   "c2": "#f0c060",
+   "tags": [
+    "bò",
+    "hành tây",
+    "nhanh"
+   ],
+   "descr": "Bò lát mỏng sốt ngọt mặn, hành tây, trứng lòng đào.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gyuu-don_003.jpg/960px-Gyuu-don_003.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Gyūdon"
+  },
+  {
+   "id": "com-chien",
+   "name": "Cơm chiên Dương Châu",
+   "emoji": "🥚",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "plate-rice",
+   "c1": "#d4ac0d",
+   "c2": "#fdebd0",
+   "tags": [
+    "trứng",
+    "lạp xưởng",
+    "tàu"
+   ],
+   "descr": "Cơm chiên trứng, lạp xưởng, đậu, tôm khô kiểu Hoa.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg/960px-Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cơm chiên Dương Châu"
+  },
+  {
+   "id": "com-curry-nhat",
+   "name": "Cơm cà ri Nhật",
+   "emoji": "🍛",
+   "region": "jp",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#b9770e",
+   "c2": "#f0c060",
+   "tags": [
+    "curry ngọt",
+    "katsu",
+    "đặc"
+   ],
+   "descr": "Cà ri Nhật sánh ngọt, thịt heo chiên xù, cơm nóng.",
+   "price": 3,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Beef_curry_rice_003.jpg/960px-Beef_curry_rice_003.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Japanese curry"
+  },
+  {
+   "id": "com-ga",
+   "name": "Cơm gà Hội An",
+   "emoji": "🐔",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "plate-rice",
+   "c1": "#d4ac0d",
+   "c2": "#f9e79f",
+   "tags": [
+    "nghệ",
+    "gà xé",
+    "Hội An"
+   ],
+   "descr": "Cơm nghệ vàng ươm, gà xé trộn rau răm, hành tăm.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/C%C6%A1m_g%C3%A0_s%C6%B0%E1%BB%9Dn_n%C6%B0%E1%BB%9Bng%2C_ng23th8n2022_%28%C4%90%C3%B9i_g%C3%A0_n%C6%B0%E1%BB%9Bng%29_%281%29.jpg/960px-C%C6%A1m_g%C3%A0_s%C6%B0%E1%BB%9Dn_n%C6%B0%E1%BB%9Bng%2C_ng23th8n2022_%28%C4%90%C3%B9i_g%C3%A0_n%C6%B0%E1%BB%9Bng%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Cơm gà sườn nướng, ng23th8n2022 (Đùi gà nướng) (1).jpg"
+  },
+  {
+   "id": "com-rang",
+   "name": "Cơm rang dưa bò",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "plate-rice",
+   "c1": "#a04000",
+   "c2": "#f0932b",
+   "tags": [
+    "bò",
+    "dưa chua"
+   ],
+   "descr": "Cơm rang tơi hạt, bò mềm, dưa chua, hành lá.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Fried_rice_with_potatoes.jpg/960px-Fried_rice_with_potatoes.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Fried rice with potatoes.jpg"
+  },
+  {
+   "id": "com-rang-hai-san",
+   "name": "Cơm rang hải sản",
+   "emoji": "🦑",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "plate-rice",
+   "c1": "#e67e22",
+   "c2": "#fad7a0",
+   "tags": [
+    "tôm mực",
+    "chảo gang"
+   ],
+   "descr": "Tôm, mực, trứng, cơm rang chảo gang nóng giòn đáy.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Fried_rice_with_chicken_and_egg.jpg/960px-Fried_rice_with_chicken_and_egg.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Fried rice with chicken and egg.jpg"
+  },
+  {
+   "id": "bokkeumbap",
+   "name": "Cơm trộn Hàn Quốc",
+   "emoji": "🍚",
+   "region": "kr",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "tron",
+   "art": "plate-rice",
+   "c1": "#c0392b",
+   "c2": "#f1c40f",
+   "tags": [
+    "gochujang",
+    "trộn",
+    "rau"
+   ],
+   "descr": "Cơm trộn sốt gochujang, rau, trứng ốp, dầu mè.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 1,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bibimbap"
+  },
+  {
+   "id": "ga-nuong-mat-ong",
+   "name": "Gà nướng mật ong",
+   "emoji": "🍯",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "trua"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#c0762b",
+   "c2": "#f5b041",
+   "tags": [
+    "nướng",
+    "mật ong",
+    "da giòn"
+   ],
+   "descr": "Gà ướp mật ong nướng than, da bóng giòn, thơm khói.",
+   "price": 3,
+   "minutes": 50,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Khu_%E1%BA%A9m_th%E1%BB%B1c_B%E1%BA%BFn_Ngh%C3%A9_ng10th9n2023_%28%C4%91%C3%B9i_g%C3%A0_n%C6%B0%E1%BB%9Bng_m%E1%BA%ADt_ong%29_%285%29.jpg/960px-Khu_%E1%BA%A9m_th%E1%BB%B1c_B%E1%BA%BFn_Ngh%C3%A9_ng10th9n2023_%28%C4%91%C3%B9i_g%C3%A0_n%C6%B0%E1%BB%9Bng_m%E1%BA%ADt_ong%29_%285%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Khu ẩm thực Bến Nghé ng10th9n2023 (đùi gà nướng mật ong) (5).jpg"
+  },
+  {
+   "id": "ga-sot-cay",
+   "name": "Gà sốt cay Hàn",
+   "emoji": "🌶️",
+   "region": "kr",
+   "meals": [
+    "vat",
+    "khuya",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#b03a2e",
+   "c2": "#f39c12",
+   "tags": [
+    "yangnyeom",
+    "cay",
+    "mè"
+   ],
+   "descr": "Yangnyeom dakgangjeong — ngọt cay bóng sốt, rắc mè.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Iksan_City_48_Korean_Style_Fried_chicken.jpg/960px-Iksan_City_48_Korean_Style_Fried_chicken.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Korean fried chicken"
+  },
+  {
+   "id": "ga-xien-nuong",
+   "name": "Gà xiên nướng",
+   "emoji": "🍢",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#c0762b",
+   "c2": "#f5b041",
+   "tags": [
+    "xiên",
+    "nướng",
+    "đường phố"
+   ],
+   "descr": "Gà xiên nướng mật ong, da bóng, rắc mè — vỉa hè huyền thoại.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Yakitori_by_MShades_in_Kujo%2C_Kyoto.jpg/960px-Yakitori_by_MShades_in_Kujo%2C_Kyoto.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Yakitori"
+  },
+  {
+   "id": "goi-cuon",
+   "name": "Gỏi cuốn",
+   "emoji": "🥗",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat",
+    "trua"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#e8f0d8",
+   "c2": "#f0a868",
+   "tags": [
+    "tôm thịt",
+    "tươi mát",
+    "healthy"
+   ],
+   "descr": "Tôm thịt cuốn bánh tráng, rau thơm, chấm tương đậu phộng.",
+   "price": 1,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Goi_cuon_Phuongnhu.JPG/960px-Goi_cuon_Phuongnhu.JPG",
+   "imageVia": "commons",
+   "imageSource": "File:Goi cuon Phuongnhu.JPG"
+  },
+  {
+   "id": "ha-cao",
+   "name": "Há cảo / Sủi cảo",
+   "emoji": "🥟",
+   "region": "cn",
+   "meals": [
+    "sang",
+    "xe",
+    "vat"
+   ],
+   "style": "hap",
+   "art": "dumpling",
+   "c1": "#f0e6d2",
+   "c2": "#c9a227",
+   "tags": [
+    "dimsum",
+    "hấp",
+    "tráng miệng"
+   ],
+   "descr": "Há cảo tôm trong veo, sủi cảo chiên giòn — món dimsum kinh điển.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Shrimp_dumplings.jpg/960px-Shrimp_dumplings.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Há cảo"
+  },
+  {
+   "id": "hai-san-nuong",
+   "name": "Hải sản nướng than",
+   "emoji": "🦐",
+   "region": "vn",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "tôm mực",
+    "nướng than",
+    "bia"
+   ],
+   "descr": "Tôm mực nghêu nướng than, mỡ hành, muối tiêu chanh.",
+   "price": 4,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Mid_City_Yacht_Club_Crawfish.jpg/960px-Mid_City_Yacht_Club_Crawfish.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Seafood boil"
+  },
+  {
+   "id": "hu-tieu-nam-vang",
+   "name": "Hủ tiếu Nam Vang",
+   "emoji": "🦐",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e8b04b",
+   "c2": "#f9e79f",
+   "tags": [
+    "tôm",
+    "khô mực",
+    "Nam Vang"
+   ],
+   "descr": "Nước dùng xương tủy ngọt lịm, tôm, thịt băm, tim gan.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/H%E1%BB%A7_ti%E1%BA%BFu_nam_vang_gi%C3%B2_4.jpg/960px-H%E1%BB%A7_ti%E1%BA%BFu_nam_vang_gi%C3%B2_4.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Hủ tiếu Nam Vang"
+  },
+  {
+   "id": "hu-tieu-kho",
+   "name": "Hủ tiếu khô",
+   "emoji": "🥡",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "kho",
+   "art": "noodle-dry",
+   "c1": "#b9770e",
+   "c2": "#f8c471",
+   "tags": [
+    "khô",
+    "nước lèo riêng"
+   ],
+   "descr": "Sợi dai trộn nước tương, ăn kèm chén nước dùng nóng.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/H%E1%BB%A7_ti%E1%BA%BFu_h%E1%BA%A3i_s%E1%BA%A3n_kh%C3%B4_h%C3%A0_ti%C3%AAn.jpg/960px-H%E1%BB%A7_ti%E1%BA%BFu_h%E1%BA%A3i_s%E1%BA%A3n_kh%C3%B4_h%C3%A0_ti%C3%AAn.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Hủ tiếu hải sản khô hà tiên.jpg"
+  },
+  {
+   "id": "kho-muc-nuong",
+   "name": "Khô mực nướng",
+   "emoji": "🦑",
+   "region": "vn",
+   "meals": [
+    "khuya",
+    "vat",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#c0392b",
+   "c2": "#f0a868",
+   "tags": [
+    "nhậu",
+    "nướng",
+    "đêm"
+   ],
+   "descr": "Khô mực nướng than, xé sợi, chấm tương ớt — mồi nhậu số 1.",
+   "price": 2,
+   "minutes": 10,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E5%B4%97_Longgang_%E9%BE%8D%E5%B4%97%E5%A4%A7%E9%81%93_Longgang_Avenue_%E6%B2%83%E7%88%BE%E7%91%AA%E8%B6%85%E5%B8%82_Walmart_Supermarket_Dried_shredded_squid_October_2023_R12S.jpg/960px-SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E5%B4%97_Longgang_%E9%BE%8D%E5%B4%97%E5%A4%A7%E9%81%93_Longgang_Avenue_%E6%B2%83%E7%88%BE%E7%91%AA%E8%B6%85%E5%B8%82_Walmart_Supermarket_Dried_shredded_squid_October_2023_R12S.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Dried shredded squid"
+  },
+  {
+   "id": "kimbap",
+   "name": "Kimbap",
+   "emoji": "🍙",
+   "region": "kr",
+   "meals": [
+    "sang",
+    "xe",
+    "vat"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#2e7d32",
+   "c2": "#f1c40f",
+   "tags": [
+    "rong biển",
+    "cuộn",
+    "gọn"
+   ],
+   "descr": "Cơm cuộn rong biển, trứng, cà rốt, củ cải, thịt.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Vegetable_gimbap.jpg/960px-Vegetable_gimbap.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Kimbap"
+  },
+  {
+   "id": "lau-thai",
+   "name": "Lẩu Thái",
+   "emoji": "🍲",
+   "region": "th",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "chua cay",
+    "hải sản",
+    "nhóm"
+   ],
+   "descr": "Lẩu chua cay hải sản, nấm, rau, bún — ăn nhóm cực vui.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Hotpot.jpg/960px-Hotpot.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Lẩu Thái"
+  },
+  {
+   "id": "mien-ga",
+   "name": "Miến gà",
+   "emoji": "🐓",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#f0b27a",
+   "c2": "#fde3a7",
+   "tags": [
+    "thanh mát",
+    "gà xé"
+   ],
+   "descr": "Miến dong dai, gà xé, hành phi, nước dùng trong.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/V%C3%B9ng_C%C3%B9a_%E1%BB%9F_Cam_L%E1%BB%99_th5n2023-Ph%C6%B0%C6%A1ng_Gia_Trang_%28t%C3%B4_mi%E1%BA%BFn_g%C3%A0%29_%281%29.jpg/960px-V%C3%B9ng_C%C3%B9a_%E1%BB%9F_Cam_L%E1%BB%99_th5n2023-Ph%C6%B0%C6%A1ng_Gia_Trang_%28t%C3%B4_mi%E1%BA%BFn_g%C3%A0%29_%281%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Vùng Cùa ở Cam Lộ th5n2023-Phương Gia Trang (tô miến gà) (1).jpg"
+  },
+  {
+   "id": "mi-quang",
+   "name": "Mì Quảng",
+   "emoji": "🍲",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#c0791f",
+   "c2": "#f0c060",
+   "tags": [
+    "Đà Nẵng",
+    "nghệ",
+    "đậu phộng"
+   ],
+   "descr": "Sợi mì vàng nghệ, ít nước, tôm thịt trứng, bánh tráng nướng.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Mi_Quang_1A_Danang.jpg/960px-Mi_Quang_1A_Danang.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Mì Quảng"
+  },
+  {
+   "id": "mi-cay",
+   "name": "Mì cay 7 cấp độ",
+   "emoji": "🌶️",
+   "region": "kr",
+   "meals": [
+    "khuya",
+    "toi",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#b03a2e",
+   "c2": "#f39c12",
+   "tags": [
+    "thử thách",
+    "cay",
+    "Hàn"
+   ],
+   "descr": "Mì cay Hàn 7 cấp, hải sản, nấm, phô mai giảm cay.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Shoyu_Ramen.jpg/960px-Shoyu_Ramen.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Ramen"
+  },
+  {
+   "id": "mi-ga",
+   "name": "Mì gà trứng",
+   "emoji": "🍜",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e8b04b",
+   "c2": "#f7dc6f",
+   "tags": [
+    "mì gói",
+    "trứng",
+    "nhanh"
+   ],
+   "descr": "Mì gói nâng cấp: trứng, gà xé, hành lá, ớt sa tế.",
+   "price": 1,
+   "minutes": 10,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Demae_Itcho_%28instant_cup_noodle%29.jpg/960px-Demae_Itcho_%28instant_cup_noodle%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Demae Itcho (instant cup noodle).jpg"
+  },
+  {
+   "id": "mi-xao-bo",
+   "name": "Mì xào bò",
+   "emoji": "🥩",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fried-noodle",
+   "c1": "#8e3b1f",
+   "c2": "#f0c060",
+   "tags": [
+    "bò",
+    "mì",
+    "cải"
+   ],
+   "descr": "Mì xào bò lửa lớn, cải ngọt, nước tương đậm.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chicken_Chow_mein_1.jpg/960px-Chicken_Chow_mein_1.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Chicken Chow mein 1.jpg"
+  },
+  {
+   "id": "xao-hai-san",
+   "name": "Mì xào hải sản",
+   "emoji": "🍜",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fried-noodle",
+   "c1": "#d35400",
+   "c2": "#f7c873",
+   "tags": [
+    "mì giòn",
+    "hải sản",
+    "tàu"
+   ],
+   "descr": "Mì trứng chiên giòn rưới sốt hải sản, cải thìa.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Chow_Mein_1.jpg/960px-Chow_Mein_1.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Chow Mein 1.jpg"
+  },
+  {
+   "id": "nem-nuong",
+   "name": "Nem nướng Ninh Hòa",
+   "emoji": "🍢",
+   "region": "vn",
+   "meals": [
+    "xe",
+    "vat",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "skewer",
+   "c1": "#c0762b",
+   "c2": "#f5b041",
+   "tags": [
+    "Ninh Hòa",
+    "cuốn bánh tráng"
+   ],
+   "descr": "Nem nướng sả cuốn bánh tráng, rau rừng, mắm nêm.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg/960px-Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Nem nướng"
+  },
+  {
+   "id": "pad-thai",
+   "name": "Pad Thái",
+   "emoji": "🍤",
+   "region": "th",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "noodle-dry",
+   "c1": "#e67e22",
+   "c2": "#f9e79f",
+   "tags": [
+    "me chua",
+    "đậu phộng",
+    "Thái"
+   ],
+   "descr": "Sợi gạo xào me, tôm, trứng, giá, đậu phộng, chanh.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg/960px-Phat_Thai_kung_Chang_Khien_street_stall.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Pad Thái"
+  },
+  {
+   "id": "pho-mai-que",
+   "name": "Phô mai que",
+   "emoji": "🧀",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#e6b422",
+   "c2": "#f7e0a0",
+   "tags": [
+    "kéo sợi",
+    "giòn",
+    "hot"
+   ],
+   "descr": "Phô mai que vỏ giòn, kéo sợi dài, chấm tương ớt.",
+   "price": 2,
+   "minutes": 12,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Mozzarella_394.jpg/960px-Mozzarella_394.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Phô mai que"
+  },
+  {
+   "id": "pho-xao",
+   "name": "Phở xào bò",
+   "emoji": "🔥",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fried-noodle",
+   "c1": "#a04000",
+   "c2": "#f5b041",
+   "tags": [
+    "sợi phở",
+    "bò",
+    "xào"
+   ],
+   "descr": "Sợi phở xào mềm thấm sốt, bò mềm, cải thìa, hành.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/C%C6%A1m_B%C3%B2_X%C3%A0o_C%E1%BA%A7n_T%E1%BB%8Fi_%28Pho_Hanoi%29%2C_Amsterdam_%282021%29.jpg/960px-C%C6%A1m_B%C3%B2_X%C3%A0o_C%E1%BA%A7n_T%E1%BB%8Fi_%28Pho_Hanoi%29%2C_Amsterdam_%282021%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Cơm Bò Xào Cần Tỏi (Pho Hanoi), Amsterdam (2021).jpg"
+  },
+  {
+   "id": "pizza",
+   "name": "Pizza",
+   "emoji": "🍕",
+   "region": "it",
+   "meals": [
+    "toi",
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "pizza",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "phô mai",
+    "Ý",
+    "lò nướng"
+   ],
+   "descr": "Đế mỏng giòn, sốt cà, mozzarella kéo sợi, topping thập cẩm.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Pizza_Vi%E1%BB%87t_Nam_%C4%91%E1%BA%BF_d%C3%A0y%2C_x%C3%BAc_x%C3%ADch_%28SNaT_2018%29_%287%29.jpg/960px-Pizza_Vi%E1%BB%87t_Nam_%C4%91%E1%BA%BF_d%C3%A0y%2C_x%C3%BAc_x%C3%ADch_%28SNaT_2018%29_%287%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Pizza"
+  },
+  {
+   "id": "mi-ramen",
+   "name": "Ramen Nhật",
+   "emoji": "🍜",
+   "region": "jp",
+   "meals": [
+    "toi",
+    "khuya",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#c0392b",
+   "c2": "#f0c060",
+   "tags": [
+    "tonkotsu",
+    "trứng lòng đào",
+    "nóng"
+   ],
+   "descr": "Nước dùng xương heo ninh 12h, trứng lòng đào, chashu.",
+   "price": 3,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Ramen_Bowl_2.jpg/960px-Ramen_Bowl_2.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Ramen Bowl 2.jpg"
+  },
+  {
+   "id": "spaghetti",
+   "name": "Spaghetti bò bằm",
+   "emoji": "🍝",
+   "region": "it",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "fried-noodle",
+   "c1": "#c0392b",
+   "c2": "#f1948a",
+   "tags": [
+    "Ý",
+    "sốt cà",
+    "mì Ý"
+   ],
+   "descr": "Mì Ý sốt bolognese bò bằm, phô mai parmesan, húng quế.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Spaghettoni.jpg/960px-Spaghettoni.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Spaghetti"
+  },
+  {
+   "id": "sushi",
+   "name": "Sushi",
+   "emoji": "🍣",
+   "region": "jp",
+   "meals": [
+    "toi",
+    "trua",
+    "vat"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#e74c3c",
+   "c2": "#2ecc71",
+   "tags": [
+    "sashimi",
+    "wasabi",
+    "sang"
+   ],
+   "descr": "Cơm giấm cuộn cá hồi, wasabi, gừng, nước tương.",
+   "price": 4,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg/960px-Various_sushi%2C_beautiful_October_night_at_midnight.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Various sushi, beautiful October night at midnight.jpg"
+  },
+  {
+   "id": "suon-xao-chua-ngot",
+   "name": "Sườn xào chua ngọt",
+   "emoji": "🍖",
+   "region": "cn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#c0392b",
+   "c2": "#f5b041",
+   "tags": [
+    "chua ngọt",
+    "trẻ em",
+    "tàu"
+   ],
+   "descr": "Sườn chiên sơ, sốt chua ngọt bóng bẩy, rắc mè.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sweet_and_sour_pork.jpg/960px-Sweet_and_sour_pork.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Sweet and sour pork"
+  },
+  {
+   "id": "taco",
+   "name": "Taco bò",
+   "emoji": "🌮",
+   "region": "mx",
+   "meals": [
+    "vat",
+    "khuya",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "taco",
+   "c1": "#e67e22",
+   "c2": "#f1c40f",
+   "tags": [
+    "Mexico",
+    "cay",
+    "bánh ngô"
+   ],
+   "descr": "Vỏ bánh ngô giòn, bò nướng, salsa, phô mai, chanh xanh.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg/960px-001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Taco"
+  },
+  {
+   "id": "takoyaki",
+   "name": "Takoyaki",
+   "emoji": "🐙",
+   "region": "jp",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "nuong",
+   "art": "dumpling",
+   "c1": "#c0762b",
+   "c2": "#f5d76e",
+   "tags": [
+    "bạch tuộc",
+    "viên",
+    "đường phố"
+   ],
+   "descr": "Bánh bạch tuộc nướng khuôn, sốt, mayo, cá bào.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Takoyaki_by_yomi955.jpg/960px-Takoyaki_by_yomi955.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Takoyaki"
+  },
+  {
+   "id": "thit-kho-trung",
+   "name": "Thịt kho trứng",
+   "emoji": "🥚",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#8e4a1f",
+   "c2": "#e0a060",
+   "tags": [
+    "Tết",
+    "cơm nhà",
+    "nước dừa"
+   ],
+   "descr": "Thịt ba chỉ kho nước dừa, trứng vịt, mặn ngọt đậm đà.",
+   "price": 2,
+   "minutes": 90,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Thit-kho-tieu-1.jpg/960px-Thit-kho-tieu-1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Thịt lợn kho"
+  },
+  {
+   "id": "tokbokki",
+   "name": "Tokbokki",
+   "emoji": "🌶️",
+   "region": "kr",
+   "meals": [
+    "vat",
+    "khuya",
+    "xe"
+   ],
+   "style": "kho",
+   "art": "curry",
+   "c1": "#b03a2e",
+   "c2": "#f39c12",
+   "tags": [
+    "bánh gạo",
+    "cay",
+    "đường phố"
+   ],
+   "descr": "Bánh gạo dai sốt ớt ngọt cay, chả cá, trứng luộc.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/960px-Tteokbokki.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Tteokbokki"
+  },
+  {
+   "id": "tom-yum",
+   "name": "Tom Yum",
+   "emoji": "🌶️",
+   "region": "th",
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "chua cay",
+    "sả",
+    "lá chanh"
+   ],
+   "descr": "Tôm sả lá chanh, chua cay nồng, thơm cực mạnh.",
+   "price": 3,
+   "minutes": 30,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 75,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Tom_yam_kung_maenam.jpg/960px-Tom_yam_kung_maenam.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Tom yum"
+  },
+  {
+   "id": "tra-sua",
+   "name": "Trà sữa trân châu",
+   "emoji": "🧋",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#c8a480",
+   "c2": "#f0dcc0",
+   "tags": [
+    "trân châu",
+    "tuổi trẻ",
+    "ngọt"
+   ],
+   "descr": "Trà sữa béo, trân châu dai, ít đá 50% đường — chuẩn bài.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/%D7%9E%D7%A9%D7%A7%D7%94_%D7%A2%D7%9D_%D7%9B%D7%93%D7%95%D7%A8%D7%99_%D7%98%D7%A4%D7%99%D7%95%D7%A7%D7%94_%28cropped%29.jpg/960px-%D7%9E%D7%A9%D7%A7%D7%94_%D7%A2%D7%9D_%D7%9B%D7%93%D7%95%D7%A8%D7%99_%D7%98%D7%A4%D7%99%D7%95%D7%A7%D7%94_%28cropped%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Trà sữa trân châu"
+  },
+  {
+   "id": "tra-dao",
+   "name": "Trà đào cam sả",
+   "emoji": "🍑",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "xe"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#e8845a",
+   "c2": "#f5cba7",
+   "tags": [
+    "mát",
+    "thơm",
+    "hot"
+   ],
+   "descr": "Trà đào cam sả thơm mát, miếng đào giòn, đá đầy ly.",
+   "price": 2,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Iced_Tea_from_flickr.jpg/960px-Iced_Tea_from_flickr.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Iced tea"
+  },
+  {
+   "id": "op-la",
+   "name": "Trứng ốp la",
+   "emoji": "🍳",
+   "region": "vn",
+   "meals": [
+    "sang"
+   ],
+   "style": "chien",
+   "art": "egg-pan",
+   "c1": "#f39c12",
+   "c2": "#fdebd0",
+   "tags": [
+    "nhanh",
+    "ổ bánh mì"
+   ],
+   "descr": "Trứng ốp la lòng đào, tiêu, xì dầu, bánh mì nóng.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 70,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N%E1%BA%A5u_tr%E1%BB%A9ng_%E1%BB%91p_la_2_tr%E1%BB%A9ng%2C_ng2th9n2019_%28t%E1%BB%AB_Long_%C4%90%E1%BA%A5t_v%E1%BB%81%29_%283%29.jpg/960px-N%E1%BA%A5u_tr%E1%BB%A9ng_%E1%BB%91p_la_2_tr%E1%BB%A9ng%2C_ng2th9n2019_%28t%E1%BB%AB_Long_%C4%90%E1%BA%A5t_v%E1%BB%81%29_%283%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Trứng ốp la"
+  },
+  {
+   "id": "xoi-man",
+   "name": "Xôi mặn",
+   "emoji": "🥓",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#b9770e",
+   "c2": "#f0c060",
+   "tags": [
+    "chả",
+    "lạp xưởng",
+    "trứng"
+   ],
+   "descr": "Xôi mặn chả, lạp xưởng, trứng cút, chà bông, mỡ hành.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 85,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/X%C3%B4i_kh%C3%BAc_2.jpg/960px-X%C3%B4i_kh%C3%BAc_2.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Xôi khúc 2.jpg"
+  },
+  {
+   "id": "xoi-xeo",
+   "name": "Xôi xéo",
+   "emoji": "🍙",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe"
+   ],
+   "style": "hap",
+   "art": "plate-rice",
+   "c1": "#c9a227",
+   "c2": "#f6e27a",
+   "tags": [
+    "đậu xanh",
+    "hành phi",
+    "sáng"
+   ],
+   "descr": "Xôi nếp vàng, đậu xanh nắm, hành phi thơm, mỡ nước.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 80,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/X%C3%B4i_x%C3%A9o.jpg/960px-X%C3%B4i_x%C3%A9o.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Xôi xéo.jpg"
+  },
+  {
+   "id": "banh-mi-thit",
+   "name": "Bánh mì thịt",
+   "emoji": "🥖",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe",
+    "khuya"
+   ],
+   "style": "kho",
+   "art": "banhmi",
+   "c1": "#c98a2b",
+   "c2": "#f4d58d",
+   "tags": [
+    "giòn",
+    "pate",
+    "đồ chua"
+   ],
+   "descr": "Vỏ giòn tan, pate, thịt nguội, đồ chua, ngò, tương ớt.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 100,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Banh_mi_PaMi_1.jpg/960px-Banh_mi_PaMi_1.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Banh mi PaMi 1.jpg"
+  },
+  {
+   "id": "banh-trang-tron",
+   "name": "Bánh tráng trộn",
+   "emoji": "🥡",
+   "region": "vn",
+   "meals": [
+    "vat",
+    "khuya",
+    "xe"
+   ],
+   "style": "tron",
+   "art": "salad",
+   "c1": "#e67e22",
+   "c2": "#f9e79f",
+   "tags": [
+    "tuổi thơ",
+    "cay",
+    "khô bò"
+   ],
+   "descr": "Bánh tráng cắt sợi, khô bò, trứng cút, xoài, tương me.",
+   "price": 1,
+   "minutes": 5,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 95,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Vietnamese_%22banh_trang_tron%22.JPG/960px-Vietnamese_%22banh_trang_tron%22.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh tráng trộn"
+  },
+  {
+   "id": "banh-xeo",
+   "name": "Bánh xèo",
+   "emoji": "🌮",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "flatcake",
+   "c1": "#e6b422",
+   "c2": "#f9e79f",
+   "tags": [
+    "nghệ",
+    "giòn",
+    "nhân tôm"
+   ],
+   "descr": "Bánh xèo nghệ rìa giòn, nhân tôm thịt giá, cuốn cải xanh.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 90,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/B%C3%A1nh_x%C3%A8o_2.jpg/960px-B%C3%A1nh_x%C3%A8o_2.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Bánh xèo 2.jpg"
+  },
+  {
+   "id": "bun-bo-hue",
+   "name": "Bún bò Huế",
+   "emoji": "🌶️",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#b03a2e",
+   "c2": "#e67e22",
+   "tags": [
+    "cay",
+    "mắm ruốc",
+    "cố đô"
+   ],
+   "descr": "Sả, mắm ruốc, ớt — cái cay đặc trưng của đất Cố đô.",
+   "price": 3,
+   "minutes": 60,
+   "spicy": 3,
+   "veg": 0,
+   "weight": 90,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Bun-Bo-Hue-from-Huong-Giang-2011.jpg/960px-Bun-Bo-Hue-from-Huong-Giang-2011.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún bò Huế"
+  },
+  {
+   "id": "bun-cha",
+   "name": "Bún chả Hà Nội",
+   "emoji": "🔥",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "bowl-noodle",
+   "c1": "#a04000",
+   "c2": "#f0932b",
+   "tags": [
+    "nướng than",
+    "Hà Nội",
+    "Obama"
+   ],
+   "descr": "Chả viên nướng than hoa, nước mắm chua ngọt, bún rối.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 95,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg/960px-B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún chả"
+  },
+  {
+   "id": "bun-thit-nuong",
+   "name": "Bún thịt nướng",
+   "emoji": "🥩",
+   "region": "vn",
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "bowl-noodle",
+   "c1": "#b9770e",
+   "c2": "#f5b041",
+   "tags": [
+    "nem nướng",
+    "đồ chua"
+   ],
+   "descr": "Thịt nướng sả, nem, đồ chua, đậu phộng rang, mắm pha.",
+   "price": 2,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 95,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Bun_thit_nuong.jpg/960px-Bun_thit_nuong.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún thịt nướng"
+  },
+  {
+   "id": "ca-phe-sua-da",
+   "name": "Cà phê sữa đá",
+   "emoji": "☕",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "xe",
+    "vat"
+   ],
+   "style": "uong",
+   "art": "drink",
+   "c1": "#6e4b2a",
+   "c2": "#d4a017",
+   "tags": [
+    "phin",
+    "robusta",
+    "tỉnh táo"
+   ],
+   "descr": "Cà phê phin đặc quánh, sữa đặc, đá — năng lượng Việt.",
+   "price": 1,
+   "minutes": 8,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 90,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Viet-coffee.jpg/960px-Viet-coffee.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cà phê sữa đá"
+  },
+  {
+   "id": "com-tam-suon",
+   "name": "Cơm tấm sườn bì chả",
+   "emoji": "🍖",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "plate-rice",
+   "c1": "#8e44ad",
+   "c2": "#f1c40f",
+   "tags": [
+    "sài gòn",
+    "sườn nướng",
+    "mỡ hành"
+   ],
+   "descr": "Sườn nướng mật ong, bì, chả, trứng, mỡ hành, nước mắm chua ngọt.",
+   "price": 3,
+   "minutes": 35,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 95,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg/960px-C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cơm tấm"
+  },
+  {
+   "id": "ga-ran",
+   "name": "Gà rán giòn",
+   "emoji": "🍗",
+   "region": "kr",
+   "meals": [
+    "vat",
+    "khuya",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#d35400",
+   "c2": "#f7c873",
+   "tags": [
+    "KFC",
+    "giòn",
+    "sốt"
+   ],
+   "descr": "Gà rán vỏ giòn xù, sốt cay Hàn, ăn kèm củ cải muối.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 95,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fried-Chicken-Set.jpg/960px-Fried-Chicken-Set.jpg",
+   "imageVia": "en-wiki",
+   "imageSource": "Fried chicken"
+  },
+  {
+   "id": "khoai-tay-chien",
+   "name": "Khoai tây chiên",
+   "emoji": "🍟",
+   "region": "us",
+   "meals": [
+    "vat",
+    "khuya"
+   ],
+   "style": "chien",
+   "art": "fries",
+   "c1": "#e6b422",
+   "c2": "#fdebd0",
+   "tags": [
+    "giòn",
+    "sốt",
+    "fastfood"
+   ],
+   "descr": "Khoai chiên ngoài giòn trong bùi, sốt mayo tỏi.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 90,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/%E3%83%9E%E3%83%83%E3%82%AF%E3%83%95%E3%83%A9%E3%82%A4%E3%83%9D%E3%83%86%E3%83%88_%E3%83%9E%E3%82%AF%E3%83%89%E3%83%8A%E3%83%AB%E3%83%89%E6%B8%8B%E8%B0%B7MIYASHITA_PARK%E5%BA%97_2024%E5%B9%B411%E6%9C%8812%E6%97%A5%E3%81%AE%E6%B8%8B%E8%B0%B7_202411121301_IMG_9087.jpg/960px-%E3%83%9E%E3%83%83%E3%82%AF%E3%83%95%E3%83%A9%E3%82%A4%E3%83%9D%E3%83%86%E3%83%88_%E3%83%9E%E3%82%AF%E3%83%89%E3%83%8A%E3%83%AB%E3%83%89%E6%B8%8B%E8%B0%B7MIYASHITA_PARK%E5%BA%97_2024%E5%B9%B411%E6%9C%8812%E6%97%A5%E3%81%AE%E6%B8%8B%E8%B0%B7_202411121301_IMG_9087.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Khoai tây chiên"
+  },
+  {
+   "id": "pho-bo",
+   "name": "Phở bò",
+   "emoji": "🍜",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "toi",
+    "khuya"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#c0392b",
+   "c2": "#f39c12",
+   "tags": [
+    "quốc hồn",
+    "nước dùng",
+    "bò"
+   ],
+   "descr": "Linh hồn Việt Nam trong bát nước dùng ninh 12 tiếng.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 100,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ph%E1%BB%9F_b%C3%B2_in_a_German_restaurant_03.jpg/960px-Ph%E1%BB%9F_b%C3%B2_in_a_German_restaurant_03.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Phở bò in a German restaurant 03.jpg"
+  },
+  {
+   "id": "pho-ga",
+   "name": "Phở gà",
+   "emoji": "🍗",
+   "region": "vn",
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e8b04b",
+   "c2": "#f7d794",
+   "tags": [
+    "gà",
+    "thanh ngọt"
+   ],
+   "descr": "Gà ta thả vườn, nước dùng trong veo, thơm mùi hành nướng.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 100,
+   "tier": 1,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Pho_ga_%28noodle_soup_with_chicken%29%2C_Hanoi_%286945821707%29.jpg/960px-Pho_ga_%28noodle_soup_with_chicken%29%2C_Hanoi_%286945821707%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "File:Pho ga (noodle soup with chicken), Hanoi (6945821707).jpg"
+  }
+ ]
+}

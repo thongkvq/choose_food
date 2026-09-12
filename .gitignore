@@ -1,0 +1,7 @@
+node_modules
+.vercel
+certs/
+tools/.translate-cache.json
+tools/screenshots/
+.dsh-project-memory/
+*.log

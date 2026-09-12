@@ -1,0 +1,83 @@
+{
+ "stats": {
+  "vi-wiki": 5,
+  "en-wiki": 1,
+  "none": 2
+ },
+ "results": [
+  {
+   "id": "baklava",
+   "name": "Baklava",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Baklava_-_Turkish_special%2C_80-ply.JPEG/960px-Baklava_-_Turkish_special%2C_80-ply.JPEG?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Baklava",
+   "score": 1,
+   "query": "Baklava"
+  },
+  {
+   "id": "butter-chicken",
+   "name": "Butter Chicken",
+   "style": "kho",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/960px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "en-wiki",
+   "source": "Butter chicken",
+   "score": 1,
+   "query": "Butter Chicken"
+  },
+  {
+   "id": "banh-bia",
+   "name": "Bánh bía",
+   "style": "nuong",
+   "image": null,
+   "via": "none"
+  },
+  {
+   "id": "banh-canh-ghe",
+   "name": "Bánh canh ghẹ",
+   "style": "nuoc",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+   "via": "vi-wiki",
+   "source": "Bánh canh",
+   "score": 0.67,
+   "query": "Bánh canh ghẹ"
+  },
+  {
+   "id": "banh-cuon-chay",
+   "name": "Bánh cuốn chay",
+   "style": "hap",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Banh_cuon.jpg/960px-Banh_cuon.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh cuốn",
+   "score": 0.67,
+   "query": "Bánh cuốn chay"
+  },
+  {
+   "id": "banh-mi-xui",
+   "name": "Bánh mì chấm sữa",
+   "style": "ngot",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-mi-chay-nam",
+   "name": "Bánh mì nấm chay",
+   "style": "chien",
+   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg/960px-13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg?utm_source=vi.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "via": "vi-wiki",
+   "source": "Bánh mì",
+   "score": 1,
+   "query": "Bánh mì"
+  },
+  {
+   "id": "banh-plan",
+   "name": "Bánh plan",
+   "style": "ngot",
+   "image": null,
+   "via": "none"
+  }
+ ]
+}

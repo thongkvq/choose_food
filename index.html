@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0812">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Món Gì Đây?">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>Món Gì Đây? — Quay gacha chọn món</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍱</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0812'/><text y='.82em' x='50' font-size='70' text-anchor='middle'>🍱</text></svg>">
+<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+<link rel="dns-prefetch" href="https://upload.wikimedia.org">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="ambient-glow" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i></div>
+
+<header class="app-header">
+  <div class="brand">
+    <div class="logo">🍱</div>
+    <div class="titles">
+      <h1>MÓN GÌ ĐÂY?</h1>
+      <span class="sub" id="poolStatusText">Đang tải…</span>
+    </div>
+  </div>
+  <div class="head-actions">
+    <button class="icon-btn" id="btnFav" aria-label="Món đã lưu">♥<b class="badge" id="favCount">0</b></button>
+    <button class="icon-btn" id="btnSound" aria-label="Bật tắt âm thanh"><span id="soundIcon">🔊</span></button>
+    <button class="icon-btn" id="btnTheme" aria-label="Đổi sáng tối"><span id="themeIcon">🌙</span></button>
+  </div>
+</header>
+
+<main class="app-main">
+  <!-- ===== BĂNG CHUYỀN ===== -->
+  <section class="reel-card">
+    <div class="reel-top">
+      <span class="pity" id="pityDisplay">Bảo hiểm SSR <b id="pityVal">0/10</b></span>
+      <span class="progress-mini"><i id="colFill"></i></span>
+      <span class="col-text" id="colVal">0/248</span>
+    </div>
+
+    <div class="machine" id="rouletteMachine">
+      <div class="machine-rail top"></div>
+      <div class="viewport" id="rouletteViewport">
+        <div class="pointer up"></div>
+        <div class="pointer down"></div>
+        <div class="laser"></div>
+        <div class="fade l"></div>
+        <div class="fade r"></div>
+        <div class="track" id="rouletteTrack"></div>
+      </div>
+      <div class="machine-rail bottom"></div>
+    </div>
+
+    <div class="action-row">
+      <button class="act filter" id="btnOpenSheet" type="button">
+        <span class="act-ico">⚙️</span><span class="act-lbl">Lọc</span><b class="dot" id="filterCount" hidden>0</b>
+      </button>
+      <button class="act spin" id="btnSpinSingle" type="button">
+        <span class="spark"></span>
+        <span class="act-ico">🎰</span>
+        <span class="act-txt"><b>QUAY 1 MÓN</b><i>chạm để quay</i></span>
+      </button>
+      <button class="act multi" id="btnSpinMulti" type="button">
+        <span class="act-ico">⚡</span><span class="act-lbl">x10</span>
+      </button>
+    </div>
+
+    <div class="ctx-row">
+      <button class="ctx-chip" id="ctxChip" type="button" hidden></button>
+      <button class="today-btn" id="btnToday" type="button"><span>📅</span><b>Hôm nay</b><i class="badge" id="diaryBadge" hidden>0</i></button>
+    </div>
+
+    <div class="presets" id="presets" aria-label="Gợi ý nhanh">
+      <button class="preset" data-preset="lunch">☀️ Trưa văn phòng</button>
+      <button class="preset" data-preset="dinner">🌙 Tối gia đình</button>
+      <button class="preset" data-preset="late">🌌 Cú đêm</button>
+      <button class="preset" data-preset="snack">🍿 Ăn vặt</button>
+      <button class="preset" data-preset="veg">🌱 Ăn chay</button>
+      <button class="preset" data-preset="soup">🍜 Món nước</button>
+      <button class="preset" data-preset="quick">⚡ Dưới 20 phút</button>
+      <button class="preset" data-preset="cheap">💰 Bình dân</button>
+      <button class="preset" data-preset="top">⭐ Điểm cao (≥8.5)</button>
+    </div>
+  </section>
+
+  <!-- ===== KHỐI ĐIỀN KHOẢNG TRỐNG (chỉ mobile) ===== -->
+  <section class="block mobile-only">
+    <h3><span>📜</span> Vừa quay <button class="mini-btn" id="clearHist">Xoá</button></h3>
+    <div class="strip" id="historyFeed"></div>
+  </section>
+
+  <section class="block mobile-only">
+    <h3><span>♥</span> Đã lưu <button class="mini-btn" id="openFavsBtn">Xem tất cả</button></h3>
+    <div class="strip" id="favStrip"></div>
+  </section>
+
+  <section class="block mobile-only">
+    <h3><span>🎲</span> Tỉ lệ phẩm chất</h3>
+    <div class="odds compact">
+      <div class="odd t4"><span>Huyền Thoại · UR</span><b>7%</b></div>
+      <div class="odd t3"><span>Đặc Sắc · SSR</span><b>18%</b></div>
+      <div class="odd t2"><span>Ngon · SR</span><b>30%</b></div>
+      <div class="odd t1"><span>Phổ Thông · R</span><b>45%</b></div>
+    </div>
+    <p class="note">Quay 10 lần không ra SSR trở lên thì lần thứ 10 chắc chắn ra món Đặc Sắc / Huyền Thoại.</p>
+  </section>
+
+  <section class="block mobile-only">
+    <h3><span>💡</span> Mẹo dùng nhanh</h3>
+    <ul class="tips">
+      <li>Bấm nút <b>🎰 QUAY 1 MÓN</b> (hoặc <b>⚡ x10</b>) — nằm ngay dưới băng chuyền.</li>
+      <li>Quay xong, <b>popup thông tin món trúng</b> tự hiện: điểm, calo, giá, xuất xứ, mẹo ăn.</li>
+      <li>Nút <b>⚙️ Lọc</b> ở dưới: bữa ăn, ẩm thực, chay, ngân sách, thời gian.</li>
+      <li><b>Quay 10</b> để mở 10 thẻ một lượt rồi chốt đại.</li>
+      <li>Bấm <b>♥</b> trên thẻ kết quả để lưu món ngon vào danh sách.</li>
+    </ul>
+  </section>
+
+  <footer class="block footer-block mobile-only">
+    <h3><span>📷</span> Nguồn ảnh &amp; dữ liệu</h3>
+    <p class="note">Ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b>, đối chiếu tên món trước khi hiển thị.
+      Món nào không tìm được ảnh đúng sẽ dùng hình vẽ minh hoạ.</p>
+    <p class="note">248 món · 6 bữa · 11 nền ẩm thực · 10 cách chế biến · cập nhật liên tục.</p>
+    <button class="mini-btn wide" id="btnLuckyFooter">🍀 Thử vận may (bỏ hết bộ lọc)</button>
+  </footer>
+
+  <!-- ===== BỘ LỌC: SHEET (mobile) / PANEL (desktop) ===== -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="filter-panel" id="filterPanel" aria-label="Bộ lọc món ăn">
+    <div class="sheet-head">
+      <h2>Bộ lọc</h2>
+      <span class="sheet-count" id="sheetCount">248 món</span>
+      <button class="sheet-close" id="btnCloseSheet" aria-label="Đóng">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="fgroup">
+        <h3><span>⏰</span> Bữa ăn</h3>
+        <div class="chips" id="mealChips"></div>
+      </div>
+      <div class="fgroup">
+        <h3><span>🌏</span> Ẩm thực</h3>
+        <div class="chips" id="regionChips"></div>
+      </div>
+      <div class="fgroup">
+        <h3><span>🍳</span> Cách chế biến</h3>
+        <div class="chips" id="styleChips"></div>
+      </div>
+      <div class="fgroup">
+        <h3><span>⚙️</span> Thêm</h3>
+        <label class="switch"><input type="checkbox" id="fVeg"><span class="track-ui"></span><span class="switch-label">Chỉ món chay 🌱</span></label>
+        <label class="switch"><input type="checkbox" id="fMild"><span class="track-ui"></span><span class="switch-label">Không cay 🚫🌶️</span></label>
+        <label class="switch"><input type="checkbox" id="fTop"><span class="track-ui"></span><span class="switch-label">Chỉ món điểm cao (≥8.5) ⭐</span></label>
+        <label class="slider">
+          <span class="slider-label">Ngân sách tối đa: <b id="priceLabel">Tất cả</b></span>
+          <input type="range" id="fPrice" min="1" max="4" value="4" step="1">
+        </label>
+        <label class="slider">
+          <span class="slider-label">Thời gian tối đa: <b id="timeLabel">300 phút</b></span>
+          <input type="range" id="fTime" min="5" max="300" value="300" step="5">
+        </label>
+        <div class="search-wrap">
+          <span>🔍</span>
+          <input type="search" id="fSearch" enterkeyhint="search" placeholder="Tìm món: phở, pizza, chè…">
+        </div>
+      </div>
+      <div class="fgroup">
+        <h3><span>📜</span> Vừa quay</h3>
+        <div class="strip wrap" id="historyFeedSheet"></div>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="btn ghost" id="btnResetFilters">Đặt lại</button>
+      <button class="btn primary" id="btnApplyFilters">Xong (<span id="sheetCount2">248</span> món)</button>
+    </div>
+  </section>
+
+  <!-- ===== CỘT PHẢI (chỉ desktop) ===== -->
+  <aside class="side-feed">
+    <div class="side-card">
+      <h4>📜 Vừa quay</h4>
+      <div class="strip wrap" id="historyFeedDesktop"></div>
+    </div>
+    <div class="side-card">
+      <h4>♥ Đã lưu</h4>
+      <div class="strip wrap" id="favStripDesktop"></div>
+    </div>
+    <div class="side-card">
+      <h4>🎲 Tỉ lệ phẩm chất</h4>
+      <div class="odds">
+        <div class="odd t4"><span>Huyền Thoại · UR</span><b>7%</b></div>
+        <div class="odd t3"><span>Đặc Sắc · SSR</span><b>18%</b></div>
+        <div class="odd t2"><span>Ngon · SR</span><b>30%</b></div>
+        <div class="odd t1"><span>Phổ Thông · R</span><b>45%</b></div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="win-dialog" id="winDialog" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="modal-backdrop multi-backdrop" id="multiBackdrop" hidden>
+  <div class="multi-dialog" id="multiDialog"></div>
+</div>
+
+<div class="drawer-backdrop" id="drawerBackdrop" hidden>
+  <aside class="side-drawer">
+    <div class="drawer-head">
+      <h3>♥ Đã lưu (<span id="drawerFavCount">0</span>)</h3>
+      <button class="icon-btn" id="btnCloseDrawer" aria-label="Đóng">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerContent"></div>
+  </aside>
+</div>
+
+<!-- ===== PANEL HÔM NAY: thực đơn · gu · nhật ký ===== -->
+<div class="today-backdrop" id="todayBackdrop" hidden>
+  <div class="today-dialog" id="todayDialog">
+    <div class="today-head">
+      <b>📅 Hôm nay ăn gì</b>
+      <button class="win-close" data-act="close-today" aria-label="Đóng">✕</button>
+    </div>
+    <div class="today-body" id="todayBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toastNotification" hidden></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
