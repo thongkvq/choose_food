@@ -109,6 +109,11 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - Vercel CLI 59.16.0 nằm ở `node_modules/.bin/vercel` (đã .gitignore/.vercelignore); deploy bằng `VERCEL_TOKEN=... ./deploy.sh` nếu không import qua dashboard.
 - Kiểm tra sau deploy: `node tools/test-live.mjs https://<tên>.vercel.app` (đã thử trên server LAN: 7/7 endpoint 200, nearby 1.0s).
 - Cấu hình import: Framework **Other**, Build Command để trống, Output Directory để trống, Install mặc định.
+- **ĐÃ DEPLOY THẬT** (2026-09-12): Vercel bot deploy cả 4 commit cuối, commit status `success`.
+  - Deploy URL: `https://choose-food-c3gpyxdko-paroda.vercel.app` (dpl_GPtUbvGrw93ULvT34oYBSKcLxJAc)
+  - Alias production: `https://choose-food-paroda.vercel.app` (team/scope **paroda**)
+  - ⚠️ **Đang bật Vercel Authentication (Deployment Protection)** → mọi path trả về trang "Login – Vercel". Muốn public phải vào Settings → Deployment Protection → Vercel Authentication → **Disabled**. Kiểm tra lại bằng `node tools/test-live.mjs <url>` sau khi tắt.
+  - Cách tìm URL deploy khi không có dashboard: `curl -s https://api.github.com/repos/thongkvq/choose_food/deployments` rồi lấy `statuses` → `environment_url`.
 
 ## 13. Việc còn lại / bước kế tiếp
 - 14 món chưa có bài Wikipedia (com-nieu, mien-cua, pho-tron, hu-tieu-kho, bo-ne, chao-dau-xanh…) — hiện chỉ có điểm + ước tính.
