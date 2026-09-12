@@ -1,25 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "name": "mon-gi-day",
   "cleanUrls": true,
   "functions": {
-    "api/nearby.js": { "maxDuration": 30 },
-    "api/whereami.js": { "maxDuration": 20 },
+    "api/nearby.js": { "maxDuration": 20 },
+    "api/whereami.js": { "maxDuration": 15 },
     "api/weather.js": { "maxDuration": 15 },
     "api/geocode.js": { "maxDuration": 15 }
   },
   "headers": [
     {
       "source": "/data/dishes.json",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }]
-    },
-    {
-      "source": "/(index.html|app.js|art.js|styles.css)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
-    },
-    {
-      "source": "/tools/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=600, stale-while-revalidate=86400" }]
     }
   ]
 }
