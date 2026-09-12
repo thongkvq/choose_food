@@ -101,7 +101,16 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - **Trên Vercel GPS chạy sẵn** vì có HTTPS (không cần mẹo chứng chỉ tự ký như LAN). Cache trong RAM là theo instance (cold start) + có `s-maxage` ở CDN.
 - Deploy: `git init && git add -A && git commit -m "Mon Gi Day" && npx vercel --prod`.
 
-## 12. Việc còn lại / bước kế tiếp
+## 12. Đã đẩy lên GitHub (chờ import Vercel)
+- Repo: **https://github.com/thongkvq/choose_food** (public), nhánh `main`, **65 file**, ~2 MB.
+- Xác thực: **deploy key SSH** `~/.ssh/mongi_deploy` (đã thêm vào repo với quyền ghi); git repo-local đã set
+  `core.sshCommand = ssh -i ~/.ssh/mongi_deploy -o IdentitiesOnly=yes`.
+- Các commit: khởi tạo → thêm `deploy.sh` + `vercel.json` → bỏ dependency `vercel` khỏi `package.json` (do lúc cài CLI bị npm tự thêm vào) → đơn giản hoá `vercel.json` → loại `tools/` khỏi gói deploy → thêm `tools/test-live.mjs`.
+- Vercel CLI 59.16.0 nằm ở `node_modules/.bin/vercel` (đã .gitignore/.vercelignore); deploy bằng `VERCEL_TOKEN=... ./deploy.sh` nếu không import qua dashboard.
+- Kiểm tra sau deploy: `node tools/test-live.mjs https://<tên>.vercel.app` (đã thử trên server LAN: 7/7 endpoint 200, nearby 1.0s).
+- Cấu hình import: Framework **Other**, Build Command để trống, Output Directory để trống, Install mặc định.
+
+## 13. Việc còn lại / bước kế tiếp
 - 14 món chưa có bài Wikipedia (com-nieu, mien-cua, pho-tron, hu-tieu-kho, bo-ne, chao-dau-xanh…) — hiện chỉ có điểm + ước tính.
 - 13 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons).
 - Có thể thêm: lưu "thực đơn hôm nay" 3 bữa, chia sẻ ảnh kết quả, lọc theo quán đã lưu, cache ảnh offline (SW không chạy được trên http LAN).
