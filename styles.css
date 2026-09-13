@@ -266,6 +266,7 @@ h1,h2,h3,h4{line-height:1.2}
 .chip:active{transform:scale(.95)}
 .chip.on{background:linear-gradient(135deg,var(--brand),var(--gold));color:#26120a;border-color:transparent;font-weight:800}
 .chip.foreign-off{opacity:.4;border-style:dashed}
+.chip.empty{opacity:.45;border-style:dotted}
 .fnote{font-size:12px;color:var(--muted);line-height:1.45;margin:-2px 0 8px}
 .switch{display:flex;align-items:center;gap:11px;padding:11px 0;min-height:52px}
 .switch input{position:absolute;opacity:0;pointer-events:none}

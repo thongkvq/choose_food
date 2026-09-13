@@ -191,7 +191,8 @@ Mỗi món Việt có thêm trường **vung** — vùng miền gốc/đặc tr�
 - 3 preset nhanh ở trang chính: **🏯 Món miền Bắc**, **🌾 Món miền Trung**, **🛶 Đặc sản miền Tây**.
 - Popup kết quả có thêm dòng **🗺️ Vùng miền** (dòng **📍 Xuất xứ** giữ nguyên mô tả chi tiết như "Sài Gòn", "Hội An").
 - Dữ liệu phân vùng do `tools/enrich-vung.mjs` gán (chạy lại được, ghi vào `data/dishes.json` + cột `vung` trong bảng SQLite `dishes`).
-- Test: `node tools/test-vung.mjs [baseUrl]` — 12/12 PASS (đếm đúng từng vùng, Nam gồm Tây Nam Bộ, chọn nhiều vùng, chip ngoại tắt vnOnly, preset, popup, 0 lỗi JS).
+- **Không bao giờ kẹt "0 món → không quay được"**: app tự chọn bữa theo giờ, nên khi vùng bạn chọn không có món cho bữa đó thì app **tự bỏ lọc bữa ăn** và báo rõ (`ensurePlayable()`); nếu vẫn 0 món (do bạn tự chọn bữa / chọn nhiều vùng) thì hiện cảnh báo + **tự mở sheet lọc**, và chip vùng hiện **số món khớp** (vùng 0 món bị làm mờ, gạch chấm) để thấy ngay vùng nào có gì.
+- Test: `node tools/test-vung.mjs [baseUrl]` — 16/16 PASS (đếm đúng từng vùng, Nam gồm Tây Nam Bộ, chọn nhiều vùng, chip ngoại tắt vnOnly, preset, popup, 0 lỗi JS).
 
 ### Thao tác trên điện thoại
 - **Một hàng nút duy nhất** ngay dưới băng chuyền: **[⚙️ Lọc] [🎰 QUAY 1 MÓN] [⚡ x10]** — chỉ có MỘT nút quay, không trùng lặp, không thanh nổi che nội dung.

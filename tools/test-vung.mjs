@@ -107,6 +107,48 @@ const popup2 = await page.evaluate(() => [...document.querySelectorAll('.win-dia
 console.log('popup rows:', popup2.join(' | '));
 console.log('popup meta:', popup.meta.join(' | '));
 
+// ===== FIX "chọn vùng xong không quay được": vùng 0 món do BỮA ĂN TỰ ĐỘNG =====
+await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b => b.click()); });
+await page.waitForTimeout(300);
+// bữa Sáng do đồng hồ tự chọn + Tây Nguyên (chỉ có 1 món, không bán buổi sáng) => 0 món
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); s.state.meals.add("sang"); s.state.mealAuto = true; });
+await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
+await page.click('#vungChips .chip[data-k="tay-nguyen"]'); await page.waitForTimeout(500);
+const rescue = await page.evaluate(() => ({
+  pool: window.__mgd.pool().length, meals: [...window.__mgd.state.meals], mealAuto: window.__mgd.state.mealAuto,
+  disabled: document.querySelector("#btnSpinSingle").disabled,
+  toast: [...document.querySelectorAll(".toast")].map(t => t.textContent).join(" ~ ")
+}));
+console.log("[CỨU 0 MÓN] pool=" + rescue.pool + " meals=" + JSON.stringify(rescue.meals) + " | nút quay bị khoá: " + rescue.disabled);
+console.log("  toast:", rescue.toast.slice(0, 120));
+await page.click("#btnCloseSheet"); await page.waitForTimeout(400);
+await page.click("#btnSpinSingle");
+await page.waitForTimeout(8000);
+const rescueSpin = await page.evaluate(() => ({ spinning: window.__mgd.state.spinning, modal: !document.querySelector("#modalBackdrop").hidden, winner: window.__mgd.state.lastWinner && window.__mgd.state.lastWinner.name }));
+console.log("[QUAY SAU KHI CỨU]", JSON.stringify(rescueSpin));
+await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b => b.click()); });
+await page.waitForTimeout(300);
+
+// ===== người dùng TỰ chọn bữa thì KHÔNG được tự bỏ (chỉ báo + mở sheet) =====
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); });
+await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
+await page.click('#mealChips .chip[data-k="sang"]'); await page.waitForTimeout(200);
+await page.click('#vungChips .chip[data-k="tay-nguyen"]'); await page.waitForTimeout(400);
+const manual = await page.evaluate(() => ({
+  pool: window.__mgd.pool().length, meals: [...window.__mgd.state.meals],
+  sheetOpen: document.querySelector("#filterPanel").classList.contains("open"),
+  status: document.querySelector("#poolStatusText").textContent
+}));
+console.log("[BỮA DO NGƯỜI DÙNG CHỌN] pool=" + manual.pool + " meals=" + JSON.stringify(manual.meals) + " | sheet mở: " + manual.sheetOpen + " | " + manual.status);
+
+// ===== chip vùng hiện số món =====
+const chipTexts = await page.evaluate(() => [...document.querySelectorAll("#vungChips .chip")].map(c => c.textContent));
+console.log("nhãn chip:", chipTexts.join(" | "));
+const countsOk = chipTexts.length === 7 && chipTexts.every(t => /·\s*\d+$/.test(t.replace(/\s+/g, " ").trim()));
+const zeroDim = await page.evaluate(() => document.querySelectorAll("#vungChips .chip.empty").length);
+console.log("  -> có số món trên chip:", countsOk, "| chip 0 món bị mờ:", zeroDim);
+await page.click("#btnCloseSheet"); await page.waitForTimeout(300);
+
 await browser.close();
 
 const flat = (o) => Object.keys(o.hist);
@@ -122,6 +164,10 @@ const ck = {
   ngoaiTatVnOnly: i.pool > 0 && flat(i).every(x => x === 'ngoai') && vnOnlyAfter === false,
   preset: k.pool > 0 && flat(k).every(x => x === 'tay-nam-bo') && presetOn,
   popupVung: popup2.some(t => t.startsWith('Vùng miền=')),
+  cuu0Mon: rescue.pool > 0 && rescue.meals.length === 0 && rescue.mealAuto === false && rescue.disabled === false,
+  quaySauKhiCuu: rescueSpin.spinning === false && rescueSpin.modal === true,
+  khongTuBoBuaNguoiDung: manual.pool === 0 && manual.meals.length === 1 && manual.sheetOpen === true,
+  chipHienSoMon: countsOk && zeroDim > 0,
   khongLoiJs: errs.length === 0
 };
 console.log('---');

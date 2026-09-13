@@ -41,6 +41,7 @@ let ALL = [];
 const state = {
   meals: new Set(), regions: new Set(), styles: new Set(), vung: new Set(),
   veg: false, mild: false, topRated: false, price: 4, time: 300, q: '', preset: null,
+  mealAuto: false,   // bữa ăn do đồng hồ tự chọn (được phép tự bỏ khi vùng miền không có món nào)
   vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
   radius: R_TIERS.includes(LS.get('mgd.radius', 5000)) ? LS.get('mgd.radius', 5000) : 5000,   // bán kính tìm quán (m) người dùng chọn
   favs: LS.get('mgd.favs', []), hist: LS.get('mgd.hist', []), seen: new Set(LS.get('mgd.seen', [])),
@@ -482,18 +483,21 @@ function creditLine(d) {
   const label = d.imageVia === 'commons' ? 'Wikimedia Commons' : d.imageVia === 'vi-wiki' ? 'Wikipedia tiếng Việt' : 'Wikipedia';
   return '<div class="credit">📷 ' + label + (d.imageSource ? ' · ' + esc(String(d.imageSource).replace(/^File:/, '')) : '') + '</div>';
 }
-function pool() {
-  const q = state.q.trim().toLowerCase();
-  return ALL.filter(d =>
-    (!state.meals.size || d.meals.some(m => state.meals.has(m))) &&
+// ignoreVung = true: bỏ qua bộ lọc vùng (dùng để đếm số món của TỪNG vùng cho chip)
+function matchDish(d, ignoreVung, q) {
+  return (!state.meals.size || d.meals.some(m => state.meals.has(m))) &&
     (!state.regions.size || state.regions.has(d.region)) &&
-    vungHit(d.vung) &&
+    (ignoreVung || vungHit(d.vung)) &&
     (!state.vnOnly || d.region === 'vn') &&
     (!state.styles.size || state.styles.has(d.style)) &&
     (!state.veg || d.veg === 1) && (!state.mild || d.spicy === 0) &&
     (!state.topRated || d.rating >= 8.5) &&
     d.price <= state.price && d.minutes <= state.time &&
-    (!q || (d.name + ' ' + d.descr + ' ' + d.tags.join(' ')).toLowerCase().includes(q)));
+    (!q || (d.name + ' ' + d.descr + ' ' + d.tags.join(' ')).toLowerCase().includes(q));
+}
+function pool() {
+  const q = state.q.trim().toLowerCase();
+  return ALL.filter(d => matchDish(d, false, q));
 }
 function drawOne(list, minTier = 0) {
   let c = list.filter(d => d.tier >= minTier); if (!c.length) c = list;
@@ -601,7 +605,8 @@ function spin(target, done) {
 }
 function spinOnce() {
   if (state.spinning) return;
-  const p = pool();
+  let p = pool();
+  if (!p.length) { ensurePlayable(); p = pool(); }          // tự cứu (bỏ bữa ăn tự động) rồi quay
   if (!p.length) return toast('⚠️ Không món nào khớp bộ lọc — nới lỏng chút nhé!');
   state.pity++;
   const force = state.pity >= 10 ? 3 : 0;
@@ -612,7 +617,8 @@ function spinOnce() {
 }
 function spinTen() {
   if (state.spinning) return;
-  const p = pool();
+  let p = pool();
+  if (p.length < 2) { ensurePlayable(); p = pool(); }
   if (p.length < 2) return toast('⚠️ Cần ít nhất 2 món trong bộ lọc để quay 10!');
   const best = drawMany(p, 10);
   spin(best[0], () => openMulti(best));
@@ -898,16 +904,17 @@ function chipRow(host, dict, set) {
   host.innerHTML = '';
   for (const [k, label] of Object.entries(dict)) {
     const b = document.createElement('button');
-    b.className = 'chip'; b.textContent = label; b.dataset.k = k;
+    b.className = 'chip'; b.textContent = label; b.dataset.k = k; b.dataset.label = label;
     b.onclick = () => {
       // bấm chip ẩm thực nước ngoài => tự tắt chế độ "chỉ món Việt"
       if (set === state.regions && k !== 'vn' && state.vnOnly) setVnOnly(false, true);
       // bấm chip vùng "Ngoài Việt Nam" => tự tắt chế độ chỉ món Việt
       if (set === state.vung && k === 'ngoai' && state.vnOnly) setVnOnly(false, true);
       set.has(k) ? set.delete(k) : set.add(k);
+      if (set === state.meals) state.mealAuto = false;   // người dùng tự chọn bữa -> không tự bỏ nữa
       b.classList.toggle('on', set.has(k));
       state.preset = null; $$('#presets .preset').forEach(p => p.classList.remove('on'));
-      sfx.click(); buzz(8); syncPool(); idleTrack();
+      sfx.click(); buzz(8); syncPool(); ensurePlayable(); idleTrack();
     };
     host.appendChild(b);
   }
@@ -933,7 +940,11 @@ function activeFilterCount() {
 function syncPool() {
   const p = pool();
   const el = $('#poolStatusText');
-  if (el) el.innerHTML = p.length ? '<b>' + p.length + '</b>/' + ALL.length + ' món · đã khám phá <b>' + state.seen.size + '</b>' : '⚠️ 0 món khớp lọc';
+  if (el) {
+    el.innerHTML = p.length ? '<b>' + p.length + '</b>/' + ALL.length + ' món · đã khám phá <b>' + state.seen.size + '</b>' : '⚠️ 0 món khớp lọc — bấm để mở lọc';
+    el.style.cursor = p.length ? '' : 'pointer';           // 0 món: bấm vào dòng trạng thái là mở sheet
+    el.onclick = p.length ? null : openSheet;
+  }
   $('#btnSpinSingle').disabled = !p.length || state.spinning;
   $('#btnSpinMulti').disabled = p.length < 2 || state.spinning;
   const n = activeFilterCount();
@@ -941,6 +952,41 @@ function syncPool() {
   badge.hidden = n === 0; badge.textContent = n;
   $('#sheetCount').textContent = p.length + ' món';
   const s2 = $('#sheetCount2'); if (s2) s2.textContent = p.length;
+  paintVungCounts();
+}
+// chip vùng hiện luôn số món khớp (bỏ qua chính bộ lọc vùng) — vùng 0 món bị làm mờ
+function paintVungCounts() {
+  if (!$('#vungChips')) return;
+  const q = state.q.trim().toLowerCase();
+  $$('#vungChips .chip').forEach(c => {
+    const base = c.dataset.label || c.textContent;
+    const k = c.dataset.k;
+    const n = ALL.filter(d => matchDish(d, true, q) && (d.vung === k || (VUNG_INCLUDE[k] || []).includes(d.vung))).length;
+    c.textContent = base + ' · ' + n;
+    c.classList.toggle('empty', n === 0);
+  });
+}
+/* Cứu tình huống "0 món khớp lọc" (hay gặp khi chọn vùng miền + bữa ăn tự động theo giờ):
+   1) nếu bữa ăn là do đồng hồ tự chọn -> bỏ lọc bữa, báo rõ lý do;
+   2) còn lại thì báo + mở sheet để người dùng tự nới lọc. */
+function ensurePlayable(openIfZero = true) {
+  if (pool().length) return true;
+  if (state.mealAuto && state.meals.size) {
+    const was = [...state.meals].map(m => MEALS[m] || m).join(', ');
+    state.meals.clear(); state.mealAuto = false;
+    $$('#mealChips .chip').forEach(c => c.classList.remove('on'));
+    syncPool();
+    if (pool().length) {
+      toast('🗺️ Bữa <b>' + was + '</b> không có món trong vùng này — đã bỏ lọc bữa ăn, còn <b>' + pool().length + '</b> món');
+      return true;
+    }
+  }
+  if (openIfZero) {
+    toast('⚠️ 0 món khớp bộ lọc — bấm <b>Đặt lại</b> hoặc bớt lọc nhé!');
+    const panel = $('#filterPanel');
+    if (panel && !panel.classList.contains('open')) openSheet();
+  }
+  return false;
 }
 function openSheet() {
   $('#filterPanel').classList.add('open');
@@ -979,6 +1025,7 @@ $$('#presets .preset').forEach(btn => {
     resetFilters(false);
     if (!wasOn) {
       PRESETS[key] && PRESETS[key]();
+      if (state.meals.size) state.mealAuto = false;   // preset là lựa chọn của người dùng
       btn.classList.add('on'); state.preset = key;
       buzz(10); toast('Đã lọc: <b>' + btn.textContent.trim() + '</b>');
     }
@@ -988,7 +1035,7 @@ $$('#presets .preset').forEach(btn => {
 function resetFilters(clearChips = true) {
   state.meals.clear(); state.regions.clear(); state.styles.clear(); state.vung.clear();
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
-  state.vnOnly = true; LS.set('mgd.vnOnly', true);
+  state.vnOnly = true; LS.set('mgd.vnOnly', true); state.mealAuto = false;
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
 }
 function applyFilterUI() {
@@ -1513,6 +1560,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   const h = new Date().getHours();
   const guess = h < 10 ? 'sang' : h < 14 ? 'trua' : h < 17 ? 'xe' : h < 21 ? 'toi' : 'khuya';
   state.meals.add(guess);
+  state.mealAuto = true;                 // bữa do đồng hồ chọn -> được phép tự bỏ nếu vùng miền không có món
   applyFilterUI(); updatePity(); updateProgress(); updateFav(); renderHist(); syncPool(); idleTrack();
   updateDiaryBadge(); renderCtxChip(); loadWeather();
   const chip = $('#mealChips .chip[data-k="' + guess + '"]'); if (chip) chip.classList.add('on');
