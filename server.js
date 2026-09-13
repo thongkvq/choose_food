@@ -19,8 +19,10 @@ const MIME = {
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon'
 };
 const COMPRESSIBLE = /^(text\/|application\/(json|javascript)|image\/svg)/;
-const AREA_RADIUS = 5000;          // bán kính quét Overpass — khớp mức tối đa 5km của client
-const MAX_RADIUS = 5000;           // CHỐT: không bao giờ tìm quá 5km
+const TIERS = [2500, 5000, 10000];  // 3 mức người dùng chọn
+const MAX_RADIUS = 10000;
+const DEFAULT_RADIUS = 5000;
+const snapTier = (v) => TIERS.find((t) => t >= v) || MAX_RADIUS;   // làm tròn LÊN mức gần nhất
 const cache = new Map();
 const areaPending = new Map();
 
@@ -149,28 +151,41 @@ async function photonSearch(query, lat, lng, radiusM, limit) {
 }
 
 /* ---------- Overpass (tùy chọn): danh sách quán gần nhất ---------- */
-async function overpass(lat, lng, rad) {
-  const q = '[out:json][timeout:12];(' +
-    'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](around:' + rad + ',' + lat + ',' + lng + ');' +
-    'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](around:' + rad + ',' + lat + ',' + lng + ');' +
-    ');out center tags 500;';
-  const endpoints = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+async function overpass(lat, lng, rad, timeoutMs) {
+  // Dùng bbox thay vì around(): với bán kính 10km kiểu around bị Overpass cho timeout 504,
+  // bbox cùng vùng chỉ ~2s (đo thật). Khoảng cách thật vẫn được lọc lại bằng distM ở dưới.
+  const dLat = rad / 111000;
+  const dLng = rad / (111320 * Math.cos((lat * Math.PI) / 180));
+  const bbox = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
+  const limit = rad <= 2500 ? 400 : rad <= 5000 ? 700 : 1000;
+  let q = '[out:json][timeout:25];(' +
+    'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
+    'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
+    ');out center tags ' + limit + ';';
+  q = q.replace(/BBOX/g, bbox);   // Overpass bbox = (nam,tây,bắc,đông)
+  const endpoints = [
+    'https://overpass-api.de/api/interpreter',
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://overpass.private.coffee/api/interpreter',
+    'https://overpass.osm.ch/api/interpreter'
+  ];   // nhiều gương: Overpass hay trả 429 khi bị hỏi dồn
   let lastErr = null;
   for (const ep of endpoints) {
     try {
-      return await jsonFetch(ep, { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) }, 15000);
+      return await jsonFetch(ep, { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: 'data=' + encodeURIComponent(q) }, timeoutMs || 15000);
     } catch (e) { lastErr = e; }
   }
   throw new Error('Overpass không phản hồi: ' + ((lastErr && lastErr.message) || ''));
 }
-const areaKey = (lat, lng) => (Math.round(lat * 100) / 100) + ',' + (Math.round(lng * 100) / 100);
-function getArea(lat, lng) {
-  const k = areaKey(lat, lng);
+const areaKey = (lat, lng, rad) => (Math.round(lat * 100) / 100) + ',' + (Math.round(lng * 100) / 100) + ':' + rad;
+function getArea(lat, lng, rad, timeoutMs) {
+  const r = rad || DEFAULT_RADIUS;
+  const k = areaKey(lat, lng, r);
   const c = cache.get('area:' + k);
   if (c && Date.now() - c.t < 30 * 60 * 1000) return Promise.resolve(c.data);
   if (areaPending.has(k)) return areaPending.get(k);
   const job = (async () => {
-    const raw = await overpass(lat, lng, AREA_RADIUS);
+    const raw = await overpass(lat, lng, r, timeoutMs);
     const list = [];
     for (const el of raw.elements || []) {
       const tg = el.tags || {};
@@ -194,7 +209,7 @@ function getArea(lat, lng) {
   areaPending.set(k, job);
   return job;
 }
-function warmArea(lat, lng) { getArea(lat, lng).catch(() => {}); }
+function warmArea(lat, lng) { getArea(lat, lng, DEFAULT_RADIUS).catch(() => {}); }
 
 /* ---------- gộp kết quả ---------- */
 async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
@@ -203,7 +218,7 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
 
   // 1) Photon theo tên món (mở rộng bán kính dần) + 2) Overpass quán gần nhất — CHẠY SONG SONG
   const photonJob = (async () => {
-    const attempts = [Math.min(radius, MAX_RADIUS)];   // chỉ 1 mức bán kính, tối đa 5km
+    const attempts = [Math.min(radius, MAX_RADIUS)];   // đúng mức người dùng chọn, không tự nới
     for (const rad of attempts) {
       const seen = new Map();
       const results = await Promise.all(queries.map((q) => photonSearch(q, lat, lng, rad, 20).catch(() => [])));
@@ -220,14 +235,15 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
           maps: "https://www.google.com/maps/dir/?api=1&destination=" + pl.lat + "," + pl.lng + "&travelmode=driving"
         }));
       }
-      const matched = [...seen.values()].sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
+      // Photon trả theo ô vuông nên có quán nhích ra ngoài bán kính — cắt cho đúng mức đã chọn
+      const matched = [...seen.values()].filter((p) => p.dist <= rad).sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
       if (matched.length >= 3 || rad >= MAX_RADIUS) return { matched: matched.slice(0, 12), usedRadius: rad };
     }
     return { matched: [], usedRadius: radius };
   })();
 
   const overpassJob = (async () => {
-    const all = await getArea(lat, lng);
+    const all = await getArea(lat, lng, radius);
     const near = all.map((p) => Object.assign({}, p, { dist: distM(lat, lng, p.lat, p.lng) }))
       .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
     const cu = norm(cuisineHint);
@@ -237,11 +253,17 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
     return { areaTotal: all.length, nearest: near.slice(0, 12).map(pack), sameCuisine: sameCuisine.map(pack) };
   })().catch((e) => ({ areaTotal: 0, nearest: [], sameCuisine: [], areaError: String((e && e.message) || e) }));
 
-  const [ph, ov] = await Promise.all([photonJob, withTimeout(overpassJob, 4000, { areaTotal: 0, nearest: [], sameCuisine: [], areaError: 'hết thời gian chờ Overpass' })]);
+  // bán kính càng lớn Overpass càng lâu -> nới thời gian chờ theo mức người dùng chọn
+  const ovBudget = radius <= 2500 ? 5000 : radius <= 5000 ? 9000 : 15000;   // đo thật: ô lạnh ở Hà Nội cần ~6-10s
+  const [ph, ov] = await Promise.all([photonJob, withTimeout(overpassJob, ovBudget, { areaTotal: 0, nearest: [], sameCuisine: [], areaError: 'hết thời gian chờ Overpass', timedOut: true })]);
+  // Hết giờ thì vẫn nạp tiếp ở nền (không giới hạn chặt) rồi cache 30 phút:
+  // lần bấm 🔄 Tìm lại sau đó là có ngay, lần đầu chỉ chậm.
+  let areaWarming = false;
+  if (ov.timedOut) { areaWarming = true; getArea(lat, lng, radius, 60000).catch(() => {}); }
   return {
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: ph.usedRadius,
     matched: ph.matched, nearest: ov.nearest || [], sameCuisine: ov.sameCuisine || [],
-    areaTotal: ov.areaTotal || 0, areaError: ov.areaError || null,
+    areaTotal: ov.areaTotal || 0, areaError: ov.areaError || null, areaWarming: areaWarming,
     mapsUrl: "https://www.google.com/maps/search/" + encodeURIComponent(dish + " gần đây") + "/@" + lat + "," + lng + ",13z",
     mapsKeywordUrl: "https://www.google.com/maps/search/" + encodeURIComponent(dish) + "/@" + lat + "," + lng + ",13z",
     osmUrl: "https://www.openstreetmap.org/#map=14/" + lat + "/" + lng
@@ -270,7 +292,7 @@ async function handle(req, res) {
     if (url.pathname === '/api/nearby') {
       const lat = Number(url.searchParams.get('lat')), lng = Number(url.searchParams.get('lng'));
       if (!isFinite(lat) || !isFinite(lng)) return send(400, { error: 'thiếu lat/lng' });
-      const r = Math.min(MAX_RADIUS, Math.max(300, Number(url.searchParams.get('r')) || MAX_RADIUS));
+      const r = snapTier(Math.min(MAX_RADIUS, Math.max(300, Number(url.searchParams.get('r')) || DEFAULT_RADIUS)));
       const q = (url.searchParams.get('q') || '').slice(0, 60);
       const kw = (url.searchParams.get('kw') || '').slice(0, 160);
       const cu = (url.searchParams.get('cuisine') || '').slice(0, 60);

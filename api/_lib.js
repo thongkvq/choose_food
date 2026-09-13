@@ -125,10 +125,16 @@ export async function overpassNear(lat, lng, rad) {
   const key = 'area:' + lat.toFixed(2) + ',' + lng.toFixed(2) + ':' + rad;
   const c = cached(key, 30 * 60 * 1000);
   if (c) return c;
-  const q = '[out:json][timeout:20];(' +
-    'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](around:' + rad + ',' + lat + ',' + lng + ');' +
-    'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](around:' + rad + ',' + lat + ',' + lng + ');' +
-    ');out center tags 400;';
+  // bbox thay around: around bán kính 10km bị Overpass trả 504, bbox cùng vùng ~2s
+  const dLat = rad / 111000;
+  const dLng = rad / (111320 * Math.cos((lat * Math.PI) / 180));
+  const bbox = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
+  const limit = rad <= 2500 ? 400 : rad <= 5000 ? 700 : 1000;
+  let q = '[out:json][timeout:25];(' +
+    'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
+    'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
+    ');out center tags ' + limit + ';';
+  q = q.replace(/BBOX/g, bbox);
   const eps = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
   let data = null, lastErr = null;
   for (const ep of eps) {
