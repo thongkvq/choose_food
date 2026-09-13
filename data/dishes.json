@@ -7,6 +7,7 @@
    "name": "Baklava",
    "emoji": "🍯",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -78,6 +79,7 @@
    "name": "Butter Chicken",
    "emoji": "🍛",
    "region": "in",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "trua"
@@ -139,6 +141,7 @@
    "name": "Bánh bía",
    "emoji": "🥮",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe"
@@ -198,6 +201,7 @@
    "name": "Bánh canh ghẹ",
    "emoji": "🦀",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "toi",
     "khuya"
@@ -256,6 +260,7 @@
    "name": "Bánh cuốn chay",
    "emoji": "🌱",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -319,6 +324,7 @@
    "name": "Bánh mì chấm sữa",
    "emoji": "🥛",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "vat"
@@ -393,6 +399,7 @@
    "name": "Bánh mì nấm chay",
    "emoji": "🍄",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "xe"
@@ -467,6 +474,7 @@
    "name": "Bánh plan",
    "emoji": "🍮",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -541,6 +549,7 @@
    "name": "Bánh trung thu",
    "emoji": "🥮",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "toi"
@@ -604,6 +613,7 @@
    "name": "Bánh ít trần",
    "emoji": "🍡",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "vat"
@@ -658,6 +668,7 @@
    "name": "Bánh đúc ngọt",
    "emoji": "🍮",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "vat",
     "xe"
@@ -725,6 +736,7 @@
    "name": "Bánh đúc nóng",
    "emoji": "🥣",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -792,6 +804,7 @@
    "name": "Bánh ướt chay",
    "emoji": "🌿",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "xe"
@@ -855,6 +868,7 @@
    "name": "Canh gà hầm sâm",
    "emoji": "🍲",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya"
@@ -916,6 +930,7 @@
    "name": "Churros socola",
    "emoji": "🍫",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -987,6 +1002,7 @@
    "name": "Chả cốm",
    "emoji": "🍃",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "vat",
     "toi"
@@ -1041,6 +1057,7 @@
    "name": "Cuốn cá hồi rau củ",
    "emoji": "🐟",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "vat"
@@ -1118,6 +1135,7 @@
    "name": "Cơm niêu đập",
    "emoji": "🍚",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "toi"
    ],
@@ -1165,6 +1183,7 @@
    "name": "Elote nướng",
    "emoji": "🌽",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -1220,6 +1239,7 @@
    "name": "Giò thủ",
    "emoji": "🥓",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -1298,6 +1318,7 @@
    "name": "Heo quay nguyên con",
    "emoji": "🐖",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "trua"
@@ -1358,6 +1379,7 @@
    "name": "Lẩu chay gạo lứt",
    "emoji": "🥬",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "trua"
@@ -1418,6 +1440,7 @@
    "name": "Lẩu cua đồng",
    "emoji": "🦀",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi"
    ],
@@ -1479,6 +1502,7 @@
    "name": "Lẩu dê tía tô",
    "emoji": "🐐",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi",
     "khuya"
@@ -1539,6 +1563,7 @@
    "name": "Macaron",
    "emoji": "🍬",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -1610,6 +1635,7 @@
    "name": "Miến cua",
    "emoji": "🦀",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -1657,6 +1683,7 @@
    "name": "Nước đậu đỏ",
    "emoji": "🫘",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -1708,6 +1735,7 @@
    "name": "Pudding xoài",
    "emoji": "🥭",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -1769,6 +1797,7 @@
    "name": "Samosa",
    "emoji": "🥟",
    "region": "in",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -1837,6 +1866,7 @@
    "name": "Shakshuka",
    "emoji": "🍳",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "trua"
@@ -1898,6 +1928,7 @@
    "name": "Súp măng tây cua",
    "emoji": "🦀",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "sang"
@@ -1960,6 +1991,7 @@
    "name": "Vang đỏ & phô mai",
    "emoji": "🍷",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya"
@@ -2018,6 +2050,7 @@
    "name": "Vịt quay Bắc Kinh",
    "emoji": "🦆",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "toi"
    ],
@@ -2090,6 +2123,7 @@
    "name": "Vịt tiềm thuốc bắc",
    "emoji": "🍲",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya"
@@ -2140,6 +2174,7 @@
    "name": "Bia hơi & lạc rang",
    "emoji": "🍺",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi",
     "khuya",
@@ -2206,6 +2241,7 @@
    "name": "Burrito",
    "emoji": "🌯",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -2272,6 +2308,7 @@
    "name": "Bánh bèo",
    "emoji": "🌸",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "vat"
@@ -2336,6 +2373,7 @@
    "name": "Bánh bột lọc",
    "emoji": "💎",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "vat"
@@ -2410,6 +2448,7 @@
    "name": "Bánh cam / bánh vừng",
    "emoji": "🍊",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe"
@@ -2474,6 +2513,7 @@
    "name": "Bánh canh cua miền Tây",
    "emoji": "🦀",
    "region": "vn",
+   "vung": "tay-nam-bo",
    "meals": [
     "sang",
     "khuya"
@@ -2534,6 +2574,7 @@
    "name": "Bánh canh tôm",
    "emoji": "🍤",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "khuya"
@@ -2593,6 +2634,7 @@
    "name": "Bánh chưng",
    "emoji": "🎋",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua",
@@ -2661,6 +2703,7 @@
    "name": "Bánh căn",
    "emoji": "🧁",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "xe"
@@ -2733,6 +2776,7 @@
    "name": "Bánh flan",
    "emoji": "🍮",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -2813,6 +2857,7 @@
    "name": "Bánh giò",
    "emoji": "🎁",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -2866,6 +2911,7 @@
    "name": "Bánh hỏi heo quay",
    "emoji": "🍜",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "trua"
@@ -2940,6 +2986,7 @@
    "name": "Bánh mì bò né",
    "emoji": "🥩",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua"
@@ -3012,6 +3059,7 @@
    "name": "Bánh mì bơ tỏi",
    "emoji": "🧄",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -3083,6 +3131,7 @@
    "name": "Bánh mì chay",
    "emoji": "🌱",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "xe"
@@ -3156,6 +3205,7 @@
    "name": "Bánh mì chảo bò",
    "emoji": "🥘",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -3203,6 +3253,7 @@
    "name": "Bánh mì chảo phô mai",
    "emoji": "🧀",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "vat"
@@ -3249,6 +3300,7 @@
    "name": "Bánh mì chảo trứng",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang"
    ],
@@ -3295,6 +3347,7 @@
    "name": "Bánh mì heo quay",
    "emoji": "🐷",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "trua"
@@ -3367,6 +3420,7 @@
    "name": "Bánh mì kẹp kem",
    "emoji": "🍦",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe"
@@ -3441,6 +3495,7 @@
    "name": "Bánh mì ngọt",
    "emoji": "🍞",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "xe"
@@ -3489,6 +3544,7 @@
    "name": "Bánh mì nướng muối ớt",
    "emoji": "🌶️",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "khuya"
@@ -3562,6 +3618,7 @@
    "name": "Bánh mì trứng xúc xích",
    "emoji": "🌭",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "khuya"
@@ -3636,6 +3693,7 @@
    "name": "Bánh mì xá xíu",
    "emoji": "🥩",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe"
@@ -3708,6 +3766,7 @@
    "name": "Bánh quy bơ",
    "emoji": "🍪",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -3775,6 +3834,7 @@
    "name": "Bánh socola lava",
    "emoji": "🍫",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -3837,6 +3897,7 @@
    "name": "Bánh tiêu",
    "emoji": "⚪",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "vat"
@@ -3903,6 +3964,7 @@
    "name": "Bánh tráng sữa",
    "emoji": "🥛",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe"
@@ -3982,6 +4044,7 @@
    "name": "Bánh trôi nước",
    "emoji": "⚪",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "vat",
     "xe"
@@ -4049,6 +4112,7 @@
    "name": "Bánh tét",
    "emoji": "🎋",
    "region": "vn",
+   "vung": "tay-nam-bo",
    "meals": [
     "sang",
     "trua"
@@ -4120,6 +4184,7 @@
    "name": "Bánh xèo giòn chay",
    "emoji": "🥬",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "vat",
     "xe"
@@ -4184,6 +4249,7 @@
    "name": "Bánh ướt thịt nướng",
    "emoji": "🍽️",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "trua"
@@ -4246,6 +4312,7 @@
    "name": "Bò né chảo gang",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "toi"
@@ -4293,6 +4360,7 @@
    "name": "Bò nướng lá lốt",
    "emoji": "🍃",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "toi",
     "vat"
@@ -4361,6 +4429,7 @@
    "name": "Bò viên nướng",
    "emoji": "🍡",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -4419,6 +4488,7 @@
    "name": "Bò xào hành tây",
    "emoji": "🥩",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -4470,6 +4540,7 @@
    "name": "Bún mắm miền Tây",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "tay-nam-bo",
    "meals": [
     "trua",
     "toi"
@@ -4538,6 +4609,7 @@
    "name": "Bún trộn chay",
    "emoji": "🥗",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "xe"
@@ -4586,6 +4658,7 @@
    "name": "Bún ốc",
    "emoji": "🐌",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "xe"
@@ -4645,6 +4718,7 @@
    "name": "Bạc xỉu",
    "emoji": "🥛",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "xe"
@@ -4707,6 +4781,7 @@
    "name": "Canh bí đỏ thịt bằm",
    "emoji": "🎃",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -4768,6 +4843,7 @@
    "name": "Canh khổ qua nhồi thịt",
    "emoji": "🥒",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -4838,6 +4914,7 @@
    "name": "Canh rong biển thịt bò",
    "emoji": "🌊",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -4900,6 +4977,7 @@
    "name": "Cao lầu Hội An",
    "emoji": "🍜",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "trua",
     "toi"
@@ -4959,6 +5037,7 @@
    "name": "Carbonara",
    "emoji": "🥓",
    "region": "it",
+   "vung": "ngoai",
    "meals": [
     "toi"
    ],
@@ -5033,6 +5112,7 @@
    "name": "Cheesecake",
    "emoji": "🍰",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -5088,6 +5168,7 @@
    "name": "Cháo gà nấm",
    "emoji": "🍄",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -5146,6 +5227,7 @@
    "name": "Cháo trai",
    "emoji": "🐚",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -5217,6 +5299,7 @@
    "name": "Cháo đậu xanh",
    "emoji": "🥣",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -5261,6 +5344,7 @@
    "name": "Chè khúc bạch",
    "emoji": "🤍",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -5324,6 +5408,7 @@
    "name": "Chè đậu đen",
    "emoji": "🫘",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -5377,6 +5462,7 @@
    "name": "Chả cá Lã Vọng",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi"
    ],
@@ -5434,6 +5520,7 @@
    "name": "Chả lụa",
    "emoji": "🍥",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua"
@@ -5502,6 +5589,7 @@
    "name": "Croissant bơ",
    "emoji": "🥐",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe"
@@ -5578,6 +5666,7 @@
    "name": "Cuốn diếp cá thịt bò",
    "emoji": "🌿",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "toi",
@@ -5652,6 +5741,7 @@
    "name": "Cuốn rế chiên giòn",
    "emoji": "🍤",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe",
@@ -5711,6 +5801,7 @@
    "name": "Cà phê trứng",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -5779,6 +5870,7 @@
    "name": "Cà ri chay",
    "emoji": "🥕",
    "region": "in",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -5841,6 +5933,7 @@
    "name": "Cá hấp xì dầu",
    "emoji": "🐟",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -5897,6 +5990,7 @@
    "name": "Cơm Biryani",
    "emoji": "🍚",
    "region": "in",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -5965,6 +6059,7 @@
    "name": "Cơm chay thập cẩm",
    "emoji": "🥬",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -6026,6 +6121,7 @@
    "name": "Cơm gà Hải Nam",
    "emoji": "🐔",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -6092,6 +6188,7 @@
    "name": "Cơm gà xối mỡ",
    "emoji": "🔥",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -6150,6 +6247,7 @@
    "name": "Cơm gạo lứt cá hồi",
    "emoji": "🐟",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -6209,6 +6307,7 @@
    "name": "Cơm gạo lứt ức gà",
    "emoji": "🥗",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -6266,6 +6365,7 @@
    "name": "Cơm heo quay",
    "emoji": "🐖",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -6310,6 +6410,7 @@
    "name": "Cơm rang Thái",
    "emoji": "🍍",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -6375,6 +6476,7 @@
    "name": "Cơm trắng trứng chiên",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "khuya",
     "trua"
@@ -6434,6 +6536,7 @@
    "name": "Dimsum thập cẩm",
    "emoji": "🍤",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe"
@@ -6501,6 +6604,7 @@
    "name": "Donut",
    "emoji": "🍩",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -6575,6 +6679,7 @@
    "name": "Falafel",
    "emoji": "🧆",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "trua"
@@ -6635,6 +6740,7 @@
    "name": "Fish and Chips",
    "emoji": "🐟",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "vat",
@@ -6708,6 +6814,7 @@
    "name": "Gà hấp gừng hành",
    "emoji": "🐔",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -6769,6 +6876,7 @@
    "name": "Gà kho gừng",
    "emoji": "🫚",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -6828,6 +6936,7 @@
    "name": "Gà nướng lá chanh",
    "emoji": "🍋",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "trua"
@@ -6889,6 +6998,7 @@
    "name": "Hummus & Pita",
    "emoji": "🧆",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -6960,6 +7070,7 @@
    "name": "Kebab / Doner",
    "emoji": "🌯",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "khuya",
     "vat",
@@ -7029,6 +7140,7 @@
    "name": "Kem bơ / Kem dừa",
    "emoji": "🥑",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -7085,6 +7197,7 @@
    "name": "Kem tươi",
    "emoji": "🍨",
    "region": "it",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -7148,6 +7261,7 @@
    "name": "Khoai lang kén",
    "emoji": "🍠",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -7205,6 +7319,7 @@
    "name": "Lẩu bò nhúng dấm",
    "emoji": "🥩",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi",
     "khuya"
@@ -7265,6 +7380,7 @@
    "name": "Lẩu cháo gà",
    "emoji": "🐔",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "khuya"
@@ -7323,6 +7439,7 @@
    "name": "Lẩu cá kèo",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "tay-nam-bo",
    "meals": [
     "toi",
     "khuya"
@@ -7382,6 +7499,7 @@
    "name": "Lẩu gà lá é",
    "emoji": "🌿",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "toi",
     "khuya"
@@ -7442,6 +7560,7 @@
    "name": "Lẩu gà nấm",
    "emoji": "🍄",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "khuya"
@@ -7500,6 +7619,7 @@
    "name": "Lẩu nấm chay",
    "emoji": "🍄",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "khuya"
@@ -7559,6 +7679,7 @@
    "name": "Miến trộn chua ngọt",
    "emoji": "🥢",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "xe"
@@ -7620,6 +7741,7 @@
    "name": "Mì tôm chua cay",
    "emoji": "🍤",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "khuya",
     "sang"
@@ -7685,6 +7807,7 @@
    "name": "Mì xào giòn",
    "emoji": "🥡",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -7748,6 +7871,7 @@
    "name": "Nachos phô mai",
    "emoji": "🧀",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -7811,6 +7935,7 @@
    "name": "Nem chua rán",
    "emoji": "🧆",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "vat",
     "khuya"
@@ -7871,6 +7996,7 @@
    "name": "Nghêu hấp sả",
    "emoji": "🐚",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "vat"
@@ -7926,6 +8052,7 @@
    "name": "Nước chanh dây",
    "emoji": "🍋",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "trua"
@@ -7988,6 +8115,7 @@
    "name": "Nước mía",
    "emoji": "🎍",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "trua"
@@ -8048,6 +8176,7 @@
    "name": "Nước rau má",
    "emoji": "🌿",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "trua"
@@ -8101,6 +8230,7 @@
    "name": "Okonomiyaki",
    "emoji": "🥞",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "vat"
@@ -8167,6 +8297,7 @@
    "name": "Pancake mật ong",
    "emoji": "🥞",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe"
@@ -8241,6 +8372,7 @@
    "name": "Phở chiên phồng",
    "emoji": "🍤",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi"
@@ -8306,6 +8438,7 @@
    "name": "Phở trộn",
    "emoji": "🥢",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi"
@@ -8353,6 +8486,7 @@
    "name": "Poke bowl",
    "emoji": "🍣",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -8407,6 +8541,7 @@
    "name": "Quesadilla",
    "emoji": "🧀",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya",
@@ -8478,6 +8613,7 @@
    "name": "Quẩy giòn",
    "emoji": "🥖",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -8540,6 +8676,7 @@
    "name": "Rau câu dừa",
    "emoji": "🥥",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -8606,6 +8743,7 @@
    "name": "Salad cá ngừ",
    "emoji": "🥗",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -8666,6 +8804,7 @@
    "name": "Salad gà nướng",
    "emoji": "🥗",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -8726,6 +8865,7 @@
    "name": "Shawarma gà",
    "emoji": "🌯",
    "region": "tr",
+   "vung": "ngoai",
    "meals": [
     "khuya",
     "trua",
@@ -8800,6 +8940,7 @@
    "name": "Sinh tố bơ",
    "emoji": "🥑",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "vat"
@@ -8857,6 +8998,7 @@
    "name": "Sinh tố xoài",
    "emoji": "🥭",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "sang"
@@ -8910,6 +9052,7 @@
    "name": "Soba lạnh",
    "emoji": "🍜",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "xe"
@@ -8981,6 +9124,7 @@
    "name": "Som Tam",
    "emoji": "🥗",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "xe"
@@ -9047,6 +9191,7 @@
    "name": "Súp bí đỏ kem",
    "emoji": "🎃",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "toi"
@@ -9108,6 +9253,7 @@
    "name": "Súp cua trứng",
    "emoji": "🦀",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "khuya"
@@ -9161,6 +9307,7 @@
    "name": "Sữa chua nếp cẩm",
    "emoji": "🥛",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -9227,6 +9374,7 @@
    "name": "Sữa đậu nành",
    "emoji": "🥛",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -9303,6 +9451,7 @@
    "name": "Tempura",
    "emoji": "🍤",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "toi"
@@ -9371,6 +9520,7 @@
    "name": "Thịt kho tàu",
    "emoji": "🍯",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -9435,6 +9585,7 @@
    "name": "Tiramisu",
    "emoji": "🍰",
    "region": "it",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -9509,6 +9660,7 @@
    "name": "Trà gừng mật ong",
    "emoji": "🫚",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -9574,6 +9726,7 @@
    "name": "Trứng chiên thịt bằm",
    "emoji": "🥚",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "trua"
@@ -9636,6 +9789,7 @@
    "name": "Trứng hấp kiểu Nhật",
    "emoji": "🥚",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "toi"
@@ -9696,6 +9850,7 @@
    "name": "Tàu hũ nước đường",
    "emoji": "🍮",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "khuya"
@@ -9758,6 +9913,7 @@
    "name": "Udon",
    "emoji": "🍲",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -9824,6 +9980,7 @@
    "name": "Waffle",
    "emoji": "🧇",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "vat"
@@ -9889,6 +10046,7 @@
    "name": "Xôi chiên phồng",
    "emoji": "⚪",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -9961,6 +10119,7 @@
    "name": "Xôi gà",
    "emoji": "🍗",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "trua"
@@ -10026,6 +10185,7 @@
    "name": "Xôi gấc",
    "emoji": "🔴",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "xe"
@@ -10092,6 +10252,7 @@
    "name": "Xúc xích nướng than",
    "emoji": "🌭",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -10157,6 +10318,7 @@
    "name": "Yến mạch sữa chuối",
    "emoji": "🥣",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe"
@@ -10220,6 +10382,7 @@
    "name": "Đĩa trái cây",
    "emoji": "🍉",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "xe",
     "vat"
@@ -10280,6 +10443,7 @@
    "name": "Đậu hũ chiên sả",
    "emoji": "🌿",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi",
@@ -10346,6 +10510,7 @@
    "name": "Đậu hũ non sốt trứng",
    "emoji": "🥚",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -10411,6 +10576,7 @@
    "name": "Đậu hũ sốt cà",
    "emoji": "🍅",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -10476,6 +10642,7 @@
    "name": "Ốc nhồi thịt",
    "emoji": "🐌",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "toi",
     "vat"
@@ -10532,6 +10699,7 @@
    "name": "Burger bò",
    "emoji": "🍔",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -10605,6 +10773,7 @@
    "name": "Bánh bao",
    "emoji": "🥟",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe",
@@ -10675,6 +10844,7 @@
    "name": "Bánh canh cua",
    "emoji": "🍥",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "khuya"
@@ -10734,6 +10904,7 @@
    "name": "Bánh cuốn nóng",
    "emoji": "🥟",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -10795,6 +10966,7 @@
    "name": "Bánh khọt",
    "emoji": "🥮",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "xe",
@@ -10859,6 +11031,7 @@
    "name": "Bánh mì chảo",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -10920,6 +11093,7 @@
    "name": "Bánh mì gà nướng",
    "emoji": "🍗",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua",
@@ -10994,6 +11168,7 @@
    "name": "Bánh mì pate chả",
    "emoji": "🥖",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "khuya"
@@ -11068,6 +11243,7 @@
    "name": "Bánh mì thịt nướng",
    "emoji": "🥖",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua",
@@ -11143,6 +11319,7 @@
    "name": "Bánh mì ốp la",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "khuya"
@@ -11217,6 +11394,7 @@
    "name": "Bánh tráng nướng",
    "emoji": "🔥",
    "region": "vn",
+   "vung": "tay-nguyen",
    "meals": [
     "vat",
     "khuya"
@@ -11294,6 +11472,7 @@
    "name": "Bò bít tết",
    "emoji": "🥩",
    "region": "fr",
+   "vung": "ngoai",
    "meals": [
     "toi"
    ],
@@ -11362,6 +11541,7 @@
    "name": "Bò khô & cóc",
    "emoji": "🥭",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -11420,6 +11600,7 @@
    "name": "Bò lúc lắc",
    "emoji": "🥩",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "toi",
     "trua"
@@ -11495,6 +11676,7 @@
    "name": "Bún chả cá",
    "emoji": "🐠",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "trua"
@@ -11554,6 +11736,7 @@
    "name": "Bún riêu cua",
    "emoji": "🦀",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -11611,6 +11794,7 @@
    "name": "Bún đậu mắm tôm",
    "emoji": "🧆",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi"
@@ -11677,6 +11861,7 @@
    "name": "Bột chiên",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe",
@@ -11740,6 +11925,7 @@
    "name": "Canh chua cá",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -11808,6 +11994,7 @@
    "name": "Cháo lòng",
    "emoji": "🍚",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "khuya"
@@ -11881,6 +12068,7 @@
    "name": "Chè Thái",
    "emoji": "🍨",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "xe"
@@ -11931,6 +12119,7 @@
    "name": "Chè ba màu",
    "emoji": "🍧",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "xe"
@@ -11981,6 +12170,7 @@
    "name": "Chả giò / Nem rán",
    "emoji": "🥢",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi",
@@ -12061,6 +12251,7 @@
    "name": "Cà ri gà",
    "emoji": "🍛",
    "region": "in",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -12119,6 +12310,7 @@
    "name": "Cá kho tộ",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -12179,6 +12371,7 @@
    "name": "Cá viên chiên",
    "emoji": "🐟",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -12236,6 +12429,7 @@
    "name": "Cơm bò Gyudon",
    "emoji": "🥩",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -12298,6 +12492,7 @@
    "name": "Cơm chiên Dương Châu",
    "emoji": "🥚",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -12368,6 +12563,7 @@
    "name": "Cơm cà ri Nhật",
    "emoji": "🍛",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -12425,6 +12621,7 @@
    "name": "Cơm gà Hội An",
    "emoji": "🐔",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "trua",
     "toi"
@@ -12485,6 +12682,7 @@
    "name": "Cơm rang dưa bò",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi",
@@ -12566,6 +12764,7 @@
    "name": "Cơm rang hải sản",
    "emoji": "🦑",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "trua",
     "toi"
@@ -12632,6 +12831,7 @@
    "name": "Cơm trộn Hàn Quốc",
    "emoji": "🍚",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -12708,6 +12908,7 @@
    "name": "Gà nướng mật ong",
    "emoji": "🍯",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "trua"
@@ -12769,6 +12970,7 @@
    "name": "Gà sốt cay Hàn",
    "emoji": "🌶️",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya",
@@ -12830,6 +13032,7 @@
    "name": "Gà xiên nướng",
    "emoji": "🍢",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -12900,6 +13103,7 @@
    "name": "Gỏi cuốn",
    "emoji": "🥗",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "xe",
     "vat",
@@ -12974,6 +13178,7 @@
    "name": "Há cảo / Sủi cảo",
    "emoji": "🥟",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe",
@@ -13043,6 +13248,7 @@
    "name": "Hải sản nướng than",
    "emoji": "🦐",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "toi",
     "khuya"
@@ -13101,6 +13307,7 @@
    "name": "Hủ tiếu Nam Vang",
    "emoji": "🦐",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "khuya"
@@ -13176,6 +13383,7 @@
    "name": "Hủ tiếu khô",
    "emoji": "🥡",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua"
@@ -13222,6 +13430,7 @@
    "name": "Khô mực nướng",
    "emoji": "🦑",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "khuya",
     "vat",
@@ -13283,6 +13492,7 @@
    "name": "Kimbap",
    "emoji": "🍙",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "sang",
     "xe",
@@ -13346,6 +13556,7 @@
    "name": "Lẩu Thái",
    "emoji": "🍲",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya"
@@ -13411,6 +13622,7 @@
    "name": "Miến gà",
    "emoji": "🐓",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "khuya"
@@ -13468,6 +13680,7 @@
    "name": "Mì Quảng",
    "emoji": "🍲",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "trua"
@@ -13532,6 +13745,7 @@
    "name": "Mì cay 7 cấp độ",
    "emoji": "🌶️",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "khuya",
     "toi",
@@ -13607,6 +13821,7 @@
    "name": "Mì gà trứng",
    "emoji": "🍜",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang",
     "khuya"
@@ -13668,6 +13883,7 @@
    "name": "Mì xào bò",
    "emoji": "🥩",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -13732,6 +13948,7 @@
    "name": "Mì xào hải sản",
    "emoji": "🍜",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -13797,6 +14014,7 @@
    "name": "Nem nướng Ninh Hòa",
    "emoji": "🍢",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "xe",
     "vat",
@@ -13863,6 +14081,7 @@
    "name": "Pad Thái",
    "emoji": "🍤",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi",
@@ -13933,6 +14152,7 @@
    "name": "Phô mai que",
    "emoji": "🧀",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "khuya"
@@ -13995,6 +14215,7 @@
    "name": "Phở xào bò",
    "emoji": "🔥",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi",
@@ -14073,6 +14294,7 @@
    "name": "Pizza",
    "emoji": "🍕",
    "region": "it",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "vat",
@@ -14149,6 +14371,7 @@
    "name": "Ramen Nhật",
    "emoji": "🍜",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya",
@@ -14223,6 +14446,7 @@
    "name": "Spaghetti bò bằm",
    "emoji": "🍝",
    "region": "it",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -14294,6 +14518,7 @@
    "name": "Sushi",
    "emoji": "🍣",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "trua",
@@ -14368,6 +14593,7 @@
    "name": "Sườn xào chua ngọt",
    "emoji": "🍖",
    "region": "cn",
+   "vung": "ngoai",
    "meals": [
     "trua",
     "toi"
@@ -14426,6 +14652,7 @@
    "name": "Taco bò",
    "emoji": "🌮",
    "region": "mx",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya",
@@ -14502,6 +14729,7 @@
    "name": "Takoyaki",
    "emoji": "🐙",
    "region": "jp",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -14573,6 +14801,7 @@
    "name": "Thịt kho trứng",
    "emoji": "🥚",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -14630,6 +14859,7 @@
    "name": "Tokbokki",
    "emoji": "🌶️",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya",
@@ -14701,6 +14931,7 @@
    "name": "Tom Yum",
    "emoji": "🌶️",
    "region": "th",
+   "vung": "ngoai",
    "meals": [
     "toi",
     "khuya"
@@ -14775,6 +15006,7 @@
    "name": "Trà sữa trân châu",
    "emoji": "🧋",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -14847,6 +15079,7 @@
    "name": "Trà đào cam sả",
    "emoji": "🍑",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "vat",
     "xe"
@@ -14910,6 +15143,7 @@
    "name": "Trứng ốp la",
    "emoji": "🍳",
    "region": "vn",
+   "vung": "vn",
    "meals": [
     "sang"
    ],
@@ -14968,6 +15202,7 @@
    "name": "Xôi mặn",
    "emoji": "🥓",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua"
@@ -15040,6 +15275,7 @@
    "name": "Xôi xéo",
    "emoji": "🍙",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "xe"
@@ -15114,6 +15350,7 @@
    "name": "Bánh mì thịt",
    "emoji": "🥖",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "xe",
@@ -15188,6 +15425,7 @@
    "name": "Bánh tráng trộn",
    "emoji": "🥡",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "vat",
     "khuya",
@@ -15247,6 +15485,7 @@
    "name": "Bánh xèo",
    "emoji": "🌮",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "trua",
     "toi",
@@ -15308,6 +15547,7 @@
    "name": "Bún bò Huế",
    "emoji": "🌶️",
    "region": "vn",
+   "vung": "trung",
    "meals": [
     "sang",
     "trua",
@@ -15371,6 +15611,7 @@
    "name": "Bún chả Hà Nội",
    "emoji": "🔥",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "trua",
     "toi"
@@ -15445,6 +15686,7 @@
    "name": "Bún thịt nướng",
    "emoji": "🥩",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "trua",
     "toi"
@@ -15512,6 +15754,7 @@
    "name": "Cà phê sữa đá",
    "emoji": "☕",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "xe",
@@ -15577,6 +15820,7 @@
    "name": "Cơm tấm sườn bì chả",
    "emoji": "🍖",
    "region": "vn",
+   "vung": "nam",
    "meals": [
     "sang",
     "trua",
@@ -15649,6 +15893,7 @@
    "name": "Gà rán giòn",
    "emoji": "🍗",
    "region": "kr",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya",
@@ -15708,6 +15953,7 @@
    "name": "Khoai tây chiên",
    "emoji": "🍟",
    "region": "us",
+   "vung": "ngoai",
    "meals": [
     "vat",
     "khuya"
@@ -15777,6 +16023,7 @@
    "name": "Phở bò",
    "emoji": "🍜",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua",
@@ -15856,6 +16103,7 @@
    "name": "Phở gà",
    "emoji": "🍗",
    "region": "vn",
+   "vung": "bac",
    "meals": [
     "sang",
     "trua",
@@ -15911,5 +16159,6 @@
    ],
    "introEn": "Pho (Vietnamese: phở [fɤ˧˩˧] ) is a Vietnamese soup dish consisting of broth, rice noodles (bánh phở), herbs, and meat – usually beef (phở bò), and sometimes chicken (phở gà). Pho is a popular food in Vietnam where it is served in households, street-stalls, and restaurants nationwide. Residents of the city of Nam Định were the first to create Vietnamese traditional pho. Pho is a relatively recent addition to the country's cuisine, first appearing in written records in the early 20th century in Northern Vietnam. After the Vietnam War, refugees popularized it throughout the world. Due to limited historical documentation, the origins of pho remain debated. Influences from both French and Chinese culinary traditions are believed to have contributed to its development in Vietnam, as well as to the etymology of its name. The Hanoi (northern) and Saigon (southern) styles of pho differ by noodle"
   }
- ]
+ ],
+ "vungGeneratedAt": "2026-09-13T11:41:25.586Z"
 }

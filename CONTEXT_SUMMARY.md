@@ -179,3 +179,16 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - Vẫn KHÔNG có sao/đánh giá khách (OSM không có; Foursquare free tier có key miễn phí nhưng thêm phụ thuộc — chưa dùng).
 - **Bản tĩnh chạy được nhưng chậm**: đo trong trình duyệt thật — `overpass-api.de` bị **CORS chặn** (net::ERR_FAILED, có lúc treo 137s), `overpass.kumi.systems` **200 OK** (~18s ô lạnh), `overpass.private.coffee` trả XML lỗi, `overpass.osm.ch` chỉ có dữ liệu Thuỵ Sĩ (0 POI ở Sài Gòn). Nên `FAME_SRC` xếp **kumi trước**, api.de sau; parse bằng `text()`+`JSON.parse` để bỏ qua gương trả XML.
 - **Không chặn kết quả chính**: quán có tiếng đổ vào `#famSlot` sau (token `state._nearbyToken` chống ghi đè khi người dùng bấm lượt mới); có `localStorage mgd.fame` cache **6 giờ** theo ô 0.01°+bán kính+tên món (tối đa 40 mục) nên lần sau tức thì.
+
+## 20. v21 — Lọc theo VÙNG MIỀN (yêu cầu: "thêm filter chọn món theo vùng miền, ví dụ miền tây nam bộ, miền nam, miền trung, miền bắc")
+- **Trường mới `vung`** cho mọi món trong `data/dishes.json` + cột `vung` trong bảng SQLite `dishes` (đã đồng bộ, 248/248, không NULL). 7 giá trị: `bac` 38 · `trung` 17 · `nam` 38 · `tay-nam-bo` 4 · `tay-nguyen` 1 · `vn` 62 (phổ biến cả nước) · `ngoai` 88 (món quốc tế).
+- **Gán bằng script chạy lại được**: `node tools/enrich-vung.mjs` — bảng phân loại viết tay theo `id` (không đoán bằng từ khoá), món Việt không nằm trong bảng tự rơi vào `vn`, món `region !== "vn"` thành `ngoai`. Snapshot trước khi sửa: `tools/.snapshot-before-vung.json`.
+- **UI**: nhóm **🗺️ Vùng miền** trong filter sheet (`#vungChips`, `chipRow($("#vungChips"), VUNG, state.vung)`), chip: Miền Bắc 🏯 · Miền Trung 🌾 · Miền Nam 🏙️ · Miền Tây Nam Bộ 🛶 · Tây Nguyên ☕ · Cả nước 🇻🇳 · Ngoài Việt Nam 🌍. Bấm nhiều chip cùng lúc.
+- **`VUNG_INCLUDE = { nam: ["nam","tay-nam-bo"] }`** — chọn "Miền Nam" là gồm luôn miền Tây Nam Bộ (đúng địa lý). Hàm lọc `vungHit(v)` dùng trong `pool()`; `state.vung` được tính vào `activeFilterCount()`; `resetFilters()` xoá vùng.
+- **Chip 🌍 Ngoài Việt Nam** bấm vào thì tự tắt công tắc "chỉ món Việt" (giống chip ẩm thực ngoại); khi `vnOnly` bật, chip này mờ `.foreign-off`.
+- **3 preset mới**: `vungBac` 🏯 Món miền Bắc · `vungTrung` 🌾 Món miền Trung · `vungTay` 🛶 Đặc sản miền Tây.
+- **Popup**: thêm dòng **🗺️ Vùng miền** (`vungLabel(d.vung)`) và pill trong `.win-meta`; dòng cũ đổi nhãn từ "Vùng miền" → **📍 Xuất xứ** (giữ mô tả chi tiết như "Sài Gòn").
+- **Test**: `node tools/test-vung.mjs [baseUrl]` — chromium thật 390×844, **12/12 PASS**: Tây Nam Bộ 4 món, Miền Nam 42 (38 nam + 4 tay-nam-bo), Bắc 38, Trung 17, Tây Nguyên 1, Cả nước 62, Bắc+Trung 55, Ngoài VN 88 + tự tắt vnOnly, preset miền Tây 4 món, popup có dòng "Vùng miền=", 0 lỗi JS.
+- Hồi quy: `tools/test-vnonly.mjs` PASS (mặc định vẫn chỉ món Việt, chip ngoại mờ 10) · `tools/audit-layout.mjs` không tràn ngang, tap target ≥44px.
+- Lưu ý khi đo bằng chromium trong container: **không có font hệ thống** nên mọi chip đo ra width ~30px và nằm 1 hàng — số đo bề rộng chữ vô nghĩa, chỉ tin số món/pool và logic.
+- Bản tĩnh Vercel không cần sửa gì thêm: lọc vùng chạy thuần client trên `data/dishes.json`.

@@ -18,6 +18,15 @@ const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMe
 const R_TIERS = [2500, 5000, 10000, 15000];   // 4 mức bán kính tìm quán cho người dùng chọn
 const MEALS = { sang: 'Sáng 🌅', trua: 'Trưa ☀️', xe: 'Xế 🌤️', toi: 'Tối 🌙', khuya: 'Khuya 🌌', vat: 'Ăn vặt 🍿' };
 const REGIONS = { vn: 'Việt 🇻🇳', cn: 'Trung Hoa 🇨🇳', jp: 'Nhật 🇯🇵', kr: 'Hàn 🇰🇷', th: 'Thái 🇹🇭', it: 'Ý 🇮🇹', fr: 'Âu 🇫🇷', us: 'Mỹ 🇺🇸', mx: 'Mexico 🇲🇽', in: 'Ấn 🇮🇳', tr: 'Trung Đông 🇹🇷' };
+// Vùng miền Việt Nam — dùng cho bộ lọc "Vùng miền"
+const VUNG = {
+  bac: 'Miền Bắc 🏯', trung: 'Miền Trung 🌾', nam: 'Miền Nam 🏙️',
+  'tay-nam-bo': 'Miền Tây Nam Bộ 🛶', 'tay-nguyen': 'Tây Nguyên ☕',
+  vn: 'Cả nước 🇻🇳', ngoai: 'Ngoài Việt Nam 🌍'
+};
+const vungLabel = (k) => VUNG[k] || k || '—';
+// Chọn "Miền Nam" thì gồm luôn miền Tây Nam Bộ (Tây Nam Bộ nằm trong Nam Bộ)
+const VUNG_INCLUDE = { nam: ['nam', 'tay-nam-bo'] };
 const STYLES = { nuoc: 'Món nước 🍜', kho: 'Món khô 🥡', chien: 'Chiên 🍳', nuong: 'Nướng 🔥', hap: 'Hấp 🥟', tron: 'Trộn 🥗', cuon: 'Cuộn 🌯', lau: 'Lẩu 🍲', ngot: 'Ngọt 🍰', uong: 'Đồ uống 🥤' };
 const TIERS = {
   1: { name: 'Phổ Thông', short: 'R', w: 45, color: '#8c98a8', glow: 'rgba(140,152,168,.45)' },
@@ -30,7 +39,7 @@ const thumb = (u, w) => { if (!u) return u; const t = THUMB_LADDER.find(s => s >
 
 let ALL = [];
 const state = {
-  meals: new Set(), regions: new Set(), styles: new Set(),
+  meals: new Set(), regions: new Set(), styles: new Set(), vung: new Set(),
   veg: false, mild: false, topRated: false, price: 4, time: 300, q: '', preset: null,
   vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
   radius: R_TIERS.includes(LS.get('mgd.radius', 5000)) ? LS.get('mgd.radius', 5000) : 5000,   // bán kính tìm quán (m) người dùng chọn
@@ -38,6 +47,15 @@ const state = {
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
   lastWinner: null, spinning: false
 };
+function vungHit(v) {
+  if (!state.vung.size) return true;
+  for (const k of state.vung) {
+    if (k === v) return true;
+    const inc = VUNG_INCLUDE[k];
+    if (inc && inc.includes(v)) return true;
+  }
+  return false;
+}
 
 /* ============================ ÂM THANH ============================ */
 let AC = null, audioReady = false;
@@ -151,7 +169,8 @@ function infoGrid(d) {
   if (d.protein) rows.push(['💪', 'Đạm', d.protein + ' g' + (d.proteinLabel ? ' · ' + d.proteinLabel : '')]);
   if (full) rows.push(['🍚', 'Độ no', '●'.repeat(full) + '○'.repeat(5 - full) + ' (' + full + '/5)']);
   if (d.priceRange) rows.push(['💵', 'Giá tham khảo', d.priceRange]);
-  if (d.origin) rows.push(['📍', 'Vùng miền', esc(d.origin)]);
+  if (d.vung) rows.push(['🗺️', 'Vùng miền', esc(vungLabel(d.vung))]);
+  if (d.origin) rows.push(['📍', 'Xuất xứ', esc(d.origin)]);
   if (d.bestTime) rows.push(['⏰', 'Ngon nhất', d.bestTime]);
   const f = d.facts || {};
   if (f.originCountry) rows.push(['🌐', 'Quốc gia gốc', esc(f.originCountry)]);
@@ -468,6 +487,7 @@ function pool() {
   return ALL.filter(d =>
     (!state.meals.size || d.meals.some(m => state.meals.has(m))) &&
     (!state.regions.size || state.regions.has(d.region)) &&
+    vungHit(d.vung) &&
     (!state.vnOnly || d.region === 'vn') &&
     (!state.styles.size || state.styles.has(d.style)) &&
     (!state.veg || d.veg === 1) && (!state.mild || d.spicy === 0) &&
@@ -664,6 +684,7 @@ function renderWin(d) {
     creditLine(d) +
     '<div class="win-meta">' +
       '<span class="pill">' + (REGIONS[d.region] || d.region) + '</span>' +
+      (d.region === 'vn' ? '<span class="pill">🗺️ ' + esc(vungLabel(d.vung)) + '</span>' : '') +
       '<span class="pill">' + (STYLES[d.style] || d.style) + '</span>' +
       '<span class="pill">⏱️ ' + (d.minutes || '?') + ' phút</span>' +
       '<span class="pill">💰 ' + '₫'.repeat(Math.max(1, Math.min(4, Number(d.price) || 1))) + '</span>' +
@@ -881,6 +902,8 @@ function chipRow(host, dict, set) {
     b.onclick = () => {
       // bấm chip ẩm thực nước ngoài => tự tắt chế độ "chỉ món Việt"
       if (set === state.regions && k !== 'vn' && state.vnOnly) setVnOnly(false, true);
+      // bấm chip vùng "Ngoài Việt Nam" => tự tắt chế độ chỉ món Việt
+      if (set === state.vung && k === 'ngoai' && state.vnOnly) setVnOnly(false, true);
       set.has(k) ? set.delete(k) : set.add(k);
       b.classList.toggle('on', set.has(k));
       state.preset = null; $$('#presets .preset').forEach(p => p.classList.remove('on'));
@@ -892,6 +915,7 @@ function chipRow(host, dict, set) {
 /* ---- CHỈ MÓN VIỆT (mặc định BẬT) ---- */
 function paintRegionChips() {
   $$('#regionChips .chip').forEach(c => c.classList.toggle('foreign-off', state.vnOnly && c.dataset.k !== 'vn'));
+  $$('#vungChips .chip').forEach(c => c.classList.toggle('foreign-off', state.vnOnly && c.dataset.k === 'ngoai'));
 }
 function setVnOnly(on, notify) {
   state.vnOnly = !!on;
@@ -904,7 +928,7 @@ function setVnOnly(on, notify) {
   idleTrack();
 }
 function activeFilterCount() {
-  return state.meals.size + state.regions.size + state.styles.size + (state.veg ? 1 : 0) + (state.mild ? 1 : 0) + (state.topRated ? 1 : 0) + (state.price < 4 ? 1 : 0) + (state.time < 300 ? 1 : 0) + (state.q ? 1 : 0);
+  return state.meals.size + state.regions.size + state.styles.size + state.vung.size + (state.veg ? 1 : 0) + (state.mild ? 1 : 0) + (state.topRated ? 1 : 0) + (state.price < 4 ? 1 : 0) + (state.time < 300 ? 1 : 0) + (state.q ? 1 : 0);
 }
 function syncPool() {
   const p = pool();
@@ -943,7 +967,10 @@ const PRESETS = {
   soup:   () => { state.styles.add('nuoc'); },
   quick:  () => { state.time = 20; },
   cheap:  () => { state.price = 1; },
-  top:    () => { state.topRated = true; }
+  top:    () => { state.topRated = true; },
+  vungBac:   () => { state.vung.add('bac'); },
+  vungTrung: () => { state.vung.add('trung'); },
+  vungTay:   () => { state.vung.add('tay-nam-bo'); }
 };
 $$('#presets .preset').forEach(btn => {
   btn.onclick = () => {
@@ -959,7 +986,7 @@ $$('#presets .preset').forEach(btn => {
   };
 });
 function resetFilters(clearChips = true) {
-  state.meals.clear(); state.regions.clear(); state.styles.clear();
+  state.meals.clear(); state.regions.clear(); state.styles.clear(); state.vung.clear();
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
   state.vnOnly = true; LS.set('mgd.vnOnly', true);
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
@@ -974,6 +1001,7 @@ function applyFilterUI() {
   $('#timeLabel').textContent = state.time === 300 ? '300 phút' : state.time + ' phút';
   $$('#mealChips .chip').forEach(c => c.classList.toggle('on', state.meals.has(c.dataset.k)));
   $$('#regionChips .chip').forEach(c => c.classList.toggle('on', state.regions.has(c.dataset.k)));
+  $$('#vungChips .chip').forEach(c => c.classList.toggle('on', state.vung.has(c.dataset.k)));
   $$('#styleChips .chip').forEach(c => c.classList.toggle('on', state.styles.has(c.dataset.k)));
 }
 $('#btnResetFilters').onclick = () => { resetFilters(); applyFilterUI(); syncPool(); idleTrack(); toast('Đã đặt lại bộ lọc'); };
@@ -1477,6 +1505,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   $('#btnSound').classList.toggle('off', !state.sound);
 
   chipRow($('#mealChips'), MEALS, state.meals);
+  chipRow($('#vungChips'), VUNG, state.vung);
   chipRow($('#regionChips'), REGIONS, state.regions);
   chipRow($('#styleChips'), STYLES, state.styles);
 
@@ -1497,5 +1526,5 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
     }
   } catch {}
   // hook để kiểm thử tự động
-  try { window.__mgd = { state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour, ALL: function () { return ALL; } }; } catch (e) {}
+  try { window.__mgd = { state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour, vungHit: vungHit, VUNG: VUNG, ALL: function () { return ALL; } }; } catch (e) {}
 })();

@@ -87,6 +87,9 @@
       <button class="preset" data-preset="quick">⚡ Dưới 20 phút</button>
       <button class="preset" data-preset="cheap">💰 Bình dân</button>
       <button class="preset" data-preset="top">⭐ Điểm cao (≥8.5)</button>
+      <button class="preset" data-preset="vungBac">🏯 Món miền Bắc</button>
+      <button class="preset" data-preset="vungTrung">🌾 Món miền Trung</button>
+      <button class="preset" data-preset="vungTay">🛶 Đặc sản miền Tây</button>
     </div>
   </section>
 
@@ -117,7 +120,7 @@
     <ul class="tips">
       <li>Bấm nút <b>🎰 QUAY 1 MÓN</b> (hoặc <b>⚡ x10</b>) — nằm ngay dưới băng chuyền.</li>
       <li>Quay xong, <b>popup thông tin món trúng</b> tự hiện: điểm, calo, giá, xuất xứ, mẹo ăn.</li>
-      <li>Nút <b>⚙️ Lọc</b> ở dưới: bữa ăn, ẩm thực, chay, ngân sách, thời gian.</li>
+      <li>Nút <b>⚙️ Lọc</b> ở dưới: bữa ăn, <b>vùng miền</b> (Bắc/Trung/Nam/Tây Nam Bộ/Tây Nguyên), ẩm thực, chay, ngân sách, thời gian.</li>
       <li>Mặc định <b>chỉ quay món Việt</b>. Muốn món Hàn/Nhật/Âu/Mỹ thì bật lại trong <b>⚙️ Lọc → Thêm</b>.</li>
       <li><b>Quay 10</b> để mở 10 thẻ một lượt rồi chốt đại.</li>
       <li>Bấm <b>♥</b> trên thẻ kết quả để lưu món ngon vào danh sách.</li>
@@ -128,6 +131,7 @@
     <h3><span>📷</span> Nguồn ảnh &amp; dữ liệu</h3>
     <p class="note">Ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b>, đối chiếu tên món trước khi hiển thị.
       Món nào không tìm được ảnh đúng sẽ dùng hình vẽ minh hoạ.</p>
+    <p class="note">Phân vùng miền theo nguồn gốc/đặc trưng địa phương: <b>Bắc 38 · Trung 17 · Nam 38 · Tây Nam Bộ 4 · Tây Nguyên 1 · Cả nước 62</b> (món Việt).</p>
     <p class="note">160 món Việt (mặc định) + 88 món quốc tế ẩn sẵn · 6 bữa · 11 nền ẩm thực · 10 cách chế biến.</p>
     <button class="mini-btn wide" id="btnLuckyFooter">🍀 Thử vận may (bỏ hết bộ lọc)</button>
   </footer>
@@ -144,6 +148,11 @@
       <div class="fgroup">
         <h3><span>⏰</span> Bữa ăn</h3>
         <div class="chips" id="mealChips"></div>
+      </div>
+      <div class="fgroup">
+        <h3><span>🗺️</span> Vùng miền</h3>
+        <p class="fnote">Chọn vùng bạn đang ở để ra món hợp khẩu vị địa phương. <b>Miền Nam</b> bao gồm cả miền Tây Nam Bộ; <b>Cả nước</b> là món phổ biến khắp nơi.</p>
+        <div class="chips" id="vungChips"></div>
       </div>
       <div class="fgroup">
         <h3><span>🌏</span> Ẩm thực</h3>

@@ -174,6 +174,25 @@ Công cụ: `tools/enrich-wiki.mjs` (tra theo lô 20 tiêu đề/request, Wikida
 Mỗi món có: **điểm 7.1–9.8 kèm sao**, **nhận xét riêng** (48 món tiêu biểu viết tay, còn lại soạn theo vùng ẩm thực + cách chế biến), **năng lượng & đạm (ước tính/phần)**, **độ no 1–5**, **giá tham khảo**, **xuất xứ**, **thời điểm ngon nhất**, **hợp với ai**, **mẹo ăn**. Điểm số tính theo độ "biểu tượng" + độ công phu, **không** theo độ hiếm gacha (phở bò 9.4 dù là món phổ thông). Có preset lọc **⭐ Điểm cao (≥8.5)** và công tắc trong bộ lọc.
 Dữ liệu tạo bằng `tools/enrich-dishes.mjs` (chạy lại được, ghi thẳng vào `data/dishes.json` + SQLite).
 
+### 🗺️ Lọc theo vùng miền (mới)
+Mỗi món Việt có thêm trường **vung** — vùng miền gốc/đặc trưng — và bộ lọc có nhóm **🗺️ Vùng miền** (bấm được nhiều vùng một lúc):
+
+| Chip | Ý nghĩa | Số món |
+|---|---|---|
+| 🏯 Miền Bắc | phở, bún chả, bánh cuốn, chả cá Lã Vọng… | 38 |
+| 🌾 Miền Trung | bún bò Huế, mì Quảng, cao lầu, bánh bèo… | 17 |
+| 🏙️ Miền Nam | cơm tấm, hủ tiếu, bánh xèo, bánh khọt… (**gồm cả miền Tây Nam Bộ**) | 38 + 4 |
+| 🛶 Miền Tây Nam Bộ | bún mắm, lẩu cá kèo, bánh canh cua, bánh tét | 4 |
+| ☕ Tây Nguyên | bánh tráng nướng Đà Lạt | 1 |
+| 🇻🇳 Cả nước | món phổ biến khắp nơi (đồ uống, món cơm nhà, ăn vặt) | 62 |
+| 🌍 Ngoài Việt Nam | 88 món quốc tế (bấm vào sẽ tự tắt chế độ "chỉ món Việt") | 88 |
+
+- Chọn **Miền Nam** thì **bao gồm luôn miền Tây Nam Bộ** (bảng `VUNG_INCLUDE` trong `app.js`) — đúng địa lý, không sót món.
+- 3 preset nhanh ở trang chính: **🏯 Món miền Bắc**, **🌾 Món miền Trung**, **🛶 Đặc sản miền Tây**.
+- Popup kết quả có thêm dòng **🗺️ Vùng miền** (dòng **📍 Xuất xứ** giữ nguyên mô tả chi tiết như "Sài Gòn", "Hội An").
+- Dữ liệu phân vùng do `tools/enrich-vung.mjs` gán (chạy lại được, ghi vào `data/dishes.json` + cột `vung` trong bảng SQLite `dishes`).
+- Test: `node tools/test-vung.mjs [baseUrl]` — 12/12 PASS (đếm đúng từng vùng, Nam gồm Tây Nam Bộ, chọn nhiều vùng, chip ngoại tắt vnOnly, preset, popup, 0 lỗi JS).
+
 ### Thao tác trên điện thoại
 - **Một hàng nút duy nhất** ngay dưới băng chuyền: **[⚙️ Lọc] [🎰 QUAY 1 MÓN] [⚡ x10]** — chỉ có MỘT nút quay, không trùng lặp, không thanh nổi che nội dung.
 - **Chạm vào khung quay KHÔNG quay** (khung đã tắt nhận chạm) — chỉ quay bằng nút. Không còn thao tác vuốt.
