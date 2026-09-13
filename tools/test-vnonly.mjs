@@ -3,6 +3,9 @@ import { createRequire } from 'module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
 
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+console.log('KIỂM TRA: ' + BASE);
+
 const browser = await chromium.launch({
   executablePath: '/var/lib/dsh/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',
   args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
@@ -11,7 +14,7 @@ const browser = await chromium.launch({
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
 const page = await ctx.newPage();
 page.on('pageerror', e => console.log('  PAGE ERROR: ' + e.message));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });
+await page.goto(BASE + '/', { waitUntil: 'networkidle' });
 await page.waitForFunction(() => window.__mgd && window.__mgd.ALL().length > 0, null, { timeout: 20000 });
 
 const snap = async (label) => {
