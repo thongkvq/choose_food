@@ -1214,7 +1214,7 @@ $('#fVeg').onchange = (e) => { state.veg = e.target.checked; syncPool(); };
 $('#fMild').onchange = (e) => { state.mild = e.target.checked; syncPool(); };
 const fvEl = $('#fVnOnly'); if (fvEl) fvEl.onchange = (e) => setVnOnly(e.target.checked, true);
 const fVungGocEl = $('#fVungGocOnly'); if (fVungGocEl) fVungGocEl.onchange = (e) => { state.vungGocOnly = e.target.checked; LS.set('mgd.vungGocOnly', state.vungGocOnly); syncPool(); ensurePlayable(); };
-const fAutoVungEl = $('#fAutoVung'); if (fAutoVungEl) fAutoVungEl.onchange = (e) => setAutoVung(e.target.checked);
+const fAutoVungEl = $('#fAutoVung'); if (fAutoVungEl) fAutoVungEl.onchange = (e) => { setAutoVung(e.target.checked); if (!e.target.checked) { state.vungGeo = null; LS.set('mgd.vungGeo', null); } };
 const fTopEl = $('#fTop'); if (fTopEl) fTopEl.onchange = (e) => { state.topRated = e.target.checked; syncPool(); };
 $('#fPrice').oninput = (e) => { state.price = +e.target.value; $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price); syncPool(); };
 $('#fTime').oninput = (e) => { state.time = +e.target.value; $('#timeLabel').textContent = state.time === 300 ? '300 phút' : state.time + ' phút'; syncPool(); };
@@ -1634,7 +1634,11 @@ async function dirGeocode(q) {
   if (!f) throw new Error('không tìm thấy địa chỉ');
   const pr = f.properties || {}, co = (f.geometry && f.geometry.coordinates) || [];
   if (co.length < 2) throw new Error('không có toạ độ');
-  const out = { lat: co[1], lng: co[0], label: [pr.name, pr.street, pr.district, pr.city, pr.country].filter(Boolean).join(', ') };
+  const out = {
+    lat: co[1], lng: co[0], city: pr.city, region: pr.state || pr.region, district: pr.district,
+    country: pr.country, countryCode: pr.countrycode || pr.country_code,
+    label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', ')
+  };
   LS_PUT(key, out);
   return out;
 }
