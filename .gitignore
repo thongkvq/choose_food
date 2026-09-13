@@ -7,3 +7,7 @@ tools/screenshots/
 *.log
 .deploy-cli
 package-lock.json
+# KHOÁ API KHÔNG ĐƯỢC LÊN GITHUB (repo public)
+.env
+.env.local
+*.env
