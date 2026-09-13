@@ -253,7 +253,23 @@ function renderNearbyHeader(pos) {
 /* ---- QUÁN CÓ TIẾNG (miễn phí, dữ liệu mở OSM) ----
    Bản có server: server chấm sẵn. Bản tĩnh (Vercel): tự gọi Overpass bằng GET
    (Overpass có gửi Access-Control-Allow-Origin: * cho GET) rồi chấm y hệt. */
-const FAME_SRC = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+// Đo thật từ trình duyệt: overpass-api.de bị CORS chặn (net::ERR_FAILED), kumi chạy được;
+// private.coffee trả XML lỗi, osm.ch chỉ có dữ liệu Thuỵ Sĩ -> chỉ giữ 2 cái dùng được.
+const FAME_SRC = ['https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter'];
+const FAME_TTL = 6 * 60 * 60 * 1000;   // cache 6 giờ: bản tĩnh gọi Overpass khá chậm
+function fameCacheKey(lat, lng, r, dish) { return lat.toFixed(2) + ',' + lng.toFixed(2) + ',' + r + ',' + dirNorm(dish); }
+function fameCacheGet(lat, lng, r, dish) {
+  const c = LS.get('mgd.fame', {});
+  const e = c[fameCacheKey(lat, lng, r, dish)];
+  return (e && Date.now() - e.t < FAME_TTL) ? e.v : null;
+}
+function fameCacheSet(lat, lng, r, dish, v) {
+  const c = LS.get('mgd.fame', {});
+  const keys = Object.keys(c);
+  if (keys.length > 40) keys.slice(0, keys.length - 40).forEach((k) => delete c[k]);
+  c[fameCacheKey(lat, lng, r, dish)] = { t: Date.now(), v: v };
+  LS.set('mgd.fame', c);
+}
 function fameScoreOf(p, branches) {
   let s = 0; const why = [];
   if (p.wiki) { s += 4; why.push('có hồ sơ Wikipedia/Wikidata'); }
@@ -285,6 +301,8 @@ function fameLists(pois, lat, lng, radiusM, dish, kw, cuisine) {
   return { famousMatch: match, famousNear: around };
 }
 async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
+  const cached = fameCacheGet(lat, lng, radiusM, dish);
+  if (cached) return cached;
   const dLat = radiusM / 111000;
   const dLng = radiusM / (111320 * Math.cos((lat * Math.PI) / 180));
   const box = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
@@ -294,10 +312,10 @@ async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
   let data = null;
   for (const ep of FAME_SRC) {
     const ctl = new AbortController();
-    const t = setTimeout(() => ctl.abort(), 25000);
+    const t = setTimeout(() => ctl.abort(), 20000);
     try {
       const res = await fetch(ep + '?data=' + encodeURIComponent(ql), { signal: ctl.signal, cache: 'no-store' });
-      if (res.ok) { data = await res.json(); break; }
+      if (res.ok) { const txt = await res.text(); data = JSON.parse(txt); break; }   // gương lỗi trả XML -> bỏ qua
     } catch (e) { /* thử gương kế tiếp */ } finally { clearTimeout(t); }
   }
   if (!data) return null;
@@ -318,10 +336,21 @@ async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
       maps: 'https://www.google.com/maps/dir/?api=1&destination=' + plat + ',' + plng + '&travelmode=driving'
     });
   }
-  return fameLists(pois, lat, lng, radiusM, dish, kw, cuisine);
+  const lists = fameLists(pois, lat, lng, radiusM, dish, kw, cuisine);
+  fameCacheSet(lat, lng, radiusM, dish, lists);
+  return lists;
 }
 
 // Khối "quán có tiếng": server trả sẵn, hoặc bản tĩnh tự gọi Overpass ở trên.
+function famousHTML(match, near, already) {
+  const list = already || [];
+  const famMatch = (match || []).filter((p) => !list.some((q) => q.name === p.name && Math.abs(q.dist - p.dist) < 50));
+  const famNear = (near || []).filter((p) => !famMatch.some((q) => q.name === p.name));
+  if (!famMatch.length && !famNear.length) return '';
+  return famousBlock('⭐ Quán có tiếng bán món này', famMatch, 'match') +
+    famousBlock('⭐ Quán có tiếng quanh đây', famNear, 'near') +
+    '<div class="nearby-note fam-note">"Có tiếng" = có hồ sơ Wikipedia/Wikidata, thương hiệu/chuỗi nhiều chi nhánh, website, giờ mở cửa trên dữ liệu mở OSM — không phải điểm đánh giá của khách.</div>';
+}
 function famousBlock(title, list, kind) {
   if (!list || !list.length) return '';
   return '<div class="fam-title">' + title + '</div>' +
@@ -374,10 +403,6 @@ async function findNearby(d, forcePos, keepPos) {
       j = await apiJSON('/api/nearby?' + params.toString(), () => dirNearby(pos.lat, pos.lng, state.radius, params.get('q'), params.get('kw'), params.get('cuisine')));
     } finally { clearTimeout(timer); }
     if (j.error) throw new Error(j.error);
-    if (famJob && !(j.famousMatch || []).length && !(j.famousNear || []).length) {
-      const fam = await famJob;
-      if (fam) { j.famousMatch = fam.famousMatch; j.famousNear = fam.famousNear; }
-    }
     // chưa có quán khớp tên món -> hỏi thêm quán gần nhất (chậm hơn nên chỉ gọi khi cần)
     if (!(j.matched || []).length && await apiMode() === 'server') {
       try {
@@ -402,14 +427,9 @@ async function findNearby(d, forcePos, keepPos) {
         '<b>' + esc(p.name) + '</b><span class="shop-dist">' + km(p.dist) + '</span>' +
         '<span class="shop-meta">' + [p.type === 'fast_food' ? 'quán nhanh' : p.type === 'cafe' ? 'quán cà phê' : p.type === 'food_court' ? 'khu ăn uống' : 'nhà hàng',
           p.cuisine, p.address, p.phone].filter(Boolean).map(esc).join(' · ') + '</span></a>').join('');
-    // ⭐ Quán có tiếng (dữ liệu mở OSM: thương hiệu/chuỗi, website, giờ mở cửa…) — chỉ có khi chạy qua server
-    const famMatch = (j.famousMatch || []).filter((p) => !list.some((q) => q.name === p.name && Math.abs(q.dist - p.dist) < 50));
-    const famNear = (j.famousNear || []).filter((p) => !famMatch.some((q) => q.name === p.name));
-    if (famMatch.length || famNear.length) {
-      html += famousBlock('⭐ Quán có tiếng bán món này', famMatch, 'match') +
-              famousBlock('⭐ Quán có tiếng quanh đây', famNear, 'near') +
-              '<div class="nearby-note fam-note">"Có tiếng" = có thương hiệu/chuỗi, website, giờ mở cửa, điện thoại trên dữ liệu mở OSM — không phải điểm đánh giá của khách.</div>';
-    }
+    // ⭐ Quán có tiếng (dữ liệu mở OSM: thương hiệu/chuỗi, website, giờ mở cửa…)
+    html += '<div id="famSlot">' + famousHTML(j.famousMatch, j.famousNear, list) +
+      (famJob ? '<div class="nearby-note">⏳ Đang lấy danh sách quán có tiếng…</div>' : '') + '</div>';
     html += '<div class="nearby-links">' +
       '<a class="nearby-link primary" href="' + esc(j.mapsKeywordUrl || j.mapsUrl) + '" target="_blank" rel="noopener">🗺️ Google Maps</a>' +
       '<button class="nearby-link" data-act="loc-again">🔄 Tìm lại</button>' +
@@ -417,6 +437,18 @@ async function findNearby(d, forcePos, keepPos) {
     out.innerHTML = controls + html;
     out.dataset.done = '1';
     if (btn) { btn.textContent = '📍 Quán gần đây (bấm để ẩn/hiện)'; btn.disabled = false; }
+    // bản tĩnh: Overpass chậm nên hiện kết quả chính trước, quán có tiếng đổ vào sau
+    if (famJob) {
+      const token = (state._nearbyToken = (state._nearbyToken || 0) + 1);
+      famJob.then((fam) => {
+        if (token !== state._nearbyToken) return false;   // đã có lượt tìm mới hơn
+        const slot = $('#famSlot');
+        if (!slot) return false;
+        const html2 = fam ? famousHTML(fam.famousMatch, fam.famousNear, list) : '';
+        slot.innerHTML = html2 || '<div class="nearby-note">Chưa lấy được danh sách quán có tiếng (Overpass đang bận) — bấm 🔄 Tìm lại.</div>';
+        return true;
+      });
+    }
   } catch (err) {
     out.innerHTML = controls + '<div class="nearby-note err">Không tìm được: ' + esc(err.message) + '</div>' +
       '<div class="nearby-links"><a class="nearby-link primary" href="https://www.google.com/maps/search/' +

@@ -96,6 +96,9 @@ reqs.length = 0;
 await page.click('#nearbyOut .rad-chip[data-rad="15000"]');
 await waitDone('15km', true);
 s = await snap();
+if (!serverMode) {   // bản tĩnh: quán có tiếng đổ vào sau (Overpass qua gương, có thể ~20s)
+  await page.waitForFunction(() => document.querySelectorAll('#nearbyOut .shop.fam').length > 0 || /Chưa lấy được/.test((document.querySelector('#famSlot') || {}).textContent || ''), null, { timeout: 90000 }).catch(() => {});
+}
 const fam = await page.evaluate(() => {
   const out = document.querySelector('#nearbyOut');
   return {
