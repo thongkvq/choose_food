@@ -24,12 +24,17 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
+html{
+  -webkit-text-size-adjust:100%;
+  background-color:var(--bg);
+}
 html,body{min-height:100%}
 /* KHÔNG dùng overflow-x:hidden trên html/body: kết hợp overscroll-behavior sẽ CHẶN vuốt cuộn trên Chrome mobile.
    Chống tràn ngang bằng cách không để phần tử nào rộng quá màn (đã kiểm bằng tools/audit-layout.mjs). */
 body{
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   line-height:1.45;
+  background-color:var(--bg);
   background:
     radial-gradient(120% 60% at 50% -10%, rgba(255,87,34,.20), transparent 60%),
     radial-gradient(90% 50% at 100% 8%, rgba(176,92,248,.22), transparent 60%),
@@ -313,9 +318,27 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brand);background:tr
   animation:sheetUp .34s cubic-bezier(.2,1.1,.3,1);
 }
 /* các khối trong thẻ KHÔNG được co lại — co là bị overflow:hidden cắt mất chữ (bảng thông tin từng mất ~90px) */
-.win-dialog>*{flex-shrink:0}
+.win-dialog>*, .win-col-visual>*, .win-col-info>*{flex-shrink:0}
 .win-actions{flex-shrink:0}
 .multi-dialog>*{flex-shrink:0}
+.win-layout{display:contents}
+.win-col-visual{display:contents}
+.win-col-info{display:contents}
+@media (max-width:1023px){
+  .win-name{order:3}
+  .score-block{order:4}
+  .win-descr{order:5}
+  .review{order:6}
+  .intro-wrap{order:7}
+  .detail{order:8}
+  .info-grid{order:9}
+  .fit{order:10}
+  .tip{order:11}
+  .nearby{order:12}
+  .credit{order:13}
+  .win-meta{order:14}
+  .win-actions{order:100}
+}
 [data-theme="light"] .win-dialog{background:linear-gradient(180deg,#fff,#fff5ec)}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 .win-rays{position:absolute;top:-30%;left:50%;width:340px;height:340px;margin-left:-170px;border-radius:50%;
@@ -574,29 +597,201 @@ input[type=range]{width:100%;height:34px;accent-color:var(--brand);background:tr
 }
 
 /* ==========================================================================
-   DESKTOP ≥ 1024px : filter thành panel phải, hiện side-feed
+   DESKTOP ≥ 1024px : filter thành panel phải, bảng điều khiển dưới băng chuyền
    ========================================================================== */
+.desk-kbd{display:none}
+
 @media (min-width:1024px){
   :root{--card-w:196px;--card-h:238px;--card-gap:16px;--vp-h:262px}
-  body{padding-bottom:24px}
-  .app-main{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start;padding-bottom:40px}
-  .reel-card{grid-column:1}
-  .filter-panel{position:static;transform:none;max-height:none;background:var(--surface);border:1px solid var(--line);
-    border-radius:22px;box-shadow:var(--shadow);grid-column:2;grid-row:1/3;padding-bottom:0}
-  .sheet-head{cursor:default}
+  body{padding-bottom:32px}
+
+  .desk-kbd{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:10.5px;font-weight:800;letter-spacing:.3px;
+    background:rgba(0,0,0,.36);border:1px solid rgba(255,255,255,.24);
+    border-radius:6px;padding:1px 6px;color:#fff;
+    margin-left:6px;vertical-align:middle;
+  }
+  [data-theme="light"] .desk-kbd{
+    background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.18);color:#221528;
+  }
+
+  .app-header{max-width:1360px;margin:0 auto;width:100%;padding:14px 24px}
+  .brand .logo{width:44px;height:44px;font-size:24px}
+  .titles h1{font-size:18px}
+  .sub{max-width:400px}
+
+  .app-main{
+    display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;
+    align-items:start;padding:12px 24px 40px;max-width:1360px;margin:0 auto;
+  }
+  .reel-card{
+    grid-column:1;border-radius:24px;
+    transition:box-shadow .25s,border-color .25s;
+  }
+  .reel-card:hover{border-color:var(--line-strong)}
+  .presets{display:flex;flex-wrap:wrap;gap:8px}
+  .preset{transition:transform .15s,background .15s,border-color .15s}
+
+  /* Sheet backdrop tắt hẳn trên desktop để không chặn màn */
+  .sheet-backdrop{display:none !important}
+
+  /* Filter Panel thành sidebar dính (sticky) */
+  .filter-panel{
+    position:sticky;top:74px;max-height:calc(100vh - 92px);
+    transform:none !important;
+    overflow-y:auto;overflow-x:hidden;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:22px;box-shadow:var(--shadow);
+    grid-column:2;grid-row:1/3;padding-bottom:0;
+    display:flex;flex-direction:column;
+    scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent;
+  }
+  .filter-panel::-webkit-scrollbar{width:6px}
+  .filter-panel::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:3px}
+
+  .sheet-head{
+    position:sticky;top:0;z-index:10;
+    background:linear-gradient(180deg,#171228,#120e20);
+    border-bottom:1px solid var(--line);
+    padding:14px 18px;cursor:default;
+  }
+  [data-theme="light"] .sheet-head{background:linear-gradient(180deg,#fff,#f8ede2)}
   .sheet-head::before{display:none}
   .sheet-close{display:none}
-  .sheet-body{overflow:visible;max-height:none}
-  .sheet-foot{display:none}
-  .side-feed{display:flex;flex-direction:column;gap:16px;grid-column:1}
-  .side-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px}
-  .side-card h4{font-size:13.5px;margin-bottom:10px}
+
+  .sheet-body{
+    padding:16px 18px;overflow:visible;max-height:none;flex:1;
+  }
+  .sheet-foot{
+    display:flex;position:sticky;bottom:0;z-index:10;
+    background:linear-gradient(180deg,rgba(18,14,32,.94),#120e20);
+    border-top:1px solid var(--line);padding:12px 18px;
+  }
+  [data-theme="light"] .sheet-foot{background:linear-gradient(180deg,rgba(255,255,255,.95),#f8ede2)}
+  .sheet-foot .btn{min-height:42px;font-size:13.5px;border-radius:12px}
+
+  /* Bảng điều khiển / Feeds dưới băng chuyền */
+  .side-feed{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+    grid-column:1;margin-top:4px;
+  }
+  .side-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:18px 20px;box-shadow:0 4px 18px rgba(0,0,0,.2);
+    display:flex;flex-direction:column;gap:10px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .side-card:hover{
+    border-color:var(--line-strong);box-shadow:0 8px 26px rgba(0,0,0,.35);
+  }
+  .side-card.full-width{grid-column:1 / -1}
+  .side-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .side-card-head h4, .side-card h4{
+    font-size:14px;font-weight:800;color:var(--text);margin-bottom:0;
+  }
+  .shortcut-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px 12px;margin-top:2px;
+  }
+  .shortcut-item{
+    display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);
+  }
+  .shortcut-item kbd{
+    display:inline-block;padding:2px 7px;font-size:11px;font-weight:800;
+    border-radius:6px;background:var(--surface2);border:1px solid var(--line-strong);
+    color:var(--text);min-width:24px;text-align:center;
+  }
+
   .mobile-only{display:none}
   .toast{left:auto;right:24px;bottom:24px;max-width:380px;text-align:left}
+
+  /* Modal kết quả 2 cột trên desktop */
+  .modal-backdrop{padding:24px;align-items:center}
+  .win-dialog{
+    width:100%;max-width:920px;max-height:88vh;
+    padding:28px 32px;border-radius:28px;margin:auto;
+    text-align:left;align-items:stretch;
+    box-shadow:0 24px 60px rgba(0,0,0,.75),0 0 45px var(--win-glow,rgba(255,190,46,.3));
+  }
+  .win-dialog > .locked-ribbon{
+    width:100%;margin:0 0 16px;border-radius:14px;padding:11px 16px;font-size:14.5px;
+  }
+  .win-layout{
+    display:grid;grid-template-columns:300px minmax(0,1fr);gap:30px;
+    width:100%;align-items:start;
+  }
+  .win-col-visual{
+    display:flex;flex-direction:column;align-items:center;
+    position:sticky;top:0;gap:12px;text-align:center;
+  }
+  .win-col-visual .win-badges{justify-content:center;margin-bottom:2px}
+  .win-col-visual .win-hero{
+    width:280px;height:280px;max-width:100%;
+    margin:0 0 4px;border-radius:22px;box-shadow:0 14px 32px rgba(0,0,0,.6);
+  }
+  .win-col-visual .score-block{width:100%;justify-content:center;margin-bottom:2px}
+  .win-col-visual .win-actions{
+    width:100%;position:static;background:none;padding:0;margin-top:6px;
+  }
+  .win-col-info{
+    display:flex;flex-direction:column;gap:12px;min-width:0;text-align:left;
+  }
+  .win-col-info .win-name{
+    font-size:27px;font-weight:900;text-align:left;line-height:1.2;
+  }
+  .win-col-info .win-descr{
+    font-size:14.5px;line-height:1.5;max-width:100%;text-align:left;margin:0;
+  }
+  .win-col-info .review{text-align:left;margin:2px 0}
+  .win-col-info .info-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:4px 0;
+  }
+  .win-col-info .fit{justify-content:flex-start}
+  .win-col-info .win-meta{justify-content:flex-start;margin-bottom:0}
+  .win-col-info .credit{text-align:left;margin-bottom:4px}
+  .win-col-info .nearby-btn{margin-top:4px}
+
+  /* 10-Pull 5x2 cân xứng */
+  .multi-dialog{
+    width:100%;max-width:920px;padding:24px 28px;border-radius:28px;margin:auto;
+  }
+  .multi-grid{
+    grid-template-columns:repeat(5,1fr);gap:12px;
+  }
+  .mcell{
+    min-height:148px;padding:8px;border-radius:16px;
+  }
+
+  /* Today dialog rộng rãi */
+  .today-dialog{
+    width:100%;max-width:760px;padding:24px 28px;border-radius:28px;margin:auto;
+  }
+  .today-dialog .slots{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  }
+
+  /* Side drawer */
+  .side-drawer{
+    width:440px;border-radius:24px 0 0 24px;border-left:1px solid var(--line);
+  }
 }
+
+@media (min-width:1440px){
+  .app-main{
+    grid-template-columns:minmax(0,1fr) 360px;gap:28px;max-width:1440px;
+  }
+  .filter-panel{max-height:calc(100vh - 96px)}
+}
+
 @media (hover:hover){
   .chip:hover,.preset:hover,.icon-btn:hover{background:var(--surface2);color:var(--text)}
+  .preset:hover{transform:translateY(-2px);border-color:var(--line-strong)}
   .mcell:hover,.favcell:hover{transform:translateY(-3px)}
   .rcard:hover .ph img{transform:scale(1.06)}
   .rcard .ph img{transition:transform .3s}
+  .act.spin:hover{transform:scale(1.015);box-shadow:0 12px 28px rgba(255,87,34,.5)}
+  .act.multi:hover{transform:scale(1.02);box-shadow:0 8px 24px rgba(176,92,248,.45)}
+  .act.filter:hover{background:var(--surface2);border-color:var(--line-strong)}
+  .btn-lock:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 28px rgba(255,87,34,.55)}
+  .sub-btn:hover{background:var(--surface2);border-color:var(--line-strong);transform:translateY(-1px)}
 }

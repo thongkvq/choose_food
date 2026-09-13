@@ -65,10 +65,10 @@
       <button class="act spin" id="btnSpinSingle" type="button">
         <span class="spark"></span>
         <span class="act-ico">🎰</span>
-        <span class="act-txt"><b>QUAY 1 MÓN</b><i>chạm để quay</i></span>
+        <span class="act-txt"><b>QUAY 1 MÓN <kbd class="desk-kbd">Space</kbd></b><i>chạm để quay</i></span>
       </button>
       <button class="act multi" id="btnSpinMulti" type="button">
-        <span class="act-ico">⚡</span><span class="act-lbl">x10</span>
+        <span class="act-ico">⚡</span><span class="act-lbl">x10 <kbd class="desk-kbd">T</kbd></span>
       </button>
     </div>
 
@@ -196,24 +196,46 @@
     </div>
   </section>
 
-  <!-- ===== CỘT PHẢI (chỉ desktop) ===== -->
+  <!-- ===== BẢNG ĐIỀU KHIỂN DƯỚI BĂNG CHUYỀN (desktop) ===== -->
   <aside class="side-feed">
     <div class="side-card">
-      <h4>📜 Vừa quay</h4>
+      <div class="side-card-head">
+        <h4>📜 Vừa quay</h4>
+        <button class="mini-btn" id="clearHistDesktop" type="button">Xoá</button>
+      </div>
       <div class="strip wrap" id="historyFeedDesktop"></div>
     </div>
     <div class="side-card">
-      <h4>♥ Đã lưu</h4>
+      <div class="side-card-head">
+        <h4>♥ Đã lưu</h4>
+        <button class="mini-btn" id="openFavsBtnDesktop" type="button">Xem tất cả</button>
+      </div>
       <div class="strip wrap" id="favStripDesktop"></div>
     </div>
     <div class="side-card">
-      <h4>🎲 Tỉ lệ phẩm chất</h4>
+      <h4>🎲 Tỉ lệ phẩm chất &amp; Bảo hiểm</h4>
       <div class="odds">
         <div class="odd t4"><span>Huyền Thoại · UR</span><b>7%</b></div>
         <div class="odd t3"><span>Đặc Sắc · SSR</span><b>18%</b></div>
         <div class="odd t2"><span>Ngon · SR</span><b>30%</b></div>
         <div class="odd t1"><span>Phổ Thông · R</span><b>45%</b></div>
       </div>
+      <p class="note" style="margin-top:8px">Quay 10 lần không ra SSR trở lên thì lần thứ 10 chắc chắn ra món Đặc Sắc hoặc Huyền Thoại.</p>
+    </div>
+    <div class="side-card">
+      <h4>⌨️ Phím tắt &amp; Mẹo nhanh</h4>
+      <div class="shortcut-grid">
+        <div class="shortcut-item"><kbd>Space</kbd> <span>Quay 1 món</span></div>
+        <div class="shortcut-item"><kbd>T</kbd> <span>Quay 10 món</span></div>
+        <div class="shortcut-item"><kbd>/</kbd> hoặc <kbd>F</kbd> <span>Tìm kiếm món</span></div>
+        <div class="shortcut-item"><kbd>Esc</kbd> <span>Đóng cửa sổ / popup</span></div>
+      </div>
+      <p class="note" style="margin-top:8px">Bấm <b>📅 Hôm nay</b> để lên thực đơn 3 bữa cân bằng calo và dinh dưỡng theo thời tiết.</p>
+    </div>
+    <div class="side-card full-width">
+      <h4>📷 Dữ liệu &amp; Nguồn ảnh</h4>
+      <p class="note">248 món ăn chọn lọc theo 6 bữa, 11 nền ẩm thực và 10 cách chế biến. Hình ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b> đối chiếu tên món trước khi hiển thị.</p>
+      <p class="note" style="margin-top:4px">Dữ liệu phân vùng theo nơi món đang bán: <b>Bắc 142 · Trung 140 · Nam 141 · Tây Nam Bộ 141 · Tây Nguyên 133</b> món.</p>
     </div>
   </aside>
 </main>

@@ -744,14 +744,27 @@ function renderWin(d) {
   dialog.innerHTML =
     '<div class="win-rays"></div>' +
     '<button class="win-close" data-act="close" aria-label="Đóng">✕</button>' +
+    '<div class="win-layout">' +
+    '<div class="win-col-visual">' +
     '<div class="win-badges"><span class="win-tier" style="background:' + t.color + '">' + t.name + '</span>' +
       (d.veg === 1 ? '<span class="pill hot">🌱 Chay</span>' : '') +
       (d.spicy > 1 ? '<span class="pill hot">🌶️ Cay</span>' : '') + '</div>' +
     '<div class="win-hero">' + (d.image
       ? '<img src="' + thumb(d.image, 900) + '" alt="' + esc(d.name) + '" decoding="async" onerror="this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;block&quot;"><div style="display:none;width:100%;height:100%">' + renderArt(d) + '</div>'
       : renderArt(d)) + '</div>' +
-    '<h2 class="win-name">' + d.emoji + ' ' + esc(d.name) + '</h2>' +
     scoreBlock(d) +
+    '<div class="win-actions">' +
+      '<button class="btn-lock" data-act="lock">🎉 CHỐT MÓN NÀY!</button>' +
+      '<div class="sub-row">' +
+        '<button class="sub-btn" data-act="again">🎲 Quay lại</button>' +
+        '<button class="sub-btn ' + (fav ? 'fav' : '') + '" data-act="fav">' + (fav ? '♥ Đã lưu' : '♥ Lưu') + '</button>' +
+        '<button class="sub-btn" data-act="menu-add">📅 Vào thực đơn</button>' +
+        '<button class="sub-btn" data-act="share">📤 Chia sẻ ảnh</button>' +
+      '</div>' +
+    '</div>' +
+    '</div>' +
+    '<div class="win-col-info">' +
+    '<h2 class="win-name">' + d.emoji + ' ' + esc(d.name) + '</h2>' +
     '<p class="win-descr">' + esc(d.descr) + '</p>' +
     (d.review ? '<p class="review">“' + esc(d.review) + '”</p>' : '') +
     (d.intro
@@ -787,14 +800,7 @@ function renderWin(d) {
       '<span class="pill">💰 ' + '₫'.repeat(Math.max(1, Math.min(4, Number(d.price) || 1))) + '</span>' +
       (Array.isArray(d.meals) ? '<span class="pill">' + d.meals.map(m => MEALS[m] || m).join(' · ') + '</span>' : '') +
     '</div>' +
-    '<div class="win-actions">' +
-      '<button class="btn-lock" data-act="lock">🎉 CHỐT MÓN NÀY!</button>' +
-      '<div class="sub-row">' +
-        '<button class="sub-btn" data-act="again">🎲 Quay lại</button>' +
-        '<button class="sub-btn ' + (fav ? 'fav' : '') + '" data-act="fav">' + (fav ? '♥ Đã lưu' : '♥ Lưu') + '</button>' +
-        '<button class="sub-btn" data-act="menu-add">📅 Vào thực đơn</button>' +
-        '<button class="sub-btn" data-act="share">📤 Chia sẻ ảnh</button>' +
-      '</div>' +
+    '</div>' +
     '</div>';
   $('#modalBackdrop').hidden = false;
   document.body.style.overflow = 'hidden';
@@ -949,7 +955,9 @@ function renderFavStrip() {
     : '<span class="note">Chưa lưu món nào — quay rồi bấm ♥ trên thẻ kết quả nhé!</span>';
   ['#favStrip', '#favStripDesktop'].forEach(sel => { const el = $(sel); if (el) el.innerHTML = html; });
 }
-$('#clearHist').onclick = () => { state.hist = []; LS.set('mgd.hist', []); renderHist(); toast('Đã xoá lịch sử quay'); };
+['#clearHist', '#clearHistDesktop'].forEach(sel => {
+  const el = $(sel); if (el) el.onclick = () => { state.hist = []; LS.set('mgd.hist', []); renderHist(); toast('Đã xoá lịch sử quay'); };
+});
 document.addEventListener('click', (e) => {
   const card = e.target.closest('.hitem, .favchip'); if (!card) return;
   const d = dishById(card.dataset.id); if (d) openWin(d);
@@ -978,7 +986,9 @@ function openFavs() {
   document.body.style.overflow = 'hidden';
 }
 $('#btnFav').onclick = openFavs;
-const openFavsBtn = $('#openFavsBtn'); if (openFavsBtn) openFavsBtn.onclick = openFavs;
+['#openFavsBtn', '#openFavsBtnDesktop'].forEach(sel => {
+  const el = $(sel); if (el) el.onclick = openFavs;
+});
 const luckyBtn = $('#btnLuckyFooter');
 if (luckyBtn) luckyBtn.onclick = () => { resetFilters(); applyFilterUI(); syncPool(); idleTrack(); buzz(12); toast('🍀 Đã bỏ hết bộ lọc — quay toàn bộ ' + ALL.length + ' món!'); setTimeout(spinOnce, 260); };
 $('#btnCloseDrawer').onclick = () => { $('#drawerBackdrop').hidden = true; document.body.style.overflow = ''; };
@@ -1138,6 +1148,14 @@ async function detectVungFromPosition() {
   }
 }
 function openSheet() {
+  if (window.innerWidth >= 1024) {
+    const fp = $('#filterPanel');
+    if (fp) {
+      fp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      $('#fSearch')?.focus();
+    }
+    return;
+  }
   $('#filterPanel').classList.add('open');
   $('#sheetBackdrop').hidden = false;
   document.body.style.overflow = 'hidden';
@@ -1261,11 +1279,44 @@ $('#btnTheme').onclick = () => {
 // phím tắt (desktop)
 addEventListener('keydown', (e) => {
   const t = e.target;
-  if (t && typeof t.matches === 'function' && t.matches('input,textarea')) return;
+  if (t && typeof t.matches === 'function' && t.matches('input,textarea')) {
+    if (e.key === 'Escape') t.blur();
+    return;
+  }
   if (e.metaKey || e.ctrlKey || e.altKey) return;
-  if (e.key === 'Escape') { closeModals(); closeSheet(); $('#drawerBackdrop').hidden = true; }
-  if (e.key === ' ') { e.preventDefault(); spinOnce(); }
-  if (e.key.toLowerCase() === 't') spinTen();
+  if (e.key === 'Escape') {
+    closeModals();
+    closeSheet();
+    closeToday();
+    $('#drawerBackdrop').hidden = true;
+    document.body.style.overflow = '';
+    return;
+  }
+  const isOverlayOpen = !$('#modalBackdrop').hidden || !$('#multiBackdrop').hidden || !$('#todayBackdrop').hidden || !$('#drawerBackdrop').hidden || ($('#filterPanel') && $('#filterPanel').classList.contains('open') && window.innerWidth < 1024);
+  if (isOverlayOpen) return;
+
+  if (e.key === ' ') {
+    e.preventDefault();
+    spinOnce();
+  } else if (e.key.toLowerCase() === 't') {
+    e.preventDefault();
+    spinTen();
+  } else if (e.key === '/' || e.key.toLowerCase() === 'f') {
+    e.preventDefault();
+    const search = $('#fSearch');
+    if (search) {
+      if (window.innerWidth < 1024) openSheet();
+      search.focus();
+    }
+  }
+});
+addEventListener('resize', () => {
+  if (window.innerWidth >= 1024) {
+    $('#sheetBackdrop').hidden = true;
+    if ($('#modalBackdrop').hidden && $('#multiBackdrop').hidden && $('#todayBackdrop').hidden && $('#drawerBackdrop').hidden) {
+      document.body.style.overflow = '';
+    }
+  }
 });
 // KHÔNG chặn mặc định touchend nữa: trước đây chặn double-tap làm chạm nhanh bị nuốt.
 // Đã có touch-action: manipulation + viewport nên không cần hacks.
