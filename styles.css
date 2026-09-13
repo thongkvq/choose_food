@@ -265,6 +265,8 @@ h1,h2,h3,h4{line-height:1.2}
   padding:10px 14px;border-radius:14px;min-height:44px;display:inline-flex;align-items:center;line-height:1.25;transition:transform .12s}
 .chip:active{transform:scale(.95)}
 .chip.on{background:linear-gradient(135deg,var(--brand),var(--gold));color:#26120a;border-color:transparent;font-weight:800}
+.chip.foreign-off{opacity:.4;border-style:dashed}
+.fnote{font-size:12px;color:var(--muted);line-height:1.45;margin:-2px 0 8px}
 .switch{display:flex;align-items:center;gap:11px;padding:11px 0;min-height:52px}
 .switch input{position:absolute;opacity:0;pointer-events:none}
 .track-ui{width:46px;height:27px;border-radius:20px;background:var(--surface2);border:1px solid var(--line);position:relative;flex:0 0 46px;transition:background .2s}

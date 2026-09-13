@@ -118,6 +118,7 @@
       <li>Bấm nút <b>🎰 QUAY 1 MÓN</b> (hoặc <b>⚡ x10</b>) — nằm ngay dưới băng chuyền.</li>
       <li>Quay xong, <b>popup thông tin món trúng</b> tự hiện: điểm, calo, giá, xuất xứ, mẹo ăn.</li>
       <li>Nút <b>⚙️ Lọc</b> ở dưới: bữa ăn, ẩm thực, chay, ngân sách, thời gian.</li>
+      <li>Mặc định <b>chỉ quay món Việt</b>. Muốn món Hàn/Nhật/Âu/Mỹ thì bật lại trong <b>⚙️ Lọc → Thêm</b>.</li>
       <li><b>Quay 10</b> để mở 10 thẻ một lượt rồi chốt đại.</li>
       <li>Bấm <b>♥</b> trên thẻ kết quả để lưu món ngon vào danh sách.</li>
     </ul>
@@ -127,7 +128,7 @@
     <h3><span>📷</span> Nguồn ảnh &amp; dữ liệu</h3>
     <p class="note">Ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b>, đối chiếu tên món trước khi hiển thị.
       Món nào không tìm được ảnh đúng sẽ dùng hình vẽ minh hoạ.</p>
-    <p class="note">248 món · 6 bữa · 11 nền ẩm thực · 10 cách chế biến · cập nhật liên tục.</p>
+    <p class="note">160 món Việt (mặc định) + 88 món quốc tế ẩn sẵn · 6 bữa · 11 nền ẩm thực · 10 cách chế biến.</p>
     <button class="mini-btn wide" id="btnLuckyFooter">🍀 Thử vận may (bỏ hết bộ lọc)</button>
   </footer>
 
@@ -146,6 +147,7 @@
       </div>
       <div class="fgroup">
         <h3><span>🌏</span> Ẩm thực</h3>
+        <p class="fnote">Mặc định chỉ món Việt. Bấm một nền ẩm thực nước ngoài (Nhật, Hàn…) để mở lại nhóm đó.</p>
         <div class="chips" id="regionChips"></div>
       </div>
       <div class="fgroup">
@@ -154,6 +156,7 @@
       </div>
       <div class="fgroup">
         <h3><span>⚙️</span> Thêm</h3>
+        <label class="switch"><input type="checkbox" id="fVnOnly" checked><span class="track-ui"></span><span class="switch-label">🇻🇳 Chỉ món Việt — ẩn món nước ngoài (Hàn, Nhật, Âu, Mỹ…)</span></label>
         <label class="switch"><input type="checkbox" id="fVeg"><span class="track-ui"></span><span class="switch-label">Chỉ món chay 🌱</span></label>
         <label class="switch"><input type="checkbox" id="fMild"><span class="track-ui"></span><span class="switch-label">Không cay 🚫🌶️</span></label>
         <label class="switch"><input type="checkbox" id="fTop"><span class="track-ui"></span><span class="switch-label">Chỉ món điểm cao (≥8.5) ⭐</span></label>

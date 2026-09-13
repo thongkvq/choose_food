@@ -132,3 +132,13 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - 13 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons).
 - Có thể thêm: lưu "thực đơn hôm nay" 3 bữa, chia sẻ ảnh kết quả, lọc theo quán đã lưu, cache ảnh offline (SW không chạy được trên http LAN).
 - Muốn GPS thật trên điện thoại: mở **https://192.168.100.13:8443** và bỏ qua cảnh báo chứng chỉ.
+
+## 15. v16 — Mặc định ẨN món nước ngoài (yêu cầu: "ăn bình thường, bỏ món Hàn/Nhật")
+- Dữ liệu **không bị xoá** (248 món còn nguyên trong SQLite + `data/dishes.json`); chỉ **lọc mặc định**.
+- `app.js`: `state.vnOnly = LS.get('mgd.vnOnly', true)` — mặc định **true**; trong `pool()` thêm điều kiện `(!state.vnOnly || d.region === 'vn')`.
+- Hàm mới `paintRegionChips()` (chip ngoại thêm class `.foreign-off`) và `setVnOnly(on, notify)` (lưu localStorage + toast + vẽ lại chip + `syncPool` + `idleTrack`).
+- Bấm chip ẩm thực ngoại (Nhật/Hàn/…) khi đang bật **tự tắt** chế độ "chỉ món Việt" (xử lý trong `chipRow`); `resetFilters()` bật lại mặc định.
+- `index.html`: công tắc **#fVnOnly** "🇻🇳 Chỉ món Việt — ẩn món nước ngoài" đầu nhóm *Thêm* (checked sẵn) + dòng nhắc `.fnote` ở nhóm *Ẩm thực*; `styles.css`: `.chip.foreign-off{opacity:.4;border-style:dashed}`, `.fnote`.
+- Số liệu: 160 món Việt / 88 món quốc tế (cn 19, jp 13, fr 10, us 8, kr 9, th 7, tr 6, mx 6, in 5, it 5).
+- Test tự động: `node tools/test-vnonly.mjs` (chromium thật, 390×844) — PASS: mặc định pool chỉ region `vn`, 6 lần rút ngẫu nhiên 0 món ngoại, 10 chip ngoại bị mờ, tắt công tắc → có lại món ngoại, bấm chip Nhật → chỉ còn jp, "Đặt lại" → về chỉ món Việt, reload nhớ trạng thái qua `mgd.vnOnly`.
+- Muốn xoá hẳn 88 món ngoại khỏi dữ liệu thì phải sửa `data/dishes.json` + bảng SQLite `dishes` (chưa làm — có thể khôi phục từ `tools/.snapshot-before-fix.json`).

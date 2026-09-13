@@ -31,6 +31,7 @@ let ALL = [];
 const state = {
   meals: new Set(), regions: new Set(), styles: new Set(),
   veg: false, mild: false, topRated: false, price: 4, time: 300, q: '', preset: null,
+  vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
   favs: LS.get('mgd.favs', []), hist: LS.get('mgd.hist', []), seen: new Set(LS.get('mgd.seen', [])),
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
   lastWinner: null, spinning: false
@@ -297,6 +298,7 @@ function pool() {
   return ALL.filter(d =>
     (!state.meals.size || d.meals.some(m => state.meals.has(m))) &&
     (!state.regions.size || state.regions.has(d.region)) &&
+    (!state.vnOnly || d.region === 'vn') &&
     (!state.styles.size || state.styles.has(d.style)) &&
     (!state.veg || d.veg === 1) && (!state.mild || d.spicy === 0) &&
     (!state.topRated || d.rating >= 8.5) &&
@@ -705,13 +707,29 @@ function chipRow(host, dict, set) {
     const b = document.createElement('button');
     b.className = 'chip'; b.textContent = label; b.dataset.k = k;
     b.onclick = () => {
+      // bấm chip ẩm thực nước ngoài => tự tắt chế độ "chỉ món Việt"
+      if (set === state.regions && k !== 'vn' && state.vnOnly) setVnOnly(false, true);
       set.has(k) ? set.delete(k) : set.add(k);
       b.classList.toggle('on', set.has(k));
       state.preset = null; $$('#presets .preset').forEach(p => p.classList.remove('on'));
-      sfx.click(); buzz(8); syncPool();
+      sfx.click(); buzz(8); syncPool(); idleTrack();
     };
     host.appendChild(b);
   }
+}
+/* ---- CHỈ MÓN VIỆT (mặc định BẬT) ---- */
+function paintRegionChips() {
+  $$('#regionChips .chip').forEach(c => c.classList.toggle('foreign-off', state.vnOnly && c.dataset.k !== 'vn'));
+}
+function setVnOnly(on, notify) {
+  state.vnOnly = !!on;
+  LS.set('mgd.vnOnly', state.vnOnly);
+  const el = $('#fVnOnly'); if (el) el.checked = state.vnOnly;
+  paintRegionChips(); syncPool();
+  if (notify) toast(state.vnOnly
+    ? '🇻🇳 Đã ẩn món nước ngoài — chỉ còn món Việt'
+    : '🌏 Đã mở lại món quốc tế (Hàn, Nhật, Âu, Mỹ…)');
+  idleTrack();
 }
 function activeFilterCount() {
   return state.meals.size + state.regions.size + state.styles.size + (state.veg ? 1 : 0) + (state.mild ? 1 : 0) + (state.topRated ? 1 : 0) + (state.price < 4 ? 1 : 0) + (state.time < 300 ? 1 : 0) + (state.q ? 1 : 0);
@@ -771,10 +789,13 @@ $$('#presets .preset').forEach(btn => {
 function resetFilters(clearChips = true) {
   state.meals.clear(); state.regions.clear(); state.styles.clear();
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
+  state.vnOnly = true; LS.set('mgd.vnOnly', true);
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
 }
 function applyFilterUI() {
   $('#fVeg').checked = state.veg; $('#fMild').checked = state.mild;
+  const fv = $('#fVnOnly'); if (fv) fv.checked = state.vnOnly;
+  paintRegionChips();
   const ft = $('#fTop'); if (ft) ft.checked = state.topRated;
   $('#fPrice').value = state.price; $('#fTime').value = state.time; $('#fSearch').value = state.q;
   $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price);
@@ -786,6 +807,7 @@ function applyFilterUI() {
 $('#btnResetFilters').onclick = () => { resetFilters(); applyFilterUI(); syncPool(); idleTrack(); toast('Đã đặt lại bộ lọc'); };
 $('#fVeg').onchange = (e) => { state.veg = e.target.checked; syncPool(); };
 $('#fMild').onchange = (e) => { state.mild = e.target.checked; syncPool(); };
+const fvEl = $('#fVnOnly'); if (fvEl) fvEl.onchange = (e) => setVnOnly(e.target.checked, true);
 const fTopEl = $('#fTop'); if (fTopEl) fTopEl.onchange = (e) => { state.topRated = e.target.checked; syncPool(); };
 $('#fPrice').oninput = (e) => { state.price = +e.target.value; $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price); syncPool(); };
 $('#fTime').oninput = (e) => { state.time = +e.target.value; $('#timeLabel').textContent = state.time === 300 ? '300 phút' : state.time + ' phút'; syncPool(); };
