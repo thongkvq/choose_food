@@ -129,7 +129,7 @@ export async function overpassNear(lat, lng, rad) {
   const dLat = rad / 111000;
   const dLng = rad / (111320 * Math.cos((lat * Math.PI) / 180));
   const bbox = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
-  const limit = rad <= 2500 ? 400 : rad <= 5000 ? 700 : 1000;
+  const limit = rad <= 2500 ? 500 : rad <= 5000 ? 900 : rad <= 10000 ? 1600 : 2600;
   let q = '[out:json][timeout:25];(' +
     'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
     'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
@@ -155,6 +155,7 @@ export async function overpassNear(lat, lng, rad) {
     list.push({
       name: String(name).slice(0, 90), lat: plat, lng: plng, type: tg.amenity || '',
       cuisine: tg.cuisine || '', ncuisine: norm(tg.cuisine || ''),
+      brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || '',
       address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
       phone: tg.phone || tg['contact:phone'] || ''
     });

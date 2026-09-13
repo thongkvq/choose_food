@@ -8,13 +8,13 @@ let fails = [];
 const check = (name, ok, extra) => { console.log((ok ? '  OK  ' : '  SAI ') + name + (extra ? ' — ' + extra : '')); if (!ok) fails.push(name); };
 
 // ---- A. API: 3 mức + chặn vượt trần ----
-let apiOk = true;
-for (const [ask, want] of [[2500, 2500], [5000, 5000], [10000, 10000], [20000, 10000], [1000, 2500]]) {
+let apiOk = true, serverMode = true;
+for (const [ask, want] of [[2500, 2500], [5000, 5000], [10000, 10000], [15000, 15000], [20000, 15000], [1000, 2500]]) {
   const q = new URLSearchParams({ lat: '10.7725', lng: '106.698', r: String(ask), q: 'Phở', kw: 'Phở', cuisine: 'vietnamese' });
   let j;
   try { j = await (await fetch(BASE + '/api/nearby?' + q)).json(); }
-  catch (e) { console.log('A. API: bản tĩnh, bỏ qua (' + e.message + ')'); apiOk = null; break; }
-  if (j.error && !j.radius) { console.log('A. API: lỗi ' + j.error); apiOk = null; break; }
+  catch (e) { console.log('A. API: bản tĩnh, bỏ qua (' + e.message + ')'); apiOk = null; serverMode = false; break; }
+  if (j.error && !j.radius) { console.log('A. API: lỗi ' + j.error); apiOk = null; serverMode = false; break; }
   const dists = [...(j.matched || []), ...(j.sameCuisine || []), ...(j.nearest || [])].map((p) => p.dist);
   const maxD = dists.length ? Math.max(...dists) : 0;
   const ok = j.radius === want && (j.usedRadius || 0) === want && maxD <= want;
@@ -71,7 +71,7 @@ const snap = async () => page.evaluate(() => {
 
 await waitDone('mặc định');
 let s = await snap();
-check('có 3 chip 2.5/5/10km', s.chips.join(',') === '2.5km,5km*,10km', s.chips.join(','));
+check('có 4 chip 2.5/5/10/15km', s.chips.join(',') === '2.5km,5km*,10km,15km', s.chips.join(','));
 check('mặc định 5km, quán ≤5km', /5km/.test(s.note) && s.maxM <= 5000, s.note);
 
 // đổi sang 2.5km
@@ -89,13 +89,38 @@ await page.click('#nearbyOut .rad-chip[data-rad="10000"]');
 await waitDone('10km', true);
 s = await snap();
 check('10km: quán ≤10000m', s.maxM <= 10000 && /10km/.test(s.note), s.note + ' | xa nhất ' + Math.round(s.maxM) + 'm');
-check('10km: chip 10km sáng', s.chips.join(',') === '2.5km,5km,10km*', s.chips.join(','));
+check('10km: chip 10km sáng', s.chips.join(',') === '2.5km,5km,10km*,15km', s.chips.join(','));
+
+// đổi sang 15km + kiểm khối "quán có tiếng"
+reqs.length = 0;
+await page.click('#nearbyOut .rad-chip[data-rad="15000"]');
+await waitDone('15km', true);
+s = await snap();
+const fam = await page.evaluate(() => {
+  const out = document.querySelector('#nearbyOut');
+  return {
+    titles: [...out.querySelectorAll('.fam-title')].map((e) => e.textContent.trim()),
+    n: out.querySelectorAll('.shop.fam').length,
+    why: [...out.querySelectorAll('.fam-why')].slice(0, 3).map((e) => e.textContent.trim()),
+    note: (out.querySelector('.fam-note') || {}).textContent || '',
+    maxM: Math.max(0, ...[...out.querySelectorAll('.shop.fam .shop-dist')].map((e) => e.textContent.includes('km') ? parseFloat(e.textContent) * 1000 : parseFloat(e.textContent)))
+  };
+});
+check('15km: quán ≤15000m', s.maxM <= 15000 && /15km/.test(s.note), s.note + ' | xa nhất ' + Math.round(s.maxM) + 'm');
+check('15km: chip 15km sáng', s.chips.join(',') === '2.5km,5km,10km,15km*', s.chips.join(','));
+if (serverMode) {
+  check('có khối "quán có tiếng" (server)', fam.titles.length > 0 && fam.n > 0, fam.titles.join(' / ') + ' — ' + fam.n + ' quán');
+  check('quán có tiếng trong 15km + có lý do', fam.maxM <= 15000 && fam.why.every((w) => w.length > 2), fam.why.join(' ; ') + ' | xa nhất ' + Math.round(fam.maxM) + 'm');
+  check('có ghi rõ nguồn "có tiếng"', /OSM/.test(fam.note) && /không phải điểm đánh giá/.test(fam.note), fam.note.slice(0, 90));
+} else {
+  console.log('  (bản tĩnh: không có /api/nearby nên bỏ qua kiểm tra khối quán có tiếng)');
+}
 
 // reload nhớ mức 10km
 await page.reload({ waitUntil: 'networkidle' });
 await page.waitForFunction(() => window.__mgd, null, { timeout: 20000 });
 const keep = await page.evaluate(() => window.__mgd.state.radius);
-check('F5 nhớ mức 10km', keep === 10000, String(keep));
+check('F5 nhớ mức 15km', keep === 15000, String(keep));
 
 await browser.close();
 console.log(fails.length ? 'KẾT QUẢ: FAIL (' + fails.join(' | ') + ')' : 'KẾT QUẢ: PASS');

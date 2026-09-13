@@ -3,8 +3,8 @@ import { norm, distM, photonSearch, overpassNear, withTimeout } from './_lib.js'
 export default async function handler(req, res) {
   const lat = Number(req.query.lat), lng = Number(req.query.lng);
   if (!isFinite(lat) || !isFinite(lng)) return res.status(400).json({ error: 'thiếu lat/lng' });
-  const TIERS = [2500, 5000, 10000];   // 3 mức người dùng chọn
-  const MAX_RADIUS = 10000;
+  const TIERS = [2500, 5000, 10000, 15000];   // 4 mức người dùng chọn
+  const MAX_RADIUS = 15000;
   const want = Math.min(MAX_RADIUS, Math.max(300, Number(req.query.r) || 5000));
   const radius = TIERS.find((t) => t >= want) || MAX_RADIUS;
   const dish = String(req.query.q || '').slice(0, 60);
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
   // Overpass chỉ chạy khi client yêu cầu (?ov=1) — dịch vụ này thường chậm, không nên chặn kết quả chính
   const wantOverpass = String(req.query.ov || '') === '1';
-  const ovBudget = radius <= 2500 ? 4000 : radius <= 5000 ? 7000 : 12000;   // bán kính càng lớn Overpass càng lâu
+  const ovBudget = radius <= 2500 ? 4000 : radius <= 5000 ? 7000 : radius <= 10000 ? 12000 : 15000;   // bán kính càng lớn Overpass càng lâu
   const overpassJob = !wantOverpass
     ? Promise.resolve({ areaTotal: 0, nearest: [], sameCuisine: [] })
     : withTimeout(
@@ -49,14 +49,35 @@ export default async function handler(req, res) {
       const near = all.map((p) => Object.assign({}, p, { dist: distM(lat, lng, p.lat, p.lng) }))
         .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
       const cu = norm(cuisine);
-      const pack = (p) => ({
-        name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
-        maps: 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=driving'
-      });
+      const fame = (p) => {
+        let s = 0; const why = [];
+        if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
+        if (p.website) { s += 2; why.push('có website'); }
+        if (p.open) { s += 1; why.push('có giờ mở cửa'); }
+        if (p.phone) { s += 1; why.push('có điện thoại'); }
+        if (p.address) { s += 1; why.push('có địa chỉ'); }
+        if (p.cuisine) { s += 1; why.push('có loại quán'); }
+        return { s: s, why: why };
+      };
+      const pack = (p) => {
+        const f = fame(p);
+        return {
+          name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
+          open: p.open || '', brand: p.brand || '', website: p.website || '', fame: f.s, why: f.why,
+          maps: 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=driving'
+        };
+      };
+      const famMatch = near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
+        .filter((p) => p.fame >= 3 && (words.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
+        .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 8);
+      const famNear = near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
+        .filter((p) => p.fame >= 4).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 10);
       return {
         areaTotal: all.length,
         nearest: near.slice(0, 12).map(pack),
-        sameCuisine: (cu ? near.filter((p) => p.ncuisine.includes(cu)) : []).slice(0, 12).map(pack)
+        sameCuisine: (cu ? near.filter((p) => p.ncuisine.includes(cu)) : []).slice(0, 12).map(pack),
+        famousMatch: famMatch.map(pack),
+        famousNear: famNear.map(pack)
       };
     })(),
     ovBudget,   // Overpass chỉ là phần phụ — hết giờ thì trả kết quả Photon ngay
@@ -68,6 +89,7 @@ export default async function handler(req, res) {
   res.status(200).json({
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: ph.usedRadius,
     matched: ph.matched, nearest: ov.nearest || [], sameCuisine: ov.sameCuisine || [],
+    famousMatch: ov.famousMatch || [], famousNear: ov.famousNear || [],
     areaTotal: ov.areaTotal || 0, areaError: ov.areaError || null,
     mapsUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish + ' gần đây') + '/@' + lat + ',' + lng + ',13z',
     mapsKeywordUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish) + '/@' + lat + ',' + lng + ',13z',

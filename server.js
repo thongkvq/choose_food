@@ -19,8 +19,8 @@ const MIME = {
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon'
 };
 const COMPRESSIBLE = /^(text\/|application\/(json|javascript)|image\/svg)/;
-const TIERS = [2500, 5000, 10000];  // 3 mức người dùng chọn
-const MAX_RADIUS = 10000;
+const TIERS = [2500, 5000, 10000, 15000];  // 4 mức người dùng chọn
+const MAX_RADIUS = 15000;
 const DEFAULT_RADIUS = 5000;
 const snapTier = (v) => TIERS.find((t) => t >= v) || MAX_RADIUS;   // làm tròn LÊN mức gần nhất
 const cache = new Map();
@@ -157,7 +157,7 @@ async function overpass(lat, lng, rad, timeoutMs) {
   const dLat = rad / 111000;
   const dLng = rad / (111320 * Math.cos((lat * Math.PI) / 180));
   const bbox = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
-  const limit = rad <= 2500 ? 400 : rad <= 5000 ? 700 : 1000;
+  const limit = rad <= 2500 ? 500 : rad <= 5000 ? 900 : rad <= 10000 ? 1600 : 2600;
   let q = '[out:json][timeout:25];(' +
     'node["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
     'way["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"](BBOX);' +
@@ -198,7 +198,8 @@ function getArea(lat, lng, rad, timeoutMs) {
         name: String(name).slice(0, 90), lat: plat, lng: plng, type: tg.amenity || '',
         cuisine: tg.cuisine || '', nname: norm(name), ncuisine: norm(tg.cuisine || ''),
         address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
-        phone: tg.phone || tg['contact:phone'] || '', open: tg.opening_hours || ''
+        phone: tg.phone || tg['contact:phone'] || '', open: tg.opening_hours || '',
+        brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || ''
       });
     }
     cache.set('area:' + k, { t: Date.now(), data: list });
@@ -210,6 +211,21 @@ function getArea(lat, lng, rad, timeoutMs) {
   return job;
 }
 function warmArea(lat, lng) { getArea(lat, lng, DEFAULT_RADIUS).catch(() => {}); }
+
+/* ---------- "Quán có tiếng": chấm điểm từ dữ liệu mở OSM ----------
+   OSM không có sao/đánh giá của khách, nên "có tiếng" ở đây = dấu hiệu tin cậy được:
+   thương hiệu/chuỗi, có website, có giờ mở cửa, có điện thoại, có địa chỉ, có khai báo loại quán.
+   KHÔNG phải điểm đánh giá của thực khách — UI ghi rõ điều này. */
+function fameScore(p) {
+  let s = 0; const why = [];
+  if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
+  if (p.website) { s += 2; why.push('có website'); }
+  if (p.open) { s += 1; why.push('có giờ mở cửa'); }
+  if (p.phone) { s += 1; why.push('có điện thoại'); }
+  if (p.address) { s += 1; why.push('có địa chỉ'); }
+  if (p.cuisine) { s += 1; why.push('có loại quán'); }
+  return { s: s, why: why };
+}
 
 /* ---------- gộp kết quả ---------- */
 async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
@@ -248,21 +264,35 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
       .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
     const cu = norm(cuisineHint);
     const sameCuisine = near.filter((p) => cu && p.ncuisine.includes(cu)).slice(0, 12);
-    const pack = (p) => ({ name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
-      maps: "https://www.google.com/maps/dir/?api=1&destination=" + p.lat + "," + p.lng + "&travelmode=driving" });
-    return { areaTotal: all.length, nearest: near.slice(0, 12).map(pack), sameCuisine: sameCuisine.map(pack) };
+    const pack = (p) => {
+      const f = fameScore(p);
+      return { name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
+        open: p.open || '', brand: p.brand || '', website: p.website || '', fame: f.s, why: f.why,
+        maps: "https://www.google.com/maps/dir/?api=1&destination=" + p.lat + "," + p.lng + "&travelmode=driving" };
+    };
+    // "quán có tiếng bán món này": khớp tên món/ẩm thực + có dấu hiệu tin cậy
+    const words2 = [...new Set((norm(dish) + " " + norm(kw)).split(" ").filter((t) => t.length >= 3))];
+    const famousMatch = near.map((p) => Object.assign({}, p, { fame: fameScore(p).s }))
+      .filter((p) => p.fame >= 3 && (words2.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
+      .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 8);
+    // "quán có tiếng quanh đây" (chuỗi/thương hiệu, có website…) — không cần khớp tên món
+    const famousNear = near.map((p) => Object.assign({}, p, { fame: fameScore(p).s }))
+      .filter((p) => p.fame >= 4).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 10);
+    return { areaTotal: all.length, nearest: near.slice(0, 12).map(pack), sameCuisine: sameCuisine.map(pack),
+      famousMatch: famousMatch.map(pack), famousNear: famousNear.map(pack) };
   })().catch((e) => ({ areaTotal: 0, nearest: [], sameCuisine: [], areaError: String((e && e.message) || e) }));
 
   // bán kính càng lớn Overpass càng lâu -> nới thời gian chờ theo mức người dùng chọn
-  const ovBudget = radius <= 2500 ? 5000 : radius <= 5000 ? 9000 : 15000;   // đo thật: ô lạnh ở Hà Nội cần ~6-10s
+  const ovBudget = radius <= 2500 ? 5000 : radius <= 5000 ? 9000 : radius <= 10000 ? 15000 : 20000;   // ô lạnh 15km ~10s
   const [ph, ov] = await Promise.all([photonJob, withTimeout(overpassJob, ovBudget, { areaTotal: 0, nearest: [], sameCuisine: [], areaError: 'hết thời gian chờ Overpass', timedOut: true })]);
   // Hết giờ thì vẫn nạp tiếp ở nền (không giới hạn chặt) rồi cache 30 phút:
   // lần bấm 🔄 Tìm lại sau đó là có ngay, lần đầu chỉ chậm.
   let areaWarming = false;
-  if (ov.timedOut) { areaWarming = true; getArea(lat, lng, radius, 60000).catch(() => {}); }
+  if (ov.timedOut) { areaWarming = true; getArea(lat, lng, radius, Math.max(60000, ovBudget * 4)).catch(() => {}); }
   return {
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: ph.usedRadius,
     matched: ph.matched, nearest: ov.nearest || [], sameCuisine: ov.sameCuisine || [],
+    famousMatch: ov.famousMatch || [], famousNear: ov.famousNear || [],
     areaTotal: ov.areaTotal || 0, areaError: ov.areaError || null, areaWarming: areaWarming,
     mapsUrl: "https://www.google.com/maps/search/" + encodeURIComponent(dish + " gần đây") + "/@" + lat + "," + lng + ",13z",
     mapsKeywordUrl: "https://www.google.com/maps/search/" + encodeURIComponent(dish) + "/@" + lat + "," + lng + ",13z",

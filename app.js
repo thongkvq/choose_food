@@ -15,7 +15,7 @@ const IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 4;
 
-const R_TIERS = [2500, 5000, 10000];           // 3 mức bán kính tìm quán cho người dùng chọn
+const R_TIERS = [2500, 5000, 10000, 15000];   // 4 mức bán kính tìm quán cho người dùng chọn
 const MEALS = { sang: 'Sáng 🌅', trua: 'Trưa ☀️', xe: 'Xế 🌤️', toi: 'Tối 🌙', khuya: 'Khuya 🌌', vat: 'Ăn vặt 🍿' };
 const REGIONS = { vn: 'Việt 🇻🇳', cn: 'Trung Hoa 🇨🇳', jp: 'Nhật 🇯🇵', kr: 'Hàn 🇰🇷', th: 'Thái 🇹🇭', it: 'Ý 🇮🇹', fr: 'Âu 🇫🇷', us: 'Mỹ 🇺🇸', mx: 'Mexico 🇲🇽', in: 'Ấn 🇮🇳', tr: 'Trung Đông 🇹🇷' };
 const STYLES = { nuoc: 'Món nước 🍜', kho: 'Món khô 🥡', chien: 'Chiên 🍳', nuong: 'Nướng 🔥', hap: 'Hấp 🥟', tron: 'Trộn 🥗', cuon: 'Cuộn 🌯', lau: 'Lẩu 🍲', ngot: 'Ngọt 🍰', uong: 'Đồ uống 🥤' };
@@ -250,6 +250,18 @@ function renderNearbyHeader(pos) {
     (pos.label ? '<span class="loc-label">' + esc(String(pos.label).slice(0, 90)) + '</span>' : '') + '</div>';
 }
 
+// Khối "quán có tiếng": chỉ hiện khi server trả về (bản tĩnh gọi Photon trực tiếp thì không có).
+function famousBlock(title, list, kind) {
+  if (!list || !list.length) return '';
+  return '<div class="fam-title">' + title + '</div>' +
+    list.slice(0, kind === 'match' ? 6 : 5).map((p) =>
+      '<a class="shop fam" href="' + esc(p.maps) + '" target="_blank" rel="noopener">' +
+        '<b>' + esc(p.name) + '</b><span class="shop-dist">' + (p.dist < 1000 ? p.dist + ' m' : (p.dist / 1000).toFixed(1) + ' km') + '</span>' +
+        '<span class="fam-why">' + (p.why || []).slice(0, 3).map(esc).join(' · ') + '</span>' +
+        '<span class="shop-meta">' + [p.cuisine, p.address].filter(Boolean).map(esc).join(' · ') + '</span>' +
+      '</a>').join('');
+}
+
 // Mở app/web giao đồ ăn để tìm & đặt món — CHỈ là link tìm kiếm, KHÔNG lấy dữ liệu quán từ họ.
 function deliveryLinks(dishQ) {
   const q = encodeURIComponent(dishQ || '');
@@ -311,6 +323,14 @@ async function findNearby(d, forcePos, keepPos) {
         '<b>' + esc(p.name) + '</b><span class="shop-dist">' + km(p.dist) + '</span>' +
         '<span class="shop-meta">' + [p.type === 'fast_food' ? 'quán nhanh' : p.type === 'cafe' ? 'quán cà phê' : p.type === 'food_court' ? 'khu ăn uống' : 'nhà hàng',
           p.cuisine, p.address, p.phone].filter(Boolean).map(esc).join(' · ') + '</span></a>').join('');
+    // ⭐ Quán có tiếng (dữ liệu mở OSM: thương hiệu/chuỗi, website, giờ mở cửa…) — chỉ có khi chạy qua server
+    const famMatch = (j.famousMatch || []).filter((p) => !list.some((q) => q.name === p.name && Math.abs(q.dist - p.dist) < 50));
+    const famNear = (j.famousNear || []).filter((p) => !famMatch.some((q) => q.name === p.name));
+    if (famMatch.length || famNear.length) {
+      html += famousBlock('⭐ Quán có tiếng bán món này', famMatch, 'match') +
+              famousBlock('⭐ Quán có tiếng quanh đây', famNear, 'near') +
+              '<div class="nearby-note fam-note">"Có tiếng" = có thương hiệu/chuỗi, website, giờ mở cửa, điện thoại trên dữ liệu mở OSM — không phải điểm đánh giá của khách.</div>';
+    }
     html += '<div class="nearby-links">' +
       '<a class="nearby-link primary" href="' + esc(j.mapsKeywordUrl || j.mapsUrl) + '" target="_blank" rel="noopener">🗺️ Google Maps</a>' +
       '<button class="nearby-link" data-act="loc-again">🔄 Tìm lại</button>' +
