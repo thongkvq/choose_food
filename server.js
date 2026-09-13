@@ -19,7 +19,8 @@ const MIME = {
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon'
 };
 const COMPRESSIBLE = /^(text\/|application\/(json|javascript)|image\/svg)/;
-const AREA_RADIUS = 3000;
+const AREA_RADIUS = 5000;          // bán kính quét Overpass — khớp mức tối đa 5km của client
+const MAX_RADIUS = 5000;           // CHỐT: không bao giờ tìm quá 5km
 const cache = new Map();
 const areaPending = new Map();
 
@@ -202,7 +203,7 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
 
   // 1) Photon theo tên món (mở rộng bán kính dần) + 2) Overpass quán gần nhất — CHẠY SONG SONG
   const photonJob = (async () => {
-    const attempts = [radius, Math.max(radius * 2, 5000), Math.max(radius * 4, 10000)];
+    const attempts = [Math.min(radius, MAX_RADIUS)];   // chỉ 1 mức bán kính, tối đa 5km
     for (const rad of attempts) {
       const seen = new Map();
       const results = await Promise.all(queries.map((q) => photonSearch(q, lat, lng, rad, 20).catch(() => [])));
@@ -220,7 +221,7 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
         }));
       }
       const matched = [...seen.values()].sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
-      if (matched.length >= 3 || rad >= 10000) return { matched: matched.slice(0, 12), usedRadius: rad };
+      if (matched.length >= 3 || rad >= MAX_RADIUS) return { matched: matched.slice(0, 12), usedRadius: rad };
     }
     return { matched: [], usedRadius: radius };
   })();
@@ -228,7 +229,7 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
   const overpassJob = (async () => {
     const all = await getArea(lat, lng);
     const near = all.map((p) => Object.assign({}, p, { dist: distM(lat, lng, p.lat, p.lng) }))
-      .filter((p) => p.dist <= Math.max(radius, 3000)).sort((a, b) => a.dist - b.dist);
+      .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
     const cu = norm(cuisineHint);
     const sameCuisine = near.filter((p) => cu && p.ncuisine.includes(cu)).slice(0, 12);
     const pack = (p) => ({ name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
@@ -269,7 +270,7 @@ async function handle(req, res) {
     if (url.pathname === '/api/nearby') {
       const lat = Number(url.searchParams.get('lat')), lng = Number(url.searchParams.get('lng'));
       if (!isFinite(lat) || !isFinite(lng)) return send(400, { error: 'thiếu lat/lng' });
-      const r = Math.min(5000, Math.max(300, Number(url.searchParams.get('r')) || 2000));
+      const r = Math.min(MAX_RADIUS, Math.max(300, Number(url.searchParams.get('r')) || MAX_RADIUS));
       const q = (url.searchParams.get('q') || '').slice(0, 60);
       const kw = (url.searchParams.get('kw') || '').slice(0, 160);
       const cu = (url.searchParams.get('cuisine') || '').slice(0, 60);

@@ -3,7 +3,8 @@ import { norm, distM, photonSearch, overpassNear, withTimeout } from './_lib.js'
 export default async function handler(req, res) {
   const lat = Number(req.query.lat), lng = Number(req.query.lng);
   if (!isFinite(lat) || !isFinite(lng)) return res.status(400).json({ error: 'thiếu lat/lng' });
-  const radius = Math.min(5000, Math.max(300, Number(req.query.r) || 2500));
+  const MAX_RADIUS = 5000;   // CHỐT: tối đa 5km
+  const radius = Math.min(MAX_RADIUS, Math.max(300, Number(req.query.r) || MAX_RADIUS));
   const dish = String(req.query.q || '').slice(0, 60);
   const kw = String(req.query.kw || '').slice(0, 160);
   const cuisine = String(req.query.cuisine || '').slice(0, 60);
@@ -13,7 +14,7 @@ export default async function handler(req, res) {
 
   // Photon (nguồn chính, nhanh ~0.2-1s) — mở rộng bán kính dần
   const photonJob = (async () => {
-    for (const rad of [radius, Math.max(radius * 2, 5000), Math.max(radius * 4, 10000)]) {
+    for (const rad of [Math.min(radius, MAX_RADIUS)]) {   // chỉ 1 mức bán kính, tối đa 5km
       const seen = new Map();
       const got = await Promise.all(queries.map((q) => photonSearch(q, lat, lng, rad, 20).catch(() => [])));
       for (const arr of got) for (const pl of arr) {
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
         }));
       }
       const matched = [...seen.values()].sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
-      if (matched.length >= 3 || rad >= 10000) return { matched: matched.slice(0, 12), usedRadius: rad };
+      if (matched.length >= 3 || rad >= MAX_RADIUS) return { matched: matched.slice(0, 12), usedRadius: rad };
     }
     return { matched: [], usedRadius: radius };
   })();
@@ -41,9 +42,9 @@ export default async function handler(req, res) {
     ? Promise.resolve({ areaTotal: 0, nearest: [], sameCuisine: [] })
     : withTimeout(
     (async () => {
-      const all = await overpassNear(lat, lng, Math.max(radius, 3000));
+      const all = await overpassNear(lat, lng, Math.min(radius, MAX_RADIUS));
       const near = all.map((p) => Object.assign({}, p, { dist: distM(lat, lng, p.lat, p.lng) }))
-        .filter((p) => p.dist <= Math.max(radius, 3000)).sort((a, b) => a.dist - b.dist);
+        .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
       const cu = norm(cuisine);
       const pack = (p) => ({
         name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,

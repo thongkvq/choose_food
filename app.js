@@ -225,6 +225,16 @@ function renderNearbyHeader(pos) {
     (pos.label ? '<span class="loc-label">' + esc(String(pos.label).slice(0, 90)) + '</span>' : '') + '</div>';
 }
 
+// Mở app/web giao đồ ăn để tìm & đặt món — CHỈ là link tìm kiếm, KHÔNG lấy dữ liệu quán từ họ.
+function deliveryLinks(dishQ) {
+  const q = encodeURIComponent(dishQ || '');
+  return '<div class="nearby-note dl-hint">Đặt giao tận nhà (mở app, tự tìm món này):</div>' +
+    '<div class="nearby-links">' +
+    '<a class="nearby-link" href="https://shopeefood.vn/search?keyword=' + q + '" target="_blank" rel="noopener">🛵 ShopeeFood</a>' +
+    '<a class="nearby-link" href="https://food.grab.com/vn/vi/restaurants?search=' + q + '" target="_blank" rel="noopener">🛵 GrabFood</a>' +
+    '</div>';
+}
+
 async function findNearby(d, forcePos) {
   const out = $('#nearbyOut'), btn = $('.nearby-btn');
   if (!out) return;
@@ -239,7 +249,7 @@ async function findNearby(d, forcePos) {
     state.loc = pos;
     out.innerHTML = controls + renderNearbyHeader(pos) + '<div class="nearby-note">Đang tìm quán…</div>';
     const params = new URLSearchParams({
-      lat: pos.lat, lng: pos.lng, r: 2500,
+      lat: pos.lat, lng: pos.lng, r: 5000,   // CHỐT 5km (không mở rộng xa hơn)
       q: (d.kw && d.kw[0]) || d.name,
       kw: (d.kw || []).join(' '),
       cuisine: CUISINE_BY_REGION[d.region] || ''
@@ -248,7 +258,7 @@ async function findNearby(d, forcePos) {
     const timer = setTimeout(() => ctl.abort(), 70000);
     let j;
     try {
-      j = await apiJSON('/api/nearby?' + params.toString(), () => dirNearby(pos.lat, pos.lng, 2500, params.get('q'), params.get('kw'), params.get('cuisine')));
+      j = await apiJSON('/api/nearby?' + params.toString(), () => dirNearby(pos.lat, pos.lng, 5000, params.get('q'), params.get('kw'), params.get('cuisine')));
     } finally { clearTimeout(timer); }
     if (j.error) throw new Error(j.error);
     // chưa có quán khớp tên món -> hỏi thêm quán gần nhất (chậm hơn nên chỉ gọi khi cần)
@@ -264,10 +274,11 @@ async function findNearby(d, forcePos) {
       : (j.nearest || []);
     const kind = (j.matched && j.matched.length) ? 'bán đúng món này'
       : (j.sameCuisine && j.sameCuisine.length) ? 'cùng nhóm ẩm thực' : 'quán ăn gần nhất';
-    const rad = ((j.usedRadius || j.radius || 2500) / 1000).toFixed(0);
+    const rad = ((j.usedRadius || j.radius || 5000) / 1000).toFixed(0);
     const km = (m) => m < 1000 ? m + ' m' : (m / 1000).toFixed(1) + ' km';
+    const dishQ = (d.kw && d.kw[0]) || d.name;   // từ khoá để mở app đặt món
     let html = renderNearbyHeader(pos);
-    html += '<div class="nearby-note">' + list.length + ' quán <b>' + kind + '</b> trong ~' + rad + 'km</div>';
+    html += '<div class="nearby-note">' + list.length + ' quán <b>' + kind + '</b> trong ~' + rad + 'km (tối đa 5km)</div>';
     html += list.slice(0, 10).map(p =>
       '<a class="shop" href="' + esc(p.maps) + '" target="_blank" rel="noopener">' +
         '<b>' + esc(p.name) + '</b><span class="shop-dist">' + km(p.dist) + '</span>' +
@@ -276,14 +287,15 @@ async function findNearby(d, forcePos) {
     html += '<div class="nearby-links">' +
       '<a class="nearby-link primary" href="' + esc(j.mapsKeywordUrl || j.mapsUrl) + '" target="_blank" rel="noopener">🗺️ Google Maps</a>' +
       '<button class="nearby-link" data-act="loc-again">🔄 Tìm lại</button>' +
-      '</div>';
+      '</div>' + deliveryLinks(dishQ);
     out.innerHTML = controls + html;
     out.dataset.done = '1';
     if (btn) { btn.textContent = '📍 Quán gần đây (bấm để ẩn/hiện)'; btn.disabled = false; }
   } catch (err) {
     out.innerHTML = controls + '<div class="nearby-note err">Không tìm được: ' + esc(err.message) + '</div>' +
       '<div class="nearby-links"><a class="nearby-link primary" href="https://www.google.com/maps/search/' +
-      encodeURIComponent(d.name + ' gần đây') + '" target="_blank" rel="noopener">🗺️ Tìm trên Google Maps</a></div>';
+      encodeURIComponent(d.name + ' gần đây') + '" target="_blank" rel="noopener">🗺️ Tìm trên Google Maps</a></div>' +
+      deliveryLinks((d.kw && d.kw[0]) || d.name);
     if (btn) { btn.disabled = false; btn.textContent = '📍 Thử lại'; }
   }
 }
@@ -1259,7 +1271,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
   const queries = [...new Set([dish, (kw || '').split('|')[0], words.slice(0, 2).join(' ')].filter((q) => q && q.trim().length >= 3))].slice(0, 3);
   let matched = [], usedRadius = radius;
-  for (const rad of [radius, Math.max(radius * 2, 5000), Math.max(radius * 4, 10000)]) {
+  for (const rad of [Math.min(radius, 5000)]) {   // chỉ 1 mức bán kính, tối đa 5km
     const seen = new Map();
     const got = await Promise.all(queries.map((q) => dirPhotonSearch(q, lat, lng, rad).catch(() => [])));
     for (const arr of got) for (const pl of arr) {
@@ -1276,7 +1288,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
     }
     matched = [...seen.values()].sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
     usedRadius = rad;
-    if (matched.length >= 3 || rad >= 10000) break;
+    if (matched.length >= 3 || rad >= 5000) break;
   }
   return {
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: usedRadius,
