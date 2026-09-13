@@ -192,3 +192,4 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - Hồi quy: `tools/test-vnonly.mjs` PASS (mặc định vẫn chỉ món Việt, chip ngoại mờ 10) · `tools/audit-layout.mjs` không tràn ngang, tap target ≥44px.
 - Lưu ý khi đo bằng chromium trong container: **không có font hệ thống** nên mọi chip đo ra width ~30px và nằm 1 hàng — số đo bề rộng chữ vô nghĩa, chỉ tin số món/pool và logic.
 - Bản tĩnh Vercel không cần sửa gì thêm: lọc vùng chạy thuần client trên `data/dishes.json`.
+- **Đã deploy v21 (commit `58fbde3`)**: push lên `origin/main` → **Vercel bot tự deploy** (không cần token, không cần CLI). Theo dõi bằng `curl -s https://api.github.com/repos/thongkvq/choose_food/commits/<sha>/status` (pending → success ~35s). Bản production: **https://choose-food-paroda.vercel.app** — đã kiểm: `data/dishes.json` có `vung`, `app.js` có `vungHit`, `tools/test-vung.mjs <prod>` **12/12 PASS**, `/api/*` trả 404 là **bình thường** (bản tĩnh, client tự gọi thẳng dịch vụ).
