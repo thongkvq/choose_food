@@ -169,3 +169,11 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - **Bản tĩnh (Vercel) không có khối này**: Overpass **không gửi CORS header** (`Access-Control-Allow-Origin` trống) nên client không gọi thẳng được; Photon trả về không có tag brand/website. Client tự bỏ qua khối khi server không trả `famousMatch/famousNear`.
 - Test: `node tools/test-nearby-radius.mjs` nay kiểm thêm 4 chip, API `r=15000` và `r=20000 → 15000`, khối quán có tiếng (có tiêu đề, có lý do, xa nhất ≤15km, có ghi chú nguồn OSM), F5 nhớ mức 15km. Bản tĩnh tự bỏ qua phần quán có tiếng. **PASS trên LAN**.
 - **BUG đã sửa (bản tĩnh/Vercel)**: `dirNearby()` còn `Math.min(radius, 10000)` nên chọn 15km vẫn chỉ tìm 10km (ghi chú hiện "~10km"). Đã đổi thành 15000 (commit `66116bd`). Luôn kiểm cả bản tĩnh, không chỉ LAN.
+
+## 19. v20 — Tối ưu MIỄN PHÍ cho "quán có tiếng" (không dùng Google API)
+- Chủ dự án chốt: **không trả tiền** cho Google Places → giữ 100% nguồn mở/không key.
+- **Phát hiện quan trọng**: Overpass **CÓ CORS cho GET** (`Access-Control-Allow-Origin: *` + `Access-Control-Allow-Methods: GET, POST, OPTIONS` khi request kèm `Origin`) — trước đây thử POST không kèm Origin nên tưởng không có. Nhờ vậy **bản tĩnh Vercel cũng lấy được quán có tiếng**, không cần serverless, không cần key.
+- `app.js` thêm `fameScoreOf()`, `fameLists()`, `dirFamous()`: bản tĩnh gọi thẳng `https://overpass-api.de/api/interpreter?data=<QL>` (gương dự phòng kumi), bbox theo đúng mức bán kính (limit 500/900/1600/2600), chạy **song song** với Photon nên không làm chậm kết quả chính.
+- **Chấm điểm v2** (giống nhau ở `server.js`, `api/nearby.js`, `app.js`): có tag `wikidata|wikipedia` **+4** (hồ sơ bách khoa), `brand|operator` +3, **≥3 chi nhánh trong vùng +2**, website +2, giờ mở cửa/điện thoại/địa chỉ/loại quán mỗi thứ +1. Ngưỡng: famousMatch ≥4 (và khớp món/ẩm thực), famousNear ≥5.
+- **Gộp chi nhánh**: `dedupByName()` gom cùng tên chuẩn hoá, giữ chi nhánh gần nhất, trả `branches` → UI hiện "28 chi nhánh · thương hiệu The Coffee House · 28 chi nhánh trong vùng". Đỡ rác danh sách vì chuỗi trùng lặp.
+- Vẫn KHÔNG có sao/đánh giá khách (OSM không có; Foursquare free tier có key miễn phí nhưng thêm phụ thuộc — chưa dùng).

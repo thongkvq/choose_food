@@ -156,6 +156,7 @@ export async function overpassNear(lat, lng, rad) {
       name: String(name).slice(0, 90), lat: plat, lng: plng, type: tg.amenity || '',
       cuisine: tg.cuisine || '', ncuisine: norm(tg.cuisine || ''),
       brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || '',
+      wiki: tg.wikidata || tg.wikipedia || '',
       address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
       phone: tg.phone || tg['contact:phone'] || ''
     });

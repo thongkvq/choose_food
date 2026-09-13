@@ -250,14 +250,85 @@ function renderNearbyHeader(pos) {
     (pos.label ? '<span class="loc-label">' + esc(String(pos.label).slice(0, 90)) + '</span>' : '') + '</div>';
 }
 
-// Khối "quán có tiếng": chỉ hiện khi server trả về (bản tĩnh gọi Photon trực tiếp thì không có).
+/* ---- QUÁN CÓ TIẾNG (miễn phí, dữ liệu mở OSM) ----
+   Bản có server: server chấm sẵn. Bản tĩnh (Vercel): tự gọi Overpass bằng GET
+   (Overpass có gửi Access-Control-Allow-Origin: * cho GET) rồi chấm y hệt. */
+const FAME_SRC = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+function fameScoreOf(p, branches) {
+  let s = 0; const why = [];
+  if (p.wiki) { s += 4; why.push('có hồ sơ Wikipedia/Wikidata'); }
+  if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
+  if (branches >= 3) { s += 2; why.push(branches + ' chi nhánh trong vùng'); }
+  if (p.website) { s += 2; why.push('có website'); }
+  if (p.open) { s += 1; why.push('có giờ mở cửa'); }
+  if (p.phone) { s += 1; why.push('có điện thoại'); }
+  if (p.address) { s += 1; why.push('có địa chỉ'); }
+  if (p.cuisine) { s += 1; why.push('có loại quán'); }
+  return { s: s, why: why };
+}
+function fameLists(pois, lat, lng, radiusM, dish, kw, cuisine) {
+  const counts = new Map();
+  for (const p of pois) counts.set(p.nname, (counts.get(p.nname) || 0) + 1);
+  const near = pois.map((p) => Object.assign({}, p, { dist: dirDistM(lat, lng, p.lat, p.lng) }))
+    .filter((p) => p.dist <= radiusM)
+    .map((p) => Object.assign(p, { fame: fameScoreOf(p, counts.get(p.nname) || 1).s }));
+  const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
+  const cu = dirNorm(cuisine);
+  const dedup = (arr) => {
+    const by = new Map();
+    for (const p of arr) { const cur = by.get(p.nname); if (!cur || p.dist < cur.dist) by.set(p.nname, p); }
+    return [...by.values()].map((p) => Object.assign({}, p, { branches: counts.get(p.nname) || 1 }));
+  };
+  const match = dedup(near.filter((p) => p.fame >= 4 && (words.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
+    .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 8);
+  const around = dedup(near.filter((p) => p.fame >= 5).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 10);
+  return { famousMatch: match, famousNear: around };
+}
+async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
+  const dLat = radiusM / 111000;
+  const dLng = radiusM / (111320 * Math.cos((lat * Math.PI) / 180));
+  const box = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
+  const limit = radiusM <= 2500 ? 500 : radiusM <= 5000 ? 900 : radiusM <= 10000 ? 1600 : 2600;
+  const am = '["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"]';
+  const ql = '[out:json][timeout:25];(node' + am + '(' + box + ');way' + am + '(' + box + '););out center tags ' + limit + ';';
+  let data = null;
+  for (const ep of FAME_SRC) {
+    const ctl = new AbortController();
+    const t = setTimeout(() => ctl.abort(), 25000);
+    try {
+      const res = await fetch(ep + '?data=' + encodeURIComponent(ql), { signal: ctl.signal, cache: 'no-store' });
+      if (res.ok) { data = await res.json(); break; }
+    } catch (e) { /* thử gương kế tiếp */ } finally { clearTimeout(t); }
+  }
+  if (!data) return null;
+  const pois = [];
+  for (const el of data.elements || []) {
+    const tg = el.tags || {};
+    const name = tg.name || tg['name:vi'] || tg['name:en'];
+    const plat = el.lat != null ? el.lat : (el.center && el.center.lat);
+    const plng = el.lon != null ? el.lon : (el.center && el.center.lon);
+    if (!name || plat == null || plng == null) continue;
+    pois.push({
+      name: String(name).slice(0, 90), lat: plat, lng: plng, nname: dirNorm(name), type: tg.amenity || '',
+      cuisine: tg.cuisine || '', ncuisine: dirNorm(tg.cuisine || ''),
+      address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
+      phone: tg.phone || tg['contact:phone'] || '', open: tg.opening_hours || '',
+      brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || '',
+      wiki: tg.wikidata || tg.wikipedia || '',
+      maps: 'https://www.google.com/maps/dir/?api=1&destination=' + plat + ',' + plng + '&travelmode=driving'
+    });
+  }
+  return fameLists(pois, lat, lng, radiusM, dish, kw, cuisine);
+}
+
+// Khối "quán có tiếng": server trả sẵn, hoặc bản tĩnh tự gọi Overpass ở trên.
 function famousBlock(title, list, kind) {
   if (!list || !list.length) return '';
   return '<div class="fam-title">' + title + '</div>' +
     list.slice(0, kind === 'match' ? 6 : 5).map((p) =>
       '<a class="shop fam" href="' + esc(p.maps) + '" target="_blank" rel="noopener">' +
         '<b>' + esc(p.name) + '</b><span class="shop-dist">' + (p.dist < 1000 ? p.dist + ' m' : (p.dist / 1000).toFixed(1) + ' km') + '</span>' +
-        '<span class="fam-why">' + (p.why || []).slice(0, 3).map(esc).join(' · ') + '</span>' +
+        '<span class="fam-why">' + ((p.branches > 1 ? [p.branches + ' chi nhánh'] : []).concat(p.why || [])).slice(0, 3).map(esc).join(' · ') + '</span>' +
         '<span class="shop-meta">' + [p.cuisine, p.address].filter(Boolean).map(esc).join(' · ') + '</span>' +
       '</a>').join('');
 }
@@ -294,11 +365,19 @@ async function findNearby(d, forcePos, keepPos) {
     });
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), 70000);
+    // bản tĩnh (Vercel) không có /api/nearby -> chạy song song: Photon cho quán khớp món + Overpass cho quán có tiếng
+    const famJob = ((await apiMode()) === 'direct')
+      ? dirFamous(pos.lat, pos.lng, state.radius, params.get('q'), params.get('kw'), params.get('cuisine')).catch(() => null)
+      : null;
     let j;
     try {
       j = await apiJSON('/api/nearby?' + params.toString(), () => dirNearby(pos.lat, pos.lng, state.radius, params.get('q'), params.get('kw'), params.get('cuisine')));
     } finally { clearTimeout(timer); }
     if (j.error) throw new Error(j.error);
+    if (famJob && !(j.famousMatch || []).length && !(j.famousNear || []).length) {
+      const fam = await famJob;
+      if (fam) { j.famousMatch = fam.famousMatch; j.famousNear = fam.famousNear; }
+    }
     // chưa có quán khớp tên món -> hỏi thêm quán gần nhất (chậm hơn nên chỉ gọi khi cần)
     if (!(j.matched || []).length && await apiMode() === 'server') {
       try {

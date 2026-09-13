@@ -108,13 +108,9 @@ const fam = await page.evaluate(() => {
 });
 check('15km: quán ≤15000m', s.maxM <= 15000 && /15km/.test(s.note), s.note + ' | xa nhất ' + Math.round(s.maxM) + 'm');
 check('15km: chip 15km sáng', s.chips.join(',') === '2.5km,5km,10km,15km*', s.chips.join(','));
-if (serverMode) {
-  check('có khối "quán có tiếng" (server)', fam.titles.length > 0 && fam.n > 0, fam.titles.join(' / ') + ' — ' + fam.n + ' quán');
-  check('quán có tiếng trong 15km + có lý do', fam.maxM <= 15000 && fam.why.every((w) => w.length > 2), fam.why.join(' ; ') + ' | xa nhất ' + Math.round(fam.maxM) + 'm');
-  check('có ghi rõ nguồn "có tiếng"', /OSM/.test(fam.note) && /không phải điểm đánh giá/.test(fam.note), fam.note.slice(0, 90));
-} else {
-  console.log('  (bản tĩnh: không có /api/nearby nên bỏ qua kiểm tra khối quán có tiếng)');
-}
+check('có khối "quán có tiếng" (' + (serverMode ? 'server' : 'bản tĩnh/Overpass') + ')', fam.titles.length > 0 && fam.n > 0, fam.titles.join(' / ') + ' — ' + fam.n + ' quán');
+check('quán có tiếng trong 15km + có lý do', fam.maxM <= 15000 && fam.why.every((w) => w.length > 2), fam.why.join(' ; ') + ' | xa nhất ' + Math.round(fam.maxM) + 'm');
+check('có ghi rõ nguồn "có tiếng"', /OSM/.test(fam.note) && /không phải điểm đánh giá/.test(fam.note), fam.note.slice(0, 90));
 
 // reload nhớ mức 10km
 await page.reload({ waitUntil: 'networkidle' });

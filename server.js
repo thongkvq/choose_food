@@ -199,7 +199,8 @@ function getArea(lat, lng, rad, timeoutMs) {
         cuisine: tg.cuisine || '', nname: norm(name), ncuisine: norm(tg.cuisine || ''),
         address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
         phone: tg.phone || tg['contact:phone'] || '', open: tg.opening_hours || '',
-        brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || ''
+        brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || '',
+        wiki: tg.wikidata || tg.wikipedia || ''   // có hồ sơ bách khoa = dấu hiệu nổi tiếng thật
       });
     }
     cache.set('area:' + k, { t: Date.now(), data: list });
@@ -216,15 +217,32 @@ function warmArea(lat, lng) { getArea(lat, lng, DEFAULT_RADIUS).catch(() => {});
    OSM không có sao/đánh giá của khách, nên "có tiếng" ở đây = dấu hiệu tin cậy được:
    thương hiệu/chuỗi, có website, có giờ mở cửa, có điện thoại, có địa chỉ, có khai báo loại quán.
    KHÔNG phải điểm đánh giá của thực khách — UI ghi rõ điều này. */
-function fameScore(p) {
+function fameScore(p, branches) {
   let s = 0; const why = [];
+  if (p.wiki) { s += 4; why.push('có hồ sơ Wikipedia/Wikidata'); }
   if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
+  if (branches >= 3) { s += 2; why.push(branches + ' chi nhánh trong vùng'); }
   if (p.website) { s += 2; why.push('có website'); }
   if (p.open) { s += 1; why.push('có giờ mở cửa'); }
   if (p.phone) { s += 1; why.push('có điện thoại'); }
   if (p.address) { s += 1; why.push('có địa chỉ'); }
   if (p.cuisine) { s += 1; why.push('có loại quán'); }
   return { s: s, why: why };
+}
+// Đếm số chi nhánh theo tên chuẩn hoá trong vùng đã quét
+function branchCounts(list) {
+  const m = new Map();
+  for (const p of list) m.set(p.nname, (m.get(p.nname) || 0) + 1);
+  return m;
+}
+// Gộp các chi nhánh cùng tên thành 1 dòng (giữ chi nhánh gần nhất, kèm số chi nhánh)
+function dedupByName(arr, counts) {
+  const by = new Map();
+  for (const p of arr) {
+    const cur = by.get(p.nname);
+    if (!cur || p.dist < cur.dist) by.set(p.nname, p);
+  }
+  return [...by.values()].map((p) => Object.assign({}, p, { branches: counts.get(p.nname) || 1 }));
 }
 
 /* ---------- gộp kết quả ---------- */
@@ -264,20 +282,21 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
       .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
     const cu = norm(cuisineHint);
     const sameCuisine = near.filter((p) => cu && p.ncuisine.includes(cu)).slice(0, 12);
+    const counts = branchCounts(all);
     const pack = (p) => {
-      const f = fameScore(p);
+      const f = fameScore(p, counts.get(p.nname) || 1);
       return { name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
-        open: p.open || '', brand: p.brand || '', website: p.website || '', fame: f.s, why: f.why,
+        open: p.open || '', brand: p.brand || '', website: p.website || '', fame: f.s, why: f.why, branches: p.branches || 1,
         maps: "https://www.google.com/maps/dir/?api=1&destination=" + p.lat + "," + p.lng + "&travelmode=driving" };
     };
     // "quán có tiếng bán món này": khớp tên món/ẩm thực + có dấu hiệu tin cậy
     const words2 = [...new Set((norm(dish) + " " + norm(kw)).split(" ").filter((t) => t.length >= 3))];
-    const famousMatch = near.map((p) => Object.assign({}, p, { fame: fameScore(p).s }))
-      .filter((p) => p.fame >= 3 && (words2.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
-      .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 8);
+    const famousMatch = dedupByName(near.map((p) => Object.assign({}, p, { fame: fameScore(p, counts.get(p.nname) || 1).s }))
+      .filter((p) => p.fame >= 4 && (words2.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
+      .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)), counts).slice(0, 8);
     // "quán có tiếng quanh đây" (chuỗi/thương hiệu, có website…) — không cần khớp tên món
-    const famousNear = near.map((p) => Object.assign({}, p, { fame: fameScore(p).s }))
-      .filter((p) => p.fame >= 4).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 10);
+    const famousNear = dedupByName(near.map((p) => Object.assign({}, p, { fame: fameScore(p, counts.get(p.nname) || 1).s }))
+      .filter((p) => p.fame >= 5).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)), counts).slice(0, 10);
     return { areaTotal: all.length, nearest: near.slice(0, 12).map(pack), sameCuisine: sameCuisine.map(pack),
       famousMatch: famousMatch.map(pack), famousNear: famousNear.map(pack) };
   })().catch((e) => ({ areaTotal: 0, nearest: [], sameCuisine: [], areaError: String((e && e.message) || e) }));

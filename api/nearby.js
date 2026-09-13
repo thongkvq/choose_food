@@ -49,9 +49,13 @@ export default async function handler(req, res) {
       const near = all.map((p) => Object.assign({}, p, { dist: distM(lat, lng, p.lat, p.lng) }))
         .filter((p) => p.dist <= Math.min(radius, MAX_RADIUS)).sort((a, b) => a.dist - b.dist);
       const cu = norm(cuisine);
+      const counts = new Map();
+      for (const p of all) counts.set(p.nname, (counts.get(p.nname) || 0) + 1);
       const fame = (p) => {
-        let s = 0; const why = [];
+        let s = 0; const why = []; const br = counts.get(p.nname) || 1;
+        if (p.wiki) { s += 4; why.push('có hồ sơ Wikipedia/Wikidata'); }
         if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
+        if (br >= 3) { s += 2; why.push(br + ' chi nhánh trong vùng'); }
         if (p.website) { s += 2; why.push('có website'); }
         if (p.open) { s += 1; why.push('có giờ mở cửa'); }
         if (p.phone) { s += 1; why.push('có điện thoại'); }
@@ -64,14 +68,20 @@ export default async function handler(req, res) {
         return {
           name: p.name, dist: p.dist, type: p.type, cuisine: p.cuisine, address: p.address, phone: p.phone,
           open: p.open || '', brand: p.brand || '', website: p.website || '', fame: f.s, why: f.why,
+          branches: counts.get(p.nname) || 1,
           maps: 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=driving'
         };
       };
-      const famMatch = near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
-        .filter((p) => p.fame >= 3 && (words.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
-        .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 8);
-      const famNear = near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
-        .filter((p) => p.fame >= 4).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist)).slice(0, 10);
+      const dedup = (arr) => {
+        const by = new Map();
+        for (const p of arr) { const cur = by.get(p.nname); if (!cur || p.dist < cur.dist) by.set(p.nname, p); }
+        return [...by.values()].map((p) => Object.assign({}, p, { branches: counts.get(p.nname) || 1 }));
+      };
+      const famMatch = dedup(near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
+        .filter((p) => p.fame >= 4 && (words.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
+        .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 8);
+      const famNear = dedup(near.map((p) => Object.assign({}, p, { fame: fame(p).s }))
+        .filter((p) => p.fame >= 5).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 10);
       return {
         areaTotal: all.length,
         nearest: near.slice(0, 12).map(pack),
