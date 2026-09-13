@@ -1320,7 +1320,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
   const queries = [...new Set([dish, (kw || '').split('|')[0], words.slice(0, 2).join(' ')].filter((q) => q && q.trim().length >= 3))].slice(0, 3);
   let matched = [], usedRadius = radius;
-  for (const rad of [Math.min(radius, 10000)]) {   // đúng mức người dùng chọn, không tự nới
+  for (const rad of [Math.min(radius, 15000)]) {   // đúng mức người dùng chọn, không tự nới
     const seen = new Map();
     const got = await Promise.all(queries.map((q) => dirPhotonSearch(q, lat, lng, rad).catch(() => [])));
     for (const arr of got) for (const pl of arr) {
@@ -1337,7 +1337,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
     }
     matched = [...seen.values()].filter((p) => p.dist <= rad).sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
     usedRadius = rad;
-    if (matched.length >= 3 || rad >= 10000) break;
+    if (matched.length >= 3 || rad >= 15000) break;
   }
   return {
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: usedRadius,
