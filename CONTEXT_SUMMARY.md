@@ -201,3 +201,12 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - Dòng trạng thái khi 0 món đổi thành "⚠️ 0 món khớp lọc — bấm để mở lọc" và **bấm được** để mở sheet.
 - **Test**: `tools/test-vung.mjs` lên **16/16 PASS**, thêm 4 ca mới: `cuu0Mon` (bữa Sáng + Tây Nguyên → tự bỏ bữa, pool 1, nút quay mở), `quaySauKhiCuu` (quay xong mở popup thật), `khongTuBoBuaNguoiDung` (người dùng tự chọn bữa thì KHÔNG tự bỏ, chỉ báo + mở sheet), `chipHienSoMon`.
 - Hồi quy PASS: `test-vnonly.mjs` · `audit-layout.mjs` (không tràn ngang, tap ≥44px) · `test-clip.mjs` (không cắt chữ trong popup 3 cỡ màn).
+
+## 22. v23 — Lọc theo phạm vi bán + gợi ý vị trí (đang hoàn thiện)
+- Mục tiêu: vùng lọc theo nơi món đang bán/phổ biến; phở, mì, bánh mì không mất khỏi vùng khác. Dữ liệu dùng vung cho gốc, dacSan cho cờ đặc sản địa phương, vungCo cho vùng bán.
+- Dữ liệu hiện tại: 248 món, 160 Việt, 88 quốc tế, 28 đặc sản; vùng bán: Bắc 142 · Trung 140 · Nam 141 · Tây Nam Bộ 141 · Tây Nguyên 133; vung === "vn" 62 món. Đã sửa ID Bánh căn thành banh-can-chay; tools/enrich-vung.mjs validate mọi ID map có thật trong data/dishes.json.
+- App: matchDish() dùng vungCo với fallback vung; Miền Nam gồm Tây Nam Bộ; Cả nước giữ nghĩa gốc vung=vn; chip đếm dùng cùng helper. Chế độ state.vungGocOnly lọc gốc.
+- Vị trí: vungFromPlace() chuẩn hóa tên có dấu, allowlist tỉnh/thành; vungFromCoords() fallback BBox gần đúng; GPS ưu tiên, IP sau; Photon reverse geocode thêm cho GPS chỉ có tọa độ. state.autoVung chỉ hiện gợi ý và nút xác nhận, không ghi đè vùng tay. Thêm api/reverse-geocode.js + route local.
+- SQLite: thêm cột dacSan INTEGER, vungCo TEXT; đồng bộ 248/248 bằng tools/sync-vung-sqlite.mjs. Kiểm tra không NULL; mẫu phở có đủ 5 vùng, cao lầu/Bánh căn chỉ Trung.
+- Test đã PASS: node tools/test-vung.mjs http://127.0.0.1:4321 (17 checks); syntax node --check app.js server.js api/_lib.js api/reverse-geocode.js. tools/test-gps.mjs đã thêm test mapper nhưng chưa chạy hết vì test nearby lâu.
+- Còn lại: chạy full regression (GPS, old-data, vnonly, layout, clip), kiểm tra api/reverse-geocode production, review diff, commit/push và chờ Vercel success; cập nhật số liệu README nếu dataset thay đổi.

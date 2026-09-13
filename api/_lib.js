@@ -46,14 +46,14 @@ export async function whereAmI() {
   if (c) return c;
   const providers = [
     async () => {
-      const j = await jsonFetch('http://ip-api.com/json/?fields=status,country,city,regionName,lat,lon');
+      const j = await jsonFetch('http://ip-api.com/json/?fields=status,country,countryCode,city,regionName,lat,lon');
       if (j.status !== 'success') throw new Error('ip-api');
-      return { lat: j.lat, lng: j.lon, city: j.city, region: j.regionName, country: j.country, source: 'ip' };
+      return { lat: j.lat, lng: j.lon, city: j.city, region: j.regionName, country: j.country, countryCode: j.countryCode, source: 'ip' };
     },
     async () => {
       const j = await jsonFetch('https://ipapi.co/json/');
       if (!j.latitude) throw new Error('ipapi');
-      return { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, source: 'ip' };
+      return { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, countryCode: j.country_code, source: 'ip' };
     }
   ];
   for (const p of providers) {
@@ -90,7 +90,17 @@ export async function geocode(q) {
   if (!f) throw new Error('không tìm thấy địa chỉ');
   const pr = f.properties || {}, co = (f.geometry && f.geometry.coordinates) || [];
   if (co.length < 2) throw new Error('không có toạ độ');
-  return { lat: co[1], lng: co[0], label: [pr.name, pr.street, pr.district, pr.city, pr.country].filter(Boolean).join(', ') };
+  return { lat: co[1], lng: co[0], city: pr.city, region: pr.state || pr.region, district: pr.district, country: pr.country, countryCode: pr.countrycode || pr.country_code, label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', ') };
+}
+
+export async function reverseGeocode(lat, lng) {
+  const j = await jsonFetch('https://photon.komoot.io/reverse?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng), null, 12000);
+  const f = (j.features || [])[0], pr = f && f.properties || {};
+  return {
+    lat, lng, city: pr.city, region: pr.state || pr.region, district: pr.district,
+    country: pr.country, countryCode: pr.countrycode || pr.country_code,
+    label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', '), source: 'reverse'
+  };
 }
 
 /* ---------- Photon: quán theo tên món ---------- */

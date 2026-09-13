@@ -1,18 +1,20 @@
-// Gán VÙNG MIỀN (vung) cho từng món — dùng cho bộ lọc "Vùng miền" trong app.js
-//   bac         Miền Bắc
-//   trung       Miền Trung
-//   nam         Miền Nam (Đông Nam Bộ / Sài Gòn)
-//   tay-nam-bo  Miền Tây Nam Bộ (ĐBSCL)  — nằm trong Miền Nam về mặt địa lý
-//   tay-nguyen  Tây Nguyên
-//   vn          Món phổ biến cả nước, không gắn riêng vùng nào
-//   ngoai       Món nước ngoài
+// Gán VÙNG MIỀN cho từng món — dùng cho bộ lọc "Vùng miền" trong app.js
+//   vung    : vùng GỐC của món (bac/trung/nam/tay-nam-bo/tay-nguyen/vn/ngoai)
+//   dacSan  : true = đặc sản địa phương (chủ yếu chỉ bán ở vùng gốc)
+//             false = món phổ biến, bán được khắp nơi (phở, bánh mì, cơm tấm, chè…)
+//   vungCo  : MẢNG các vùng ĐANG BÁN món đó (dùng để lọc "ở vùng này có gì")
+//             - món phổ biến  -> có ở CẢ 5 vùng
+//             - đặc sản       -> chỉ vùng gốc (+ Nam Bộ <-> Tây Nam Bộ vì Tây Nam Bộ nằm trong Nam Bộ)
+//             - món ngoại     -> [] (không thuộc vùng nào của VN)
 // Chạy: node tools/enrich-vung.mjs
 import fs from 'fs';
 import path from 'path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const FILE = path.join(ROOT, 'data', 'dishes.json');
+const VN_REGS = ['bac', 'trung', 'nam', 'tay-nam-bo', 'tay-nguyen'];
 
+// ---------- vùng GỐC (đã chốt ở v21) ----------
 const VUNG = {
   bac: [
     'banh-cuon-chay', 'cha-com', 'banh-chung', 'banh-gio', 'banh-troi-nuoc', 'bia-hoi',
@@ -23,7 +25,7 @@ const VUNG = {
     'banh-mi-chao-trung', 'lau-cua', 'lau-de', 'lau-bo-nhung-dam', 'xoi-man', 'oc-nhoi'
   ],
   trung: [
-    'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can', 'banh-hoi', 'banh-canh', 'banh-canh-tom',
+    'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'banh-canh', 'banh-canh-tom',
     'banh-xeo', 'banh-xeo-nhat', 'cao-lau', 'mi-quang', 'nem-nuong', 'lau-ga-la-e', 'bun-bo-hue',
     'com-ga', 'bun-cha-ca', 'banh-mi-heo-quay', 'banh-uot'
   ],
@@ -40,6 +42,23 @@ const VUNG = {
   'tay-nguyen': ['banh-trang-nuong']
 };
 
+// ---------- ĐẶC SẢN ĐỊA PHƯƠNG (không bán phổ biến toàn quốc) ----------
+// Mọi món Việt KHÔNG có trong danh sách này được coi là món phổ biến -> bán ở cả 5 vùng.
+const DAC_SAN = [
+  // miền Bắc
+  'cha-com', 'bun-oc', 'cha-ca-la-vong', 'ca-phe-trung', 'banh-duc', 'xoi-xeo',
+  'pho-chien-phong', 'chao-trai', 'mien-cua', 'oc-nhoi',
+  // miền Trung
+  'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'cao-lau',
+  'mi-quang', 'banh-mi-heo-quay',
+  // miền Nam
+  'banh-bia', 'banh-canh-ghe', 'banh-mi-xui', 'banh-mi-kep-kem', 'banh-trang-sua', 'banh-khot',
+  // Tây Nam Bộ
+  'bun-mam', 'banh-canh-cua', 'lau-ca-keo',
+  // Tây Nguyên
+  'banh-trang-nuong'
+];
+
 const byId = new Map();
 for (const [vung, ids] of Object.entries(VUNG)) {
   for (const id of ids) {
@@ -47,18 +66,33 @@ for (const [vung, ids] of Object.entries(VUNG)) {
     byId.set(id, vung);
   }
 }
+const dacSanSet = new Set(DAC_SAN);
+for (const id of DAC_SAN) if (!byId.has(id)) throw new Error('đặc sản không có vùng gốc: ' + id);
 
 const raw = JSON.parse(fs.readFileSync(FILE, 'utf8'));
-const dishes = raw.dishes;
-const missing = [];
+const dishIds = new Set(raw.dishes.map(d => d.id));
+for (const [vung, ids] of Object.entries(VUNG)) {
+  for (const id of ids) if (!dishIds.has(id)) throw new Error('món không tồn tại trong dishes.json: ' + id + ' (vùng ' + vung + ')');
+}
 const stats = {};
+let nDacSan = 0;
 
-const out = dishes.map((d) => {
-  let vung = d.region !== 'vn' ? 'ngoai' : (byId.get(d.id) || 'vn');
-  if (d.region === 'vn' && !byId.has(d.id)) missing.push(d.id);
+const out = raw.dishes.map((d) => {
+  const vung = d.region !== 'vn' ? 'ngoai' : (byId.get(d.id) || 'vn');
+  const dacSan = d.region === 'vn' && dacSanSet.has(d.id);
+  let vungCo;
+  if (d.region !== 'vn') vungCo = [];
+  else if (!dacSan) vungCo = [...VN_REGS];
+  else {
+    vungCo = [vung];
+    if (vung === 'nam') vungCo.push('tay-nam-bo');
+    if (vung === 'tay-nam-bo') vungCo.push('nam');
+  }
+  if (dacSan) nDacSan++;
   stats[vung] = (stats[vung] || 0) + 1;
-  const { id, name, emoji, region, ...rest } = d;
-  return { id, name, emoji, region, vung, ...rest };
+
+  const { id, name, emoji, region, vungCo: _old, dacSan: _old2, ...rest } = d;
+  return { id, name, emoji, region, vung, dacSan, vungCo, ...rest };
 });
 
 raw.dishes = out;
@@ -66,7 +100,8 @@ raw.count = out.length;
 raw.vungGeneratedAt = new Date().toISOString();
 fs.writeFileSync(FILE, JSON.stringify(raw, null, 1) + '\n');
 
+const avail = {};
+for (const k of VN_REGS) avail[k] = out.filter(d => d.region === 'vn' && d.vungCo.includes(k)).length;
 console.log('đã ghi', out.length, 'món →', FILE);
-console.log('phân bố:', JSON.stringify(stats));
-console.log('món Việt không gán vùng riêng (để "cả nước"):', missing.length);
-console.log(missing.join(', '));
+console.log('vùng gốc:', JSON.stringify(stats), '| đặc sản địa phương:', nDacSan);
+console.log('số món LỌC ĐƯỢC theo từng vùng (món có bán ở vùng đó):', JSON.stringify(avail));

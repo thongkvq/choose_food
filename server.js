@@ -67,14 +67,14 @@ async function whereAmI() {
   if (c && Date.now() - c.t < 30 * 60 * 1000) return c.data;
   const providers = [
     async () => {
-      const j = await jsonFetch('http://ip-api.com/json/?fields=status,country,city,regionName,lat,lon');
+      const j = await jsonFetch('http://ip-api.com/json/?fields=status,country,countryCode,city,regionName,lat,lon');
       if (j.status !== 'success') throw new Error('ip-api');
-      return { lat: j.lat, lng: j.lon, city: j.city, region: j.regionName, country: j.country, source: 'ip' };
+      return { lat: j.lat, lng: j.lon, city: j.city, region: j.regionName, country: j.country, countryCode: j.countryCode, source: 'ip' };
     },
     async () => {
       const j = await jsonFetch('https://ipapi.co/json/');
       if (!j.latitude) throw new Error('ipapi');
-      return { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, source: 'ip' };
+      return { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, countryCode: j.country_code, source: 'ip' };
     }
   ];
   for (const p of providers) {
@@ -116,7 +116,19 @@ async function geocode(q) {
   if (co.length < 2) throw new Error('không có toạ độ');
   return {
     lat: co[1], lng: co[0],
-    label: [pr.name, pr.street, pr.district, pr.city, pr.country].filter(Boolean).join(', ')
+    city: pr.city, region: pr.state || pr.region, district: pr.district, country: pr.country, countryCode: pr.countrycode || pr.country_code,
+     label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', ')
+  };
+}
+
+async function reverseGeocode(lat, lng) {
+  const u = 'https://photon.komoot.io/reverse?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng);
+  const j = await jsonFetch(u, null, 12000);
+  const f = (j.features || [])[0], pr = f && f.properties || {};
+  return {
+    lat, lng, city: pr.city, region: pr.state || pr.region, district: pr.district,
+    country: pr.country, countryCode: pr.countrycode || pr.country_code,
+    label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', '), source: 'reverse'
   };
 }
 
@@ -337,6 +349,11 @@ async function handle(req, res) {
       const q = (url.searchParams.get('q') || '').slice(0, 120);
       if (q.length < 3) return send(400, { error: 'thiếu địa chỉ' });
       return send(200, await geocode(q));
+    }
+    if (url.pathname === '/api/reverse-geocode') {
+      const lat = Number(url.searchParams.get('lat')), lng = Number(url.searchParams.get('lng'));
+      if (!isFinite(lat) || !isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return send(400, { error: 'thiếu lat/lng' });
+      return send(200, await reverseGeocode(lat, lng));
     }
     if (url.pathname === '/api/nearby') {
       const lat = Number(url.searchParams.get('lat')), lng = Number(url.searchParams.get('lng'));

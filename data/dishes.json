@@ -8,6 +8,8 @@
    "emoji": "🍯",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -80,6 +82,8 @@
    "emoji": "🍛",
    "region": "in",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "trua"
@@ -142,6 +146,11 @@
    "emoji": "🥮",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -202,6 +211,11 @@
    "emoji": "🦀",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -261,6 +275,14 @@
    "emoji": "🌱",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -325,6 +347,11 @@
    "emoji": "🥛",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "sang",
     "vat"
@@ -400,6 +427,14 @@
    "emoji": "🍄",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -475,6 +510,14 @@
    "emoji": "🍮",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -550,6 +593,8 @@
    "emoji": "🥮",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "toi"
@@ -614,6 +659,10 @@
    "emoji": "🍡",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "xe",
     "vat"
@@ -669,6 +718,14 @@
    "emoji": "🍮",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -737,6 +794,10 @@
    "emoji": "🥣",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -805,6 +866,14 @@
    "emoji": "🌿",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -869,6 +938,8 @@
    "emoji": "🍲",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya"
@@ -931,6 +1002,8 @@
    "emoji": "🍫",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -1003,6 +1076,10 @@
    "emoji": "🍃",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "vat",
     "toi"
@@ -1058,6 +1135,8 @@
    "emoji": "🐟",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "vat"
@@ -1136,6 +1215,14 @@
    "emoji": "🍚",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi"
    ],
@@ -1184,6 +1271,8 @@
    "emoji": "🌽",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -1240,6 +1329,14 @@
    "emoji": "🥓",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -1319,6 +1416,8 @@
    "emoji": "🐖",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "trua"
@@ -1380,6 +1479,14 @@
    "emoji": "🥬",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "trua"
@@ -1441,6 +1548,14 @@
    "emoji": "🦀",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi"
    ],
@@ -1503,6 +1618,14 @@
    "emoji": "🐐",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -1564,6 +1687,8 @@
    "emoji": "🍬",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -1636,6 +1761,10 @@
    "emoji": "🦀",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -1684,6 +1813,8 @@
    "emoji": "🫘",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -1736,6 +1867,8 @@
    "emoji": "🥭",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -1798,6 +1931,8 @@
    "emoji": "🥟",
    "region": "in",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -1867,6 +2002,8 @@
    "emoji": "🍳",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "trua"
@@ -1929,6 +2066,8 @@
    "emoji": "🦀",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "sang"
@@ -1992,6 +2131,8 @@
    "emoji": "🍷",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya"
@@ -2051,6 +2192,8 @@
    "emoji": "🦆",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi"
    ],
@@ -2124,6 +2267,8 @@
    "emoji": "🍲",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya"
@@ -2175,6 +2320,14 @@
    "emoji": "🍺",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya",
@@ -2242,6 +2395,8 @@
    "emoji": "🌯",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -2309,6 +2464,10 @@
    "emoji": "🌸",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "xe",
     "vat"
@@ -2374,6 +2533,10 @@
    "emoji": "💎",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "xe",
     "vat"
@@ -2449,6 +2612,14 @@
    "emoji": "🍊",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -2514,6 +2685,11 @@
    "emoji": "🦀",
    "region": "vn",
    "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -2575,6 +2751,14 @@
    "emoji": "🍤",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "xe",
     "khuya"
@@ -2635,6 +2819,14 @@
    "emoji": "🎋",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -2704,6 +2896,10 @@
    "emoji": "🧁",
    "region": "vn",
    "vung": "vn",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -2777,6 +2973,14 @@
    "emoji": "🍮",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -2858,6 +3062,14 @@
    "emoji": "🎁",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -2912,6 +3124,10 @@
    "emoji": "🍜",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "xe",
     "trua"
@@ -2987,6 +3203,14 @@
    "emoji": "🥩",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -3060,6 +3284,14 @@
    "emoji": "🧄",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -3132,6 +3364,14 @@
    "emoji": "🌱",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -3206,6 +3446,14 @@
    "emoji": "🥘",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -3254,6 +3502,14 @@
    "emoji": "🧀",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "vat"
@@ -3301,6 +3557,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang"
    ],
@@ -3348,6 +3612,10 @@
    "emoji": "🐷",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -3421,6 +3689,11 @@
    "emoji": "🍦",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -3496,6 +3769,14 @@
    "emoji": "🍞",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -3545,6 +3826,14 @@
    "emoji": "🌶️",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -3619,6 +3908,14 @@
    "emoji": "🌭",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -3694,6 +3991,8 @@
    "emoji": "🥩",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe"
@@ -3767,6 +4066,8 @@
    "emoji": "🍪",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -3835,6 +4136,8 @@
    "emoji": "🍫",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -3898,6 +4201,14 @@
    "emoji": "⚪",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "vat"
@@ -3965,6 +4276,11 @@
    "emoji": "🥛",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -4045,6 +4361,14 @@
    "emoji": "⚪",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -4113,6 +4437,14 @@
    "emoji": "🎋",
    "region": "vn",
    "vung": "tay-nam-bo",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -4185,6 +4517,14 @@
    "emoji": "🥬",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -4250,6 +4590,14 @@
    "emoji": "🍽️",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -4313,6 +4661,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "toi"
@@ -4361,6 +4717,14 @@
    "emoji": "🍃",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "vat"
@@ -4430,6 +4794,8 @@
    "emoji": "🍡",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -4489,6 +4855,14 @@
    "emoji": "🥩",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -4541,6 +4915,11 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -4610,6 +4989,14 @@
    "emoji": "🥗",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "xe"
@@ -4659,6 +5046,10 @@
    "emoji": "🐌",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "trua",
     "xe"
@@ -4719,6 +5110,14 @@
    "emoji": "🥛",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -4782,6 +5181,14 @@
    "emoji": "🎃",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -4844,6 +5251,14 @@
    "emoji": "🥒",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -4915,6 +5330,8 @@
    "emoji": "🌊",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -4978,6 +5395,10 @@
    "emoji": "🍜",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -5038,6 +5459,8 @@
    "emoji": "🥓",
    "region": "it",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi"
    ],
@@ -5113,6 +5536,8 @@
    "emoji": "🍰",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -5169,6 +5594,14 @@
    "emoji": "🍄",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -5228,6 +5661,10 @@
    "emoji": "🐚",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -5300,6 +5737,14 @@
    "emoji": "🥣",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -5345,6 +5790,14 @@
    "emoji": "🤍",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -5409,6 +5862,14 @@
    "emoji": "🫘",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -5463,6 +5924,10 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "toi"
    ],
@@ -5521,6 +5986,14 @@
    "emoji": "🍥",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -5590,6 +6063,8 @@
    "emoji": "🥐",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe"
@@ -5667,6 +6142,14 @@
    "emoji": "🌿",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "toi",
@@ -5742,6 +6225,14 @@
    "emoji": "🍤",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe",
@@ -5802,6 +6293,10 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -5871,6 +6366,8 @@
    "emoji": "🥕",
    "region": "in",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -5934,6 +6431,8 @@
    "emoji": "🐟",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -5991,6 +6490,8 @@
    "emoji": "🍚",
    "region": "in",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -6060,6 +6561,14 @@
    "emoji": "🥬",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6122,6 +6631,8 @@
    "emoji": "🐔",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -6189,6 +6700,14 @@
    "emoji": "🔥",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6248,6 +6767,8 @@
    "emoji": "🐟",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -6308,6 +6829,14 @@
    "emoji": "🥗",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6366,6 +6895,14 @@
    "emoji": "🐖",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6411,6 +6948,8 @@
    "emoji": "🍍",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -6477,6 +7016,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "khuya",
     "trua"
@@ -6537,6 +7084,8 @@
    "emoji": "🍤",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe"
@@ -6605,6 +7154,8 @@
    "emoji": "🍩",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -6680,6 +7231,8 @@
    "emoji": "🧆",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "trua"
@@ -6741,6 +7294,8 @@
    "emoji": "🐟",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "vat",
@@ -6815,6 +7370,14 @@
    "emoji": "🐔",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6877,6 +7440,14 @@
    "emoji": "🫚",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -6937,6 +7508,14 @@
    "emoji": "🍋",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "trua"
@@ -6999,6 +7578,8 @@
    "emoji": "🧆",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -7071,6 +7652,8 @@
    "emoji": "🌯",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "khuya",
     "vat",
@@ -7141,6 +7724,14 @@
    "emoji": "🥑",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -7198,6 +7789,8 @@
    "emoji": "🍨",
    "region": "it",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -7262,6 +7855,14 @@
    "emoji": "🍠",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -7320,6 +7921,14 @@
    "emoji": "🥩",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7381,6 +7990,14 @@
    "emoji": "🐔",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7440,6 +8057,11 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7500,6 +8122,14 @@
    "emoji": "🌿",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7561,6 +8191,14 @@
    "emoji": "🍄",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7620,6 +8258,14 @@
    "emoji": "🍄",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -7680,6 +8326,14 @@
    "emoji": "🥢",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "xe"
@@ -7742,6 +8396,14 @@
    "emoji": "🍤",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "khuya",
     "sang"
@@ -7808,6 +8470,8 @@
    "emoji": "🥡",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -7872,6 +8536,8 @@
    "emoji": "🧀",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -7936,6 +8602,14 @@
    "emoji": "🧆",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -7997,6 +8671,14 @@
    "emoji": "🐚",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "vat"
@@ -8053,6 +8735,14 @@
    "emoji": "🍋",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "trua"
@@ -8116,6 +8806,14 @@
    "emoji": "🎍",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "trua"
@@ -8177,6 +8875,14 @@
    "emoji": "🌿",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "trua"
@@ -8231,6 +8937,8 @@
    "emoji": "🥞",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "vat"
@@ -8298,6 +9006,8 @@
    "emoji": "🥞",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe"
@@ -8373,6 +9083,10 @@
    "emoji": "🍤",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -8439,6 +9153,14 @@
    "emoji": "🥢",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -8487,6 +9209,8 @@
    "emoji": "🍣",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -8542,6 +9266,8 @@
    "emoji": "🧀",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya",
@@ -8614,6 +9340,14 @@
    "emoji": "🥖",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -8677,6 +9411,14 @@
    "emoji": "🥥",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -8744,6 +9486,8 @@
    "emoji": "🥗",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -8805,6 +9549,8 @@
    "emoji": "🥗",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -8866,6 +9612,8 @@
    "emoji": "🌯",
    "region": "tr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "khuya",
     "trua",
@@ -8941,6 +9689,14 @@
    "emoji": "🥑",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "vat"
@@ -8999,6 +9755,14 @@
    "emoji": "🥭",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "sang"
@@ -9053,6 +9817,8 @@
    "emoji": "🍜",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "xe"
@@ -9125,6 +9891,8 @@
    "emoji": "🥗",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "xe"
@@ -9192,6 +9960,8 @@
    "emoji": "🎃",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "toi"
@@ -9254,6 +10024,8 @@
    "emoji": "🦀",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "khuya"
@@ -9308,6 +10080,14 @@
    "emoji": "🥛",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -9375,6 +10155,14 @@
    "emoji": "🥛",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -9452,6 +10240,8 @@
    "emoji": "🍤",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "toi"
@@ -9521,6 +10311,8 @@
    "emoji": "🍯",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -9586,6 +10378,8 @@
    "emoji": "🍰",
    "region": "it",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -9661,6 +10455,14 @@
    "emoji": "🫚",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -9727,6 +10529,14 @@
    "emoji": "🥚",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -9790,6 +10600,8 @@
    "emoji": "🥚",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "toi"
@@ -9851,6 +10663,14 @@
    "emoji": "🍮",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -9914,6 +10734,8 @@
    "emoji": "🍲",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -9981,6 +10803,8 @@
    "emoji": "🧇",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "vat"
@@ -10047,6 +10871,14 @@
    "emoji": "⚪",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -10120,6 +10952,14 @@
    "emoji": "🍗",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -10186,6 +11026,14 @@
    "emoji": "🔴",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -10253,6 +11101,14 @@
    "emoji": "🌭",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -10319,6 +11175,8 @@
    "emoji": "🥣",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe"
@@ -10383,6 +11241,14 @@
    "emoji": "🍉",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "xe",
     "vat"
@@ -10444,6 +11310,14 @@
    "emoji": "🌿",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi",
@@ -10511,6 +11385,8 @@
    "emoji": "🥚",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -10577,6 +11453,14 @@
    "emoji": "🍅",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -10643,6 +11527,10 @@
    "emoji": "🐌",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "toi",
     "vat"
@@ -10700,6 +11588,8 @@
    "emoji": "🍔",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -10774,6 +11664,8 @@
    "emoji": "🥟",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe",
@@ -10845,6 +11737,14 @@
    "emoji": "🍥",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -10905,6 +11805,14 @@
    "emoji": "🥟",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -10967,6 +11875,11 @@
    "emoji": "🥮",
    "region": "vn",
    "vung": "nam",
+   "dacSan": true,
+   "vungCo": [
+    "nam",
+    "tay-nam-bo"
+   ],
    "meals": [
     "sang",
     "xe",
@@ -11032,6 +11945,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -11094,6 +12015,14 @@
    "emoji": "🍗",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -11169,6 +12098,14 @@
    "emoji": "🥖",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -11244,6 +12181,14 @@
    "emoji": "🥖",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -11320,6 +12265,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -11395,6 +12348,10 @@
    "emoji": "🔥",
    "region": "vn",
    "vung": "tay-nguyen",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -11473,6 +12430,8 @@
    "emoji": "🥩",
    "region": "fr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi"
    ],
@@ -11542,6 +12501,14 @@
    "emoji": "🥭",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -11601,6 +12568,14 @@
    "emoji": "🥩",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "trua"
@@ -11677,6 +12652,14 @@
    "emoji": "🐠",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -11737,6 +12720,14 @@
    "emoji": "🦀",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -11795,6 +12786,14 @@
    "emoji": "🧆",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -11862,6 +12861,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe",
@@ -11926,6 +12933,14 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -11995,6 +13010,14 @@
    "emoji": "🍚",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -12069,6 +13092,8 @@
    "emoji": "🍨",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "xe"
@@ -12120,6 +13145,14 @@
    "emoji": "🍧",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -12171,6 +13204,14 @@
    "emoji": "🥢",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi",
@@ -12252,6 +13293,8 @@
    "emoji": "🍛",
    "region": "in",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -12311,6 +13354,14 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -12372,6 +13423,14 @@
    "emoji": "🐟",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -12430,6 +13489,8 @@
    "emoji": "🥩",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -12493,6 +13554,8 @@
    "emoji": "🥚",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -12564,6 +13627,8 @@
    "emoji": "🍛",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -12622,6 +13687,14 @@
    "emoji": "🐔",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -12683,6 +13756,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi",
@@ -12765,6 +13846,14 @@
    "emoji": "🦑",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -12832,6 +13921,8 @@
    "emoji": "🍚",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -12909,6 +14000,14 @@
    "emoji": "🍯",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "trua"
@@ -12971,6 +14070,8 @@
    "emoji": "🌶️",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya",
@@ -13033,6 +14134,14 @@
    "emoji": "🍢",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -13104,6 +14213,14 @@
    "emoji": "🥗",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "xe",
     "vat",
@@ -13179,6 +14296,8 @@
    "emoji": "🥟",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe",
@@ -13249,6 +14368,14 @@
    "emoji": "🦐",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "toi",
     "khuya"
@@ -13308,6 +14435,14 @@
    "emoji": "🦐",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -13384,6 +14519,14 @@
    "emoji": "🥡",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -13431,6 +14574,14 @@
    "emoji": "🦑",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "khuya",
     "vat",
@@ -13493,6 +14644,8 @@
    "emoji": "🍙",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "sang",
     "xe",
@@ -13557,6 +14710,8 @@
    "emoji": "🍲",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya"
@@ -13623,6 +14778,14 @@
    "emoji": "🐓",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -13681,6 +14844,10 @@
    "emoji": "🍲",
    "region": "vn",
    "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -13746,6 +14913,8 @@
    "emoji": "🌶️",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "khuya",
     "toi",
@@ -13822,6 +14991,14 @@
    "emoji": "🍜",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "khuya"
@@ -13884,6 +15061,8 @@
    "emoji": "🥩",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -13949,6 +15128,8 @@
    "emoji": "🍜",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -14015,6 +15196,14 @@
    "emoji": "🍢",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "xe",
     "vat",
@@ -14082,6 +15271,8 @@
    "emoji": "🍤",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi",
@@ -14153,6 +15344,14 @@
    "emoji": "🧀",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya"
@@ -14216,6 +15415,14 @@
    "emoji": "🔥",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi",
@@ -14295,6 +15502,8 @@
    "emoji": "🍕",
    "region": "it",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "vat",
@@ -14372,6 +15581,8 @@
    "emoji": "🍜",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya",
@@ -14447,6 +15658,8 @@
    "emoji": "🍝",
    "region": "it",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -14519,6 +15732,8 @@
    "emoji": "🍣",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "trua",
@@ -14594,6 +15809,8 @@
    "emoji": "🍖",
    "region": "cn",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "trua",
     "toi"
@@ -14653,6 +15870,8 @@
    "emoji": "🌮",
    "region": "mx",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya",
@@ -14730,6 +15949,8 @@
    "emoji": "🐙",
    "region": "jp",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -14802,6 +16023,14 @@
    "emoji": "🥚",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -14860,6 +16089,8 @@
    "emoji": "🌶️",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya",
@@ -14932,6 +16163,8 @@
    "emoji": "🌶️",
    "region": "th",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "toi",
     "khuya"
@@ -15007,6 +16240,14 @@
    "emoji": "🧋",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -15080,6 +16321,14 @@
    "emoji": "🍑",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "xe"
@@ -15144,6 +16393,14 @@
    "emoji": "🍳",
    "region": "vn",
    "vung": "vn",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang"
    ],
@@ -15203,6 +16460,14 @@
    "emoji": "🥓",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua"
@@ -15276,6 +16541,10 @@
    "emoji": "🍙",
    "region": "vn",
    "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
    "meals": [
     "sang",
     "xe"
@@ -15351,6 +16620,14 @@
    "emoji": "🥖",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe",
@@ -15426,6 +16703,14 @@
    "emoji": "🥡",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "vat",
     "khuya",
@@ -15486,6 +16771,14 @@
    "emoji": "🌮",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi",
@@ -15548,6 +16841,14 @@
    "emoji": "🌶️",
    "region": "vn",
    "vung": "trung",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -15612,6 +16913,14 @@
    "emoji": "🔥",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -15687,6 +16996,14 @@
    "emoji": "🥩",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "trua",
     "toi"
@@ -15755,6 +17072,14 @@
    "emoji": "☕",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "xe",
@@ -15821,6 +17146,14 @@
    "emoji": "🍖",
    "region": "vn",
    "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -15894,6 +17227,8 @@
    "emoji": "🍗",
    "region": "kr",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya",
@@ -15954,6 +17289,8 @@
    "emoji": "🍟",
    "region": "us",
    "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
    "meals": [
     "vat",
     "khuya"
@@ -16024,6 +17361,14 @@
    "emoji": "🍜",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -16104,6 +17449,14 @@
    "emoji": "🍗",
    "region": "vn",
    "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
    "meals": [
     "sang",
     "trua",
@@ -16160,5 +17513,5 @@
    "introEn": "Pho (Vietnamese: phở [fɤ˧˩˧] ) is a Vietnamese soup dish consisting of broth, rice noodles (bánh phở), herbs, and meat – usually beef (phở bò), and sometimes chicken (phở gà). Pho is a popular food in Vietnam where it is served in households, street-stalls, and restaurants nationwide. Residents of the city of Nam Định were the first to create Vietnamese traditional pho. Pho is a relatively recent addition to the country's cuisine, first appearing in written records in the early 20th century in Northern Vietnam. After the Vietnam War, refugees popularized it throughout the world. Due to limited historical documentation, the origins of pho remain debated. Influences from both French and Chinese culinary traditions are believed to have contributed to its development in Vietnam, as well as to the etymology of its name. The Hanoi (northern) and Saigon (southern) styles of pho differ by noodle"
   }
  ],
- "vungGeneratedAt": "2026-09-13T11:41:25.586Z"
+ "vungGeneratedAt": "2026-09-13T13:46:53.778Z"
 }

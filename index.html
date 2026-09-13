@@ -131,7 +131,7 @@
     <h3><span>📷</span> Nguồn ảnh &amp; dữ liệu</h3>
     <p class="note">Ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b>, đối chiếu tên món trước khi hiển thị.
       Món nào không tìm được ảnh đúng sẽ dùng hình vẽ minh hoạ.</p>
-    <p class="note">Phân vùng miền theo nguồn gốc/đặc trưng địa phương: <b>Bắc 38 · Trung 17 · Nam 38 · Tây Nam Bộ 4 · Tây Nguyên 1 · Cả nước 62</b> (món Việt).</p>
+    <p class="note">Vùng cụ thể đếm theo nơi món đang bán: <b>Bắc 142 · Trung 140 · Nam 141 · Tây Nam Bộ 141 · Tây Nguyên 133</b>. <b>Cả nước 61</b> là món có gốc toàn quốc; chế độ gốc chỉ dành cho đặc sản địa phương.</p>
     <p class="note">160 món Việt (mặc định) + 88 món quốc tế ẩn sẵn · 6 bữa · 11 nền ẩm thực · 10 cách chế biến.</p>
     <button class="mini-btn wide" id="btnLuckyFooter">🍀 Thử vận may (bỏ hết bộ lọc)</button>
   </footer>
@@ -151,8 +151,9 @@
       </div>
       <div class="fgroup">
         <h3><span>🗺️</span> Vùng miền</h3>
-        <p class="fnote">Chọn vùng bạn đang ở để ra món hợp khẩu vị địa phương. <b>Miền Nam</b> bao gồm cả miền Tây Nam Bộ; <b>Cả nước</b> là món phổ biến khắp nơi.</p>
+        <p class="fnote">Lọc theo món đang bán/phổ biến ở vùng bạn chọn, không chỉ nơi món ra đời. <b>Miền Nam</b> gồm cả Tây Nam Bộ; <b>Cả nước</b> = món phổ biến toàn quốc.</p>
         <div class="chips" id="vungChips"></div>
+        <p class="vung-location-hint" id="vungLocationHint" role="status" aria-live="polite"></p>
       </div>
       <div class="fgroup">
         <h3><span>🌏</span> Ẩm thực</h3>
@@ -165,6 +166,8 @@
       </div>
       <div class="fgroup">
         <h3><span>⚙️</span> Thêm</h3>
+        <label class="switch"><input type="checkbox" id="fAutoVung" checked><span class="track-ui"></span><span class="switch-label">📍 Tự gợi ý vùng theo vị trí (GPS/IP), không ghi đè vùng đã chọn</span></label>
+        <label class="switch"><input type="checkbox" id="fVungGocOnly"><span class="track-ui"></span><span class="switch-label">🏷️ Chỉ đặc sản có nguồn gốc từ vùng đã chọn</span></label>
         <label class="switch"><input type="checkbox" id="fVnOnly" checked><span class="track-ui"></span><span class="switch-label">🇻🇳 Chỉ món Việt — ẩn món nước ngoài (Hàn, Nhật, Âu, Mỹ…)</span></label>
         <label class="switch"><input type="checkbox" id="fVeg"><span class="track-ui"></span><span class="switch-label">Chỉ món chay 🌱</span></label>
         <label class="switch"><input type="checkbox" id="fMild"><span class="track-ui"></span><span class="switch-label">Không cay 🚫🌶️</span></label>

@@ -18,15 +18,19 @@ const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMe
 const R_TIERS = [2500, 5000, 10000, 15000];   // 4 mức bán kính tìm quán cho người dùng chọn
 const MEALS = { sang: 'Sáng 🌅', trua: 'Trưa ☀️', xe: 'Xế 🌤️', toi: 'Tối 🌙', khuya: 'Khuya 🌌', vat: 'Ăn vặt 🍿' };
 const REGIONS = { vn: 'Việt 🇻🇳', cn: 'Trung Hoa 🇨🇳', jp: 'Nhật 🇯🇵', kr: 'Hàn 🇰🇷', th: 'Thái 🇹🇭', it: 'Ý 🇮🇹', fr: 'Âu 🇫🇷', us: 'Mỹ 🇺🇸', mx: 'Mexico 🇲🇽', in: 'Ấn 🇮🇳', tr: 'Trung Đông 🇹🇷' };
-// Vùng miền Việt Nam — dùng cho bộ lọc "Vùng miền"
+// Vùng miền Việt Nam — bộ lọc theo nơi món ĐANG CÓ BÁN, không chỉ nơi món ra đời
 const VUNG = {
   bac: 'Miền Bắc 🏯', trung: 'Miền Trung 🌾', nam: 'Miền Nam 🏙️',
   'tay-nam-bo': 'Miền Tây Nam Bộ 🛶', 'tay-nguyen': 'Tây Nguyên ☕',
   vn: 'Cả nước 🇻🇳', ngoai: 'Ngoài Việt Nam 🌍'
 };
+const VN_VUNG_KEYS = ['bac', 'trung', 'nam', 'tay-nam-bo', 'tay-nguyen'];
+const VUNG_CHIPS = { bac: VUNG.bac, trung: VUNG.trung, nam: VUNG.nam,
+  'tay-nam-bo': VUNG['tay-nam-bo'], 'tay-nguyen': VUNG['tay-nguyen'], vn: VUNG.vn, ngoai: VUNG.ngoai };
 const vungLabel = (k) => VUNG[k] || k || '—';
-// Chọn "Miền Nam" thì gồm luôn miền Tây Nam Bộ (Tây Nam Bộ nằm trong Nam Bộ)
+// Miền Nam bao gồm miền Tây Nam Bộ; món phổ biến có vungCo[] để hiện ở nhiều vùng.
 const VUNG_INCLUDE = { nam: ['nam', 'tay-nam-bo'] };
+const VUNG_AVAIL = { bac: 'Miền Bắc', trung: 'Miền Trung', nam: 'Miền Nam', 'tay-nam-bo': 'Miền Tây Nam Bộ', 'tay-nguyen': 'Tây Nguyên' };
 const STYLES = { nuoc: 'Món nước 🍜', kho: 'Món khô 🥡', chien: 'Chiên 🍳', nuong: 'Nướng 🔥', hap: 'Hấp 🥟', tron: 'Trộn 🥗', cuon: 'Cuộn 🌯', lau: 'Lẩu 🍲', ngot: 'Ngọt 🍰', uong: 'Đồ uống 🥤' };
 const TIERS = {
   1: { name: 'Phổ Thông', short: 'R', w: 45, color: '#8c98a8', glow: 'rgba(140,152,168,.45)' },
@@ -39,7 +43,12 @@ const thumb = (u, w) => { if (!u) return u; const t = THUMB_LADDER.find(s => s >
 
 let ALL = [];
 const state = {
-  meals: new Set(), regions: new Set(), styles: new Set(), vung: new Set(),
+  meals: new Set(), regions: new Set(), styles: new Set(),
+  vung: new Set(Array.isArray(LS.get('mgd.vungSelection', [])) ? LS.get('mgd.vungSelection', []) : []),
+  vungGocOnly: LS.get('mgd.vungGocOnly', false),
+  vungManual: LS.get('mgd.vungManual', false),
+  vungGeo: LS.get('mgd.vungGeo', null),
+  autoVung: LS.get('mgd.autoVung', true),
   veg: false, mild: false, topRated: false, price: 4, time: 300, q: '', preset: null,
   mealAuto: false,   // bữa ăn do đồng hồ tự chọn (được phép tự bỏ khi vùng miền không có món nào)
   vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
@@ -48,14 +57,85 @@ const state = {
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
   lastWinner: null, spinning: false
 };
-function vungHit(v) {
+function vungCandidates(d) {
+  if (!d || d.region !== 'vn' || d.vung === 'ngoai') return [];
+  // Chỉ đặc sản gốc: dùng nơi món ra đời; mặc định: dùng nơi món đang bán.
+  if (state.vungGocOnly) return d.vung ? [d.vung] : [];
+  return Array.isArray(d.vungCo) && d.vungCo.length ? d.vungCo : (d.vung ? [d.vung] : []);
+}
+function vungAvailable(d, k) {
+  if (!d) return false;
+  if (k === 'ngoai') return d.region !== 'vn' || d.vung === 'ngoai';
+  // Giữ "Cả nước" = 62 món có vùng gốc vn; không nhầm với vungCo (5 vùng).
+  if (k === 'vn') return d.region === 'vn' && d.vung === 'vn';
+  const available = vungCandidates(d);
+  const wanted = k === 'nam' ? ['nam', 'tay-nam-bo'] : [k];
+  return wanted.some(x => available.includes(x));
+}
+function vungMatchesKey(d, k) { return vungAvailable(d, k); }
+function vungAvailabilityKeys(d) {
+  if (!d || d.region !== 'vn') return [];
+  const keys = Array.isArray(d.vungCo) ? d.vungCo.filter(k => VN_VUNG_KEYS.includes(k)) : [];
+  return [...new Set(keys.length ? keys : (d.vung ? [d.vung] : []))];
+}
+function vungSummary(d) {
+  const keys = vungAvailabilityKeys(d);
+  if (!keys.length) return d && d.vung ? vungLabel(d.vung) : '';
+  if (VN_VUNG_KEYS.every(k => keys.includes(k))) return 'Cả nước';
+  return keys.map(vungLabel).join(', ');
+}
+function vungHit(d) {
+  // Giữ tương thích với hook cũ nếu ai gọi vungHit('bac') trực tiếp.
+  if (typeof d === 'string') return !state.vung.size || [...state.vung].some(k => k === d || (VUNG_INCLUDE[k] || []).includes(d));
   if (!state.vung.size) return true;
-  for (const k of state.vung) {
-    if (k === v) return true;
-    const inc = VUNG_INCLUDE[k];
-    if (inc && inc.includes(v)) return true;
-  }
+  for (const k of state.vung) if (vungAvailable(d, k)) return true;
   return false;
+}
+// Mapper địa điểm Việt Nam: ưu tiên tên tỉnh/thành cụ thể, không fuzzy broad match.
+const VN_COUNTRY_CODES = new Set(['vn']);
+const VN_COUNTRY_NAMES = new Set(['vietnam', 'viet nam', 'vn']);
+const VUNG_PLACE_RULES = [
+  { key: 'tay-nam-bo', names: ['can tho', 'cantho', 'an giang', 'kien giang', 'dong thap', 'tien giang', 'vinh long', 'ben tre', 'tra vinh', 'soc trang', 'bac lieu', 'ca mau', 'hau giang', 'long an'] },
+  { key: 'tay-nguyen', names: ['da lat', 'dalat', 'lam dong', 'lamdong', 'buon ma thuot', 'buonmathuot', 'dak lak', 'daklak', 'dak nong', 'daknong', 'gia lai', 'gialai', 'kon tum', 'kontum', 'pleiku'] },
+  { key: 'nam', names: ['ho chi minh city', 'ho chi minh', 'tp ho chi minh', 'tphcm', 'hcmc', 'sai gon', 'saigon', 'ba ria', 'vung tau', 'dong nai', 'binh duong', 'binh phuoc', 'tay ninh', 'long an'] },
+  { key: 'trung', names: ['thanh hoa', 'nghe an', 'ha tinh', 'quang binh', 'quang tri', 'thua thien hue', 'hue', 'da nang', 'quang nam', 'hoi an', 'quang ngai', 'binh dinh', 'quy nhon', 'phu yen', 'khanh hoa', 'nha trang', 'ninh thuan', 'phan rang', 'binh thuan', 'phan thiet'] },
+  { key: 'bac', names: ['ha noi', 'hanoi', 'ha noi municipality', 'hai phong', 'quang ninh', 'bac ninh', 'bac giang', 'hai duong', 'hung yen', 'thai binh', 'nam dinh', 'ninh binh', 'ha nam', 'vinh phuc', 'phu tho', 'tuyen quang', 'ha giang', 'cao bang', 'bac kan', 'lang son', 'thai nguyen', 'lao cai', 'yen bai', 'dien bien', 'lai chau', 'son la', 'hoa binh'] }
+];
+function isVietnamPlace(info) {
+  const code = dirNorm(info && (info.countryCode || info.country_code || ''));
+  const country = dirNorm(info && info.country || '');
+  if (code && !VN_COUNTRY_CODES.has(code)) return false;
+  if (country && !VN_COUNTRY_NAMES.has(country)) return false;
+  // GPS path marks Vietnam explicitly; name-only test remains conservative.
+  if (!code && !country) return false;
+  return true;
+}
+function placeHaystack(info) {
+  const values = [info && info.city, info && info.region, info && info.state, info && info.county, info && info.label].filter(Boolean);
+  const normalized = values.map(v => dirNorm(v)).join(' ');
+  const compact = values.map(v => dirNorm(v).replace(/\s+/g, '')).join(' ');
+  return ' ' + normalized + ' ' + compact + ' ';
+}
+function vungFromPlace(info) {
+  if (!info || !isVietnamPlace(info)) return null;
+  const h = placeHaystack(info);
+  for (const rule of VUNG_PLACE_RULES) {
+    if (rule.names.some(name => h.includes(' ' + dirNorm(name) + ' '))) return rule.key;
+  }
+  return null;
+}
+function vungFromCoords(lat, lng, info) {
+  if (!isVietnamPlace(info || {}) || !isFinite(lat) || !isFinite(lng)) return null;
+  // BBox Việt Nam, sau đó dùng vùng địa lý gần đúng khi reverse geocode không có tên.
+  if (lat < 8.1 || lat > 23.5 || lng < 102.0 || lng > 109.7) return null;
+  if (lng >= 107.2 && lng <= 108.8 && lat >= 11.4 && lat <= 15.5) return 'tay-nguyen';
+  if (lat <= 10.8 && lng <= 106.6) return 'tay-nam-bo';
+  if (lat >= 20.0) return 'bac';
+  if (lat >= 10.3 && lng >= 106.3 && lng <= 108.2) return 'nam';
+  return 'trung';
+}
+function placeLabel(info) {
+  return String((info && (info.label || [info.city, info.region].filter(Boolean).join(', '))) || 'vị trí của bạn');
 }
 
 /* ============================ ÂM THANH ============================ */
@@ -170,7 +250,11 @@ function infoGrid(d) {
   if (d.protein) rows.push(['💪', 'Đạm', d.protein + ' g' + (d.proteinLabel ? ' · ' + d.proteinLabel : '')]);
   if (full) rows.push(['🍚', 'Độ no', '●'.repeat(full) + '○'.repeat(5 - full) + ' (' + full + '/5)']);
   if (d.priceRange) rows.push(['💵', 'Giá tham khảo', d.priceRange]);
-  if (d.vung) rows.push(['🗺️', 'Vùng miền', esc(vungLabel(d.vung))]);
+  if (d.region === 'vn' && (d.vung || vungAvailabilityKeys(d).length)) {
+    const sold = vungSummary(d);
+    const origin = d.vung && d.vung !== 'vn' && d.vung !== 'ngoai' ? ' · gốc ' + vungLabel(d.vung) : '';
+    rows.push(['🗺️', 'Vùng miền', esc('Có bán: ' + sold + origin)]);
+  } else if (d.vung) rows.push(['🗺️', 'Vùng miền', esc(vungLabel(d.vung))]);
   if (d.origin) rows.push(['📍', 'Xuất xứ', esc(d.origin)]);
   if (d.bestTime) rows.push(['⏰', 'Ngon nhất', d.bestTime]);
   const f = d.facts || {};
@@ -196,18 +280,25 @@ const CUISINE_BY_REGION = {
   vn: 'vietnamese', cn: 'chinese', jp: 'japanese', kr: 'korean', th: 'thai',
   it: 'italian', fr: 'french', us: 'american', mx: 'mexican', in: 'indian', tr: 'turkish'
 };
-async function getPosition() {
-  // GPS chỉ chạy trên https hoặc localhost; qua LAN http sẽ bị chặn -> dùng IP
-  if (navigator.geolocation && window.isSecureContext) {
-    try {
-      const pos = await new Promise((res, rej) =>
-        navigator.geolocation.getCurrentPosition(res, rej, { timeout: 6000, maximumAge: 300000, enableHighAccuracy: false }));
-      return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps', acc: Math.round(pos.coords.accuracy) };
-    } catch (e) { /* rơi xuống IP */ }
-  }
-  const j = await apiJSON('/api/whereami', dirWhereAmI);
-  if (!isFinite(j.lat)) throw new Error(j.error || 'không có toạ độ');
-  return { lat: j.lat, lng: j.lng, source: 'ip', city: j.city, region: j.region, country: j.country };
+let positionPromise = null;
+function getPosition() {
+  if (positionPromise) return positionPromise;
+  const p = (async () => {
+    // GPS chỉ chạy trên https hoặc localhost; qua LAN http sẽ bị chặn -> dùng IP
+    if (navigator.geolocation && window.isSecureContext) {
+      try {
+        const pos = await new Promise((res, rej) =>
+          navigator.geolocation.getCurrentPosition(res, rej, { timeout: 6000, maximumAge: 300000, enableHighAccuracy: false }));
+        return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps', acc: Math.round(pos.coords.accuracy), country: 'Vietnam', countryCode: 'vn' };
+      } catch (e) { /* rơi xuống IP */ }
+    }
+    const j = await apiJSON('/api/whereami', dirWhereAmI);
+    if (!isFinite(j.lat)) throw new Error(j.error || 'không có toạ độ');
+    return { lat: j.lat, lng: j.lng, source: 'ip', city: j.city, region: j.region, country: j.country, countryCode: j.countryCode || j.country_code };
+  })();
+  positionPromise = p;
+  p.catch(() => { if (positionPromise === p) positionPromise = null; });
+  return p;
 }
 function money() { return ''; }
 let nearbyControlsMemo = '';
@@ -487,7 +578,7 @@ function creditLine(d) {
 function matchDish(d, ignoreVung, q) {
   return (!state.meals.size || d.meals.some(m => state.meals.has(m))) &&
     (!state.regions.size || state.regions.has(d.region)) &&
-    (ignoreVung || vungHit(d.vung)) &&
+    (ignoreVung || vungHit(d)) &&
     (!state.vnOnly || d.region === 'vn') &&
     (!state.styles.size || state.styles.has(d.style)) &&
     (!state.veg || d.veg === 1) && (!state.mild || d.spicy === 0) &&
@@ -690,7 +781,7 @@ function renderWin(d) {
     creditLine(d) +
     '<div class="win-meta">' +
       '<span class="pill">' + (REGIONS[d.region] || d.region) + '</span>' +
-      (d.region === 'vn' ? '<span class="pill">🗺️ ' + esc(vungLabel(d.vung)) + '</span>' : '') +
+      (d.region === 'vn' && vungSummary(d) ? '<span class="pill">🗺️ ' + esc(vungSummary(d)) + '</span>' : '') +
       '<span class="pill">' + (STYLES[d.style] || d.style) + '</span>' +
       '<span class="pill">⏱️ ' + (d.minutes || '?') + ' phút</span>' +
       '<span class="pill">💰 ' + '₫'.repeat(Math.max(1, Math.min(4, Number(d.price) || 1))) + '</span>' +
@@ -912,6 +1003,11 @@ function chipRow(host, dict, set) {
       if (set === state.vung && k === 'ngoai' && state.vnOnly) setVnOnly(false, true);
       set.has(k) ? set.delete(k) : set.add(k);
       if (set === state.meals) state.mealAuto = false;   // người dùng tự chọn bữa -> không tự bỏ nữa
+      if (set === state.vung) {
+        state.vungManual = true;
+        LS.set('mgd.vungManual', true); LS.set('mgd.vungSelection', [...state.vung]);
+        state.vungGeo = null; LS.set('mgd.vungGeo', null);
+      }
       b.classList.toggle('on', set.has(k));
       state.preset = null; $$('#presets .preset').forEach(p => p.classList.remove('on'));
       sfx.click(); buzz(8); syncPool(); ensurePlayable(); idleTrack();
@@ -961,7 +1057,7 @@ function paintVungCounts() {
   $$('#vungChips .chip').forEach(c => {
     const base = c.dataset.label || c.textContent;
     const k = c.dataset.k;
-    const n = ALL.filter(d => matchDish(d, true, q) && (d.vung === k || (VUNG_INCLUDE[k] || []).includes(d.vung))).length;
+    const n = ALL.filter(d => matchDish(d, true, q) && vungMatchesKey(d, k)).length;
     c.textContent = base + ' · ' + n;
     c.classList.toggle('empty', n === 0);
   });
@@ -987,6 +1083,59 @@ function ensurePlayable(openIfZero = true) {
     if (panel && !panel.classList.contains('open')) openSheet();
   }
   return false;
+}
+function renderVungLocationHint() {
+  const el = $('#vungLocationHint'); if (!el) return;
+  const geo = state.vungGeo;
+  if (!state.autoVung) { el.textContent = 'Đã tắt tự gợi ý vùng.'; return; }
+  if (!geo || !geo.vung) { el.textContent = ''; return; }
+  const label = placeLabel(geo);
+  const already = state.vung.size === 1 && state.vung.has(geo.vung);
+  el.innerHTML = already
+    ? '📍 Đang dùng gợi ý ' + esc(vungLabel(geo.vung)) + ' · ' + esc(label)
+    : '📍 Gợi ý ' + esc(vungLabel(geo.vung)) + ' theo ' + esc(label) +
+      ' <button type="button" id="btnUseGeoVung">Dùng vùng này</button>';
+  const b = $('#btnUseGeoVung');
+  if (b) b.onclick = () => applyGeoVung();
+}
+function applyGeoVung() {
+  const geo = state.vungGeo;
+  if (!geo || !geo.vung || state.vungManual) return;
+  state.vung.clear(); state.vung.add(geo.vung);
+  state.vungManual = true;
+  LS.set('mgd.vungSelection', [...state.vung]); LS.set('mgd.vungManual', true);
+  renderVungLocationHint(); applyFilterUI(); syncPool(); ensurePlayable();
+  toast('📍 Đã dùng ' + esc(vungLabel(geo.vung)) + ' theo vị trí');
+}
+function setAutoVung(on) {
+  state.autoVung = !!on; LS.set('mgd.autoVung', state.autoVung);
+  if (!state.autoVung) renderVungLocationHint();
+  else detectVungFromPosition();
+  applyFilterUI();
+}
+async function detectVungFromPosition() {
+  if (!state.autoVung || state.vungManual) return null;
+  try {
+    const pos = await getPosition();
+    if (state.vungManual || !state.autoVung) return null;
+    let info = pos;
+    let vung = vungFromPlace(info);
+    if (!vung) vung = vungFromCoords(pos.lat, pos.lng, info);
+    if (!vung && pos.source === 'gps') {
+      try {
+        const rev = await apiJSON('/api/reverse-geocode?lat=' + encodeURIComponent(pos.lat) + '&lng=' + encodeURIComponent(pos.lng), () => dirReverseGeocode(pos.lat, pos.lng));
+        info = Object.assign({}, pos, rev);
+        vung = vungFromPlace(info) || vungFromCoords(pos.lat, pos.lng, info);
+      } catch (e) {}
+    }
+    if (state.vungManual || !state.autoVung || !vung) return null;
+    state.vungGeo = Object.assign({}, info, { vung });
+    LS.set('mgd.vungGeo', state.vungGeo);
+    renderVungLocationHint();
+    return state.vungGeo;
+  } catch (e) {
+    return null;
+  }
 }
 function openSheet() {
   $('#filterPanel').classList.add('open');
@@ -1026,6 +1175,10 @@ $$('#presets .preset').forEach(btn => {
     if (!wasOn) {
       PRESETS[key] && PRESETS[key]();
       if (state.meals.size) state.mealAuto = false;   // preset là lựa chọn của người dùng
+      if (state.vung.size) {
+        state.vungManual = true;
+        LS.set('mgd.vungSelection', [...state.vung]); LS.set('mgd.vungManual', true);
+      }
       btn.classList.add('on'); state.preset = key;
       buzz(10); toast('Đã lọc: <b>' + btn.textContent.trim() + '</b>');
     }
@@ -1036,11 +1189,15 @@ function resetFilters(clearChips = true) {
   state.meals.clear(); state.regions.clear(); state.styles.clear(); state.vung.clear();
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
   state.vnOnly = true; LS.set('mgd.vnOnly', true); state.mealAuto = false;
+  state.vungManual = false; state.vungGeo = null;
+  LS.set('mgd.vungManual', false); LS.set('mgd.vungSelection', []); LS.set('mgd.vungGeo', null);
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
 }
 function applyFilterUI() {
   $('#fVeg').checked = state.veg; $('#fMild').checked = state.mild;
   const fv = $('#fVnOnly'); if (fv) fv.checked = state.vnOnly;
+  const fg = $('#fVungGocOnly'); if (fg) fg.checked = state.vungGocOnly;
+  const av = $('#fAutoVung'); if (av) av.checked = state.autoVung;
   paintRegionChips();
   const ft = $('#fTop'); if (ft) ft.checked = state.topRated;
   $('#fPrice').value = state.price; $('#fTime').value = state.time; $('#fSearch').value = state.q;
@@ -1050,11 +1207,14 @@ function applyFilterUI() {
   $$('#regionChips .chip').forEach(c => c.classList.toggle('on', state.regions.has(c.dataset.k)));
   $$('#vungChips .chip').forEach(c => c.classList.toggle('on', state.vung.has(c.dataset.k)));
   $$('#styleChips .chip').forEach(c => c.classList.toggle('on', state.styles.has(c.dataset.k)));
+  renderVungLocationHint();
 }
 $('#btnResetFilters').onclick = () => { resetFilters(); applyFilterUI(); syncPool(); idleTrack(); toast('Đã đặt lại bộ lọc'); };
 $('#fVeg').onchange = (e) => { state.veg = e.target.checked; syncPool(); };
 $('#fMild').onchange = (e) => { state.mild = e.target.checked; syncPool(); };
 const fvEl = $('#fVnOnly'); if (fvEl) fvEl.onchange = (e) => setVnOnly(e.target.checked, true);
+const fVungGocEl = $('#fVungGocOnly'); if (fVungGocEl) fVungGocEl.onchange = (e) => { state.vungGocOnly = e.target.checked; LS.set('mgd.vungGocOnly', state.vungGocOnly); syncPool(); ensurePlayable(); };
+const fAutoVungEl = $('#fAutoVung'); if (fAutoVungEl) fAutoVungEl.onchange = (e) => setAutoVung(e.target.checked);
 const fTopEl = $('#fTop'); if (fTopEl) fTopEl.onchange = (e) => { state.topRated = e.target.checked; syncPool(); };
 $('#fPrice').oninput = (e) => { state.price = +e.target.value; $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price); syncPool(); };
 $('#fTime').oninput = (e) => { state.time = +e.target.value; $('#timeLabel').textContent = state.time === 300 ? '300 phút' : state.time + ' phút'; syncPool(); };
@@ -1432,9 +1592,19 @@ async function dirWhereAmI() {
   if (c) return c;
   const j = await (await fetch('https://ipapi.co/json/', { cache: 'no-store' })).json();
   if (!isFinite(j.latitude)) throw new Error('không lấy được vị trí theo IP');
-  const out = { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, source: 'ip' };
+  const out = { lat: j.latitude, lng: j.longitude, city: j.city, region: j.region, country: j.country_name, countryCode: j.country_code, source: 'ip' };
   LS_PUT('mgd.geo', out);
   return out;
+}
+async function dirReverseGeocode(lat, lng) {
+  const j = await (await fetch('https://photon.komoot.io/reverse?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lng), { cache: 'no-store' })).json();
+  const f = (j.features || [])[0], pr = f && f.properties || {};
+  return {
+    lat: lat, lng: lng, city: pr.city, region: pr.state || pr.region, district: pr.district,
+    country: pr.country, countryCode: pr.countrycode || pr.country_code,
+    label: [pr.name, pr.street, pr.district, pr.city, pr.state, pr.country].filter(Boolean).join(', '),
+    source: 'reverse'
+  };
 }
 async function dirWeather(lat, lng) {
   const key = 'mgd.wx.' + Number(lat).toFixed(2) + ',' + Number(lng).toFixed(2);
@@ -1499,7 +1669,7 @@ function dirDistM(a, b, c, d) {
   return Math.round(2 * R * Math.asin(Math.sqrt(h)));
 }
 function dirNorm(s) {
-  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd')
+  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/Đ/g, 'D').replace(/đ/g, 'd')
     .toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
 async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
@@ -1552,7 +1722,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   $('#btnSound').classList.toggle('off', !state.sound);
 
   chipRow($('#mealChips'), MEALS, state.meals);
-  chipRow($('#vungChips'), VUNG, state.vung);
+  chipRow($('#vungChips'), VUNG_CHIPS, state.vung);
   chipRow($('#regionChips'), REGIONS, state.regions);
   chipRow($('#styleChips'), STYLES, state.styles);
 
@@ -1563,6 +1733,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
   state.mealAuto = true;                 // bữa do đồng hồ chọn -> được phép tự bỏ nếu vùng miền không có món
   applyFilterUI(); updatePity(); updateProgress(); updateFav(); renderHist(); syncPool(); idleTrack();
   updateDiaryBadge(); renderCtxChip(); loadWeather();
+  if (state.autoVung && !state.vungManual) detectVungFromPosition();
   const chip = $('#mealChips .chip[data-k="' + guess + '"]'); if (chip) chip.classList.add('on');
   setTimeout(() => toast('Đang là <b>' + MEALS[guess] + '</b> — đã lọc sẵn cho bạn 👌', 2600), 600);
 
@@ -1574,5 +1745,5 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
     }
   } catch {}
   // hook để kiểm thử tự động
-  try { window.__mgd = { state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour, vungHit: vungHit, VUNG: VUNG, ALL: function () { return ALL; } }; } catch (e) {}
+  try { window.__mgd = { state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour, vungHit: vungHit, vungAvailable: vungAvailable, vungFromPlace: vungFromPlace, vungFromCoords: vungFromCoords, VUNG: VUNG, ALL: function () { return ALL; } }; } catch (e) {}
 })();

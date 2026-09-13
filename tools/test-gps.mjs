@@ -17,6 +17,20 @@ async function run(label, url, geo) {
   await page.waitForTimeout(1300);
   console.log('\n=== ' + label + ' ===');
   console.log('secure context:', await page.evaluate(() => window.isSecureContext));
+  await page.waitForFunction(() => window.__mgd && window.__mgd.ALL().length > 0, null, { timeout: 20000 });
+  const mapper = await page.evaluate(() => {
+    const s = window.__mgd;
+    return {
+      canTho: s.vungFromPlace({ city: 'Cần Thơ', country: 'Vietnam' }),
+      hcm: s.vungFromPlace({ city: 'Hồ Chí Minh', country: 'Vietnam' }),
+      daLat: s.vungFromPlace({ city: 'Đà Lạt', region: 'Lâm Đồng', country: 'Vietnam' }),
+      haNoi: s.vungFromPlace({ city: 'Hà Nội', country: 'Vietnam' }),
+      hue: s.vungFromPlace({ city: 'Huế', country: 'Vietnam' }),
+      foreign: s.vungFromPlace({ city: 'Hồ Chí Minh', country: 'United States' }),
+      unknown: s.vungFromPlace({ city: 'Atlantis', country: 'Vietnam' })
+    };
+  });
+  console.log('mapper:', JSON.stringify(mapper));
   const b = await page.locator('#btnSpinSingle').boundingBox();
   await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
   await page.waitForTimeout(7600);
@@ -47,6 +61,9 @@ async function run(label, url, geo) {
   r.shops.forEach(s => console.log('   ' + s));
   console.log('nút:', r.links.join(' / '));
   console.log('lỗi JS:', errs.length ? errs.join(' | ') : 'không');
+  const ok = mapper.canTho === 'tay-nam-bo' && mapper.hcm === 'nam' && mapper.daLat === 'tay-nguyen' && mapper.haNoi === 'bac' && mapper.hue === 'trung' && mapper.foreign === null && mapper.unknown === null;
+  console.log('mapper test:', ok ? 'PASS' : 'FAIL');
+  if (!ok || errs.length) throw new Error('GPS/mapper regression failed');
   await ctx.close(); await browser.close();
 }
 await run('HTTPS + GPS (toạ độ Bến Thành)', 'https://127.0.0.1:8443/', { latitude: 10.7725, longitude: 106.698 });

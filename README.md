@@ -152,12 +152,12 @@ Popup luôn hiện **toạ độ đang dùng** + nguồn (GPS ±m / theo IP / b�
 ### 🍜 Quán bán món đó gần bạn
 Trong popup có nút **📍 Tìm quán bán món này gần tôi**:
 - Vị trí: thử **GPS** trước (chỉ chạy khi https/localhost); qua LAN **http** thì tự lấy **vị trí theo IP** (server gọi ip-api.com) — không cần xin quyền.
-- Tìm quán bằng **Photon (OpenStreetMap)**: lọc theo **tên quán khớp tên món** (vd "Phở Nguyên", "Cơm Tấm Tú Mập"), tự mở rộng bán kính 2.5km → 5km → 10km, chỉ nhận địa điểm ăn uống.
+- Tìm quán bằng **Photon (OpenStreetMap)**: lọc theo **tên quán khớp tên món** (vd "Phở Nguyên", "Cơm Tấm Tú Mập"), tối đa bán kính 5km, chỉ nhận địa điểm ăn uống.
 - Kết quả: tên quán · khoảng cách · loại · địa chỉ · nút **chỉ đường Google Maps** cho từng quán.
 - Luôn kèm nút **🗺️ Xem thêm trên Google Maps** (Google có dữ liệu quán đầy đủ hơn OSM).
 - Song song, server cache toàn bộ quán trong 3km (Overpass) để đưa thêm danh sách "quán cùng ẩm thực / gần nhất"; Overpass lỗi thì bỏ qua, không chặn kết quả.
 
-API: `/api/whereami` (vị trí theo IP + hâm nóng khu vực) và `/api/nearby?lat&lng&r&q&kw&cuisine`.
+API: `/api/whereami` (vị trí theo IP + hâm nóng khu vực), `/api/geocode?q=...`, `/api/reverse-geocode?lat&lng` và `/api/nearby?lat&lng&r&q&kw&cuisine`.
 
 ### Chi tiết món (mục lấy từ bài Wikipedia)
 Ngoài đoạn giới thiệu, mỗi món còn có nút **📖 Chi tiết** chứa các mục thật từ bài viết: **Nguồn gốc / Lịch sử · Nguyên liệu · Cách chế biến / Trình bày · Biến tấu**. Hiện có **131/248 món** có mục chi tiết (món không có bài thì ẩn nút).
@@ -170,29 +170,32 @@ Mỗi món được tra **dữ liệu thật** (không phải văn mẫu):
 
 Công cụ: `tools/enrich-wiki.mjs` (tra theo lô 20 tiêu đề/request, Wikidata 50 id/request, có backoff 429) và `tools/enrich-wiki2.mjs` (vá món thiếu + dọn nhãn). Tổng chỉ ~40 request cho 248 món.
 
-### Thông tin & đánh giá từng món
-Mỗi món có: **điểm 7.1–9.8 kèm sao**, **nhận xét riêng** (48 món tiêu biểu viết tay, còn lại soạn theo vùng ẩm thực + cách chế biến), **năng lượng & đạm (ước tính/phần)**, **độ no 1–5**, **giá tham khảo**, **xuất xứ**, **thời điểm ngon nhất**, **hợp với ai**, **mẹo ăn**. Điểm số tính theo độ "biểu tượng" + độ công phu, **không** theo độ hiếm gacha (phở bò 9.4 dù là món phổ thông). Có preset lọc **⭐ Điểm cao (≥8.5)** và công tắc trong bộ lọc.
-Dữ liệu tạo bằng `tools/enrich-dishes.mjs` (chạy lại được, ghi thẳng vào `data/dishes.json` + SQLite).
+### 🗺️ Lọc theo vùng đang bán (mới)
+Mỗi món Việt có hai lớp dữ liệu:
 
-### 🗺️ Lọc theo vùng miền (mới)
-Mỗi món Việt có thêm trường **vung** — vùng miền gốc/đặc trưng — và bộ lọc có nhóm **🗺️ Vùng miền** (bấm được nhiều vùng một lúc):
+- **vung**: nơi món có nguồn gốc/đặc trưng.
+- **dacSan**: món được xem là đặc sản địa phương nếu không phổ biến toàn quốc.
+- **vungCo**: vùng món đang được bán/phổ biến. Món phổ biến như phở, mì, bánh mì có đủ 5 vùng; món địa phương giữ vùng bán chính.
 
-| Chip | Ý nghĩa | Số món |
-|---|---|---|
-| 🏯 Miền Bắc | phở, bún chả, bánh cuốn, chả cá Lã Vọng… | 38 |
-| 🌾 Miền Trung | bún bò Huế, mì Quảng, cao lầu, bánh bèo… | 17 |
-| 🏙️ Miền Nam | cơm tấm, hủ tiếu, bánh xèo, bánh khọt… (**gồm cả miền Tây Nam Bộ**) | 38 + 4 |
-| 🛶 Miền Tây Nam Bộ | bún mắm, lẩu cá kèo, bánh canh cua, bánh tét | 4 |
-| ☕ Tây Nguyên | bánh tráng nướng Đà Lạt | 1 |
-| 🇻🇳 Cả nước | món phổ biến khắp nơi (đồ uống, món cơm nhà, ăn vặt) | 62 |
-| 🌍 Ngoài Việt Nam | 88 món quốc tế (bấm vào sẽ tự tắt chế độ "chỉ món Việt") | 88 |
+| Chip | Ý nghĩa | Số món hiện tại |
+|---|---|---:|
+| 🏯 Miền Bắc | Món có bán/phổ biến ở Bắc | 142 |
+| 🌾 Miền Trung | Món có bán/phổ biến ở Trung | 140 |
+| 🏙️ Miền Nam | Món có bán/phổ biến ở Nam, gồm Tây Nam Bộ | 141 |
+| 🛶 Miền Tây Nam Bộ | Món có bán/phổ biến ở Tây Nam Bộ | 141 |
+| ☕ Tây Nguyên | Món có bán/phổ biến ở Tây Nguyên | 133 |
+| 🇻🇳 Cả nước | Món có **vung** = `vn` (gốc toàn quốc) | 62 |
+| 🌍 Ngoài Việt Nam | 88 món quốc tế; tự tắt “chỉ món Việt” | 88 |
 
-- Chọn **Miền Nam** thì **bao gồm luôn miền Tây Nam Bộ** (bảng `VUNG_INCLUDE` trong `app.js`) — đúng địa lý, không sót món.
-- 3 preset nhanh ở trang chính: **🏯 Món miền Bắc**, **🌾 Món miền Trung**, **🛶 Đặc sản miền Tây**.
-- Popup kết quả có thêm dòng **🗺️ Vùng miền** (dòng **📍 Xuất xứ** giữ nguyên mô tả chi tiết như "Sài Gòn", "Hội An").
-- Dữ liệu phân vùng do `tools/enrich-vung.mjs` gán (chạy lại được, ghi vào `data/dishes.json` + cột `vung` trong bảng SQLite `dishes`).
-- **Không bao giờ kẹt "0 món → không quay được"**: app tự chọn bữa theo giờ, nên khi vùng bạn chọn không có món cho bữa đó thì app **tự bỏ lọc bữa ăn** và báo rõ (`ensurePlayable()`); nếu vẫn 0 món (do bạn tự chọn bữa / chọn nhiều vùng) thì hiện cảnh báo + **tự mở sheet lọc**, và chip vùng hiện **số món khớp** (vùng 0 món bị làm mờ, gạch chấm) để thấy ngay vùng nào có gì.
-- Test: `node tools/test-vung.mjs [baseUrl]` — 16/16 PASS (đếm đúng từng vùng, Nam gồm Tây Nam Bộ, chọn nhiều vùng, chip ngoại tắt vnOnly, preset, popup, 0 lỗi JS).
+- Mặc định chip vùng dùng **vungCo**, nên món phổ biến không biến mất chỉ vì khác vùng gốc.
+- Bật **🏷️ Chỉ đặc sản có nguồn gốc từ vùng đã chọn** để dùng **vung** làm bộ lọc nghiêm ngặt.
+- Chọn nhiều chip dùng OR. Miền Nam bao gồm Tây Nam Bộ; Tây Nam Bộ không tự mở rộng ngược thành toàn Nam Bộ.
+- Bật **📍 Tự gợi ý vùng theo vị trí** để lấy GPS trước, IP sau; app chỉ hiện nút “Dùng vùng này”, không ghi đè vùng đã chọn. Reverse geocode Photon dùng khi GPS chỉ có tọa độ.
+- 3 preset nhanh: **🏯 Món miền Bắc**, **🌾 Món miền Trung**, **🛶 Đặc sản miền Tây**.
+- Popup tách rõ **Có bán** và **gốc**; dòng **📍 Xuất xứ** giữ mô tả địa chỉ.
+- Dữ liệu do `tools/enrich-vung.mjs` tạo; đồng bộ SQLite bằng `tools/sync-vung-sqlite.mjs`.
+- Regression: `node tools/test-vung.mjs [baseUrl]` và `node tools/test-gps.mjs`.
+- Cơ chế chống 0 món vẫn giữ: bữa tự động được bỏ khi cần; bữa người dùng chọn không tự bỏ, app mở sheet lọc.
 
 ### Thao tác trên điện thoại
 - **Một hàng nút duy nhất** ngay dưới băng chuyền: **[⚙️ Lọc] [🎰 QUAY 1 MÓN] [⚡ x10]** — chỉ có MỘT nút quay, không trùng lặp, không thanh nổi che nội dung.

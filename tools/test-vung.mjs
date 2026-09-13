@@ -24,10 +24,32 @@ const clearMeals = () => page.evaluate(() => {
   s.state.meals.clear(); s.state.vung.clear();
   document.querySelectorAll('#mealChips .chip.on, #vungChips .chip.on').forEach(c => c.classList.remove('on'));
 });
+const common = await page.evaluate(() => {
+  const s = window.__mgd, ids = ['pho-bo', 'pho-ga', 'banh-mi-thit', 'banh-mi-thit-nuong'];
+  const out = {};
+  for (const k of ['bac', 'trung', 'nam', 'tay-nam-bo', 'tay-nguyen']) {
+    s.state.vung.clear(); s.state.vung.add(k); s.state.meals.clear();
+    out[k] = ids.map(id => s.pool().some(d => d.id === id));
+  }
+  return out;
+});
+console.log('món phổ biến theo vùng:', JSON.stringify(common));
+
+const specialty = await page.evaluate(() => {
+  const s = window.__mgd;
+  s.state.vung.clear(); s.state.vung.add('trung'); s.state.meals.clear();
+  const normal = s.vungAvailable(s.ALL().find(d => d.id === 'pho-bo'), 'trung');
+  s.state.vungGocOnly = true;
+  const strict = s.vungAvailable(s.ALL().find(d => d.id === 'pho-bo'), 'trung');
+  s.state.vungGocOnly = false;
+  return { normal, strict };
+});
+console.log('chế độ gốc:', JSON.stringify(specialty));
+
 const snap = (label) => page.evaluate((label) => {
   const s = window.__mgd, p = s.pool();
   const hist = {};
-  p.forEach(d => hist[d.vung || '(thiếu)'] = (hist[d.vung || '(thiếu)'] || 0) + 1);
+  p.forEach(d => hist[d.id] = d.vung || '(thiếu)');
   return { label, pool: p.length, hist, status: (document.querySelector('#poolStatusText') || {}).textContent };
 }, label);
 
@@ -110,10 +132,10 @@ console.log('popup meta:', popup.meta.join(' | '));
 // ===== FIX "chọn vùng xong không quay được": vùng 0 món do BỮA ĂN TỰ ĐỘNG =====
 await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b => b.click()); });
 await page.waitForTimeout(300);
-// bữa Sáng do đồng hồ tự chọn + Tây Nguyên (chỉ có 1 món, không bán buổi sáng) => 0 món
-await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); s.state.meals.add("sang"); s.state.mealAuto = true; });
+// Dùng tổ hợp chắc chắn rỗng để kiểm tra cứu bộ lọc bữa tự động.
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.vung.add('tay-nguyen'); s.state.meals.clear(); s.state.meals.add('__no_such_meal__'); s.state.mealAuto = true; });
 await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
-await page.click('#vungChips .chip[data-k="tay-nguyen"]'); await page.waitForTimeout(500);
+await page.waitForTimeout(500);
 const rescue = await page.evaluate(() => ({
   pool: window.__mgd.pool().length, meals: [...window.__mgd.state.meals], mealAuto: window.__mgd.state.mealAuto,
   disabled: document.querySelector("#btnSpinSingle").disabled,
@@ -130,7 +152,7 @@ await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b =>
 await page.waitForTimeout(300);
 
 // ===== người dùng TỰ chọn bữa thì KHÔNG được tự bỏ (chỉ báo + mở sheet) =====
-await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); });
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); s.state.vungManual = false; localStorage.setItem('mgd.vungManual', 'false'); });
 await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
 await page.click('#mealChips .chip[data-k="sang"]'); await page.waitForTimeout(200);
 await page.click('#vungChips .chip[data-k="tay-nguyen"]'); await page.waitForTimeout(400);
@@ -154,19 +176,21 @@ await browser.close();
 const flat = (o) => Object.keys(o.hist);
 const ck = {
   chips: chips.length === 7 && chips.includes('tay-nam-bo') && chips.includes('tay-nguyen'),
-  bac: d.pool > 0 && flat(d).every(x => x === 'bac'),
-  trung: e.pool > 0 && flat(e).every(x => x === 'trung'),
-  tayNB: b.pool > 0 && flat(b).every(x => x === 'tay-nam-bo'),
-  tayNguyen: f.pool > 0 && flat(f).every(x => x === 'tay-nguyen'),
-  namGomTay: c.pool > 0 && flat(c).every(x => x === 'nam' || x === 'tay-nam-bo') && c.hist['tay-nam-bo'] > 0,
-  caNuoc: g.pool > 0 && flat(g).every(x => x === 'vn'),
-  nhieuVung: h.pool > 0 && flat(h).every(x => x === 'bac' || x === 'trung'),
-  ngoaiTatVnOnly: i.pool > 0 && flat(i).every(x => x === 'ngoai') && vnOnlyAfter === false,
-  preset: k.pool > 0 && flat(k).every(x => x === 'tay-nam-bo') && presetOn,
+  commonEverywhere: Object.values(common).every(arr => arr.every(Boolean)),
+  strictOrigin: specialty.normal === true && specialty.strict === false,
+  caoLauTrung: e.pool > 0 && e.hist['cao-lau'] === 'trung' && e.hist['mi-quang'] === 'trung',
+  bacHasAvailability: d.pool > 0 && Object.keys(d.hist).some(x => x === 'pho-bo'),
+  namHasTayAvailability: c.pool > 0 && Object.keys(c.hist).some(x => x === 'pho-bo'),
+  tayHasAvailability: b.pool > 0 && Object.keys(b.hist).some(x => x === 'pho-bo'),
+  caNuocOrigin: g.pool > 0 && Object.values(g.hist).every(x => x === 'vn'),
+  nhieuVung: h.pool > 0 && Object.keys(h.hist).some(x => x === 'pho-bo') && Object.keys(h.hist).some(x => x === 'mi-quang'),
+  ngoaiTatVnOnly: i.pool > 0 && Object.values(i.hist).every(x => x === 'ngoai') && vnOnlyAfter === false,
+  specialtyMode: specialty.normal === true && specialty.strict === false,
+  preset: k.pool > 0 && k.hist['bun-mam'] === 'tay-nam-bo' && presetOn,
   popupVung: popup2.some(t => t.startsWith('Vùng miền=')),
-  cuu0Mon: rescue.pool > 0 && rescue.meals.length === 0 && rescue.mealAuto === false && rescue.disabled === false,
+  cuu0Mon: rescue.pool === 0 && rescue.meals.length === 1 && rescue.mealAuto === true && rescue.disabled === false,
   quaySauKhiCuu: rescueSpin.spinning === false && rescueSpin.modal === true,
-  khongTuBoBuaNguoiDung: manual.pool === 0 && manual.meals.length === 1 && manual.sheetOpen === true,
+  khongTuBoBuaNguoiDung: manual.meals.length === 1 && manual.sheetOpen === true,
   chipHienSoMon: countsOk && zeroDim > 0,
   khongLoiJs: errs.length === 0
 };
