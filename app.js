@@ -1565,7 +1565,7 @@ function shareCard(kind) {
     if (dish.tip) { x.fillStyle = '#ffd479'; x.font = '600 28px system-ui, sans-serif'; x.fillText('💡 ' + dish.tip.slice(0, 58), W / 2, y + 30); }
   } else return null;
   x.textAlign = 'center'; x.fillStyle = 'rgba(255,255,255,.55)'; x.font = '700 28px system-ui, sans-serif';
-  x.fillText('Món Gì Đây? · 248 món Việt – Tây – Tàu', W / 2, H - 60);
+  x.fillText('Món Gì Đây? · ' + ALL.length + ' món Việt – Tây – Tàu', W / 2, H - 60);
   return c;
 }
 function shareImage(kind) {

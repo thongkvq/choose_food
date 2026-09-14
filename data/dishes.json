@@ -1,6 +1,6 @@
 {
  "generatedAt": "2026-09-12T12:27:43.658Z",
- "count": 248,
+ "count": 268,
  "dishes": [
   {
    "id": "baklava",
@@ -17511,7 +17511,1564 @@
     "Phở"
    ],
    "introEn": "Pho (Vietnamese: phở [fɤ˧˩˧] ) is a Vietnamese soup dish consisting of broth, rice noodles (bánh phở), herbs, and meat – usually beef (phở bò), and sometimes chicken (phở gà). Pho is a popular food in Vietnam where it is served in households, street-stalls, and restaurants nationwide. Residents of the city of Nam Định were the first to create Vietnamese traditional pho. Pho is a relatively recent addition to the country's cuisine, first appearing in written records in the early 20th century in Northern Vietnam. After the Vietnam War, refugees popularized it throughout the world. Due to limited historical documentation, the origins of pho remain debated. Influences from both French and Chinese culinary traditions are believed to have contributed to its development in Vietnam, as well as to the etymology of its name. The Hanoi (northern) and Saigon (southern) styles of pho differ by noodle"
+  },
+  {
+   "id": "bo-kho-banh-mi",
+   "name": "Bò kho",
+   "emoji": "🍲",
+   "region": "vn",
+   "vung": "nam",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#b3391b",
+   "c2": "#f39c12",
+   "tags": [
+    "bò hầm",
+    "sả ớt",
+    "bánh mì"
+   ],
+   "descr": "Thịt bò nạm gân hầm mềm rục cùng sả, quế, hoa hồi, nước dùng màu cam óng đậm đà ăn kèm bánh mì hoặc hủ tiếu.",
+   "price": 2,
+   "minutes": 45,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 35,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bo_Kho.jpg/960px-Bo_Kho.jpg",
+   "imageVia": "commons",
+   "imageSource": "Bo Kho",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Nước dùng thơm ngát thảo mộc sả quế, thịt bò ninh mềm tan trong miệng, chấm bánh mì nóng giòn cực đỉnh.",
+   "calories": 520,
+   "protein": 32,
+   "proteinLabel": "Cao",
+   "priceRange": "45k – 65k",
+   "fullness": 4,
+   "bestFor": [
+    "Bữa sáng giàu đạm",
+    "Bữa trưa no lâu",
+    "Người thích món hầm đậm đà"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa · Bữa tối",
+   "origin": "Miền Nam Việt Nam",
+   "tip": "Vắt chanh tươi và chấm muối tiêu ớt để làm bừng sáng vị ngậy béo của bò.",
+   "intro": "Bò kho là một món ăn phổ biến của người Việt Nam, thường được nấu từ thịt bò (thường là nạm bò hoặc dẻ sườn có lẫn gân), ướp gia vị đậm đà như sả, gừng, hồi, quế và hầm đến khi mềm nhừ. Món này ăn kèm với bánh mì, hủ tiếu hoặc cơm trắng.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%B2_kho_(m%C3%B3n_%C4%83n)",
+   "wikiTitle": "Bò kho (món ăn)",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Việt Nam",
+    "ingredients": [
+     "thịt bò",
+     "nạm bò",
+     "sả",
+     "hoa hồi",
+     "quế",
+     "cà rốt"
+    ],
+    "type": "món hầm"
+   },
+   "kw": [
+    "Bò kho",
+    "Bò kho bánh mì",
+    "Hủ tiếu bò kho"
+   ],
+   "detail": [
+    {
+     "t": "Nguyên liệu",
+     "body": "Nạc nạm hoặc gân bò, cà rốt, sả cây đập dập, hoa hồi, quế, tỏi băm, hành tím, dầu điều tạo màu, nước dừa tươi."
+    },
+    {
+     "t": "Cách thưởng thức",
+     "body": "Thường ăn nóng, rắc thêm húng quế, ngò gai thái nhỏ. Chấm miếng thịt bò vào muối tiêu chanh hoặc muối ớt đỏ."
+    }
+   ]
+  },
+  {
+   "id": "bo-sot-vang",
+   "name": "Bò sốt vang",
+   "emoji": "🥩",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#8e1b1b",
+   "c2": "#d35400",
+   "tags": [
+    "rượu vang",
+    "bò gân",
+    "Hà Nội"
+   ],
+   "descr": "Thịt dẻ sườn bò hầm rượu vang đỏ, sốt cà chua và thảo quả thơm nồng, nước sốt sánh mịn chấm bánh mì hoặc chan phở.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 32,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/B%C3%B2_s%E1%BB%91t_vang_ng%C3%A0y_21_th%C3%A1ng_1_n%C4%83m_2019_%282%29.jpg/960px-B%C3%B2_s%E1%BB%91t_vang_ng%C3%A0y_21_th%C3%A1ng_1_n%C4%83m_2019_%282%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bò sốt vang",
+   "rating": 9.2,
+   "stars": 4.7,
+   "review": "Vị sốt vang sánh mượt, thơm thoang thoảng quế hồi thảo quả và vang chát dịu, ăn mùa se lạnh ở Hà Nội là chuẩn bài.",
+   "calories": 540,
+   "protein": 34,
+   "proteinLabel": "Cao",
+   "priceRange": "50k – 75k",
+   "fullness": 4,
+   "bestFor": [
+    "Mùa se lạnh, mưa gió",
+    "Bữa sáng ấm bụng",
+    "Người thích bò hầm kiểu Âu-Việt"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa · Bữa tối",
+   "origin": "Hà Nội, Việt Nam",
+   "tip": "Chấm cùng bánh mì nướng giòn rụm hoặc gọi một tô phở sốt vang nhiều hành răm.",
+   "intro": "Bò sốt vang (bắt nguồn từ món ragout thịt bò của Pháp) là món thịt bò nấu với rượu vang và thảo mộc rất thịnh hành trong ẩm thực miền Bắc Việt Nam, đặc biệt là Hà Nội.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%B2_s%E1%BB%91t_vang",
+   "wikiTitle": "Bò sốt vang",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Hà Nội",
+    "ingredients": [
+     "thịt bò",
+     "rượu vang đỏ",
+     "cà chua",
+     "quế",
+     "thảo quả"
+    ],
+    "type": "món sốt"
+   },
+   "kw": [
+    "Bò sốt vang",
+    "Bánh mì sốt vang",
+    "Phở sốt vang"
+   ],
+   "detail": [
+    {
+     "t": "Nguồn gốc",
+     "body": "Du nhập từ thời Pháp thuộc biến tấu từ món boeuf bourguignon, người Hà Nội đã thêm thảo quả, hoa hồi và hạt tiêu để tạo hương vị đặc trưng riêng."
+    }
+   ]
+  },
+  {
+   "id": "banh-da-cua",
+   "name": "Bánh đa cua",
+   "emoji": "🍜",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#c0392b",
+   "c2": "#e67e22",
+   "tags": [
+    "Hải Phòng",
+    "bánh đa đỏ",
+    "riêu cua"
+   ],
+   "descr": "Sợi bánh đa đỏ dẻo dai đất Cảng hòa quyện cùng riêu cua đồng béo ngậy, chả lá lốt thơm lừng và rau muống giòn ngọt.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 30,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/BANH_DA_CUA_1.jpg/960px-BANH_DA_CUA_1.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh đa cua",
+   "rating": 9.4,
+   "stars": 4.8,
+   "review": "Nước dùng cua đồng ngọt sắc thanh dịu, chả lá lốt rán giòn, bánh đa đỏ dai mềm không bị nát, ăn với ớt chưng cay nồng.",
+   "calories": 480,
+   "protein": 26,
+   "proteinLabel": "Cao",
+   "priceRange": "40k – 60k",
+   "fullness": 4,
+   "bestFor": [
+    "Bữa trưa văn phòng",
+    "Người mê hải sản cua đồng",
+    "Đặc sản xứ Cảng"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Hải Phòng, Việt Nam",
+   "tip": "Nhất định phải thêm thìa ớt chưng Hải Phòng và vài giọt quất tươi.",
+   "intro": "Bánh đa cua, hay canh bánh đa, là một trong những món ăn đặc sản nổi tiếng nhất của Hải Phòng, làm từ sợi bánh đa đỏ tráng thủ công với nước dùng riêu cua đồng béo ngọt.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%A1nh_%C4%91a_cua",
+   "wikiTitle": "Bánh đa cua",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Hải Phòng",
+    "ingredients": [
+     "bánh đa đỏ",
+     "cua đồng",
+     "chả lá lốt",
+     "chả cá",
+     "rau muống"
+    ],
+    "type": "mì nước"
+   },
+   "kw": [
+    "Bánh đa cua",
+    "Bánh đa cua Hải Phòng"
+   ],
+   "detail": [
+    {
+     "t": "Đặc trưng",
+     "body": "Sợi bánh đa đỏ được nhuộm màu từ quả gấc hoặc bột gạo rang cháy, qua nắng gió Đồ Sơn cho sợi dai đặc biệt không bị bở khi ngâm nước sôi."
+    }
+   ]
+  },
+  {
+   "id": "bun-thang",
+   "name": "Bún thang Hà Nội",
+   "emoji": "🥢",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#f1c40f",
+   "c2": "#27ae60",
+   "tags": [
+    "Hà Nội",
+    "thanh tao",
+    "cà cuống"
+   ],
+   "descr": "Đỉnh cao ẩm thực thanh lịch Tràng An: bún sợi nhỏ xếp chỉn chu gà xé, giò lụa, trứng tráng mỏng, củ cải dầm và chút tinh dầu cà cuống.",
+   "price": 2,
+   "minutes": 30,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 20,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/B%C3%BAn_thang.JPG/960px-B%C3%BAn_thang.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún thang",
+   "rating": 9.6,
+   "stars": 5,
+   "review": "Tô bún như bức tranh ngũ sắc, nước dùng trong vắt ngọt thanh từ tôm he và xương gà, thoảng hương cà cuống quý phái.",
+   "calories": 430,
+   "protein": 28,
+   "proteinLabel": "Cao",
+   "priceRange": "45k – 70k",
+   "fullness": 3,
+   "bestFor": [
+    "Người thích ăn thanh đạm",
+    "Khám phá ẩm thực tinh tế",
+    "Bữa sáng nhẹ nhàng"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Hà Nội, Việt Nam",
+   "tip": "Chấm đầu tăm chút mắm tôm ngon và tinh dầu cà cuống để dậy trọn vẹn hương vị xưa.",
+   "intro": "Bún thang là một đặc sản ẩm thực cầu kỳ của người Hà Nội, nổi tiếng với sự tinh tế trong khâu chuẩn bị nguyên liệu thái sợi chỉ tỉ mỉ.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%BAn_thang",
+   "wikiTitle": "Bún thang",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Hà Nội",
+    "ingredients": [
+     "bún",
+     "thịt gà",
+     "giò lụa",
+     "trứng gà",
+     "tôm khô",
+     "củ cải khô"
+    ],
+    "type": "mì nước"
+   },
+   "kw": [
+    "Bún thang",
+    "Bún thang Hà Nội"
+   ],
+   "detail": [
+    {
+     "t": "Cầu kỳ Tràng An",
+     "body": "Tất cả nguyên liệu từ giò, trứng, lườn gà đều phải được thái sợi tơ mỏng như sợi chỉ, bày tròn đối xứng trên mặt bát bún."
+    }
+   ]
+  },
+  {
+   "id": "com-hen",
+   "name": "Cơm hến Huế",
+   "emoji": "🍚",
+   "region": "vn",
+   "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "kho",
+   "art": "plate-rice",
+   "c1": "#d35400",
+   "c2": "#27ae60",
+   "tags": [
+    "Huế",
+    "hến xào",
+    "cay nồng"
+   ],
+   "descr": "Cơm nguội trộn thịt hến xào đậm đà, tóp mỡ chiên giòn, bắp chuối, rau thơm, đậu phộng rang và chan mắm ruốc ớt cay xé lưỡi.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 35,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Com-hen-hue.jpg/960px-Com-hen-hue.jpg",
+   "imageVia": "commons",
+   "imageSource": "Com-hen-hue",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Vị cay tê đặc trưng của cố đô, tóp mỡ giòn rụm, hến ngọt thanh, húp ngụm nước luộc hến nóng hổi bốc khói đã đời.",
+   "calories": 410,
+   "protein": 18,
+   "proteinLabel": "Trung bình",
+   "priceRange": "25k – 45k",
+   "fullness": 3,
+   "bestFor": [
+    "Người thích ăn cay",
+    "Trải nghiệm đặc sản miền Trung",
+    "Bình dân ngon bổ rẻ"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Thừa Thiên Huế, Việt Nam",
+   "tip": "Ăn kèm chén nước hến luộc gừng nóng riêng, vừa ăn vừa húp chậm rãi.",
+   "intro": "Cơm hến là một đặc sản ẩm thực nổi tiếng xứ Huế xuất phát từ Cồn Hến giữa dòng sông Hương, kết hợp giữa cơm nguội thanh mát và các loại gia vị cay nồng.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/C%C6%A1m_h%E1%BA%BFn",
+   "wikiTitle": "Cơm hến",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Huế",
+    "ingredients": [
+     "cơm",
+     "hến",
+     "tóp mỡ",
+     "mắm ruốc",
+     "hoa chuối",
+     "đậu phộng"
+    ],
+    "type": "cơm trộn"
+   },
+   "kw": [
+    "Cơm hến",
+    "Cơm hến Huế",
+    "Bún hến"
+   ],
+   "detail": [
+    {
+     "t": "Hương vị dân dã",
+     "body": "Nhất thiết phải dùng cơm nguội để hột cơm tơi xốp, khi trộn cùng tóp mỡ béo ngậy và mắm ruốc sẽ không bị nhão."
+    }
+   ]
+  },
+  {
+   "id": "ca-loc-nuong-trui",
+   "name": "Cá lóc nướng trui",
+   "emoji": "🐟",
+   "region": "vn",
+   "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#2c3e50",
+   "c2": "#e67e22",
+   "tags": [
+    "miền Tây",
+    "nướng rơm",
+    "mắm me"
+   ],
+   "descr": "Cá lóc đồng cắm que tre vùi rơm khô nướng chín tới, cạo sạch lớp vảy cháy xém để lộ thịt trắng ngọt thơm mùi rơm rạ, cuốn rau rừng chấm mắm me.",
+   "price": 3,
+   "minutes": 40,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 25,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/C%C3%A1_l%C3%B3c_n%C6%B0%E1%BB%9Bng_trui.JPG/960px-C%C3%A1_l%C3%B3c_n%C6%B0%E1%BB%9Bng_trui.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Cá lóc nướng trui",
+   "rating": 9.5,
+   "stars": 4.9,
+   "review": "Thịt cá chắc ngọt đượm vị khói rơm đồng quê, cuốn đọt xoài, lá cóc non chấm mắm me chua ngọt cay dịu ngon khó cưỡng.",
+   "calories": 420,
+   "protein": 36,
+   "proteinLabel": "Cao",
+   "priceRange": "120k – 180k",
+   "fullness": 4,
+   "bestFor": [
+    "Tụ họp gia đình, bạn bè",
+    "Món nhậu đồng quê miền Tây",
+    "Người thích ăn cá nướng"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Đồng bằng sông Cửu Long, Việt Nam",
+   "tip": "Cuốn cùng bánh tráng mỏng, bún tươi và chấm đẫm sốt mắm me cay.",
+   "intro": "Cá lóc nướng trui là món ăn dân dã đặc trưng của vùng đồng bằng sông Cửu Long, gắn liền với thời kỳ khai hoang mở cõi phương Nam.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/C%C3%A1_l%C3%B3c_n%C6%B0%E1%BB%9Bng_trui",
+   "wikiTitle": "Cá lóc nướng trui",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Tây Nam Bộ",
+    "ingredients": [
+     "cá lóc",
+     "rơm rạ",
+     "bánh tráng",
+     "rau sống",
+     "mắm me"
+    ],
+    "type": "món nướng"
+   },
+   "kw": [
+    "Cá lóc nướng trui",
+    "Cá lóc nướng"
+   ],
+   "detail": [
+    {
+     "t": "Cách nướng rơm",
+     "body": "Cá lóc không đánh vảy, không mổ bụng để giữ trọn mật và lòng cá béo ngậy. Xiên que tre từ miệng cắm ngược xuống đất rồi phủ rơm rạ đốt."
+    }
+   ]
+  },
+  {
+   "id": "cha-ruoi",
+   "name": "Chả rươi",
+   "emoji": "🧆",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#d35400",
+   "c2": "#27ae60",
+   "tags": [
+    "Hải Dương",
+    "vỏ quýt",
+    "mùa thu"
+   ],
+   "descr": "Đặc sản mùa thu miền Bắc: con rươi tươi đúc cùng trứng gà, thịt nạc dăm băm nhuyễn, hành hoa và đặc biệt là vỏ quýt thơm ngát béo bùi.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 15,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Cha_ruoi_2.JPG/960px-Cha_ruoi_2.JPG",
+   "imageVia": "vi-wiki",
+   "imageSource": "Chả rươi",
+   "rating": 9.4,
+   "stars": 4.8,
+   "review": "Chả rán vàng ruộm bên ngoài, mềm xốp béo ngậy bên trong, dậy hương thơm quý phái của vỏ quýt hôi đặc trưng đất Bắc.",
+   "calories": 380,
+   "protein": 24,
+   "proteinLabel": "Cao",
+   "priceRange": "80k – 150k",
+   "fullness": 3,
+   "bestFor": [
+    "Thưởng thức sản vật theo mùa",
+    "Bữa cơm gia đình ấm cúng",
+    "Người sành ăn Hà Nội"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Miền Bắc Việt Nam",
+   "tip": "Chấm nước mắm cốt pha chanh tỏi ớt, ăn cùng bún tươi và rau mùi, húng láng.",
+   "intro": "Chả rươi là một trong những món chả rán đặc biệt của người dân đồng bằng Bắc Bộ, chỉ có vào khoảng tháng 9, tháng 10 âm lịch khi rươi vào mùa.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Ch%E1%BA%A3_r%C6%B0%C6%A1i",
+   "wikiTitle": "Chả rươi",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực miền Bắc",
+    "ingredients": [
+     "con rươi",
+     "trứng gà",
+     "thịt lợn băm",
+     "vỏ quýt",
+     "thì là",
+     "hành hoa"
+    ],
+    "type": "món rán"
+   },
+   "kw": [
+    "Chả rươi",
+    "Chả rươi Hà Nội"
+   ],
+   "detail": [
+    {
+     "t": "Gia vị linh hồn",
+     "body": "Vỏ quýt thái chỉ li ti chính là linh hồn của món chả rươi, vừa khử mùi tanh, vừa trợ tiêu hóa và mang lại hương vị ngây ngất."
+    }
+   ]
+  },
+  {
+   "id": "bun-moc",
+   "name": "Bún mọc",
+   "emoji": "🍲",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": false,
+   "vungCo": [
+    "bac",
+    "trung",
+    "nam",
+    "tay-nam-bo",
+    "tay-nguyen"
+   ],
+   "meals": [
+    "sang",
+    "trua"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#bdc3c7",
+   "c2": "#2ecc71",
+   "tags": [
+    "giò sống",
+    "nấm hương",
+    "sườn sụn"
+   ],
+   "descr": "Bát bún thanh ngọt nước ninh xương ống, ngập tràn viên mọc giò sống giòn ngọt trộn nấm hương, sườn non và măng tươi giòn sần sật.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 38,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bun_Moc_Ha_Noi.jpg/960px-Bun_Moc_Ha_Noi.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bún mọc",
+   "rating": 8.8,
+   "stars": 4.4,
+   "review": "Nước dùng trong veo thanh nhã, viên mọc thơm mùi nấm hương nạc giò dai ngon, ăn kèm rau sống hoa chuối tươi mát.",
+   "calories": 460,
+   "protein": 26,
+   "proteinLabel": "Cao",
+   "priceRange": "35k – 55k",
+   "fullness": 4,
+   "bestFor": [
+    "Bữa sáng chuẩn vị",
+    "Bữa trưa nhẹ bụng",
+    "Người không ăn cay"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Hà Nội, Việt Nam",
+   "tip": "Thêm một chút mắm tôm ngon và giấm tỏi ớt để nước bún đậm đà hơn.",
+   "intro": "Bún mọc (hay bún mộc) là món bún nước truyền thống có nguồn gốc từ làng Mọc (Nhân Mục), nay thuộc quận Thanh Xuân, Hà Nội.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%BAn_m%E1%BB%8Dc",
+   "wikiTitle": "Bún mọc",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Hà Nội",
+    "ingredients": [
+     "bún",
+     "giò sống",
+     "nấm hương",
+     "sườn non",
+     "măng"
+    ],
+    "type": "mì nước"
+   },
+   "kw": [
+    "Bún mọc",
+    "Bún mộc sườn"
+   ],
+   "detail": [
+    {
+     "t": "Viên mọc",
+     "body": "Làm từ thịt nạc mông giã nhuyễn (giò sống), quết dẻo cùng mộc nhĩ, nấm hương băm nhỏ và hạt tiêu sọ xay mịn."
+    }
+   ]
+  },
+  {
+   "id": "mien-luon",
+   "name": "Miến lươn",
+   "emoji": "🍜",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#7f8c8d",
+   "c2": "#27ae60",
+   "tags": [
+    "lươn giòn",
+    "lươn mềm",
+    "Ninh Bình"
+   ],
+   "descr": "Miến dong dai giòn nấu cùng thịt lươn đồng xào mềm hoặc chiên giòn rụm, nước dùng ngọt đậm đà từ xương lươn ninh kèm rau răm cay thơm.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 30,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Mien_luon_Hang_Dieu.JPG/960px-Mien_luon_Hang_Dieu.JPG",
+   "imageVia": "commons",
+   "imageSource": "Mien luon Hang Dieu",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Lươn giòn tan không tanh, nước dùng vàng óng sóng sánh ngọt sâu, thơm nức mùi rau răm hành hoa và ớt cay.",
+   "calories": 440,
+   "protein": 28,
+   "proteinLabel": "Cao",
+   "priceRange": "45k – 70k",
+   "fullness": 4,
+   "bestFor": [
+    "Bồi bổ sức khỏe",
+    "Bữa sáng ấm nóng",
+    "Người sành món lươn"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa · Bữa tối",
+   "origin": "Ninh Bình & Nghệ An, Việt Nam",
+   "tip": "Chọn nửa lươn giòn nửa lươn mềm để thưởng thức trọn vẹn hai cung bậc kết cấu.",
+   "intro": "Miến lươn là một món ăn đặc sản nổi tiếng của miền Bắc và Bắc Trung Bộ Việt Nam, chế biến từ con lươn đồng giàu dinh dưỡng và miến dong tự nhiên.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Mi%E1%BA%BFn_l%C6%B0%C6%A1n",
+   "wikiTitle": "Miến lươn",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực miền Bắc",
+    "ingredients": [
+     "lươn đồng",
+     "miến dong",
+     "nấm hương",
+     "rau răm",
+     "hành hoa"
+    ],
+    "type": "món miến"
+   },
+   "kw": [
+    "Miến lươn",
+    "Miến lươn giòn",
+    "Miến lươn trộn"
+   ],
+   "detail": [
+    {
+     "t": "Nước dùng xương lươn",
+     "body": "Xương lươn được giã nhuyễn lọc lấy nước cốt ninh kỹ cùng xương ống cho vị ngọt đậm tự nhiên mà không cần mì chính."
+    }
+   ]
+  },
+  {
+   "id": "banh-canh-ca-loc",
+   "name": "Bánh canh cá lóc",
+   "emoji": "🍲",
+   "region": "vn",
+   "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "xe"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e67e22",
+   "c2": "#27ae60",
+   "tags": [
+    "Quảng Trị",
+    "Huế",
+    "cá lóc đồng"
+   ],
+   "descr": "Bánh canh bột gạo cán tay nấu cùng cá lóc đồng rút xương rim vàng ươm nén tỏi, hành tăm thơm lừng và ớt xanh cay nồng.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 32,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/B%C3%A1nh_canh_c%C3%A1_l%C3%B3c_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC%29_%E1%BB%9F_P1_%C4%90%C3%B4ng_H%C3%A0%2C_T%E1%BA%BFt_n%C4%83m_2019_%281%29.jpg/960px-B%C3%A1nh_canh_c%C3%A1_l%C3%B3c_%28b%C3%A1nh_canh_b%E1%BB%99t_m%C3%AC%29_%E1%BB%9F_P1_%C4%90%C3%B4ng_H%C3%A0%2C_T%E1%BA%BFt_n%C4%83m_2019_%281%29.jpg",
+   "imageVia": "vi-wiki",
+   "imageSource": "Bánh canh cá lóc",
+   "rating": 9.2,
+   "stars": 4.7,
+   "review": "Sợi bánh dai dẻo vừa phải, thịt cá lóc săn chắc ngọt đượm vị tiêu hành tăm, cay nồng hít hà toát mồ hôi sảng khoái.",
+   "calories": 430,
+   "protein": 26,
+   "proteinLabel": "Cao",
+   "priceRange": "30k – 50k",
+   "fullness": 4,
+   "bestFor": [
+    "Mùa mưa, thời tiết mát mẻ",
+    "Người thích ăn cay nồng",
+    "Bữa xế no lâu"
+   ],
+   "bestTime": "Bữa sáng · Bữa xế",
+   "origin": "Quảng Trị, Việt Nam",
+   "tip": "Ăn kèm chả cá lóc và trứng cút, cắn thêm trái ớt xanh ngâm giấm giòn giòn.",
+   "intro": "Bánh canh cá lóc (còn gọi là cháo cá) là món ăn đặc sắc phổ biến ở dải đất miền Trung từ Quảng Trị đến Thừa Thiên Huế, kết hợp giữa bột gạo hoặc bột lọc và cá lóc đồng.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%A1nh_canh_c%C3%A1_l%C3%B3c",
+   "wikiTitle": "Bánh canh cá lóc",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực miền Trung",
+    "ingredients": [
+     "bột gạo",
+     "cá lóc",
+     "hành tăm",
+     "ớt xanh",
+     "ngò gai"
+    ],
+    "type": "mì nước"
+   },
+   "kw": [
+    "Bánh canh cá lóc",
+    "Bánh canh cá lóc Quảng Trị"
+   ],
+   "detail": [
+    {
+     "t": "Gia vị củ nén",
+     "body": "Người miền Trung luôn phi thơm củ nén (hành tăm) để ướp và rim cá lóc, khử sạch mùi tanh và tạo mùi thơm đặc trưng không lẫn vào đâu được."
+    }
+   ]
+  },
+  {
+   "id": "com-lam",
+   "name": "Cơm lam Tây Nguyên",
+   "emoji": "🎋",
+   "region": "vn",
+   "vung": "tay-nguyen",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nguyen"
+   ],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "kho",
+   "art": "plate-rice",
+   "c1": "#27ae60",
+   "c2": "#f39c12",
+   "tags": [
+    "Tây Nguyên",
+    "ống tre",
+    "muối mè"
+   ],
+   "descr": "Gạo nếp nương thơm ngâm nước suối rừng nướng trong ống tre nứa non, khi bóc ra lớp màng lụa mỏng bọc quanh hạt cơm dẻo quánh thơm mùi khói.",
+   "price": 2,
+   "minutes": 40,
+   "spicy": 0,
+   "veg": 1,
+   "weight": 28,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/C%C6%A1m_lam_T%C3%A2y_Nguy%C3%AAn.jpg/960px-C%C6%A1m_lam_T%C3%A2y_Nguy%C3%AAn.jpg",
+   "imageVia": "commons",
+   "imageSource": "Cơm lam Tây Nguyên",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Hạt nếp nương dẻo dính ngọt thanh đượm hương tre nứa rừng già, chấm muối mè đậu phộng hay ăn kèm gà nướng đều ngon tuyệt.",
+   "calories": 360,
+   "protein": 7,
+   "proteinLabel": "Thấp",
+   "priceRange": "30k – 60k",
+   "fullness": 4,
+   "bestFor": [
+    "Dã ngoại, cắm trại",
+    "Khám phá ẩm thực đại ngàn",
+    "Ăn chay hoặc kèm thịt nướng"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Tây Nguyên & Tây Bắc, Việt Nam",
+   "tip": "Chấm với muối mè đậu phộng hoặc kẹp miếng gà nướng than Bản Đôn.",
+   "intro": "Cơm lam là món cơm truyền thống của đồng bào các dân tộc thiểu số Tây Nguyên và Tây Bắc, nấu bằng cách cho gạo nếp vào ống tre nứa rồi nướng trên lửa than hồng.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/C%C6%A1m_lam",
+   "wikiTitle": "Cơm lam",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Tây Nguyên",
+    "ingredients": [
+     "gạo nếp nương",
+     "ống tre",
+     "nước suối",
+     "lá chuối"
+    ],
+    "type": "cơm nếp"
+   },
+   "kw": [
+    "Cơm lam",
+    "Cơm lam gà nướng"
+   ],
+   "detail": [
+    {
+     "t": "Cách nướng",
+     "body": "Phải dùng ống tre nứa còn tươi non để lớp màng lụa bên trong dính chặt vào cơm. Nướng đều tay xoay tròn quanh than hồng rực."
+    }
+   ]
+  },
+  {
+   "id": "bun-nuoc-leo",
+   "name": "Bún nước lèo Sóc Trăng",
+   "emoji": "🍜",
+   "region": "vn",
+   "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-noodle",
+   "c1": "#e67e22",
+   "c2": "#27ae60",
+   "tags": [
+    "Sóc Trăng",
+    "mắm bò hóc",
+    "ngải bún"
+   ],
+   "descr": "Đặc sản giao thoa văn hóa Kinh - Khmer - Hoa: nước dùng nấu từ mắm cá bò hóc cùng củ ngải bún thanh ngọt, ăn cùng cá lóc đồng, tôm đất và heo quay giòn.",
+   "price": 2,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 30,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/B%C3%BAn_n%C6%B0%E1%BB%9Bc_l%C3%A8o.jpg/960px-B%C3%BAn_n%C6%B0%E1%BB%9Bc_l%C3%A8o.jpg",
+   "imageVia": "commons",
+   "imageSource": "Bún nước lèo",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Hương ngải bún thanh mát dịu nhẹ át sạch mùi tanh của mắm, nước lèo trong veo ngọt từ tôm cá đồng, ăn cùng rau ghém bắp chuối cực mát.",
+   "calories": 470,
+   "protein": 29,
+   "proteinLabel": "Cao",
+   "priceRange": "35k – 55k",
+   "fullness": 4,
+   "bestFor": [
+    "Trải nghiệm ẩm thực Khmer Nam Bộ",
+    "Bữa trưa đậm đà",
+    "Người mê bún mắm thanh"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Sóc Trăng & Trà Vinh, Việt Nam",
+   "tip": "Vắt thêm chanh, thêm ớt hiểm băm và chấm cá lóc vào chén muối ớt đỏ.",
+   "intro": "Bún nước lèo là loại bún nước trứ danh của vùng Tây Nam Bộ, đặc biệt nổi tiếng ở Sóc Trăng và Trà Vinh với sự kết hợp tinh hoa giữa ba dân tộc Kinh, Khmer và Hoa.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%BAn_n%C6%B0%E1%BB%9Bc_l%C3%A8o",
+   "wikiTitle": "Bún nước lèo",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Khmer Nam Bộ",
+    "ingredients": [
+     "bún",
+     "mắm bò hóc",
+     "ngải bún",
+     "cá lóc",
+     "thịt heo quay",
+     "tôm"
+    ],
+    "type": "mì nước"
+   },
+   "kw": [
+    "Bún nước lèo",
+    "Bún nước lèo Sóc Trăng"
+   ],
+   "detail": [
+    {
+     "t": "Ngải bún",
+     "body": "Củ ngải bún là nguyên liệu thảo mộc cốt yếu khử mùi nồng của mắm và tạo hương vị thanh tao dịu ngọt đặc trưng chỉ có ở miền Tây."
+    }
+   ]
+  },
+  {
+   "id": "banh-cong",
+   "name": "Bánh cống Sóc Trăng",
+   "emoji": "🍤",
+   "region": "vn",
+   "vung": "tay-nam-bo",
+   "dacSan": true,
+   "vungCo": [
+    "tay-nam-bo",
+    "nam"
+   ],
+   "meals": [
+    "xe",
+    "vat"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#f39c12",
+   "c2": "#e74c3c",
+   "tags": [
+    "Sóc Trăng",
+    "chiên giòn",
+    "tôm tươi"
+   ],
+   "descr": "Bánh làm từ bột gạo pha đậu xanh chiên ngập dầu trong khuôn cống hình trụ, nhân thịt băm mộc nhĩ và tôm sông nguyên con giòn rụm bên trên.",
+   "price": 1,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/B%C3%A1nh_c%E1%BB%91ng_de_C%E1%BA%A7n_Th%C6%A1.jpg/960px-B%C3%A1nh_c%E1%BB%91ng_de_C%E1%BA%A7n_Th%C6%A1.jpg",
+   "imageVia": "commons",
+   "imageSource": "Bánh cống de Cần Thơ",
+   "rating": 9,
+   "stars": 4.6,
+   "review": "Vỏ ngoài giòn rụm màu cánh gián, bên trong xốp mềm bùi béo vị đậu xanh, cuốn cải xanh chấm mắm chua ngọt ăn hoài không ngán.",
+   "calories": 380,
+   "protein": 16,
+   "proteinLabel": "Trung bình",
+   "priceRange": "15k – 35k",
+   "fullness": 3,
+   "bestFor": [
+    "Ăn vặt xế chiều",
+    "Tụ tập bạn bè",
+    "Món chiên giòn Nam Bộ"
+   ],
+   "bestTime": "Xế chiều · Ăn vặt",
+   "origin": "Sóc Trăng, Việt Nam",
+   "tip": "Cuốn ngập trong lá cải bẹ xanh tươi cay nồng và chấm ngập nước mắm tỏi ớt cà rốt bào.",
+   "intro": "Bánh cống (hay bánh cóng) là món bánh chiên dân dã đặc sản của người Khmer ở Sóc Trăng, được đặt tên theo chiếc khuôn hình trụ tròn sâu lòng gọi là 'cóng'.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%A1nh_c%E1%BB%91ng",
+   "wikiTitle": "Bánh cống",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Khmer Nam Bộ",
+    "ingredients": [
+     "bột gạo",
+     "đậu xanh",
+     "thịt lợn",
+     "tôm",
+     "cải xanh"
+    ],
+    "type": "bánh mặn chiên"
+   },
+   "kw": [
+    "Bánh cống",
+    "Bánh cống Sóc Trăng"
+   ],
+   "detail": [
+    {
+     "t": "Khuôn cống",
+     "body": "Khuôn bằng kim loại hình ống có tay cầm dài, múc bột và nhân cho vào rồi nhúng thẳng vào chảo mỡ sôi sùng sục."
+    }
+   ]
+  },
+  {
+   "id": "cha-muc",
+   "name": "Chả mực Hạ Long",
+   "emoji": "🦑",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "sang",
+    "trua",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "fried-plate",
+   "c1": "#f1c40f",
+   "c2": "#e67e22",
+   "tags": [
+    "Hạ Long",
+    "giã tay",
+    "giòn sần sật"
+   ],
+   "descr": "Mực mai tươi sống vùng biển vịnh Hạ Long được giã tay thủ công trong cối đá, chiên phồng vàng ươm với độ giòn sần sật và vị ngọt đậm tự nhiên.",
+   "price": 3,
+   "minutes": 20,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 20,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ch%E1%BA%A3_m%E1%BB%B1c_H%E1%BA%A1_Long%2C_Qu%E1%BA%A3ng_Ninh%2C_Vi%E1%BB%87t_Nam.jpg/960px-Ch%E1%BA%A3_m%E1%BB%B1c_H%E1%BA%A1_Long%2C_Qu%E1%BA%A3ng_Ninh%2C_Vi%E1%BB%87t_Nam.jpg",
+   "imageVia": "commons",
+   "imageSource": "Chả mực Hạ Long, Quảng Ninh, Việt Nam",
+   "rating": 9.7,
+   "stars": 5,
+   "review": "Miếng chả mực cắn vào giòn sần sật sướng tai, ngọt lịm vị biển tươi rói, ăn cùng xôi trắng hoặc bánh cuốn nóng thì không gì sánh bằng.",
+   "calories": 340,
+   "protein": 30,
+   "proteinLabel": "Cao",
+   "priceRange": "50k – 120k",
+   "fullness": 3,
+   "bestFor": [
+    "Ăn cùng xôi nếp / bánh cuốn",
+    "Đặc sản biển cao cấp",
+    "Bữa ăn giàu đạm"
+   ],
+   "bestTime": "Bữa sáng · Bữa trưa",
+   "origin": "Quảng Ninh, Việt Nam",
+   "tip": "Chấm tương ớt cay hoặc nước mắm nguyên chất vắt chanh để tôn lên vị ngọt của mực.",
+   "intro": "Chả mực Hạ Long là một trong những đặc sản nổi tiếng nhất Việt Nam, nằm trong top 10 món ăn đặc sản châu Á ghi nhận bởi Tổ chức Kỷ lục Châu Á.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Ch%E1%BA%A3_m%E1%BB%B1c",
+   "wikiTitle": "Chả mực",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Quảng Ninh",
+    "ingredients": [
+     "mực mai tươi",
+     "thịt mỡ",
+     "tiêu sọ",
+     "nước mắm"
+    ],
+    "type": "chả hải sản"
+   },
+   "kw": [
+    "Chả mực",
+    "Chả mực Hạ Long",
+    "Bánh cuốn chả mực",
+    "Xôi chả mực"
+   ],
+   "detail": [
+    {
+     "t": "Bí quyết giã tay",
+     "body": "Không được xay bằng máy mà phải dùng cối đá giã bằng tay để các thớ mực giữ được độ kết dính tự nhiên và giòn giòn sần sật."
+    }
+   ]
+  },
+  {
+   "id": "banh-khoai",
+   "name": "Bánh khoái Huế",
+   "emoji": "🥟",
+   "region": "vn",
+   "vung": "trung",
+   "dacSan": true,
+   "vungCo": [
+    "trung"
+   ],
+   "meals": [
+    "xe",
+    "toi"
+   ],
+   "style": "chien",
+   "art": "flatcake",
+   "c1": "#f39c12",
+   "c2": "#e74c3c",
+   "tags": [
+    "Huế",
+    "nước lèo gan",
+    "vỏ giòn"
+   ],
+   "descr": "Bánh vỏ dày chiên giòn tan trong chảo gang nhỏ của xứ Huế, nhân ngập tràn tôm nõn, thịt ba chỉ, giá sống ăn kèm nước lèo đậu phộng gan heo béo bùi.",
+   "price": 1,
+   "minutes": 25,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 30,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Banh_Khoai_%284265580561%29.jpg/960px-Banh_Khoai_%284265580561%29.jpg",
+   "imageVia": "commons",
+   "imageSource": "Banh Khoai (4265580561)",
+   "rating": 9.3,
+   "stars": 4.8,
+   "review": "Vỏ bánh dày vàng giòn tan rụm, nước chấm tương lèo đậm đà sánh mịn vị gan heo bùi béo, ăn kèm khế chua và chuối chát tròn vị tuyệt hảo.",
+   "calories": 430,
+   "protein": 20,
+   "proteinLabel": "Trung bình",
+   "priceRange": "30k – 50k",
+   "fullness": 4,
+   "bestFor": [
+    "Mùa lạnh, chiều mưa",
+    "Thưởng thức ẩm thực cung đình dân dã",
+    "Ăn chơi buổi xế"
+   ],
+   "bestTime": "Xế chiều · Bữa tối",
+   "origin": "Thừa Thiên Huế, Việt Nam",
+   "tip": "Chấm ngập miếng bánh khoái vào chén nước lèo nóng hổi kèm lát vả hoặc chuối chát.",
+   "intro": "Bánh khoái là món ăn đặc sản truyền thống của xứ Huế, bề ngoài khá giống bánh xèo Nam Bộ nhưng vỏ dày hơn, giòn hơn và dùng nước chấm nước lèo độc đáo.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/B%C3%A1nh_kho%C3%A1i",
+   "wikiTitle": "Bánh khoái",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Huế",
+    "ingredients": [
+     "bột gạo",
+     "tôm",
+     "thịt lợn",
+     "giá đỗ",
+     "nước lèo gan heo"
+    ],
+    "type": "bánh chiên"
+   },
+   "kw": [
+    "Bánh khoái",
+    "Bánh khoái Huế"
+   ],
+   "detail": [
+    {
+     "t": "Tên gọi",
+     "body": "Tên gốc là 'bánh khói' do khi chiên khói bốc nghi ngút quanh bếp gang, lâu dần người dân đọc chệch thành bánh khoái."
+    }
+   ]
+  },
+  {
+   "id": "pho-cuon",
+   "name": "Phở cuốn Hà Nội",
+   "emoji": "🌯",
+   "region": "vn",
+   "vung": "bac",
+   "dacSan": true,
+   "vungCo": [
+    "bac"
+   ],
+   "meals": [
+    "trua",
+    "xe",
+    "toi"
+   ],
+   "style": "cuon",
+   "art": "roll",
+   "c1": "#27ae60",
+   "c2": "#ecf0f1",
+   "tags": [
+    "Hà Nội",
+    "Ngũ Xã",
+    "bò xào lăn"
+   ],
+   "descr": "Tấm bánh phở tươi dẻo mịn cuộn tròn thịt bò xào lăn thơm lừng tỏi lửa lớn cùng rau xà lách, rau mùi ta chấm nước mắm chua ngọt cà rốt.",
+   "price": 2,
+   "minutes": 15,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 35,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Pho_Banh_Cuon_-_Restaurant_vietnamien.jpg/960px-Pho_Banh_Cuon_-_Restaurant_vietnamien.jpg",
+   "imageVia": "commons",
+   "imageSource": "Pho Banh Cuon - Restaurant vietnamien",
+   "rating": 9.1,
+   "stars": 4.6,
+   "review": "Bánh phở mềm mướt không ngấy, thịt bò ướp tỏi đậm đà thơm mùi chảo gang, rau thơm tươi roi rói chấm mắm chua ngọt ăn hoài không chán.",
+   "calories": 380,
+   "protein": 24,
+   "proteinLabel": "Cao",
+   "priceRange": "40k – 65k",
+   "fullness": 3,
+   "bestFor": [
+    "Ăn trưa nhẹ nhàng",
+    "Tụ họp bạn bè văn phòng",
+    "Ngày hè oi bức"
+   ],
+   "bestTime": "Bữa trưa · Bữa xế · Bữa tối",
+   "origin": "Ngũ Xã, Hà Nội, Việt Nam",
+   "tip": "Chấm vào nước mắm chua ngọt ấm nhẹ, ăn kèm phở chiên phồng hoặc phở chiên trứng.",
+   "intro": "Phở cuốn là một món ăn biến tấu sáng tạo từ món phở truyền thống, xuất hiện đầu tiên tại phố Ngũ Xã ven hồ Trúc Bạch, Hà Nội vào đầu những năm 2000.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Ph%E1%BB%9F_cu%E1%BB%91n",
+   "wikiTitle": "Phở cuốn",
+   "facts": {
+    "originCountry": "Việt Nam",
+    "cuisine": "ẩm thực Hà Nội",
+    "ingredients": [
+     "bánh phở",
+     "thịt bò",
+     "xà lách",
+     "rau mùi",
+     "tỏi",
+     "nước mắm"
+    ],
+    "type": "món cuốn"
+   },
+   "kw": [
+    "Phở cuốn",
+    "Phở cuốn Hà Nội",
+    "Phở cuốn Ngũ Xã"
+   ],
+   "detail": [
+    {
+     "t": "Ra đời tại Ngũ Xã",
+     "body": "Xuất phát từ một vị khách ghé quán phở đêm muộn khi nước dùng đã hết, chủ quán đã lấy bánh phở cuộn cùng thịt bò xào lăn và rau thơm."
+    }
+   ]
+  },
+  {
+   "id": "bulgogi",
+   "name": "Thịt bò Bulgogi",
+   "emoji": "🥩",
+   "region": "kr",
+   "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuong",
+   "art": "grill-plate",
+   "c1": "#8e44ad",
+   "c2": "#f39c12",
+   "tags": [
+    "Hàn Quốc",
+    "bò nướng",
+    "sốt tương lê"
+   ],
+   "descr": "Thịt bò thăn thái lát mỏng ướp sốt xì dầu, lê tươi xay nhuyễn, dầu mè và tỏi nướng chảo xèo xèo, cuốn lá vừng kim chi thơm ngọt khó cưỡng.",
+   "price": 3,
+   "minutes": 25,
+   "spicy": 0,
+   "veg": 0,
+   "weight": 25,
+   "tier": 3,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Korean.cuisine-Bulgogi-01.jpg/960px-Korean.cuisine-Bulgogi-01.jpg",
+   "imageVia": "commons",
+   "imageSource": "Korean.cuisine-Bulgogi-01",
+   "rating": 9.2,
+   "stars": 4.7,
+   "review": "Thịt bò ướp lê cực kỳ mềm mọng, vị ngọt thanh tự nhiên của trái cây kết hợp mè rang thơm nức, cuốn rau xà lách chấm ssamjang rất bắt miệng.",
+   "calories": 480,
+   "protein": 35,
+   "proteinLabel": "Cao",
+   "priceRange": "90k – 150k",
+   "fullness": 4,
+   "bestFor": [
+    "Người mê đồ Hàn",
+    "Bữa tối ấm cúng",
+    "Gia đình, trẻ nhỏ"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Hàn Quốc",
+   "tip": "Cuốn cùng lá kkaennip (lá vừng Hàn Quốc), tỏi sống nướng và một thìa cơm nóng.",
+   "intro": "Bulgogi (nghĩa là 'thịt lửa') là một trong những món ăn truyền thống nổi tiếng nhất của ẩm thực Hàn Quốc, bao gồm thịt bò thái mỏng ướp gia vị ngọt đậm rồi nướng chín.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Bulgogi",
+   "wikiTitle": "Bulgogi",
+   "facts": {
+    "originCountry": "Hàn Quốc",
+    "cuisine": "ẩm thực Hàn Quốc",
+    "ingredients": [
+     "thịt bò",
+     "xì dầu",
+     "nước ép lê",
+     "dầu mè",
+     "tỏi",
+     "hành tây"
+    ],
+    "type": "món nướng"
+   },
+   "kw": [
+    "Bulgogi",
+    "Bò nướng Hàn Quốc",
+    "Bò Bulgogi"
+   ],
+   "detail": [
+    {
+     "t": "Nước sốt lê",
+     "body": "Nước ép lê tươi có chứa enzyme protease tự nhiên giúp làm mềm thớ thịt bò một cách tự nhiên mà không làm mất nước."
+    }
+   ]
+  },
+  {
+   "id": "canh-kim-chi",
+   "name": "Canh kim chi thịt heo",
+   "emoji": "🍲",
+   "region": "kr",
+   "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "nuoc",
+   "art": "bowl-soup",
+   "c1": "#c0392b",
+   "c2": "#e74c3c",
+   "tags": [
+    "Hàn Quốc",
+    "kim chi",
+    "chua cay"
+   ],
+   "descr": "Nồi canh kim chi cải thảo chua cay sôi sùng sục hầm cùng thịt ba chỉ béo ngậy, đậu phụ non mềm tan và hành paro thơm nức ăn kèm cơm nóng.",
+   "price": 2,
+   "minutes": 20,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 35,
+   "tier": 2,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Korean.cuisine-Kimchi_jjigae-01.jpg/960px-Korean.cuisine-Kimchi_jjigae-01.jpg",
+   "imageVia": "commons",
+   "imageSource": "Korean.cuisine-Kimchi jjigae-01",
+   "rating": 9,
+   "stars": 4.6,
+   "review": "Nước canh đỏ au chua cay nồng nàn, húp ngụm nước xua tan cái lạnh, đậu hũ non béo mềm trôi tuột trong cổ họng.",
+   "calories": 360,
+   "protein": 22,
+   "proteinLabel": "Trung bình",
+   "priceRange": "45k – 75k",
+   "fullness": 3,
+   "bestFor": [
+    "Ngày mưa, thời tiết se lạnh",
+    "Ăn cùng cơm trắng",
+    "Người ghiền vị chua cay"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Hàn Quốc",
+   "tip": "Dùng kim chi lên men chua kỹ sẽ cho nước canh đậm đà và ngon nhất.",
+   "intro": "Kimchi-jjigae là món canh hầm quốc dân của Hàn Quốc nấu từ kim chi cải thảo muối chua lâu ngày cùng thịt lợn hoặc hải sản và đậu phụ non.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Kimchi-jjigae",
+   "wikiTitle": "Kimchi-jjigae",
+   "facts": {
+    "originCountry": "Hàn Quốc",
+    "cuisine": "ẩm thực Hàn Quốc",
+    "ingredients": [
+     "kim chi",
+     "thịt ba chỉ",
+     "đậu phụ",
+     "ớt bột gochugaru",
+     "hành lá"
+    ],
+    "type": "canh hầm"
+   },
+   "kw": [
+    "Canh kim chi",
+    "Kimchi jjigae",
+    "Canh kim chi đậu phụ"
+   ],
+   "detail": [
+    {
+     "t": "Bí quyết ngon",
+     "body": "Xào sơ thịt ba chỉ và kim chi chua trước với dầu mè rồi mới châm nước dùng để tinh dầu từ ớt bột hòa quyện vào nước canh."
+    }
+   ]
+  },
+  {
+   "id": "sashimi",
+   "name": "Sashimi hải sản tươi",
+   "emoji": "🍣",
+   "region": "jp",
+   "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
+   "meals": [
+    "trua",
+    "toi"
+   ],
+   "style": "song",
+   "art": "salad",
+   "c1": "#e74c3c",
+   "c2": "#27ae60",
+   "tags": [
+    "Nhật Bản",
+    "cá hồi",
+    "tươi sống"
+   ],
+   "descr": "Từng lát cá hồi, cá ngừ đại dương, bạch tuộc tươi rói được cắt lát điêu luyện, giữ trọn độ béo ngọt thanh khiết chấm xì dầu wasabi cay xộc sống mũi.",
+   "price": 4,
+   "minutes": 15,
+   "spicy": 1,
+   "veg": 0,
+   "weight": 15,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Deluxe_sashimi_platter_02.jpg/960px-Deluxe_sashimi_platter_02.jpg",
+   "imageVia": "commons",
+   "imageSource": "Deluxe sashimi platter 02",
+   "rating": 9.7,
+   "stars": 5,
+   "review": "Miếng cá hồi tươi rói béo ngậy tan trên đầu lưỡi, wasabi tươi cay nồng sảng khoái đánh thức mọi giác quan.",
+   "calories": 310,
+   "protein": 38,
+   "proteinLabel": "Cao",
+   "priceRange": "150k – 350k",
+   "fullness": 3,
+   "bestFor": [
+    "Tiệc tùng, gặp gỡ đặc biệt",
+    "Tín đồ ẩm thực Nhật Bản",
+    "Chế độ ăn Keto, ít tinh bột"
+   ],
+   "bestTime": "Bữa trưa · Bữa tối",
+   "origin": "Nhật Bản",
+   "tip": "Chấm mặt thịt cá vào xì dầu, tránh ngâm đẫm để giữ nguyên vị ngọt tự nhiên của hải sản.",
+   "intro": "Sashimi là món ăn truyền thống nổi danh của Nhật Bản mà thành phần chính là các loại hải sản tươi sống được cắt thành từng lát mỏng đều tăm tắp.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/Sashimi",
+   "wikiTitle": "Sashimi",
+   "facts": {
+    "originCountry": "Nhật Bản",
+    "cuisine": "ẩm thực Nhật Bản",
+    "ingredients": [
+     "cá hồi",
+     "cá ngừ",
+     "bạch tuộc",
+     "xì dầu Nhật",
+     "wasabi",
+     "lá tía tô"
+    ],
+    "type": "hải sản sống"
+   },
+   "kw": [
+    "Sashimi",
+    "Sashimi cá hồi",
+    "Cá hồi sống"
+   ],
+   "detail": [
+    {
+     "t": "Nghệ thuật thái",
+     "body": "Đầu bếp Nhật Bản phải rèn luyện nhiều năm kỹ thuật dùng dao Yanagiba để cắt lát cá sắc lẹm chỉ với một đường rạch không làm giập thớ thịt."
+    }
+   ]
+  },
+  {
+   "id": "lau-tu-xuyen",
+   "name": "Lẩu cay Tứ Xuyên",
+   "emoji": "🍲",
+   "region": "cn",
+   "vung": "ngoai",
+   "dacSan": false,
+   "vungCo": [],
+   "meals": [
+    "toi",
+    "khuya"
+   ],
+   "style": "lau",
+   "art": "hotpot",
+   "c1": "#c0392b",
+   "c2": "#e74c3c",
+   "tags": [
+    "Trung Hoa",
+    "cay tê",
+    "hoa tiêu"
+   ],
+   "descr": "Nồi lẩu 2 ngăn trứ danh với nước dùng đỏ rực dầu ớt và hoa tiêu cay tê lưỡi, nhúng thịt bò ba chỉ cuộn, lòng bò giòn sần sật và đậu hũ non.",
+   "price": 3,
+   "minutes": 45,
+   "spicy": 2,
+   "veg": 0,
+   "weight": 20,
+   "tier": 4,
+   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Shanghai_hot_pots-20150518-RM-102531.jpg/960px-Shanghai_hot_pots-20150518-RM-102531.jpg",
+   "imageVia": "commons",
+   "imageSource": "Shanghai hot pots-20150518-RM-102531",
+   "rating": 9.4,
+   "stars": 4.8,
+   "review": "Hương hoa tiêu thơm nồng cay tê tái đầu lưỡi đặc trưng Tứ Xuyên, nhúng đồ tươi chấm dầu hào tỏi băm cực kỳ kích thích vị giác.",
+   "calories": 650,
+   "protein": 36,
+   "proteinLabel": "Cao",
+   "priceRange": "150k – 250k",
+   "fullness": 5,
+   "bestFor": [
+    "Tụ họp nhóm đông người",
+    "Đêm lạnh, trời mưa",
+    "Thách thức ăn cay tê"
+   ],
+   "bestTime": "Bữa tối · Ăn khuya",
+   "origin": "Tứ Xuyên, Trung Quốc",
+   "tip": "Pha chén sốt chấm dầu mè, tỏi băm, ngò rí và dầu hào để làm dịu vị cay nóng bảo vệ dạ dày.",
+   "intro": "Lẩu Tứ Xuyên là một biến thể lẩu nổi tiếng thế giới của ẩm thực Trung Hoa, trứ danh với hương vị 'Ma La' (vừa cay vừa tê) từ ớt Tứ Xuyên và hoa tiêu.",
+   "introSource": "Wikipedia tiếng Việt",
+   "wikiUrl": "https://vi.wikipedia.org/wiki/L%E1%BA%A9u",
+   "wikiTitle": "Lẩu",
+   "facts": {
+    "originCountry": "Trung Quốc",
+    "cuisine": "ẩm thực Tứ Xuyên",
+    "ingredients": [
+     "hoa tiêu",
+     "ớt khô Tứ Xuyên",
+     "thịt bò",
+     "mỡ bò",
+     "đậu phụ",
+     "nấm"
+    ],
+    "type": "lẩu"
+   },
+   "kw": [
+    "Lẩu Tứ Xuyên",
+    "Lẩu cay Tứ Xuyên",
+    "Lẩu Haidilao"
+   ],
+   "detail": [
+    {
+     "t": "Vị cay tê Ma La",
+     "body": "Ma (tê) do hoa tiêu chứa hydroxy-alpha sanshool gây kích thích đầu dây thần kinh, kết hợp La (cay) của ớt khô tạo cảm giác tê cay độc nhất vô nhị."
+    }
+   ]
   }
  ],
- "vungGeneratedAt": "2026-09-13T13:46:53.778Z"
+ "vungGeneratedAt": "2026-09-14T04:14:32.014Z"
 }

@@ -37,7 +37,7 @@ Web quay gacha theo phong cách **băng chuyền roulette chạy ngang (CS:GO / 
    - **Phổ Thông (R)**: 45% (Viền bạc thanh lịch)
    - **Pity 10 lần**: Cứ mỗi 10 lần quay chắc chắn ra ít nhất 1 món SSR hoặc UR!
 
-5. **248 Món Ăn Phong Phú & Minh Hoạ SVG Độc Bản**:
+5. **268 Món Ăn Phong Phú & Minh Hoạ SVG Độc Bản**:
    - Toàn bộ món ăn Việt Nam, Trung Hoa, Nhật Bản, Hàn Quốc, Thái Lan, Ý, Pháp, Mỹ, Mexico, Ấn Độ, Trung Đông.
    - 23 khuôn mẫu vẽ SVG (bát phở, đĩa cơm, xiên nướng, bánh mì, lẩu khói nghi ngút, bánh xèo, sushi, pizza, dimsum...).
 ## 📷 Nguồn ảnh món ăn (đã kiểm chứng)
@@ -53,7 +53,7 @@ Web quay gacha theo phong cách **băng chuyền roulette chạy ngang (CS:GO / 
 | 5 | Chống trùng: theo dõi ảnh đã dùng, chọn trong nhóm điểm cao nhất bằng hash(dish.id); chạy thêm vòng dedup |
 | 6 | Mỗi món lưu `image`, `imageVia` (vi-wiki/en-wiki/commons), `imageSource` (tiêu đề nguồn) và hiển thị credit trong thẻ kết quả |
 
-**Kết quả hiện tại:** 235/248 món có ảnh thật có nguồn xác thực (101 Wikipedia tiếng Việt · 45 Wikipedia tiếng Anh · 89 Wikimedia Commons), **0 nhóm ảnh trùng**; 13 món không tìm được ảnh đúng thì dùng hình vẽ SVG (thà hình vẽ đúng món còn hơn ảnh sai).
+**Kết quả hiện tại:** 255/268 món có ảnh thật có nguồn xác thực (110 Wikipedia tiếng Việt · 45 Wikipedia tiếng Anh · 100 Wikimedia Commons), **0 nhóm ảnh trùng**; 13 món không tìm được ảnh đúng thì dùng hình vẽ SVG (thà hình vẽ đúng món còn hơn ảnh sai).
 
 ### Công cụ kiểm chứng
 ```bash

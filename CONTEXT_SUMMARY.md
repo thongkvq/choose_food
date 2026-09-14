@@ -17,8 +17,8 @@ Bổ sung sau đó: quay kiểu **băng chuyền chạy ngang** dừng từ từ
 ## 3. Kiến trúc & quyết định chính
 - **Vanilla JS ES module, không build step, không dependency**; `server.js` là static server + 3 API.
 - **SQLite là nguồn dữ liệu gốc**, export ra `data/dishes.json` cho frontend (không hardcode món trong JS).
-- **248 món**, 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
-- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (235 món có ảnh, 13 món dùng SVG).
+- **268 món** (176 Việt + 92 quốc tế), 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
+- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (255 món có ảnh, 13 món dùng SVG).
 - **Chỉ quay bằng nút** "🎰 QUAY 1 MÓN" / "⚡ x10" (khung quay đã tắt nhận chạm; không còn vuốt-để-quay).
 - **Popup kết quả** tự mở sau khi băng chuyền dừng, render phòng thủ (try/catch + fallback) nên dữ liệu cũ cũng không làm trắng thẻ.
 

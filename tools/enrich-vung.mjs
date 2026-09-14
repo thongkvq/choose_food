@@ -22,12 +22,14 @@ const VUNG = {
     'chao-long', 'cha-gio', 'nem-chua', 'banh-duc', 'banh-duc-ngot', 'xoi-xeo', 'bun-cha',
     'pho-bo', 'pho-ga', 'pho-chien-phong', 'pho-tron', 'pho-xao', 'mien-ga', 'mien-cua',
     'chao-trai', 'gio-thu', 'com-rang', 'banh-mi-chao', 'banh-mi-chao-bo', 'banh-mi-chao-pho-mai',
-    'banh-mi-chao-trung', 'lau-cua', 'lau-de', 'lau-bo-nhung-dam', 'xoi-man', 'oc-nhoi'
+    'banh-mi-chao-trung', 'lau-cua', 'lau-de', 'lau-bo-nhung-dam', 'xoi-man', 'oc-nhoi',
+    'bo-sot-vang', 'banh-da-cua', 'bun-thang', 'cha-ruoi', 'bun-moc', 'mien-luon', 'cha-muc', 'pho-cuon'
   ],
   trung: [
     'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'banh-canh', 'banh-canh-tom',
     'banh-xeo', 'banh-xeo-nhat', 'cao-lau', 'mi-quang', 'nem-nuong', 'lau-ga-la-e', 'bun-bo-hue',
-    'com-ga', 'bun-cha-ca', 'banh-mi-heo-quay', 'banh-uot'
+    'com-ga', 'bun-cha-ca', 'banh-mi-heo-quay', 'banh-uot',
+    'com-hen', 'banh-canh-ca-loc', 'banh-khoai'
   ],
   nam: [
     'banh-bia', 'banh-canh-ghe', 'banh-mi-xui', 'com-nieu', 'banh-cam', 'banh-mi-bo', 'banh-mi-kep-kem',
@@ -36,10 +38,11 @@ const VUNG = {
     'cha-lua', 'com-ga-xoi-mo', 'com-heo-quay', 'com-tam-suon', 'ca-kho-to', 'canh-chua',
     'thit-kho-trung', 'goi-cuon', 'hu-tieu-nam-vang', 'hu-tieu-kho', 'tau-hu-ngot', 'banh-trang-tron',
     'banh-mi-thit', 'banh-mi-ga-nuong', 'banh-mi-pate', 'banh-mi-thit-nuong', 'banh-mi-trung',
-    'bac-xiu', 'ca-phe-sua-da'
+    'bac-xiu', 'ca-phe-sua-da',
+    'bo-kho-banh-mi'
   ],
-  'tay-nam-bo': ['bun-mam', 'banh-canh-cua', 'lau-ca-keo', 'banh-tet'],
-  'tay-nguyen': ['banh-trang-nuong']
+  'tay-nam-bo': ['bun-mam', 'banh-canh-cua', 'lau-ca-keo', 'banh-tet', 'ca-loc-nuong-trui', 'bun-nuoc-leo', 'banh-cong'],
+  'tay-nguyen': ['banh-trang-nuong', 'com-lam']
 };
 
 // ---------- ĐẶC SẢN ĐỊA PHƯƠNG (không bán phổ biến toàn quốc) ----------
@@ -48,15 +51,18 @@ const DAC_SAN = [
   // miền Bắc
   'cha-com', 'bun-oc', 'cha-ca-la-vong', 'ca-phe-trung', 'banh-duc', 'xoi-xeo',
   'pho-chien-phong', 'chao-trai', 'mien-cua', 'oc-nhoi',
+  'banh-da-cua', 'bun-thang', 'cha-ruoi', 'mien-luon', 'cha-muc', 'pho-cuon',
   // miền Trung
   'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'cao-lau',
   'mi-quang', 'banh-mi-heo-quay',
+  'com-hen', 'banh-canh-ca-loc', 'banh-khoai',
   // miền Nam
   'banh-bia', 'banh-canh-ghe', 'banh-mi-xui', 'banh-mi-kep-kem', 'banh-trang-sua', 'banh-khot',
   // Tây Nam Bộ
   'bun-mam', 'banh-canh-cua', 'lau-ca-keo',
+  'ca-loc-nuong-trui', 'bun-nuoc-leo', 'banh-cong',
   // Tây Nguyên
-  'banh-trang-nuong'
+  'banh-trang-nuong', 'com-lam'
 ];
 
 const byId = new Map();
