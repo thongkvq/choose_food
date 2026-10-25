@@ -34,13 +34,23 @@ const home = await get('/');
 const js = await get('/app.js');
 const css = await get('/styles.css');
 const core = await get('/lib/nearby-core.js');   // app.js import tương đối — phải phục vụ được ở CẢ bản tĩnh
-const data = await get('/data/dishes.json', true);
+const lite = await get('/data/dishes-lite.json', true);   // lần tải đầu chỉ lấy phần nhẹ
+const detail0 = await get('/data/dishes-detail-0.json', true);   // phần nặng: chỉ tải khi mở popup
+const manifest = await get('/manifest.webmanifest', true);
+const sw = await get('/sw.js');
 check('trang chủ 200', home.status === 200, 'có tiêu đề Món Gì Đây = ' + /Món Gì Đây/.test(home.body) + ' | băng chuyền = ' + /rouletteTrack/.test(home.body) + ' | nút Hôm nay = ' + /btnToday/.test(home.body));
 check('styles.css 200', css.status === 200);
 check('/lib/nearby-core.js phục vụ được (bản tĩnh cũng phải có)', core.status === 200 && /export function fameLists/.test(core.body), core.status + ' · ' + core.size + 'B');
-let dishCount = 0;
-try { dishCount = JSON.parse(data.body).dishes.length; } catch (e) {}
-check('/data/dishes.json đọc được', dishCount > 0, dishCount + ' món');
+let dishCount = 0, liteJson = null;
+try { liteJson = JSON.parse(lite.body); dishCount = liteJson.dishes.length; } catch (e) {}
+check('/data/dishes-lite.json đọc được (dữ liệu lần tải đầu)', dishCount > 0, dishCount + ' món · ' + Math.round(lite.size / 1024) + 'KB');
+const H = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'tip'];
+const leaked = liteJson ? H.filter(k => liteJson.dishes.some(d => d[k] !== undefined)) : H;
+check('lite KHÔNG chứa trường nặng (intro/facts/detail/tip/review)', leaked.length === 0, leaked.join(', ') || 'sạch');
+let detailCount = 0;
+try { detailCount = Object.keys(JSON.parse(detail0.body).items).length; } catch (e) {}
+check('/data/dishes-detail-0.json đọc được (tải khi mở popup)', detail0.status === 200 && detailCount > 0, detailCount + ' món · ' + Math.round(detail0.size / 1024) + 'KB');
+check('PWA: manifest + sw.js phục vụ được', manifest.status === 200 && sw.status === 200 && /const VERSION/.test(sw.body), manifest.status + '/' + sw.status);
 
 const w = await get('/api/whereami', true);
 let pos = { lat: 10.7725, lng: 106.698 };
@@ -58,8 +68,8 @@ if (w.status === 200) {
   if (direct.status === 0) console.log('  BỎ QUA: Photon (dịch vụ ngoài) không kết nối được — không phải lỗi bản tĩnh; xem tools/test-fame-mock.mjs cho đường gọi thẳng');
   else check('gọi thẳng Photon được (đường dự phòng bản tĩnh)', direct.status === 200, 'status ' + direct.status);
 }
-const total = (home.size + js.size + css.size + data.size) / 1024;
-console.log('  tổng tải trang chủ (không nén): ' + total.toFixed(0) + ' KB | riêng dữ liệu món: ' + (data.size / 1024).toFixed(0) + ' KB | hết ' + (Date.now() - t0) + 'ms');
+const total = (home.size + js.size + css.size + lite.size) / 1024;
+console.log('  tổng tải lần đầu (không nén, gồm dữ liệu món): ' + total.toFixed(0) + ' KB | riêng dishes-lite.json: ' + (lite.size / 1024).toFixed(0) + ' KB | phần chi tiết (tải khi mở popup): ' + (detail0.size / 1024).toFixed(0) + ' KB/mảnh | hết ' + (Date.now() - t0) + 'ms');
 console.log('---');
 console.log(fails.length ? 'KẾT QUẢ: FAIL (' + fails.length + ') ' + fails.join(', ') : 'KẾT QUẢ: PASS');
 process.exit(fails.length ? 1 : 0);

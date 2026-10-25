@@ -63,15 +63,16 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   await ctx.close();
 }
 
-// ---------- PHẦN 2: dữ liệu CŨ (cache bản cũ, thiếu hết trường mới) ----------
+// ---------- PHẦN 2: dữ liệu CŨ (cache bản cũ, thiếu hết trường mới + không có mảnh chi tiết) ----------
 {
-  const raw = JSON.parse(await readFile(ROOT + '/data/dishes.json', 'utf8'));
+  const raw = JSON.parse(await readFile(ROOT + '/data/dishes-lite.json', 'utf8'));
   for (const d of raw.dishes) for (const k of NEW_FIELDS) delete d[k];
   const old = JSON.stringify(raw);
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, serviceWorkers: 'block' });
   const page = await ctx.newPage();
   const errs = []; page.on('pageerror', e => errs.push(e.message));
-  await page.route('**/data/dishes.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: old }));
+  await page.route('**/data/dishes-lite.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: old }));
+  await page.route('**/data/dishes-detail-*.json', r => r.abort());
   await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(1200);
   await page.click('#btnSpinSingle');

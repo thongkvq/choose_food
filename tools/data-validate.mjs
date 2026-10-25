@@ -2,12 +2,15 @@
 // Kiểm: id duy nhất · đủ trường bắt buộc · enum hợp lệ (region, meals, style, art, tier, vung…)
 //       · ảnh: URL thumbnail upload.wikimedia.org hợp lệ, không trùng, imageSource khớp tên món
 //       · intro đi kèm introSource/wikiUrl/wikiTitle · JSON khớp SQLite (data/dishes.sqlite)
+//       · dữ liệu đã tách (data/dishes-lite.json + data/dishes-detail-*.json) khớp lại dishes.json
 // Dùng: node tools/data-validate.mjs
 import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { DatabaseSync } from 'node:sqlite';
 import { fileURLToPath } from 'node:url';
 import { ART_TEMPLATES } from '../art.js';
+import { buildSplit, LITE_FILE } from './data-split.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const JSON_FILE = ROOT + 'data/dishes.json';
@@ -168,6 +171,31 @@ else {
   }
 }
 
+// ---------- dữ liệu ĐÃ TÁCH cho frontend (chạy lại data-split rồi so từng byte) ----------
+const SPLIT = buildSplit(raw);
+let splitOk = 0;
+const splitNames = Object.keys(SPLIT.files);
+for (const [name, want] of Object.entries(SPLIT.files)) {
+  const got = await readFile(ROOT + name, 'utf8').catch(() => null);
+  if (got === null) { err('data-split', 'thiếu ' + name + ' — chạy: node tools/data-split.mjs'); continue; }
+  if (got !== want) { err('data-split', name + ' KHÔNG khớp dishes.json (đã cũ) — chạy lại: node tools/data-split.mjs'); continue; }
+  splitOk++;
+}
+// lite không được chứa trường nặng, detail phải phủ đủ mọi id
+const liteRaw = SPLIT.files[LITE_FILE] || '';
+const liteJson = JSON.parse(liteRaw || '{"dishes":[]}');
+const HEAVY_LEAK = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'tip'];
+for (const d of liteJson.dishes || []) {
+  const leaked = HEAVY_LEAK.filter(k => d[k] !== undefined);
+  if (leaked.length) err(d.id, 'dishes-lite.json còn trường nặng: ' + leaked.join(', '));
+}
+const detailIds = new Set();
+for (const name of splitNames.filter(n => n !== LITE_FILE)) {
+  const j = JSON.parse(await readFile(ROOT + name, 'utf8').catch(() => '{"items":{}}'));
+  for (const id of Object.keys(j.items || {})) { if (detailIds.has(id)) err(id, 'xuất hiện ở 2 mảnh chi tiết'); detailIds.add(id); }
+}
+for (const d of dishes) if (!detailIds.has(d.id)) err(d.id, 'không có trong mảnh chi tiết nào');
+
 // ---------- độ phủ ----------
 const n = dishes.length;
 const cov = (f) => dishes.filter(f).length;
@@ -184,6 +212,14 @@ console.log('Độ phủ detail:', cov(d => d.detail) + '/' + n, '(' + pct(cov(d
 const via = {};
 for (const d of dishes) if (d.image) via[d.imageVia] = (via[d.imageVia] || 0) + 1;
 console.log('Nguồn ảnh:', JSON.stringify(via));
+{
+  const kb = (n) => (n / 1024).toFixed(1) + 'KB';
+  const srcBuf = await readFile(JSON_FILE);
+  const liteBuf = Buffer.from(liteRaw);
+  console.log('Dữ liệu tách:', splitOk + '/' + splitNames.length + ' file khớp dishes.json (' + splitNames.join(', ') + ')');
+  console.log('Tải lần đầu: ' + kb(srcBuf.length) + ' → ' + kb(liteBuf.length) + ' thô · ' +
+    kb(gzipSync(srcBuf).length) + ' → ' + kb(gzipSync(liteBuf).length) + ' gzip');
+}
 console.log('Lỗi:', errors.length, '| Cảnh báo:', warnings.length);
 const shown = Number(process.env.WARN_LIMIT || 10);
 for (const w of warnings.slice(0, shown)) console.log('  ! ' + w);

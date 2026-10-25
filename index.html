@@ -13,6 +13,8 @@
 <title>Món Gì Đây? — Quay gacha chọn món</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍱</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0812'/><text y='.82em' x='50' font-size='70' text-anchor='middle'>🍱</text></svg>">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 <link rel="dns-prefetch" href="https://upload.wikimedia.org">
 <link rel="stylesheet" href="styles.css">
@@ -166,6 +168,7 @@
       </div>
       <div class="fgroup">
         <h3><span>⚙️</span> Thêm</h3>
+        <label class="switch f-avoid"><input type="checkbox" id="fAvoidRecent" checked><span class="track-ui"></span><span class="switch-label">🔁 Tránh món đã ăn gần đây — món đã chốt/ghi nhật ký trong 3 ngày và món vừa quay ra sẽ ít xuất hiện lại</span></label>
         <label class="switch"><input type="checkbox" id="fAutoVung" checked><span class="track-ui"></span><span class="switch-label">📍 Tự gợi ý vùng theo vị trí (GPS/IP), không ghi đè vùng đã chọn</span></label>
         <label class="switch"><input type="checkbox" id="fVungGocOnly"><span class="track-ui"></span><span class="switch-label">🏷️ Chỉ đặc sản có nguồn gốc từ vùng đã chọn</span></label>
         <label class="switch"><input type="checkbox" id="fVnOnly" checked><span class="track-ui"></span><span class="switch-label">🇻🇳 Chỉ món Việt — ẩn món nước ngoài (Hàn, Nhật, Âu, Mỹ…)</span></label>

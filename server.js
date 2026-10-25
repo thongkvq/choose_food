@@ -22,7 +22,8 @@ const UA = 'MonGiDay/2.4 (personal LAN food app)';
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon'
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon',
+  '.webmanifest': 'application/manifest+json; charset=utf-8'
 };
 const COMPRESSIBLE = /^(text\/|application\/(json|javascript)|image\/svg)/;
 const cache = new Map();

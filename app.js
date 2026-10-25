@@ -59,6 +59,8 @@ const state = {
   mealAuto: false,   // bữa ăn do đồng hồ tự chọn (được phép tự bỏ khi vùng miền không có món nào)
   vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
   radius: R_TIERS.includes(LS.get('mgd.radius', 5000)) ? LS.get('mgd.radius', 5000) : 5000,   // bán kính tìm quán (m) người dùng chọn
+  avoidRecent: LS.get('mgd.avoidRecent', true) !== false,   // mặc định BẬT: giảm trọng số món vừa ăn / vừa quay ra
+  recentDraws: Array.isArray(LS.get('mgd.recentDraws', [])) ? LS.get('mgd.recentDraws', []).slice(0, 10) : [],   // 10 món vừa quay ra (chưa chốt)
   favs: LS.get('mgd.favs', []), hist: LS.get('mgd.hist', []), seen: new Set(LS.get('mgd.seen', [])),
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
   lastWinner: null, spinning: false
@@ -249,6 +251,7 @@ function scoreBlock(d) {
       '<div class="score-stars">' + starsHtml(d.stars != null ? d.stars : Math.round(r / 2 * 2) / 2) + '</div>' +
     '</div>';
 }
+let infoExpanded = false;   // nhớ trạng thái "Xem thêm thông tin" khi điền lại bảng sau khi tải chi tiết
 function infoGrid(d) {
   const rows = [];
   const full = Math.max(0, Math.min(5, Number(d.fullness) || 0));
@@ -276,11 +279,93 @@ function infoGrid(d) {
   const head = rows.slice(0, HEADN), rest = rows.slice(HEADN);
   return '<div class="info-grid">' + head.map(row).join('') +
     (rest.length
-      ? '<div class="info-more" id="infoMore" hidden>' + rest.map(row).join('') + '</div>' +
-        '<button class="info-toggle" data-act="rows">＋ Xem thêm ' + rest.length + ' thông tin ▾</button>'
+      ? '<div class="info-more" id="infoMore"' + (infoExpanded ? '' : ' hidden') + '>' + rest.map(row).join('') + '</div>' +
+        '<button class="info-toggle" data-act="rows">' + (infoExpanded ? '－ Thu gọn ▴' : '＋ Xem thêm ' + rest.length + ' thông tin ▾') + '</button>'
       : '') +
     '</div>';
 }
+/* ============================ DỮ LIỆU CHI TIẾT (tải muộn) ============================
+   data/dishes-lite.json đủ cho băng chuyền / bộ lọc / gacha / phần đầu popup.
+   Phần NẶNG (review dài, giới thiệu Wikipedia, facts, mục chi tiết, tip) nằm trong
+   data/dishes-detail-<k>.json — chỉ tải khi mở popup món, prefetch lúc rảnh.
+   Lỗi mạng thì popup vẫn hiện đủ phần lite (không trắng thẻ). */
+const DETAIL = { chunks: 4, chunkSize: 128, loaded: new Set(), loading: new Map(), failed: new Set() };
+const isOffline = () => (typeof navigator !== 'undefined' && navigator.onLine === false);
+const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 500));
+function detailChunkOf(d) {
+  if (!d) return 0;
+  const i = ALL.indexOf(d);
+  return Math.max(0, Math.min(DETAIL.chunks - 1, Math.floor((i < 0 ? 0 : i) / DETAIL.chunkSize)));
+}
+function loadDetailChunk(k) {
+  if (DETAIL.loaded.has(k)) return Promise.resolve(0);
+  if (DETAIL.loading.has(k)) return DETAIL.loading.get(k);
+  const p = fetch('data/dishes-detail-' + k + '.json', { cache: 'force-cache' })
+    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then((j) => {
+      const items = j.items || {};
+      let n = 0;
+      for (const id of Object.keys(items)) {
+        const d = dishById(id);
+        if (d) { for (const key of Object.keys(items[id])) d[key] = items[id][key]; n++; }
+      }
+      DETAIL.loaded.add(k); DETAIL.failed.delete(k);
+      return n;
+    })
+    .catch((err) => { DETAIL.failed.add(k); throw err; })
+    .finally(() => { DETAIL.loading.delete(k); });
+  DETAIL.loading.set(k, p);
+  p.catch(() => {});
+  return p;
+}
+function ensureDetail(d) {
+  const k = detailChunkOf(d);
+  if (DETAIL.loaded.has(k)) return Promise.resolve(false);
+  return loadDetailChunk(k).then(() => true).catch(() => false);
+}
+function prefetchDetail() {   // lúc rảnh: tải lần lượt các mảnh còn thiếu (mảnh lỗi chỉ thử 1 lần)
+  if (isOffline()) return;
+  const next = [...Array(DETAIL.chunks).keys()].find((k) => !DETAIL.loaded.has(k) && !DETAIL.failed.has(k));
+  if (next === undefined) return;
+  loadDetailChunk(next).then(() => idle(prefetchDetail), () => idle(prefetchDetail));
+}
+function introBlock(d) {
+  if (!d.intro) return '';
+  return '<div class="intro-wrap">' +
+      '<div class="intro" id="introBox">' + esc(d.intro) + '</div>' +
+      '<button class="intro-more" data-act="intro">Đọc thêm ▾</button>' +
+      '<div class="intro-src">' + esc(d.introSource || 'Wikipedia') +
+        (d.wikiUrl ? ' · <a href="' + esc(d.wikiUrl) + '" target="_blank" rel="noopener">Xem bài gốc ↗</a>' : '') +
+      '</div>' +
+    '</div>';
+}
+function detailBlock(d) {
+  if (!Array.isArray(d.detail) || !d.detail.length) return '';
+  return '<div class="detail">' +
+      '<button class="detail-toggle" data-act="detail">📖 Chi tiết (' + d.detail.map(x => esc(x.t)).join(' · ').slice(0, 70) + ') ▾</button>' +
+      '<div class="detail-body" id="detailBody" hidden>' +
+        d.detail.map(x => '<section><h4>' + esc(x.t) + '</h4><p>' + esc(x.body).replace(/\n+/g, '<br>') + '</p></section>').join('') +
+      '</div>' +
+    '</div>';
+}
+function tipHTML(d) { return d.tip ? '<p class="tip">💡 ' + esc(d.tip) + '</p>' : ''; }
+function heavyHTML(d) {
+  const k = detailChunkOf(d);
+  const body = (d.review ? '<p class="review">“' + esc(d.review) + '”</p>' : '') + introBlock(d) + detailBlock(d);
+  if (body) return body;                                   // đã có phần nặng (mảnh đã tải, hoặc dữ liệu cache cũ)
+  if (DETAIL.failed.has(k)) return '<div class="heavy-loading err">📴 Không tải được phần chi tiết — vẫn xem được thông tin cơ bản ở trên.</div>';
+  if (DETAIL.loaded.has(k)) return '';                     // mảnh tải xong mà món này không có phần nặng
+  return '<div class="heavy-loading" role="status">⏳ Đang tải phần chi tiết…</div>';
+}
+// Điền phần nặng vào popup đang mở (giữ nguyên phần lite đã hiện, không nhảy lên đầu)
+function patchHeavy(d) {
+  if (!d || state.lastWinner !== d || $('#modalBackdrop').hidden) return false;
+  const top = $('#heavySlot'); if (top) top.innerHTML = heavyHTML(d);
+  const info = $('#infoSlot'); if (info) info.innerHTML = infoGrid(d);
+  const tip = $('#tipSlot'); if (tip) tip.innerHTML = tipHTML(d);
+  return true;
+}
+
 // ===== Tìm quán gần đây: ưu tiên GPS (nếu trang chạy https/localhost), không thì lấy vị trí theo IP =====
 const CUISINE_BY_REGION = {
   vn: 'vietnamese', cn: 'chinese', jp: 'japanese', kr: 'korean', th: 'thai',
@@ -450,6 +535,17 @@ async function findNearby(d, forcePos, keepPos) {
   if (!out) return;
   state.lastNearbyDish = d;
   // keepPos: đổi bán kính thì truyền lại vị trí cũ để khỏi xin GPS lại
+  if (isOffline()) {   // offline: báo gọn, không để người dùng chờ vô ích
+    out.hidden = false;
+    if (!nearbyControlsMemo) nearbyControlsMemo = nearbyControlsHTML();
+    out.innerHTML = nearbyControlsMemo +
+      '<div class="nearby-note err">📴 Đang offline — cần mạng để tìm quán quanh bạn. Quay món vẫn chạy bình thường.</div>' +
+      '<div class="nearby-links"><a class="nearby-link primary" href="https://www.google.com/maps/search/' +
+        encodeURIComponent((d && d.name ? d.name : 'quán ăn') + ' gần đây') + '" target="_blank" rel="noopener">🗺️ Google Maps</a></div>';
+    out.dataset.done = '1';
+    if (btn) { btn.disabled = false; btn.textContent = '📍 Thử lại'; }
+    return;
+  }
   if (btn) { btn.disabled = true; btn.textContent = '⏳ Đang tìm quán quanh bạn…'; }
   out.hidden = false;
   if (!nearbyControlsMemo) nearbyControlsMemo = nearbyControlsHTML();   // giữ riêng, không lấy lại từ innerHTML (tránh nhân đôi header cũ)
@@ -552,9 +648,39 @@ function pool() {
   const q = state.q.trim().toLowerCase();
   return ALL.filter(d => matchDish(d, false, q));
 }
+/* ===== TRÁNH MÓN LẶP =====
+   - Món đã CHỐT hoặc ghi vào nhật ký (mgd.diary) trong 3 ngày gần nhất: ×0.15
+   - Món vừa quay ra (chưa chốt) trong 10 lần quay gần nhất: ×0.5
+   KHÔNG loại khỏi pool (pool nhỏ vẫn quay được), chỉ nhân trọng số. */
+const AVOID_DAYS = 3, AVOID_W = 0.15, AVOID_RECENT_W = 0.5, RECENT_MAX = 10;
+function recentEatenIds(now) {
+  const t = now || Date.now(), out = new Set();
+  for (const x of state.diary || []) if (x && x.id && (t - (x.ts || 0)) < AVOID_DAYS * 864e5) out.add(x.id);
+  return out;
+}
+function avoidFactor(d, now) {
+  if (!state.avoidRecent || !d) return 1;
+  let m = 1;
+  if (recentEatenIds(now).has(d.id)) m *= AVOID_W;
+  if (state.recentDraws.includes(d.id)) m *= AVOID_RECENT_W;
+  return m;
+}
+function pushRecentDraw(d) {
+  if (!d) return;
+  state.recentDraws = [d.id, ...state.recentDraws.filter(x => x !== d.id)].slice(0, RECENT_MAX);
+  LS.set('mgd.recentDraws', state.recentDraws);
+}
+function setAvoidRecent(on, notify) {
+  state.avoidRecent = !!on;
+  LS.set('mgd.avoidRecent', state.avoidRecent);
+  const el = $('#fAvoidRecent'); if (el) el.checked = state.avoidRecent;
+  if (notify) toast(state.avoidRecent
+    ? '🔁 Đã giảm trọng số món ăn/quay gần đây (không loại hẳn)'
+    : '🎲 Quay đều như cũ — không tránh món nào');
+}
 function drawOne(list, minTier = 0) {
   let c = list.filter(d => d.tier >= minTier); if (!c.length) c = list;
-  const w = c.map(d => TIERS[d.tier].w * (.55 + d.weight / 200) * biasOf(d));
+  const w = c.map(d => TIERS[d.tier].w * (.55 + d.weight / 200) * biasOf(d) * avoidFactor(d));
   let r = Math.random() * w.reduce((a, b) => a + b, 0);
   for (let i = 0; i < c.length; i++) { r -= w[i]; if (r <= 0) return c[i]; }
   return c[c.length - 1];
@@ -664,6 +790,7 @@ function spinOnce() {
   state.pity++;
   const force = state.pity >= 10 ? 3 : 0;
   const win = drawOne(p, force);
+  pushRecentDraw(win);
   if (win.tier >= 3) state.pity = 0;
   LS.set('mgd.pity', state.pity); updatePity();
   spin(win, () => openWin(win));
@@ -674,6 +801,7 @@ function spinTen() {
   if (p.length < 2) { ensurePlayable(); p = pool(); }
   if (p.length < 2) return toast('⚠️ Cần ít nhất 2 món trong bộ lọc để quay 10!');
   const best = drawMany(p, 10);
+  best.forEach(pushRecentDraw);
   spin(best[0], () => openMulti(best));
 }
 function updatePity() { const el = $('#pityVal'); if (el) { el.textContent = state.pity + '/10'; el.style.color = state.pity >= 9 ? '#ff5722' : 'var(--violet)'; } }
@@ -686,6 +814,7 @@ function updateProgress() {
 /* ============================ WIN DIALOG ============================ */
 function openWin(d) {
   state.lastWinner = d;
+  infoExpanded = false;
   try { renderWin(d); } catch (err) {
     // dữ liệu lạ cũng KHÔNG được chặn popup: hiện bản tối giản
     const dlg = $('#winDialog');
@@ -696,7 +825,10 @@ function openWin(d) {
       '<div class="win-actions"><button class="btn-lock" data-act="close">✕ ĐÓNG</button></div>';
     $('#modalBackdrop').hidden = false;
     document.body.style.overflow = 'hidden';
+    return;
   }
+  // phần nặng (giới thiệu/facts/chi tiết/tip) tải sau — hiện ngay phần lite, điền vào khi xong
+  ensureDetail(d).then(() => patchHeavy(d));
 }
 function renderWin(d) {
   const t = TIERS[d.tier] || TIERS[1], dialog = $('#winDialog');
@@ -721,6 +853,7 @@ function renderWin(d) {
         '<button class="sub-btn" data-act="again">🎲 Quay lại</button>' +
         '<button class="sub-btn ' + (fav ? 'fav' : '') + '" data-act="fav">' + (fav ? '♥ Đã lưu' : '♥ Lưu') + '</button>' +
         '<button class="sub-btn" data-act="menu-add">📅 Vào thực đơn</button>' +
+        '<button class="sub-btn" data-act="sharelink">🔗 Chia sẻ</button>' +
         '<button class="sub-btn" data-act="share">📤 Chia sẻ ảnh</button>' +
       '</div>' +
     '</div>' +
@@ -728,27 +861,10 @@ function renderWin(d) {
     '<div class="win-col-info">' +
     '<h2 class="win-name">' + d.emoji + ' ' + esc(d.name) + '</h2>' +
     '<p class="win-descr">' + esc(d.descr) + '</p>' +
-    (d.review ? '<p class="review">“' + esc(d.review) + '”</p>' : '') +
-    (d.intro
-      ? '<div class="intro-wrap">' +
-          '<div class="intro" id="introBox">' + esc(d.intro) + '</div>' +
-          '<button class="intro-more" data-act="intro">Đọc thêm ▾</button>' +
-          '<div class="intro-src">' + esc(d.introSource || 'Wikipedia') +
-            (d.wikiUrl ? ' · <a href="' + esc(d.wikiUrl) + '" target="_blank" rel="noopener">Xem bài gốc ↗</a>' : '') +
-          '</div>' +
-        '</div>'
-      : '') +
-    (Array.isArray(d.detail) && d.detail.length
-      ? '<div class="detail">' +
-          '<button class="detail-toggle" data-act="detail">📖 Chi tiết (' + d.detail.map(x => esc(x.t)).join(' · ').slice(0, 70) + ') ▾</button>' +
-          '<div class="detail-body" id="detailBody" hidden>' +
-            d.detail.map(x => '<section><h4>' + esc(x.t) + '</h4><p>' + esc(x.body).replace(/\n+/g, '<br>') + '</p></section>').join('') +
-          '</div>' +
-        '</div>'
-      : '') +
-    infoGrid(d) +
+    '<div id="heavySlot">' + heavyHTML(d) + '</div>' +
+    '<div id="infoSlot">' + infoGrid(d) + '</div>' +
     (Array.isArray(d.bestFor) && d.bestFor.length ? '<div class="fit"><span class="fit-label">Hợp với:</span>' + d.bestFor.map(x => '<span class="pill">' + esc(x) + '</span>').join('') + '</div>' : '') +
-    (d.tip ? '<p class="tip">💡 ' + esc(d.tip) + '</p>' : '') +
+    '<div id="tipSlot">' + tipHTML(d) + '</div>' +
     '<div class="nearby" id="nearbyBox">' +
       '<button class="nearby-btn" data-act="nearby">📍 Tìm quán bán món này gần tôi</button>' +
       '<div class="nearby-out" id="nearbyOut"></div>' +
@@ -824,8 +940,11 @@ $('#modalBackdrop').addEventListener('click', (e) => {
     if (more) {
       const open = more.hidden;
       more.hidden = !open;
+      infoExpanded = open;
       b.textContent = open ? '－ Thu gọn ▴' : '＋ Xem thêm ' + more.querySelectorAll('.info-row').length + ' thông tin ▾';
     }
+  } else if (act === 'sharelink') {
+    shareDishLink(d);
   } else if (act === 'loc-go') {
     const v = ($('#locInput') || {}).value || '';
     if (!v.trim()) return;
@@ -885,7 +1004,49 @@ function closeModals() {
   $('#modalBackdrop').hidden = true;
   $('#multiBackdrop').hidden = true;
   if ($('#filterPanel') && !$('#filterPanel').classList.contains('open')) document.body.style.overflow = '';
+  clearShareHash();   // đóng popup thì bỏ #mon=<id> trên URL
 }
+/* ===== LINK CHIA SẺ MÓN: #mon=<id> ===== */
+function shareUrlFor(d) {
+  return location.origin + location.pathname + location.search + '#mon=' + encodeURIComponent(d.id);
+}
+function dishFromHash() {
+  const m = /(?:^|[#&])mon=([^&]*)/.exec(location.hash || '');
+  if (!m) return null;
+  let id = m[1];
+  try { id = decodeURIComponent(id); } catch (e) {}
+  return dishById(id) || null;
+}
+function clearShareHash() {
+  if (!location.hash) return;
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+}
+function openFromHash() {
+  if (!ALL.length) return false;
+  const m = /(?:^|[#&])mon=([^&]*)/.exec(location.hash || '');
+  if (!m) return false;
+  const d = dishFromHash();
+  if (!d) { toast('🔗 Link không còn món này trong dữ liệu'); clearShareHash(); return false; }
+  openWin(d);
+  return true;
+}
+function shareDishLink(d) {
+  if (!d) return;
+  const url = shareUrlFor(d);
+  const text = d.emoji + ' ' + d.name + ' — ' + (d.descr || '') + ' · quay bằng Món Gì Đây?';
+  if (navigator.share) {
+    navigator.share({ title: 'Món Gì Đây?', text: text, url: url }).catch(() => {});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(
+      () => toast('🔗 Đã copy link món: <b>' + esc(url) + '</b>', 3200),
+      () => toast('🔗 Link món: <b>' + esc(url) + '</b>', 5200));
+    return;
+  }
+  toast('🔗 Link món: <b>' + esc(url) + '</b>', 5200);
+}
+addEventListener('hashchange', () => { if (!openFromHash()) { /* hash khác: bỏ qua */ } });
 
 /* ============================ LỊCH SỬ / YÊU THÍCH ============================ */
 function addHist(d) {
@@ -1169,6 +1330,7 @@ function resetFilters(clearChips = true) {
   state.meals.clear(); state.regions.clear(); state.styles.clear(); state.vung.clear();
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
   state.vnOnly = true; LS.set('mgd.vnOnly', true); state.mealAuto = false;
+  state.avoidRecent = true; LS.set('mgd.avoidRecent', true);
   state.vungManual = false; state.vungGeo = null;
   LS.set('mgd.vungManual', false); LS.set('mgd.vungSelection', []); LS.set('mgd.vungGeo', null);
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
@@ -1176,6 +1338,7 @@ function resetFilters(clearChips = true) {
 function applyFilterUI() {
   $('#fVeg').checked = state.veg; $('#fMild').checked = state.mild;
   const fv = $('#fVnOnly'); if (fv) fv.checked = state.vnOnly;
+  const fa = $('#fAvoidRecent'); if (fa) fa.checked = state.avoidRecent;
   const fg = $('#fVungGocOnly'); if (fg) fg.checked = state.vungGocOnly;
   const av = $('#fAutoVung'); if (av) av.checked = state.autoVung;
   paintRegionChips();
@@ -1194,6 +1357,7 @@ $('#fVeg').onchange = (e) => { state.veg = e.target.checked; syncPool(); };
 $('#fMild').onchange = (e) => { state.mild = e.target.checked; syncPool(); };
 const fvEl = $('#fVnOnly'); if (fvEl) fvEl.onchange = (e) => setVnOnly(e.target.checked, true);
 const fVungGocEl = $('#fVungGocOnly'); if (fVungGocEl) fVungGocEl.onchange = (e) => { state.vungGocOnly = e.target.checked; LS.set('mgd.vungGocOnly', state.vungGocOnly); syncPool(); ensurePlayable(); };
+const fAvoidEl = $('#fAvoidRecent'); if (fAvoidEl) fAvoidEl.onchange = (e) => { setAvoidRecent(e.target.checked, true); };
 const fAutoVungEl = $('#fAutoVung'); if (fAutoVungEl) fAutoVungEl.onchange = (e) => { setAutoVung(e.target.checked); if (!e.target.checked) { state.vungGeo = null; LS.set('mgd.vungGeo', null); } };
 const fTopEl = $('#fTop'); if (fTopEl) fTopEl.onchange = (e) => { state.topRated = e.target.checked; syncPool(); };
 $('#fPrice').oninput = (e) => { state.price = +e.target.value; $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price); syncPool(); };
@@ -1225,6 +1389,9 @@ $('#todayDialog').addEventListener('keydown', (e) => { if (e.key === 'Escape') c
 $('#btnSpinMulti').onclick = spinTen;
 const machineEl = $('#rouletteMachine');
 if (machineEl) machineEl.style.pointerEvents = 'none';
+// offline/online: báo gọn cho người dùng (quay món vẫn chạy, chỉ tìm quán/thời tiết cần mạng)
+addEventListener('offline', () => toast('📴 Đang offline — quay món vẫn chạy, tìm quán/thời tiết cần mạng.', 3200));
+addEventListener('online', () => { toast('🌐 Đã có mạng lại'); loadWeather(); });
 $('#btnSound').onclick = (e) => {
   state.sound = !state.sound; LS.set('mgd.sound', state.sound);
   $('#soundIcon').textContent = state.sound ? '🔊' : '🔇';
@@ -1312,6 +1479,7 @@ function saveTaste() { LS.set('mgd.taste', state.taste); }
 function saveDiary() { LS.set('mgd.diary', state.diary.slice(-400)); }
 function saveMenu() { LS.set('mgd.menu', state.menu); }
 function loadWeather() {
+  if (isOffline()) { renderCtxChip(); return Promise.resolve(); }   // offline: dùng thời tiết đã lưu, không gọi mạng
   return getPosition().then((pos) => {
     state.pos = pos;
     return apiJSON('/api/weather?lat=' + pos.lat + '&lng=' + pos.lng, () => dirWeather(pos.lat, pos.lng));
@@ -1683,9 +1851,14 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
 /* ============================ KHỞI ĐỘNG ============================ */
 (async function init() {
   try {
-    const res = await fetch('data/dishes.json', { cache: 'force-cache' });
+    // Lần tải đầu chỉ lấy phần nhẹ (băng chuyền/lọc/gacha/phần đầu popup);
+    // phần chi tiết nặng tải sau khi mở popup (xem heavyHTML/loadDetailChunk).
+    const res = await fetch('data/dishes-lite.json', { cache: 'force-cache' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    ALL = (await res.json()).dishes;
+    const j = await res.json();
+    ALL = j.dishes || j;
+    if (j.detailChunks) DETAIL.chunks = j.detailChunks;
+    if (j.detailChunkSize) DETAIL.chunkSize = j.detailChunkSize;
   } catch (err) {
     document.body.insertAdjacentHTML('afterbegin',
       '<div class="toast" style="position:static;margin:12px">⚠️ Không tải được dữ liệu (' + esc(err.message) + ').<br>Chạy qua server: <b>npm start</b></div>');
@@ -1721,5 +1894,28 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
     }
   } catch {}
   // hook để kiểm thử tự động
-  try { window.__mgd = { state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour, vungHit: vungHit, vungAvailable: vungAvailable, vungFromPlace: vungFromPlace, vungFromCoords: vungFromCoords, VUNG: VUNG, ALL: function () { return ALL; } }; } catch (e) {}
+  try {
+    window.__mgd = {
+      state: state, biasOf: biasOf, pool: pool, drawOne: drawOne, mealByHour: mealByHour,
+      vungHit: vungHit, vungAvailable: vungAvailable, vungFromPlace: vungFromPlace, vungFromCoords: vungFromCoords,
+      VUNG: VUNG, ALL: function () { return ALL; },
+      // v23+: tránh món lặp, dữ liệu tách lite/detail, link chia sẻ
+      avoidFactor: avoidFactor, recentEatenIds: recentEatenIds, pushRecentDraw: pushRecentDraw, setAvoidRecent: setAvoidRecent,
+      DETAIL: DETAIL, detailChunkOf: detailChunkOf, loadDetailChunk: loadDetailChunk, ensureDetail: ensureDetail, heavyHTML: heavyHTML,
+      openWin: openWin, closeModals: closeModals, shareUrlFor: shareUrlFor, openFromHash: openFromHash, dishFromHash: dishFromHash,
+      dishById: dishById, isOffline: isOffline
+    };
+  } catch (e) {}
+
+  // PWA: service worker chỉ đăng ký khi secure context (localhost/https) — qua http LAN trình duyệt chặn
+  try {
+    if ('serviceWorker' in navigator && window.isSecureContext) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  } catch (e) {}
+
+  // mở thẳng popup món khi vào bằng link chia sẻ (#mon=<id>)
+  openFromHash();
+  // prefetch phần chi tiết lúc rảnh (sau khi trang đã nạp xong)
+  idle(prefetchDetail);
 })();
