@@ -1,0 +1,210 @@
+import { launchChromium } from '../lib/chromium.mjs';
+// tools/test/test-vung.mjs — verify bộ lọc VÙNG MIỀN (Bắc/Trung/Nam/Tây Nam Bộ/Tây Nguyên/Cả nước)
+
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+console.log('KIỂM TRA: ' + BASE);
+
+const browser = await launchChromium();
+const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+const page = await ctx.newPage();
+const errs = [];
+page.on('pageerror', e => errs.push(e.message));
+await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+await page.waitForFunction(() => window.__mgd && window.__mgd.ALL().length > 0, null, { timeout: 20000 });
+
+// bỏ lọc bữa ăn tự động theo giờ để đo đúng phần vùng miền
+const clearMeals = () => page.evaluate(() => {
+  const s = window.__mgd;
+  s.state.meals.clear(); s.state.vung.clear();
+  document.querySelectorAll('#mealChips .chip.on, #vungChips .chip.on').forEach(c => c.classList.remove('on'));
+});
+const common = await page.evaluate(() => {
+  const s = window.__mgd, ids = ['pho-bo', 'pho-ga', 'banh-mi-thit', 'banh-mi-thit-nuong'];
+  const out = {};
+  for (const k of ['bac', 'trung', 'nam', 'tay-nam-bo', 'tay-nguyen']) {
+    s.state.vung.clear(); s.state.vung.add(k); s.state.meals.clear();
+    out[k] = ids.map(id => s.pool().some(d => d.id === id));
+  }
+  return out;
+});
+console.log('món phổ biến theo vùng:', JSON.stringify(common));
+
+const specialty = await page.evaluate(() => {
+  const s = window.__mgd;
+  s.state.vung.clear(); s.state.vung.add('trung'); s.state.meals.clear();
+  const normal = s.vungAvailable(s.ALL().find(d => d.id === 'pho-bo'), 'trung');
+  s.state.vungGocOnly = true;
+  const strict = s.vungAvailable(s.ALL().find(d => d.id === 'pho-bo'), 'trung');
+  s.state.vungGocOnly = false;
+  return { normal, strict };
+});
+console.log('chế độ gốc:', JSON.stringify(specialty));
+
+const snap = (label) => page.evaluate((label) => {
+  const s = window.__mgd, p = s.pool();
+  const hist = {};
+  p.forEach(d => hist[d.id] = d.vung || '(thiếu)');
+  return { label, pool: p.length, hist, status: (document.querySelector('#poolStatusText') || {}).textContent };
+}, label);
+
+// mở sheet lọc để bấm được chip
+await page.click('#btnOpenSheet');
+await page.waitForTimeout(600);
+const chips = await page.evaluate(() => [...document.querySelectorAll('#vungChips .chip')].map(c => c.dataset.k));
+console.log('chips vùng miền:', chips.join(', '));
+
+const total = await page.evaluate(() => window.__mgd.ALL().length);
+await clearMeals();
+const a = await snap('BỎ LỌC BỮA (chưa chọn vùng)');
+console.log('[' + a.label + '] pool=' + a.pool + '/' + total);
+
+const click = async (k) => { await page.click('#vungChips .chip[data-k="' + k + '"]'); await page.waitForTimeout(200); };
+
+await clearMeals(); await click('tay-nam-bo');
+const b = await snap('MIỀN TÂY NAM BỘ');
+console.log('[' + b.label + '] pool=' + b.pool, JSON.stringify(b.hist), '| status:', b.status);
+
+await clearMeals(); await click('nam');
+const c = await snap('MIỀN NAM');
+console.log('[' + c.label + '] pool=' + c.pool, JSON.stringify(c.hist));
+
+await clearMeals(); await click('bac');
+const d = await snap('MIỀN BẮC');
+console.log('[' + d.label + '] pool=' + d.pool, JSON.stringify(d.hist));
+
+await clearMeals(); await click('trung');
+const e = await snap('MIỀN TRUNG');
+console.log('[' + e.label + '] pool=' + e.pool, JSON.stringify(e.hist));
+
+await clearMeals(); await click('tay-nguyen');
+const f = await snap('TÂY NGUYÊN');
+console.log('[' + f.label + '] pool=' + f.pool, JSON.stringify(f.hist));
+
+await clearMeals(); await click('vn');
+const g = await snap('CẢ NƯỚC');
+console.log('[' + g.label + '] pool=' + g.pool, JSON.stringify(g.hist));
+
+// nhiều vùng cùng lúc: Bắc + Trung
+await clearMeals(); await click('bac'); await click('trung');
+const h = await snap('BẮC + TRUNG');
+console.log('[' + h.label + '] pool=' + h.pool, JSON.stringify(h.hist));
+
+// chip "Ngoài Việt Nam" phải tự tắt chế độ chỉ món Việt
+await clearMeals(); await click('ngoai');
+const i = await snap('NGOÀI VIỆT NAM');
+const vnOnlyAfter = await page.evaluate(() => window.__mgd.state.vnOnly);
+console.log('[' + i.label + '] pool=' + i.pool, JSON.stringify(i.hist), '| vnOnly đã tắt:', vnOnlyAfter === false);
+
+// preset "Đặc sản miền Tây" (đóng sheet trước vì preset nằm ở trang chính)
+await page.click('#btnResetFilters'); await page.waitForTimeout(250);
+await page.click('#btnCloseSheet'); await page.waitForTimeout(400);
+await page.click('.preset[data-preset="vungTay"]'); await page.waitForTimeout(300);
+const k = await snap('PRESET ĐẶC SẢN MIỀN TÂY');
+const presetOn = await page.evaluate(() => { const b = document.querySelector('.preset[data-preset="vungTay"]'); return b.classList.contains('on'); });
+console.log('[' + k.label + '] pool=' + k.pool, JSON.stringify(k.hist), '| preset sáng:', presetOn);
+
+// popup: có dòng "Vùng miền"
+await page.click('#btnOpenSheet'); await page.waitForTimeout(500);
+await page.click('#btnResetFilters'); await page.waitForTimeout(250);
+await page.click('#btnCloseSheet'); await page.waitForTimeout(400);
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.add('tay-nam-bo'); s.state.vung.add('nam'); s.state.vung.add('bac'); s.state.vung.add('trung'); s.state.vung.add('vn'); s.state.vung.add('tay-nguyen'); });
+await page.click('#btnSpinSingle');
+await page.waitForSelector('#modalBackdrop:not([hidden]) .win-dialog', { timeout: 15000 });
+await page.waitForTimeout(500);
+const popup = await page.evaluate(() => {
+  const dlg = document.querySelector('.win-dialog');
+  const rows = [...dlg.querySelectorAll('.info-row')].map(r => r.querySelector('.k').textContent + '=' + r.querySelector('.v').textContent);
+  const meta = [...dlg.querySelectorAll('.win-meta .pill')].map(p => p.textContent);
+  return { rows, meta, hasVungToggle: !!dlg.querySelector('.info-toggle') };
+});
+// mở "Xem thêm" để chắc chắn dòng Vùng miền hiện ra
+if (popup.hasVungToggle) { await page.click('.win-dialog .info-toggle'); await page.waitForTimeout(200); }
+const popup2 = await page.evaluate(() => [...document.querySelectorAll('.win-dialog .info-row')].map(r => r.querySelector('.k').textContent + '=' + r.querySelector('.v').textContent));
+console.log('popup rows:', popup2.join(' | '));
+console.log('popup meta:', popup.meta.join(' | '));
+
+// ===== FIX "chọn vùng xong không quay được": vùng 0 món do BỮA ĂN TỰ ĐỘNG =====
+await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b => b.click()); });
+await page.waitForTimeout(300);
+// Dùng tổ hợp chắc chắn rỗng để kiểm tra cứu bộ lọc bữa tự động.
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.vung.add('tay-nguyen'); s.state.meals.clear(); s.state.meals.add('__no_such_meal__'); s.state.mealAuto = true; });
+await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
+await page.waitForTimeout(500);
+const rescue = await page.evaluate(() => ({
+  pool: window.__mgd.pool().length, meals: [...window.__mgd.state.meals], mealAuto: window.__mgd.state.mealAuto,
+  disabled: document.querySelector("#btnSpinSingle").disabled,
+  toast: [...document.querySelectorAll(".toast")].map(t => t.textContent).join(" ~ ")
+}));
+console.log("[CỨU 0 MÓN] pool=" + rescue.pool + " meals=" + JSON.stringify(rescue.meals) + " | nút quay bị khoá: " + rescue.disabled);
+console.log("  toast:", rescue.toast.slice(0, 120));
+await page.click("#btnCloseSheet"); await page.waitForTimeout(400);
+await page.click("#btnSpinSingle");
+await page.waitForTimeout(8000);
+const rescueSpin = await page.evaluate(() => ({ spinning: window.__mgd.state.spinning, modal: !document.querySelector("#modalBackdrop").hidden, winner: window.__mgd.state.lastWinner && window.__mgd.state.lastWinner.name }));
+console.log("[QUAY SAU KHI CỨU]", JSON.stringify(rescueSpin));
+await page.evaluate(() => { document.querySelectorAll(".win-close").forEach(b => b.click()); });
+await page.waitForTimeout(300);
+
+// ===== người dùng TỰ chọn bữa thì KHÔNG được tự bỏ (chỉ báo + mở sheet) =====
+await page.evaluate(() => { const s = window.__mgd; s.state.vung.clear(); s.state.meals.clear(); s.state.vungManual = false; localStorage.setItem('mgd.vungManual', 'false'); });
+await page.click("#btnOpenSheet"); await page.waitForTimeout(500);
+await page.click('#mealChips .chip[data-k="sang"]'); await page.waitForTimeout(200);
+await page.click('#vungChips .chip[data-k="tay-nguyen"]'); await page.waitForTimeout(400);
+const manual = await page.evaluate(() => ({
+  pool: window.__mgd.pool().length, meals: [...window.__mgd.state.meals],
+  sheetOpen: document.querySelector("#filterPanel").classList.contains("open"),
+  status: document.querySelector("#poolStatusText").textContent
+}));
+console.log("[BỮA DO NGƯỜI DÙNG CHỌN] pool=" + manual.pool + " meals=" + JSON.stringify(manual.meals) + " | sheet mở: " + manual.sheetOpen + " | " + manual.status);
+
+// ===== chip vùng hiện số món =====
+const chipTexts = await page.evaluate(() => [...document.querySelectorAll("#vungChips .chip")].map(c => c.textContent));
+console.log("nhãn chip:", chipTexts.join(" | "));
+// Số trên chip phải khớp số món thật (tính lại từ data/dishes.json lúc chạy) và chip 0 món phải bị mờ.
+const chipCheck = await page.evaluate(() => {
+  const s = window.__mgd, keep = new Set(s.state.vung);
+  const out = [...document.querySelectorAll("#vungChips .chip")].map((c) => {
+    s.state.vung.clear(); s.state.vung.add(c.dataset.k);
+    const real = s.pool().length;                       // cùng bộ lọc, chỉ khác vùng
+    const shown = Number((c.textContent.match(/·\s*(\d+)\s*$/) || [])[1]);
+    return { k: c.dataset.k, real, shown, empty: c.classList.contains('empty') };
+  });
+  s.state.vung.clear(); keep.forEach((k) => s.state.vung.add(k));
+  return out;
+});
+const countsOk = chipTexts.length === 7 && chipCheck.every((c) => isFinite(c.shown));
+const countsRight = chipCheck.every((c) => c.shown === c.real && c.empty === (c.real === 0));
+const zeroChips = chipCheck.filter((c) => c.real === 0).length;
+console.log("  -> số món trên chip:", JSON.stringify(chipCheck));
+console.log("  -> chip khớp số thật:", countsRight, "| số chip 0 món hiện tại:", zeroChips, "(dữ liệu đổi thì số này đổi theo)");
+await page.click("#btnCloseSheet"); await page.waitForTimeout(300);
+
+await browser.close();
+
+const flat = (o) => Object.keys(o.hist);
+const ck = {
+  chips: chips.length === 7 && chips.includes('tay-nam-bo') && chips.includes('tay-nguyen'),
+  commonEverywhere: Object.values(common).every(arr => arr.every(Boolean)),
+  strictOrigin: specialty.normal === true && specialty.strict === false,
+  caoLauTrung: e.pool > 0 && e.hist['cao-lau'] === 'trung' && e.hist['mi-quang'] === 'trung',
+  bacHasAvailability: d.pool > 0 && Object.keys(d.hist).some(x => x === 'pho-bo'),
+  namHasTayAvailability: c.pool > 0 && Object.keys(c.hist).some(x => x === 'pho-bo'),
+  tayHasAvailability: b.pool > 0 && Object.keys(b.hist).some(x => x === 'pho-bo'),
+  caNuocOrigin: g.pool > 0 && Object.values(g.hist).every(x => x === 'vn'),
+  nhieuVung: h.pool > 0 && Object.keys(h.hist).some(x => x === 'pho-bo') && Object.keys(h.hist).some(x => x === 'mi-quang'),
+  ngoaiTatVnOnly: i.pool > 0 && Object.values(i.hist).every(x => x === 'ngoai') && vnOnlyAfter === false,
+  specialtyMode: specialty.normal === true && specialty.strict === false,
+  preset: k.pool > 0 && k.hist['bun-mam'] === 'tay-nam-bo' && presetOn,
+  popupVung: popup2.some(t => t.startsWith('Vùng miền=')),
+  cuu0Mon: rescue.pool === 0 && rescue.meals.length === 1 && rescue.mealAuto === true && rescue.disabled === false,
+  quaySauKhiCuu: rescueSpin.spinning === false && rescueSpin.modal === true,
+  khongTuBoBuaNguoiDung: manual.meals.length === 1 && manual.sheetOpen === true,
+  chipHienSoMon: countsOk && countsRight,
+  khongLoiJs: errs.length === 0
+};
+console.log('---');
+for (const [kk, vv] of Object.entries(ck)) console.log((vv ? 'PASS' : 'FAIL') + '  ' + kk);
+const pass = Object.values(ck).every(Boolean);
+if (errs.length) console.log('lỗi JS:', errs.join(' | '));
+console.log(pass ? 'KẾT QUẢ: PASS' : 'KẾT QUẢ: FAIL');
+process.exit(pass ? 0 : 1);

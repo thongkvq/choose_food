@@ -30,7 +30,7 @@ html{
 }
 html,body{min-height:100%}
 /* KHÔNG dùng overflow-x:hidden trên html/body: kết hợp overscroll-behavior sẽ CHẶN vuốt cuộn trên Chrome mobile.
-   Chống tràn ngang bằng cách không để phần tử nào rộng quá màn (đã kiểm bằng tools/audit-layout.mjs). */
+   Chống tràn ngang bằng cách không để phần tử nào rộng quá màn (đã kiểm bằng tools/test/audit-layout.mjs). */
 body{
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   line-height:1.45;
@@ -283,7 +283,7 @@ h1,h2,h3,h4{line-height:1.2}
 .slider{display:block;padding:8px 0}
 .vung-location-hint{font-size:12px;color:var(--muted);line-height:1.45;margin:8px 0 0;min-height:18px}
 .vung-location-hint:empty{display:none}
-.vung-location-hint button{border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--gold);padding:5px 9px;margin-left:4px;font:inherit;font-weight:700;cursor:pointer}
+.vung-location-hint button{border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--gold);padding:5px 9px;margin-left:4px;font:inherit;font-weight:700;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}
 
 .slider-label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:8px}
 .slider-label b{color:var(--gold)}

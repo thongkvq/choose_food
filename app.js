@@ -19,6 +19,11 @@ const LS = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 };
 const IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+// Id CŨ (trước khi đổi sang slug ASCII) -> id MỚI. Mọi chỗ đọc dữ liệu người dùng đã lưu (yêu thích,
+// nhật ký, thực đơn, lịch sử, số món đã thấy) và link #mon=<id> cũ đều đi qua idNow().
+const ID_LEGACY = { 'cơm-chay': 'com-chay' };
+const idNow = (id) => (id == null ? id : (ID_LEGACY[id] || id));
+const idList = (a) => [...new Set((Array.isArray(a) ? a : []).map(idNow))];
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 4;
 
@@ -60,8 +65,8 @@ const state = {
   vnOnly: LS.get('mgd.vnOnly', true),   // mặc định BẬT: chỉ món Việt, ẩn món nước ngoài
   radius: R_TIERS.includes(LS.get('mgd.radius', 5000)) ? LS.get('mgd.radius', 5000) : 5000,   // bán kính tìm quán (m) người dùng chọn
   avoidRecent: LS.get('mgd.avoidRecent', true) !== false,   // mặc định BẬT: giảm trọng số món vừa ăn / vừa quay ra
-  recentDraws: Array.isArray(LS.get('mgd.recentDraws', [])) ? LS.get('mgd.recentDraws', []).slice(0, 10) : [],   // 10 món vừa quay ra (chưa chốt)
-  favs: LS.get('mgd.favs', []), hist: LS.get('mgd.hist', []), seen: new Set(LS.get('mgd.seen', [])),
+  recentDraws: idList(LS.get('mgd.recentDraws', [])).slice(0, 10),   // 10 món vừa quay ra (chưa chốt)
+  favs: idList(LS.get('mgd.favs', [])), hist: idList(LS.get('mgd.hist', [])), seen: new Set(idList(LS.get('mgd.seen', []))),
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
   lastWinner: null, spinning: false
 };
@@ -234,7 +239,7 @@ function toast(html, ms = 2300) {
   t.innerHTML = html; t.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, ms);
 }
-const dishById = (id) => ALL.find(d => d.id === id);
+const dishById = (id) => ALL.find(d => d.id === idNow(id));
 // sao 0–5 (bước 0.5) + điểm số
 function starsHtml(r) {
   const v = Math.max(0, Math.min(5, Number(r) || 0));
@@ -1015,7 +1020,7 @@ function dishFromHash() {
   if (!m) return null;
   let id = m[1];
   try { id = decodeURIComponent(id); } catch (e) {}
-  return dishById(id) || null;
+  return dishById(idNow(id)) || null;   // idNow: link #mon= cũ (trước khi đổi sang slug ASCII) vẫn mở đúng món
 }
 function clearShareHash() {
   if (!location.hash) return;
@@ -1470,9 +1475,10 @@ const MEAL_LABEL = { sang: 'bữa sáng', trua: 'bữa trưa', vat: 'ăn vặt',
 
 state.wx = LS.get('mgd.wx', null);
 state.ctxOn = LS.get('mgd.ctxOn', true);
-state.diary = LS.get('mgd.diary', []);
+state.diary = (Array.isArray(LS.get('mgd.diary', [])) ? LS.get('mgd.diary', []) : []).map(x => (x && x.id ? { ...x, id: idNow(x.id) } : x));
 state.taste = LS.get('mgd.taste', { style: {}, region: {}, spicy: {}, like: 0, skip: 0 });
-state.menu = LS.get('mgd.menu', { date: todayKey(), sang: null, trua: null, toi: null });
+const _menuSaved = LS.get('mgd.menu', { date: todayKey(), sang: null, trua: null, toi: null });
+state.menu = { ..._menuSaved, sang: idNow(_menuSaved.sang), trua: idNow(_menuSaved.trua), toi: idNow(_menuSaved.toi) };
 state.mealTarget = null;
 
 function saveTaste() { LS.set('mgd.taste', state.taste); }

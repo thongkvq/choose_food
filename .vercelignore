@@ -7,3 +7,4 @@ certs
 server.js
 package-lock.json
 .deploy-cli
+data/dishes.sqlite

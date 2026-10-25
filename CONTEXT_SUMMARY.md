@@ -1,59 +1,61 @@
 # CONTEXT SUMMARY — Món Gì Đây? (web gacha chọn món ăn)
 
-_Cập nhật: bản cô đọng. Trạng thái: ĐANG CHẠY, đã verify._
+_Cập nhật: sau task-04 (v25). Trạng thái: ĐANG CHẠY, đã verify trên LAN + bản tĩnh. Bản production: https://choose-food-paroda.vercel.app_
 
 ## 1. Yêu cầu gốc (giữ nguyên ý)
 "Web chọn món ăn sáng/trưa/chiều/ăn vặt… quay như gacha, có hình minh hoạ món ăn, món Việt/Tây/Tàu…, món khô/nước/chiên/nướng, hiệu ứng đẹp mắt."
 Bổ sung sau đó: quay kiểu **băng chuyền chạy ngang** dừng từ từ; ảnh món **chính xác**; **chỉ dùng trên mobile**; thao tác phải dễ, **có nút bấm để quay**; chọn xong phải hiện **popup thông tin món**; thông tin món **chi tiết**; lấy **thông tin tiếng Anh rồi dịch sang tiếng Việt**; **dùng toạ độ thiết bị** để liệt kê **quán bán món đó gần đây**.
 
 ## 2. Chạy & truy cập
-    cd '/var/lib/dsh/Choose foody' && node server.js      # job nền, tự in URL
+    node server.js            # chạy từ thư mục project, tự in URL (đổi cổng: PORT=4322 node server.js)
 - HTTP  (LAN)     : http://192.168.100.13:4321      ← dùng hằng ngày
 - HTTP  (máy này) : http://127.0.0.1:4321
 - HTTPS (LAN)     : https://192.168.100.13:8443     ← **cần để dùng GPS thật** (chứng chỉ tự ký, bấm "Nâng cao → Tiếp tục")
-- Port đổi bằng `PORT` / `HTTPS_PORT`. Cert: `certs/key.pem` + `certs/cert.pem` (openssl, SAN = IP LAN).
-- Đã tắt cache (`no-cache, must-revalidate`) cho html/js/css/json → F5 là thấy bản mới. gzip bật: lần tải đầu ~59KB (thô 238KB).
+- Bản tĩnh (mô phỏng Vercel, không có `/api`): `node tools/dev/probe-static.mjs 4399`
+- `package.json` **không có `scripts`** (cố ý — xem mục 13). Cache đã tắt (`no-cache, must-revalidate`) cho html/js/css/json → F5 là thấy bản mới; gzip bật.
 
 ## 3. Kiến trúc & quyết định chính
-- **Vanilla JS ES module, không build step, không dependency**; `server.js` là static server + 3 API.
-- **SQLite là nguồn dữ liệu gốc**, export ra `data/dishes.json` cho frontend (không hardcode món trong JS).
-- **268 món** (176 Việt + 92 quốc tế), 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
-- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (255 món có ảnh, 13 món dùng SVG).
+- **Vanilla JS ES module, không build step, không dependency runtime**; `server.js` là static server + 5 API. Logic tìm quán dùng chung ở `lib/nearby-core.js` (app.js + server.js).
+- **Vercel = web TĨNH thuần** (không serverless, `api/` đã bỏ hẳn): `/api/*` trả 404, client tự chuyển sang gọi thẳng Photon / Open-Meteo / ipapi.co.
+- **SQLite là nguồn dữ liệu gốc**, export ra `data/dishes.json`; frontend chỉ tải `data/dishes-lite.json` + `data/dishes-detail-*.json` (tách 2 tầng, xem mục 24).
+- **308 món** (216 Việt + 92 quốc tế), 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
+- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (278 món có ảnh, 30 món dùng SVG).
 - **Chỉ quay bằng nút** "🎰 QUAY 1 MÓN" / "⚡ x10" (khung quay đã tắt nhận chạm; không còn vuốt-để-quay).
 - **Popup kết quả** tự mở sau khi băng chuyền dừng, render phòng thủ (try/catch + fallback) nên dữ liệu cũ cũng không làm trắng thẻ.
 
 ## 4. Dữ liệu mỗi món (trong data/dishes.json + SQLite)
-| Trường | Nội dung | Độ phủ |
+| Trường | Nội dung | Độ phủ (308 món) |
 |---|---|---|
-| name/emoji/region/meals/style/tags/descr | cơ bản | 248 |
-| price/minutes/spicy/veg/weight/tier | thuộc tính gacha | 248 |
-| image + imageVia + imageSource | ảnh thật có nguồn (vi-wiki/en-wiki/commons) | 235 |
-| rating + stars + review | điểm 7.1–9.8 + nhận xét (48 món viết tay) | 248 |
-| calories/protein/proteinLabel/fullness/priceRange/bestFor/bestTime/origin/tip | ước tính + gợi ý (ghi rõ "ước tính") | 248 |
-| intro + introSource + wikiUrl + introEn | đoạn mở đầu Wikipedia, **đã dịch sang tiếng Việt** | 234 |
-| facts {originCountry,cuisine,ingredients,type} | Wikidata | 215 |
-| detail[{t,body}] | mục Nguồn gốc/Nguyên liệu/Cách làm/Biến tấu | 131 |
-| kw[] | từ khoá tra quán | 248 |
+| name/emoji/region/meals/style/tags/descr | cơ bản | 308 |
+| price/minutes/spicy/veg/weight/tier | thuộc tính gacha | 308 |
+| image + imageVia + imageSource | ảnh thật có nguồn (vi-wiki 124 / en-wiki 45 / commons 109) | 278 |
+| rating + stars + review | điểm 7.1–9.8 + nhận xét | 308 |
+| calories/protein/proteinLabel/fullness/priceRange/bestFor/bestTime/origin/tip | ước tính + gợi ý (ghi rõ "ước tính") | 308 |
+| intro + introSource + wikiUrl + introEn | đoạn mở đầu Wikipedia, **đã dịch sang tiếng Việt** | 274 |
+| facts {originCountry,cuisine,ingredients,type} | Wikidata | 247 |
+| detail[{t,body}] | mục Nguồn gốc/Nguyên liệu/Cách làm/Biến tấu | 169 |
+| vung / dacSan / vungCo | vùng gốc (vn 64 · bac 48 · nam 46 · trung 31 · tây nam bộ 18 · tây nguyên 9 · ngoài VN 92) · 69 đặc sản · vùng đang bán (bắc 164 · trung 167 · nam 170 · tây nam bộ 170 · tây nguyên 156) | 308 |
+| kw[] | từ khoá tra quán | 308 |
 
-**Bảng SQLite `dishes`** có đủ các cột trên (đã đồng bộ; intro 234, facts 215, detail 131, introEn 71).
+**Bảng SQLite `dishes`** có đủ các cột trên (đã đồng bộ 308/308 dòng).
 
-## 5. Files
+## 5. Files (cấu trúc hiện tại)
 - `index.html` — khung UI: header, băng chuyền, 1 hàng nút [⚙️ Lọc][🎰 QUAY 1 MÓN][⚡ x10], filter sheet, modal kết quả/10-pull, drawer yêu thích, toast.
 - `styles.css` — mobile-first: biến `--card-w/--vp-h`, safe-area, dvh, tap target ≥44px, chế độ gọn cho màn thấp (`max-height:740px`), breakpoint 480/640/1024.
-- `app.js` — gacha (weighted + pity), quay băng chuyền (WIN_INDEX, easeOutQuint), popup (điểm/giới thiệu/chi tiết/facts/quán gần đây), bộ lọc, yêu thích, lịch sử, confetti, âm thanh, rung.
-- `art.js` — 23 template SVG.
-- `server.js` — static + gzip + `/api/whereami` (vị trí theo IP + hâm nóng khu vực) + `/api/nearby` (lọc quán theo món, Photon + Overpass) + `/api/geocode` (địa chỉ → toạ độ) + HTTPS 8443.
-- `data/dishes.json`, `certs/`, `tools/*` (xem mục 6), `README.md`, `CONTEXT_SUMMARY.md`.
+- `app.js` — gacha (weighted + pity + tránh món lặp), quay băng chuyền (WIN_INDEX, easeOutQuint), popup (điểm/giới thiệu/chi tiết/facts/quán gần đây), bộ lọc + vùng miền, yêu thích, lịch sử, thực đơn/nhật ký, PWA, `#mon=<id>`, `ID_LEGACY` (đổi id cũ → slug ASCII).
+- `art.js` — 23 template SVG. · `lib/nearby-core.js` — logic tìm quán dùng chung app.js/server.js.
+- `server.js` — static + gzip + `/api/whereami` · `/api/weather` · `/api/geocode` · `/api/reverse-geocode` · `/api/nearby` + HTTPS 8443.
+- `sw.js` + `manifest.webmanifest` + `icons/` — PWA (cache shell/data/ảnh).
+- `data/dishes.json` (nguồn gốc) · `data/dishes.sqlite` · `data/dishes-lite.json` · `data/dishes-detail-0..3.json`.
+- `tools/` (xem mục 6) · `README.md` · `CONTEXT_SUMMARY.md` · `vercel.json` · `deploy.sh` · `.vercelignore` · `.gitignore`.
 
-## 6. Công cụ trong tools/
-Thu thập dữ liệu: `fetch-images.mjs` (ảnh theo lô từ Wikipedia) · `dedup-images.mjs` · `normalize-image-urls.mjs` (ép thumbnail 500/960px) · `fix-images.mjs`+`fix-images2.mjs`+`strip-wrong-images.mjs` (sửa/bỏ ảnh sai) · `enrich-dishes.mjs` (điểm, dinh dưỡng ước tính) · `enrich-wiki.mjs`+`enrich-wiki2.mjs` (giới thiệu + Wikidata) · `enrich-sections.mjs` (mục chi tiết) · `translate-vi.mjs` (dịch EN→VI) · `audit-images.mjs` · `verify-images.mjs`.
-Kiểm thử (chromium thật, mượn chromedeps): `audit-layout.mjs` (bố cục 3 cỡ màn) · `diag-scroll.mjs`/`diag-scroll2.mjs` (bisect lỗi cuộn) · `test-touch.mjs` · `test-popup.mjs` · `test-olddata.mjs` (dữ liệu cache cũ) · `test-result-card.mjs` · `test-detail.mjs` · `test-intro.mjs` · `test-nearby.mjs` · `test-gps.mjs` · `test-loc-http.mjs` · `screenshots.mjs` (ảnh chụp vào `tools/screenshots/`).
-Chạy chromium thật khi thiếu lib:
-    const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');  // playwright
-    chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',
-      args: ['--no-sandbox','--disable-dev-shm-usage','--disable-gpu'],
-      env: { ...process.env, LD_LIBRARY_PATH: '/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu:/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu/alsa-lib:/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu/gbm' } })
-    // container KHÔNG có font hệ thống (fc-list = 0) → mọi chiều cao chữ phải dựa vào line-height tường minh; ảnh chụp sẽ không hiện chữ
+## 6. Công cụ trong tools/ (đã dọn + chia thư mục ở task-04)
+Danh sách đầy đủ + cách chạy: **`tools/README.md`**. Tóm tắt:
+- `tools/data/` — pipeline chạy lại được: `data-add-dishes.mjs` · `enrich-vung.mjs` · `data-patch-aliases.mjs` · `data-fetch-images.mjs` (tra ảnh vi→en→Commons, có `TARGETS=`/`DRY=1`) · `data-enrich-info.mjs` · `enrich-dishes.mjs` · `normalize-image-urls.mjs` · `audit-images.mjs` · `verify-images.mjs` · `data-sync-sqlite.mjs` · `data-split.mjs` · `data-validate.mjs` (+ dữ liệu `aliases.json`, `data-new-dishes.json`).
+- `tools/test/` — `test-all.mjs` + 27 `test-*.mjs` + `audit-layout.mjs` · `audit-desktop.mjs` · `verify-desktop-mobile.mjs` (30 file khi chạy test-all).
+- `tools/dev/` — `probe-static.mjs` (server tĩnh mô phỏng Vercel) · `make-icons.mjs` · `screenshots.mjs`.
+- `tools/lib/chromium.mjs` — mở chromium thật cho test/dev; nạp Playwright theo `$PLAYWRIGHT_DIR` → `node_modules` project → `$DSH_HOME/profiles/web`, **không hard-code đường dẫn máy**.
+- Đã xoá ở task-04 (32 file): `.snapshot-*.json`, `probe.json`, `image-report.json`, `.translate-cache.json`, `screenshots/*.png`, `debug-*`, `diag-*`, `probe-close/layout/render/overpass`, `shot-vung`, `fix-images*`, `strip-wrong-images`, `restore-from-report`, `dedup-images`, `fetch-images`, `enrich-wiki*`, `enrich-sections`, `translate-vi`, `data-report`, `sync-all-to-sqlite`, `sync-vung-sqlite`, `list-candidates`.
 
 ## 7. Tính năng người dùng thấy
 1. **Băng chuyền ngang** 34 thẻ (phone) / 60 (desktop), hãm phanh easeOutQuint, dừng đúng tâm (đo được lệch 0px), tiếng tick + rung theo nhịp.
@@ -78,7 +80,7 @@ Nguyên nhân thật: `.win-dialog` là `display:flex;flex-direction:column`; `.
 Sửa: thêm `.win-dialog>*{flex-shrink:0}` (và `.multi-dialog>*`) — sau đó nội dung dài thì chính thẻ cuộn, không mất chữ.
 Đo lại (chromium thật): 458×1017 · 390×844 · 375×667 → **không còn phần tử nào bị overflow:hidden cắt**, dòng cuối + dòng meta đều hiện đủ.
 Giảm cuộn: bảng thông tin chỉ hiện **6 dòng** (màn <760px: 4 dòng) + nút "＋ Xem thêm N thông tin"; màn thấp clamp review 2 dòng, tip 3 dòng, intro 3 dòng ⇒ cuộn còn 69px (458×1017) / 135px (375×667).
-Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + đo độ phủ), `tools/test-clip.mjs` (kiểm tra 3 cỡ màn).
+Công cụ phát hiện: `tools/diag-cover.mjs` (đã xoá ở task-04 — bug đã đóng), regression nay do `tools/test/test-clip.mjs` giữ (3 cỡ màn).
 
 ## 10. v14 — Thời tiết/giờ · Gu · Nhật ký · Thực đơn hôm nay · Chia sẻ ảnh
 - **API mới**: `/api/weather?lat&lng` (Open-Meteo, không cần key, cache 15 phút) trả temp/desc/rain/storm/snow/isDay/hour.
@@ -89,32 +91,31 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - **Panel #todayBackdrop**: 3 ô bữa (`MENU_SLOT` map bữa phụ: xế/vặt → trưa, khuya → tối), tổng kcal/đạm/tiền, gợi ý cân bằng, gu, nhật ký 7 ngày, nút xuất ảnh.
 - **shareCard()** vẽ canvas 1080×1350 (thực đơn hoặc món) → `navigator.share` files nếu hỗ trợ, không thì tải PNG.
 - Popup có thêm **📅 Vào thực đơn**; nút **Quay lại** giờ trừ điểm gu.
-- **Hook test**: `window.__mgd = { state, biasOf, pool, drawOne, mealByHour, ALL }` (chỉ đọc) — dùng bởi `tools/test-bias.mjs`.
+- **Hook test**: `window.__mgd = { state, biasOf, pool, drawOne, mealByHour, ALL }` (chỉ đọc) — dùng bởi `tools/test/test-bias.mjs`.
 - BUG tự gây khi patch: chèn nhầm 3 dòng khởi tạo vào trong handler chip (chip không hiện) → đã chuyển về cuối IIFE boot cạnh `idleTrack()`.
 - Đo lại: panel Hôm nay 458×1017 cao 732px (trọn, không cuộn), 375×667 cuộn 118px, không cắt chữ, không nút <40px; audit bố cục + jsdom + test-clip đều pass.
 
-## 11. v15 — Chuẩn bị deploy Vercel
-- **Trọng lượng client**: index.html 11KB + styles.css 42KB + app.js 62KB + art.js 20KB + data/dishes.json 851KB = **966KB thô → 234KB gzip** (~59KB gzip cho phần code, 201KB cho JSON món). Ảnh **không nằm trong repo** (235 ảnh hotlink từ upload.wikimedia.org) nên không tốn băng thông Vercel.
-- **Đã tạo**: `api/_lib.js` (norm/distM/jsonFetch/cached/setCache/withTimeout + whereAmI/weather/geocode/photonSearch/overpassNear), `api/whereami.js`, `api/weather.js`, `api/geocode.js`, `api/nearby.js`, `vercel.json` (maxDuration: nearby 30s, whereami 20s, weather/geocode 15s; cache header cho data/dishes.json và no-store cho html/js/css), `.vercelignore` + `.gitignore` (loại node_modules 96MB, tools/screenshots, certs, memory).
-- **Overpass đổi thành opt-in**: mặc định `/api/nearby` chỉ chạy Photon (~1.2s); client tự gọi lại kèm `&ov=1` khi không có quán nào khớp tên món (khi đó chờ tối đa 3.5s, hết giờ thì bỏ qua, vẫn còn link Google Maps). server.js LAN cũng race Overpass 4s.
-- **Test handler bằng Node** (không cần Vercel CLI): `tools/test-vercel-fn.mjs` giả lập `{query}` + `res.status().json()` — whereami/weather/nearby/geocode đều 200, thiếu lat/lng trả 400; `tools/test-vercel-speed.mjs` đo thời gian (1.2s thường / 3.5s khi ov=1).
+## 11. v15 — Chuẩn bị deploy Vercel (lịch sử; `api/` sau đó ĐÃ BỎ)
+- **Trọng lượng client (lúc đó)**: index.html + styles.css + app.js + art.js + data/dishes.json = **966KB thô → 234KB gzip**. Ảnh **không nằm trong repo** (hotlink từ upload.wikimedia.org) nên không tốn băng thông Vercel. Nay dùng dữ liệu tách 2 tầng → xem mục 23/24.
+- ~~`api/_lib.js` + 4 route serverless~~ — **đã xoá toàn bộ `api/`** (mục 13): Vercel chạy tĩnh thuần, chỉ `server.js` của LAN còn `/api/*`.
+- **Overpass đổi thành opt-in**: mặc định chỉ chạy Photon (~1.2s); client tự gọi lại kèm `&ov=1` khi không có quán khớp tên món (chờ tối đa 3.5s rồi bỏ qua, vẫn còn link Google Maps). server.js LAN cũng race Overpass 4s.
 - **Trên Vercel GPS chạy sẵn** vì có HTTPS (không cần mẹo chứng chỉ tự ký như LAN). Cache trong RAM là theo instance (cold start) + có `s-maxage` ở CDN.
-- Deploy: `git init && git add -A && git commit -m "Mon Gi Day" && npx vercel --prod`.
+- Deploy: push `main` → Vercel bot tự deploy (không cần CLI/token).
 
 ## 12. Đã đẩy lên GitHub (chờ import Vercel)
 - Repo: **https://github.com/thongkvq/choose_food** (public), nhánh `main`, **65 file**, ~2 MB.
 - Xác thực: **deploy key SSH** `~/.ssh/mongi_deploy` (đã thêm vào repo với quyền ghi); git repo-local đã set
   `core.sshCommand = ssh -i ~/.ssh/mongi_deploy -o IdentitiesOnly=yes`.
-- Các commit: khởi tạo → thêm `deploy.sh` + `vercel.json` → bỏ dependency `vercel` khỏi `package.json` (do lúc cài CLI bị npm tự thêm vào) → đơn giản hoá `vercel.json` → loại `tools/` khỏi gói deploy → thêm `tools/test-live.mjs`.
+- Các commit: khởi tạo → thêm `deploy.sh` + `vercel.json` → bỏ dependency `vercel` khỏi `package.json` (do lúc cài CLI bị npm tự thêm vào) → đơn giản hoá `vercel.json` → loại `tools/` khỏi gói deploy → thêm `tools/test/test-live.mjs`.
 - Vercel CLI 59.16.0 nằm ở `node_modules/.bin/vercel` (đã .gitignore/.vercelignore); deploy bằng `VERCEL_TOKEN=... ./deploy.sh` nếu không import qua dashboard.
-- Kiểm tra sau deploy: `node tools/test-live.mjs https://<tên>.vercel.app` (đã thử trên server LAN: 7/7 endpoint 200, nearby 1.0s).
+- Kiểm tra sau deploy: `node tools/test/test-live.mjs https://<tên>.vercel.app` (đã thử trên server LAN: 7/7 endpoint 200, nearby 1.0s).
 - Cấu hình import: Framework **Other**, Build Command để trống, Output Directory để trống, Install mặc định.
 - **ĐÃ DEPLOY THẬT** (2026-09-12): Vercel bot deploy cả 4 commit cuối, commit status `success`.
   - Deploy URL: `https://choose-food-c3gpyxdko-paroda.vercel.app` (dpl_GPtUbvGrw93ULvT34oYBSKcLxJAc)
   - Alias production: `https://choose-food-paroda.vercel.app` (team/scope **paroda**)
   - ✅ **SITE ĐÃ CHẠY CÔNG KHAI: https://choose-food-paroda.vercel.app** (đã tắt Vercel Authentication)
   - ⚠️ **Kiến trúc trên Vercel = tĩnh thuần**, không dùng serverless function (xem mục 13). Ảnh/JS/CSS/dishes.json tải 200; `/api/*` trả 404 và client tự chuyển sang gọi thẳng dịch vụ.
-  - ⚠️ **Đang bật Vercel Authentication (Deployment Protection)** → mọi path trả về trang "Login – Vercel". Muốn public phải vào Settings → Deployment Protection → Vercel Authentication → **Disabled**. Kiểm tra lại bằng `node tools/test-live.mjs <url>` sau khi tắt.
+  - ⚠️ **Đang bật Vercel Authentication (Deployment Protection)** → mọi path trả về trang "Login – Vercel". Muốn public phải vào Settings → Deployment Protection → Vercel Authentication → **Disabled**. Kiểm tra lại bằng `node tools/test/test-live.mjs <url>` sau khi tắt.
   - Cách tìm URL deploy khi không có dashboard: `curl -s https://api.github.com/repos/thongkvq/choose_food/deployments` rồi lấy `statuses` → `environment_url`.
 
 ## 13. Vì sao Vercel phải là tĩnh thuần (đã sửa xong)
@@ -125,12 +126,13 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
    - `vercel.json`: `{ "version": 2, "builds": [{ "src": "**/*", "use": "@vercel/static" }], "routes": [{ "handle": "filesystem" }] }`
    - `app.js` thêm **lớp API**: `apiMode()` thử `/api/whereami` → nếu không trả JSON thì `API_MODE='direct'`; `apiJSON(path, directFn)` ưu tiên server (LAN có cache), fallback gọi thẳng Photon / Open-Meteo / ipapi.co (cả ba đều CORS `*`), có cache localStorage (weather 15 phút, toạ độ 6 giờ, geocode 24 giờ).
    - Xoá `start` khỏi `package.json`; `api/` vẫn giữ cho server LAN.
-5. **Đã kiểm chứng bằng browser thật trên link deploy**: trang nạp, chip thời tiết 25°C (Open-Meteo trực tiếp), quay ra popup (12 dòng thông tin + giới thiệu), GPS → **8 quán "Bánh canh cua" quanh 3km** (Photon trực tiếp), 0 lỗi JS, 0 request lỗi. Script: `tools/test-vercel-live.mjs`.
+5. **Đã kiểm chứng bằng browser thật trên link deploy**: trang nạp, chip thời tiết 25°C (Open-Meteo trực tiếp), quay ra popup (12 dòng thông tin + giới thiệu), GPS → **8 quán "Bánh canh cua" quanh 3km** (Photon trực tiếp), 0 lỗi JS, 0 request lỗi. Script: `tools/test/test-vercel-live.mjs`.
 
 ## 14. Việc còn lại / bước kế tiếp
-- 14 món chưa có bài Wikipedia (com-nieu, mien-cua, pho-tron, hu-tieu-kho, bo-ne, chao-dau-xanh…) — hiện chỉ có điểm + ước tính.
-- 13 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons).
-- Có thể thêm: lưu "thực đơn hôm nay" 3 bữa, chia sẻ ảnh kết quả, lọc theo quán đã lưu, cache ảnh offline (SW không chạy được trên http LAN).
+- Món chưa có bài Wikipedia (chỉ có điểm + ước tính): xem `node tools/data/data-validate.mjs` (intro 274/308 · facts 247/308 · detail 169/308).
+- 30 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons): `TARGETS=id1,id2 node tools/data/data-fetch-images.mjs`.
+- Có thể thêm: lọc theo quán đã lưu, điểm sao quán thật (cần Google Places API — chủ dự án chốt không trả tiền), cache ảnh nhiều hơn 150.
+- **Service worker không chạy trên http LAN** — muốn PWA/offline trên điện thoại phải mở qua HTTPS (8443) hoặc dùng bản Vercel.
 - Muốn GPS thật trên điện thoại: mở **https://192.168.100.13:8443** và bỏ qua cảnh báo chứng chỉ.
 
 ## 15. v16 — Mặc định ẨN món nước ngoài (yêu cầu: "ăn bình thường, bỏ món Hàn/Nhật")
@@ -140,8 +142,8 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - Bấm chip ẩm thực ngoại (Nhật/Hàn/…) khi đang bật **tự tắt** chế độ "chỉ món Việt" (xử lý trong `chipRow`); `resetFilters()` bật lại mặc định.
 - `index.html`: công tắc **#fVnOnly** "🇻🇳 Chỉ món Việt — ẩn món nước ngoài" đầu nhóm *Thêm* (checked sẵn) + dòng nhắc `.fnote` ở nhóm *Ẩm thực*; `styles.css`: `.chip.foreign-off{opacity:.4;border-style:dashed}`, `.fnote`.
 - Số liệu: 160 món Việt / 88 món quốc tế (cn 19, jp 13, fr 10, us 8, kr 9, th 7, tr 6, mx 6, in 5, it 5).
-- Test tự động: `node tools/test-vnonly.mjs` (chromium thật, 390×844) — PASS: mặc định pool chỉ region `vn`, 6 lần rút ngẫu nhiên 0 món ngoại, 10 chip ngoại bị mờ, tắt công tắc → có lại món ngoại, bấm chip Nhật → chỉ còn jp, "Đặt lại" → về chỉ món Việt, reload nhớ trạng thái qua `mgd.vnOnly`.
-- Muốn xoá hẳn 88 món ngoại khỏi dữ liệu thì phải sửa `data/dishes.json` + bảng SQLite `dishes` (chưa làm — có thể khôi phục từ `tools/.snapshot-before-fix.json`).
+- Test tự động: `node tools/test/test-vnonly.mjs` (chromium thật, 390×844) — PASS: mặc định pool chỉ region `vn`, 6 lần rút ngẫu nhiên 0 món ngoại, 10 chip ngoại bị mờ, tắt công tắc → có lại món ngoại, bấm chip Nhật → chỉ còn jp, "Đặt lại" → về chỉ món Việt, reload nhớ trạng thái qua `mgd.vnOnly`.
+- Muốn xoá hẳn món ngoại khỏi dữ liệu thì phải sửa `data/dishes.json` + bảng SQLite `dishes` (chưa làm; các `tools/.snapshot-*.json` đã xoá ở task-04, cần thì lấy lại từ git history).
 
 ## 16. v17 — Tìm quán CHỐT 5km + link đặt món ShopeeFood/GrabFood
 - **Bán kính tối đa 5km, không mở rộng nữa.** Trước đây thang bán kính là `[r, max(r*2,5000), max(r*4,10000)]` (2.5 → 5 → 10km). Nay chỉ còn **một mức**: `app.js` xin `r=5000`, `server.js` thêm `const MAX_RADIUS = 5000` và `attempts = [Math.min(radius, MAX_RADIUS)]`, `api/nearby.js` y hệt.
@@ -149,7 +151,7 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - UI: dòng ghi chú đổi thành "N quán … trong ~5km (tối đa 5km)".
 - **Link đặt món** (mới trong `app.js`: hàm `deliveryLinks(dishQ)`, dùng ở cả nhánh thành công và nhánh lỗi): ShopeeFood `https://shopeefood.vn/search?keyword=<món>` (route `/search` lấy từ bundle `app-f182e75cd868fe649223.js` của họ), GrabFood `https://food.grab.com/vn/vi/restaurants?search=<món>`. **Chỉ là link tìm kiếm** — mở app rồi tự đặt, KHÔNG lấy dữ liệu quán từ 2 nền tảng này.
 - **Vì sao không lấy được dữ liệu ShopeeFood/GrabFood**: không có API công khai. `gappapi.deliverynow.vn/api/...` (backend ShopeeFood) trả **403** khi không có header ký/device token; shopeefood.vn là SPA (HTML shell chỉ 5.1KB, không có dữ liệu quán); food.grab.com có `__NEXT_DATA__` nhưng danh sách quán do client gọi API nội bộ có auth, HTML không chứa tên quán. Muốn dữ liệu quán thật (tên/địa chỉ/giờ mở/rating) thì dùng **Google Places API** (cần key, có free tier) hoặc giữ OSM/Photon như hiện tại.
-- Test: `node tools/test-nearby-5km.mjs [baseUrl]` — phần A gọi `/api/nearby?...&r=20000` phải bị chặn còn 5000 (đo được xa nhất 4459m); phần B mở UI thật, quay 1 món, bấm 📍, kiểm tra mọi quán ≤5km + có đủ link ShopeeFood/GrabFood + ghi chú "tối đa 5km". Đã PASS trên LAN `http://127.0.0.1:4321`.
+- Test (script đã xoá, nay là `test-nearby-radius.mjs`): phần A gọi `/api/nearby?...&r=20000` phải bị chặn còn 5000 (đo được xa nhất 4459m); phần B mở UI thật, quay 1 món, bấm 📍, kiểm tra mọi quán ≤5km + có đủ link ShopeeFood/GrabFood + ghi chú "tối đa 5km". Đã PASS trên LAN `http://127.0.0.1:4321`.
 
 ## 17. v18 — Người dùng tự chọn bán kính 2.5 / 5 / 10km
 - **Bỏ mức chốt cứng 5km**: nay có **thanh chọn bán kính** trong khối "Tìm quán gần đây" (`radiusChipsHTML()` trong `app.js`, chip `.rad-chip[data-rad]`, mặc định **5km**, nhớ trong `mgd.radius`). Bấm chip khác → tìm lại ngay bằng **vị trí cũ** (không xin GPS lại).
@@ -157,7 +159,7 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 - **Sửa lỗi lọt quán ngoài bán kính**: Photon trả theo ô vuông nên có quán nhích ra ngoài (2.8km khi chọn 2.5km) → thêm `.filter(p => p.dist <= rad)` ở cả 3 nơi (`server.js`, `api/nearby.js`, `dirNearby()` trong `app.js`).
 - **Overpass 10km**: kiểu `around:10000` bị Overpass trả **504** (đo 11.5s); đổi sang **bbox** (nam,tây,bắc,đông) cùng vùng chỉ ~2-3.5s, giới hạn `out center` 400/700/1000 theo mức. Thêm 2 gương dự phòng: `overpass.private.coffee`, `overpass.osm.ch` (Overpass hay trả 429 khi hỏi dồn).
 - **Nạp nền khi hết giờ**: hạn chờ Overpass theo mức (2.5km→5s, 5km→9s, 10km→15s). Quá hạn thì trả ngay kết quả Photon + `areaWarming: true`, đồng thời **nạp tiếp 60s ở nền** rồi cache 30 phút → UI hiện gợi ý "bấm 🔄 Tìm lại sau ~10 giây là có". Cache Overpass theo ô 0.01° **+ mức bán kính**.
-- Test: `node tools/test-nearby-radius.mjs [baseUrl]` (thay `test-nearby-5km.mjs` đã xoá) — kiểm API cho cả 5 trường hợp xin r (2500/5000/10000/20000/1000), rồi mở UI thật: đủ 3 chip, mặc định 5km, đổi 2.5km → mọi quán ≤2500m và URL gửi `r=2500`, lưu `mgd.radius`, đổi 10km → ≤10000m, F5 vẫn nhớ. Đã PASS trên LAN.
+- Test: `node tools/test/test-nearby-radius.mjs [baseUrl]` (thay `test-nearby-5km.mjs` đã xoá) — kiểm API cho cả 5 trường hợp xin r (2500/5000/10000/20000/1000), rồi mở UI thật: đủ 3 chip, mặc định 5km, đổi 2.5km → mọi quán ≤2500m và URL gửi `r=2500`, lưu `mgd.radius`, đổi 10km → ≤10000m, F5 vẫn nhớ. Đã PASS trên LAN.
 
 ## 18. v19 — Gợi ý QUÁN CÓ TIẾNG trong 15km (mức bán kính thứ 4)
 - **Thêm mức 15km**: `R_TIERS = [2500, 5000, 10000, 15000]` (app) và `TIERS` tương ứng ở `server.js`/`api/nearby.js`; `MAX_RADIUS = 15000`. Overpass `out center` nới giới hạn theo mức: 500/900/1600/**2600**; hạn chờ 15km = **20s**, nạp nền tối đa `ovBudget*4`. Ô 15km quanh Sài Gòn: 2315 POI, **ô lạnh ~3.4s**, gọi lại sau cache 0.25s.
@@ -167,7 +169,7 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
   - Mỗi quán kèm `why[]` (lý do: "thương hiệu X", "có website", "có giờ mở cửa"…) hiện thành badge vàng trong `.fam-why`; UI ghi rõ **"không phải điểm đánh giá của khách"**.
 - **Vì sao không có số sao/đánh giá thật**: OSM gần như không có `stars`/`rating` (đo 2000 POI ở Sài Gòn: wikidata **0**, brand 254, website 128, phone 191, hours 265, addr 745); Wikidata SPARQL "restaurant in bbox Sài Gòn" trả **0 kết quả**; Google Places/Nominatim cần key (Nominatim còn bị mạng này reset). Muốn điểm sao thật thì phải cắm **Google Places API**.
 - **Bản tĩnh (Vercel) không có khối này**: Overpass **không gửi CORS header** (`Access-Control-Allow-Origin` trống) nên client không gọi thẳng được; Photon trả về không có tag brand/website. Client tự bỏ qua khối khi server không trả `famousMatch/famousNear`.
-- Test: `node tools/test-nearby-radius.mjs` nay kiểm thêm 4 chip, API `r=15000` và `r=20000 → 15000`, khối quán có tiếng (có tiêu đề, có lý do, xa nhất ≤15km, có ghi chú nguồn OSM), F5 nhớ mức 15km. Bản tĩnh tự bỏ qua phần quán có tiếng. **PASS trên LAN**.
+- Test: `node tools/test/test-nearby-radius.mjs` nay kiểm thêm 4 chip, API `r=15000` và `r=20000 → 15000`, khối quán có tiếng (có tiêu đề, có lý do, xa nhất ≤15km, có ghi chú nguồn OSM), F5 nhớ mức 15km. Bản tĩnh tự bỏ qua phần quán có tiếng. **PASS trên LAN**.
 - **BUG đã sửa (bản tĩnh/Vercel)**: `dirNearby()` còn `Math.min(radius, 10000)` nên chọn 15km vẫn chỉ tìm 10km (ghi chú hiện "~10km"). Đã đổi thành 15000 (commit `66116bd`). Luôn kiểm cả bản tĩnh, không chỉ LAN.
 
 ## 19. v20 — Tối ưu MIỄN PHÍ cho "quán có tiếng" (không dùng Google API)
@@ -182,47 +184,81 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (liệt kê khối bị cắt + 
 
 ## 20. v21 — Lọc theo VÙNG MIỀN (yêu cầu: "thêm filter chọn món theo vùng miền, ví dụ miền tây nam bộ, miền nam, miền trung, miền bắc")
 - **Trường mới `vung`** cho mọi món trong `data/dishes.json` + cột `vung` trong bảng SQLite `dishes` (đã đồng bộ, 248/248, không NULL). 7 giá trị: `bac` 38 · `trung` 17 · `nam` 38 · `tay-nam-bo` 4 · `tay-nguyen` 1 · `vn` 62 (phổ biến cả nước) · `ngoai` 88 (món quốc tế).
-- **Gán bằng script chạy lại được**: `node tools/enrich-vung.mjs` — bảng phân loại viết tay theo `id` (không đoán bằng từ khoá), món Việt không nằm trong bảng tự rơi vào `vn`, món `region !== "vn"` thành `ngoai`. Snapshot trước khi sửa: `tools/.snapshot-before-vung.json`.
+- **Gán bằng script chạy lại được**: `node tools/data/enrich-vung.mjs` — bảng phân loại viết tay theo `id` (không đoán bằng từ khoá), món Việt không nằm trong bảng tự rơi vào `vn`, món `region !== "vn"` thành `ngoai`. (Snapshot `.snapshot-before-vung.json` đã xoá ở task-04.)
 - **UI**: nhóm **🗺️ Vùng miền** trong filter sheet (`#vungChips`, `chipRow($("#vungChips"), VUNG, state.vung)`), chip: Miền Bắc 🏯 · Miền Trung 🌾 · Miền Nam 🏙️ · Miền Tây Nam Bộ 🛶 · Tây Nguyên ☕ · Cả nước 🇻🇳 · Ngoài Việt Nam 🌍. Bấm nhiều chip cùng lúc.
 - **`VUNG_INCLUDE = { nam: ["nam","tay-nam-bo"] }`** — chọn "Miền Nam" là gồm luôn miền Tây Nam Bộ (đúng địa lý). Hàm lọc `vungHit(v)` dùng trong `pool()`; `state.vung` được tính vào `activeFilterCount()`; `resetFilters()` xoá vùng.
 - **Chip 🌍 Ngoài Việt Nam** bấm vào thì tự tắt công tắc "chỉ món Việt" (giống chip ẩm thực ngoại); khi `vnOnly` bật, chip này mờ `.foreign-off`.
 - **3 preset mới**: `vungBac` 🏯 Món miền Bắc · `vungTrung` 🌾 Món miền Trung · `vungTay` 🛶 Đặc sản miền Tây.
 - **Popup**: thêm dòng **🗺️ Vùng miền** (`vungLabel(d.vung)`) và pill trong `.win-meta`; dòng cũ đổi nhãn từ "Vùng miền" → **📍 Xuất xứ** (giữ mô tả chi tiết như "Sài Gòn").
-- **Test**: `node tools/test-vung.mjs [baseUrl]` — chromium thật 390×844, **12/12 PASS**: Tây Nam Bộ 4 món, Miền Nam 42 (38 nam + 4 tay-nam-bo), Bắc 38, Trung 17, Tây Nguyên 1, Cả nước 62, Bắc+Trung 55, Ngoài VN 88 + tự tắt vnOnly, preset miền Tây 4 món, popup có dòng "Vùng miền=", 0 lỗi JS.
-- Hồi quy: `tools/test-vnonly.mjs` PASS (mặc định vẫn chỉ món Việt, chip ngoại mờ 10) · `tools/audit-layout.mjs` không tràn ngang, tap target ≥44px.
+- **Test**: `node tools/test/test-vung.mjs [baseUrl]` — chromium thật 390×844, **12/12 PASS**: Tây Nam Bộ 4 món, Miền Nam 42 (38 nam + 4 tay-nam-bo), Bắc 38, Trung 17, Tây Nguyên 1, Cả nước 62, Bắc+Trung 55, Ngoài VN 88 + tự tắt vnOnly, preset miền Tây 4 món, popup có dòng "Vùng miền=", 0 lỗi JS.
+- Hồi quy: `tools/test/test-vnonly.mjs` PASS (mặc định vẫn chỉ món Việt, chip ngoại mờ 10) · `tools/test/audit-layout.mjs` không tràn ngang, tap target ≥44px.
 - Lưu ý khi đo bằng chromium trong container: **không có font hệ thống** nên mọi chip đo ra width ~30px và nằm 1 hàng — số đo bề rộng chữ vô nghĩa, chỉ tin số món/pool và logic.
 - Bản tĩnh Vercel không cần sửa gì thêm: lọc vùng chạy thuần client trên `data/dishes.json`.
-- **Đã deploy v21 (commit `58fbde3`)**: push lên `origin/main` → **Vercel bot tự deploy** (không cần token, không cần CLI). Theo dõi bằng `curl -s https://api.github.com/repos/thongkvq/choose_food/commits/<sha>/status` (pending → success ~35s). Bản production: **https://choose-food-paroda.vercel.app** — đã kiểm: `data/dishes.json` có `vung`, `app.js` có `vungHit`, `tools/test-vung.mjs <prod>` **12/12 PASS**, `/api/*` trả 404 là **bình thường** (bản tĩnh, client tự gọi thẳng dịch vụ).
+- **Đã deploy v21 (commit `58fbde3`)**: push lên `origin/main` → **Vercel bot tự deploy** (không cần token, không cần CLI). Theo dõi bằng `curl -s https://api.github.com/repos/thongkvq/choose_food/commits/<sha>/status` (pending → success ~35s). Bản production: **https://choose-food-paroda.vercel.app** — đã kiểm: `data/dishes.json` có `vung`, `app.js` có `vungHit`, `tools/test/test-vung.mjs <prod>` **12/12 PASS**, `/api/*` trả 404 là **bình thường** (bản tĩnh, client tự gọi thẳng dịch vụ).
 
 ## 21. v22 — FIX "chọn vùng miền xong không quay được" (user báo)
 - **Nguyên nhân thật**: chọn vùng + **bữa ăn tự động theo giờ** ra **0 món** (đo lúc 19h: Tây Nguyên 0/1 món, Tây Nam Bộ 2/4) → `syncPool()` khoá nút quay, KHÔNG có thông báo nào ⇒ người dùng thấy "bấm không quay được". Không phải lỗi treo băng chuyền (quay với 2 món vẫn chạy hết 5.2s rồi mở popup bình thường).
 - **Sửa**: thêm cờ `state.mealAuto` (true khi bữa do đồng hồ tự chọn ở boot, false khi người dùng bấm chip bữa / preset) + hàm `ensurePlayable()`: pool 0 mà bữa là tự động → **tự bỏ lọc bữa ăn**, toast giải thích ("Bữa Sáng không có món trong vùng này — đã bỏ lọc bữa ăn, còn N món"); còn 0 món thật (bữa do người dùng chọn / nhiều vùng) → toast cảnh báo + **tự mở sheet lọc**. `spinOnce()`/`spinTen()` gọi `ensurePlayable()` trước khi báo lỗi.
 - **Chip vùng hiện số món**: `paintVungCounts()` (gọi trong `syncPool`) đếm số món mỗi vùng khi **bỏ qua chính bộ lọc vùng** → nhãn "Miền Bắc 🏯 · 20"; vùng 0 món thêm class `.chip.empty` (mờ + gạch chấm). Refactor `pool()` → `matchDish(d, ignoreVung, q)` để đếm dùng lại.
 - Dòng trạng thái khi 0 món đổi thành "⚠️ 0 món khớp lọc — bấm để mở lọc" và **bấm được** để mở sheet.
-- **Test**: `tools/test-vung.mjs` lên **16/16 PASS**, thêm 4 ca mới: `cuu0Mon` (bữa Sáng + Tây Nguyên → tự bỏ bữa, pool 1, nút quay mở), `quaySauKhiCuu` (quay xong mở popup thật), `khongTuBoBuaNguoiDung` (người dùng tự chọn bữa thì KHÔNG tự bỏ, chỉ báo + mở sheet), `chipHienSoMon`.
+- **Test**: `tools/test/test-vung.mjs` lên **16/16 PASS**, thêm 4 ca mới: `cuu0Mon` (bữa Sáng + Tây Nguyên → tự bỏ bữa, pool 1, nút quay mở), `quaySauKhiCuu` (quay xong mở popup thật), `khongTuBoBuaNguoiDung` (người dùng tự chọn bữa thì KHÔNG tự bỏ, chỉ báo + mở sheet), `chipHienSoMon`.
 - Hồi quy PASS: `test-vnonly.mjs` · `audit-layout.mjs` (không tràn ngang, tap ≥44px) · `test-clip.mjs` (không cắt chữ trong popup 3 cỡ màn).
 
 ## 22. v23 — Lọc theo phạm vi bán + gợi ý vị trí (đang hoàn thiện)
 - Mục tiêu: vùng lọc theo nơi món đang bán/phổ biến; phở, mì, bánh mì không mất khỏi vùng khác. Dữ liệu dùng vung cho gốc, dacSan cho cờ đặc sản địa phương, vungCo cho vùng bán.
-- Dữ liệu hiện tại: 248 món, 160 Việt, 88 quốc tế, 28 đặc sản; vùng bán: Bắc 142 · Trung 140 · Nam 141 · Tây Nam Bộ 141 · Tây Nguyên 133; vung === "vn" 62 món. Đã sửa ID Bánh căn thành banh-can-chay; tools/enrich-vung.mjs validate mọi ID map có thật trong data/dishes.json.
+- Dữ liệu hiện tại: 248 món, 160 Việt, 88 quốc tế, 28 đặc sản; vùng bán: Bắc 142 · Trung 140 · Nam 141 · Tây Nam Bộ 141 · Tây Nguyên 133; vung === "vn" 62 món. Đã sửa ID Bánh căn thành banh-can-chay; tools/data/enrich-vung.mjs validate mọi ID map có thật trong data/dishes.json.
 - App: matchDish() dùng vungCo với fallback vung; Miền Nam gồm Tây Nam Bộ; Cả nước giữ nghĩa gốc vung=vn; chip đếm dùng cùng helper. Chế độ state.vungGocOnly lọc gốc.
 - Vị trí: vungFromPlace() chuẩn hóa tên có dấu, allowlist tỉnh/thành; vungFromCoords() fallback BBox gần đúng; GPS ưu tiên, IP sau; Photon reverse geocode thêm cho GPS chỉ có tọa độ. state.autoVung chỉ hiện gợi ý và nút xác nhận, không ghi đè vùng tay. Thêm api/reverse-geocode.js + route local.
-- SQLite: thêm cột dacSan INTEGER, vungCo TEXT; đồng bộ 248/248 bằng tools/sync-vung-sqlite.mjs. Kiểm tra không NULL; mẫu phở có đủ 5 vùng, cao lầu/Bánh căn chỉ Trung.
-- Test đã PASS: node tools/test-vung.mjs http://127.0.0.1:4321 (17 checks); syntax node --check app.js server.js api/_lib.js api/reverse-geocode.js. tools/test-gps.mjs đã thêm test mapper nhưng chưa chạy hết vì test nearby lâu.
+- SQLite: thêm cột dacSan INTEGER, vungCo TEXT; đồng bộ bằng `tools/data/data-sync-sqlite.mjs` (script `sync-vung-sqlite.mjs` đã xoá ở task-04 vì bị thay thế). Kiểm tra không NULL; mẫu phở có đủ 5 vùng, cao lầu/Bánh căn chỉ Trung.
+- Test đã PASS: node tools/test/test-vung.mjs (17 checks); syntax `node --check app.js server.js` (thư mục `api/` đã bỏ ở v24). tools/test/test-gps.mjs đã thêm test mapper nhưng chưa chạy hết vì test nearby lâu.
 - Còn lại: chạy full regression (GPS, old-data, vnonly, layout, clip), kiểm tra api/reverse-geocode production, review diff, commit/push và chờ Vercel success; cập nhật số liệu README nếu dataset thay đổi.
 
 ## 23. v24 (task-03) — Tách dữ liệu lần đầu · PWA offline · tránh món lặp · link chia sẻ món
-- **Tách dữ liệu**: `node tools/data-split.mjs` sinh `data/dishes-lite.json` (283.2KB thô / **47.4KB gzip**, đủ 308 món) + **4 mảnh** `data/dishes-detail-0..3.json` (620.4KB thô / 173.9KB gzip, ~43.5KB gzip/mảnh). Lần tải đầu **giảm 71.8% thô · 79.8% gzip** (trước: dishes.json 1002.8KB / 235.0KB gzip). `dishes.json` vẫn là **nguồn gốc**, không đổi định dạng.
+- **Tách dữ liệu**: `node tools/data/data-split.mjs` sinh `data/dishes-lite.json` (283.2KB thô / **47.4KB gzip**, đủ 308 món) + **4 mảnh** `data/dishes-detail-0..3.json` (620.4KB thô / 173.9KB gzip, ~43.5KB gzip/mảnh). Lần tải đầu **giảm 71.8% thô · 79.8% gzip** (trước: dishes.json 1002.8KB / 235.0KB gzip). `dishes.json` vẫn là **nguồn gốc**, không đổi định dạng.
   - LITE (app.js dùng trước khi mở popup): id, name, emoji, region, vung, dacSan, vungCo, meals, style, art, c1, c2, tags, descr, price, minutes, spicy, veg, weight, tier, image, imageVia, imageSource, rating, stars, calories, protein, proteinLabel, priceRange, fullness, bestFor, bestTime, origin, kw.
   - NẶNG (chỉ tải khi mở popup): review, intro, introSource, wikiUrl, wikiTitle, introEn, facts, detail, tip. Mảnh = `floor(index / detailChunkSize)` (chunkSize ghi trong lite; app đọc lại nên 2 bên không lệch công thức).
-  - `buildSplit()` export từ data-split → `tools/data-validate.mjs` **so từng byte** 5 file; lệch/thiếu ⇒ lỗi “chưa chạy data-split” (đã thử phá file: báo đúng, khôi phục exit 0). Validate còn kiểm lite KHÔNG chứa trường nặng + mọi id có trong đúng 1 mảnh chi tiết.
+  - `buildSplit()` export từ data-split → `tools/data/data-validate.mjs` **so từng byte** 5 file; lệch/thiếu ⇒ lỗi “chưa chạy data-split” (đã thử phá file: báo đúng, khôi phục exit 0). Validate còn kiểm lite KHÔNG chứa trường nặng + mọi id có trong đúng 1 mảnh chi tiết.
 - **app.js tải muộn**: `DETAIL {chunks, chunkSize, loaded, loading, failed}`, `loadDetailChunk/ensureDetail/prefetchDetail` (prefetch `requestIdleCallback` sau khi trang nạp xong, mảnh lỗi chỉ thử 1 lần). Popup render **ngay** phần lite; phần nặng đổ vào 3 slot `#heavySlot` (review+intro+detail), `#infoSlot` (bảng thông tin vẽ lại kèm dòng facts), `#tipSlot` — **không mở lại popup, không nhảy lên đầu** (giữ scrollTop; `infoExpanded` giữ trạng thái “Xem thêm”). Chờ có khung `.heavy-loading`; lỗi mạng hiện `.heavy-loading.err` và **vẫn đủ phần lite**.
-- **PWA**: `manifest.webmanifest` (tên “Món Gì Đây?”, theme_color #0b0812 = meta theme-color, background #0a0710 = `--bg`), icon sinh bằng `node tools/make-icons.mjs` (SVG → PNG qua chromium, không cần font: `icons/icon-192.png`, `icon-512.png`, `maskable-512.png`, `logo.svg`).
+- **PWA**: `manifest.webmanifest` (tên “Món Gì Đây?”, theme_color #0b0812 = meta theme-color, background #0a0710 = `--bg`), icon sinh bằng `node tools/dev/make-icons.mjs` (SVG → PNG qua chromium, không cần font: `icons/icon-192.png`, `icon-512.png`, `maskable-512.png`, `logo.svg`).
   - `sw.js` VERSION `mgd-v24-1`: HTML/JS/CSS **network-first**, `data/*.json` **stale-while-revalidate**, ảnh `upload.wikimedia.org` **cache-first tối đa 150** (xoá ảnh cũ nhất theo header `x-cached-at`), **KHÔNG cache** Photon/Overpass/Open-Meteo/ipapi; `activate` xoá cache khác VERSION; `install` precache shell + `data/dishes-lite.json`.
   - Đăng ký SW chỉ khi `window.isSecureContext` (http LAN không có SW). Offline: quay món vẫn chạy (lite + shell từ cache), nút 📍 Tìm quán báo “📴 Đang offline…” + vẫn có link Google Maps, `loadWeather()` bỏ gọi mạng; có toast khi `offline`/`online`.
-  - `vercel.json` thêm `headers`: `/sw.js` → `no-cache, no-store, must-revalidate` + `Service-Worker-Allowed: /`; `/manifest.webmanifest` → content-type manifest+json. `server.js` + `tools/probe-static.mjs` thêm MIME `.webmanifest`.
+  - `vercel.json`: lúc đó thêm khoá `headers` cho `/sw.js` + `/manifest.webmanifest` — **cách này bị Vercel từ chối** (không được dùng `headers` cùng `routes`), v25 đã chuyển vào `routes` dạng `{src, headers, continue:true}` (xem mục 24). `server.js` + `tools/dev/probe-static.mjs` thêm MIME `.webmanifest`.
 - **Tránh món lặp** (công tắc `#fAvoidRecent` trong nhóm *Thêm*, mặc định BẬT, lưu `mgd.avoidRecent`): món đã chốt/nhật ký trong **3 ngày** ×0.15, món vừa quay ra trong **10 lượt** ×0.5 (`state.recentDraws` ← `mgd.recentDraws`, ghi khi quay 1 hoặc x10). **Không loại hẳn** — đo 2000 lần drawOne (pool 20 món): 866 → **185 lần (21.4%)**, vừa quay ra 57.7%, nhật ký cách 4 ngày 97.3%, tắt công tắc 92.1%, pool 3 món đều vừa ăn vẫn ra 300/300.
 - **Link chia sẻ món**: `#mon=<id>` (id encode) — mở trang là ra thẳng popup (`openFromHash`, có cả `hashchange`), đóng popup thì `history.replaceState` xoá hash; món không tồn tại → toast “Link không còn món này”. Nút **🔗 Chia sẻ** (cạnh 📤 Chia sẻ ảnh cũ): `navigator.share({title,text,url})` nếu có, không thì copy link + toast. Tap target 64×50px.
-- **Test mới**: `tools/test-split.mjs` (17 check) · `tools/test-pwa.mjs` (28) · `tools/test-avoid.mjs` (14) · `tools/test-share.mjs` (14). Sửa test cũ theo dữ liệu tách: `test-olddata.mjs` + `test-popup.mjs` (route `dishes-lite.json`, mảnh chi tiết abort, `serviceWorkers: 'block'`), `test-live.mjs` (kiểm lite/detail/manifest thay vì dishes.json).
-- **Kết quả**: `node tools/test-all.mjs` **30/30 file exit 0** trên cả LAN (`http://127.0.0.1:4322`) và bản tĩnh (`node tools/probe-static.mjs 4399`). Bỏ qua do dịch vụ ngoài sập: **Photon** (`net::ERR_CONNECTION_REFUSED`) → test-api 2 mục, test-live mục Photon, test-nearby-radius khối “quán có tiếng” (Overpass cũng không tới được); **ipapi 429** làm bản tĩnh không lấy được vị trí theo IP. `node tools/data-validate.mjs` exit 0; `node --check` 77 file JS/MJS sạch.
+- **Test mới**: `tools/test/test-split.mjs` (17 check) · `tools/test/test-pwa.mjs` (28) · `tools/test/test-avoid.mjs` (14) · `tools/test/test-share.mjs` (14). Sửa test cũ theo dữ liệu tách: `test-olddata.mjs` + `test-popup.mjs` (route `dishes-lite.json`, mảnh chi tiết abort, `serviceWorkers: 'block'`), `test-live.mjs` (kiểm lite/detail/manifest thay vì dishes.json).
+- **Kết quả**: `node tools/test/test-all.mjs` **30/30 file exit 0** trên cả LAN (`http://127.0.0.1:4322`) và bản tĩnh (`node tools/dev/probe-static.mjs 4399`). Bỏ qua do dịch vụ ngoài sập: **Photon** (`net::ERR_CONNECTION_REFUSED`) → test-api 2 mục, test-live mục Photon, test-nearby-radius khối “quán có tiếng” (Overpass cũng không tới được); **ipapi 429** làm bản tĩnh không lấy được vị trí theo IP. `node tools/data/data-validate.mjs` exit 0; `node --check` 77 file JS/MJS sạch.
 - Lưu ý vận hành: server LAN đang chạy sẵn ở cổng **4321** là tiến trình CŨ (ngoài sandbox, không kill được) nên chưa có MIME `.webmanifest` — cần khởi động lại `node server.js` để PWA ăn trên LAN.
+
+## 24. v25 (task-04) — kiểm chứng 2 fix tay · sửa dữ liệu · dọn tools · tài liệu
+**a) Kiểm chứng 2 chỗ Claude tự sửa tay ở lượt trước — CẢ HAI ĐÚNG, nay có test canh:**
+- `vercel.json`: header của `/sw.js` + `/manifest.webmanifest` nằm **trong `routes`** dạng `{src, headers, continue:true}` trước `{handle:"filesystem"}`; không còn khoá `headers`/`rewrites`/`redirects`/`cleanUrls`/`trailingSlash` đi cùng `routes` (Vercel từ chối deploy nếu có cả hai). `test-pwa.mjs` thêm 2 check tĩnh cho việc này.
+- `sw.js` `cacheFirstImage`: tải `fetch(req.url, {mode:'cors', credentials:'omit'})`, chỉ cache khi `res.ok && res.type !== 'opaque'` và `blob.size > 0`, VERSION **`mgd-v24-2`**. Nếu để `no-cors` thì response opaque → blob rỗng → cache-first trả ảnh hỏng mãi.
+- **`<img>` của app KHÔNG cần `crossorigin="anonymous"`**: đã đo bằng ảnh Wikimedia THẬT (không mock) — cache `img-mgd-v24-2` giữ **130127B · image/jpeg**, popup hiện **960×638px**, cả khi ONLINE, sau reload, và khi OFFLINE (SW trả bản cache; `cache.match` dùng `ignoreVary`). `test-pwa.mjs` nay **35 check PASS** (trước 28), bỏ mock ảnh.
+- Test cũng bắt được 1 test chập chờn: `test-avoid.mjs` đọc toast công tắc trong lúc toast chào mừng ("Đang là <bữa> — đã lọc sẵn cho bạn", hiện ở mốc 600ms sau boot) ghi đè → nay chờ toast chào mừng tắt hẳn rồi mới bấm và **chờ đúng nội dung toast** (timeout 5s).
+
+**b) Dữ liệu (308 món; `data-validate.mjs`: Lỗi 0 · Cảnh báo 0 — trước đó 6 cảnh báo):**
+- `chao-ca-loc` ("Cháo cá lóc") bỏ ảnh sai "Cháo cá Quảng Trị (bánh canh cá lóc)" → **`File:Cháo Cá Lóc, Tiền Giang.jpg`** (commons, đã xem ảnh: nồi cháo cá lóc + rau). Thêm `'bánh canh cá lóc'` vào `DENY_TITLES` của `data-fetch-images.mjs` (bánh canh cá lóc ≠ cháo cá lóc).
+- `lau-tu-xuyen` ("Lẩu cay Tứ Xuyên") bỏ ảnh "Shanghai hot pots" (lẩu Thượng Hải — khác món) → **`File:Chongqing hotpot.1.jpg`** (nồi lẩu đỏ cay kiểu Tứ Xuyên/Trùng Khánh).
+- `com-trang-trung` ("Cơm trắng trứng chiên") bỏ ảnh cơm trắng trơn "WhiteRice.jpg" → **`File:Cơm trứng chiên tại sân bay Phú Bài (tháng 9 năm 2018) (2).jpg`** (cơm + trứng chiên).
+- 3 cảnh báo còn lại (`bulgogi`, `canh-kim-chi`, `sashimi`) là **ảnh ĐÚNG**, chỉ lệch tên vì tiêu đề file Commons dùng tên tiếng Anh → thêm alias tiếng Anh (`Bulgogi`, `Kimchi jjigae`, `Sashimi`, `Chongqing hotpot`, `Cơm trứng chiên`…) vào `aliases.json` + `data-patch-aliases.mjs`, không đổi ảnh.
+- **Id ASCII**: `cơm-chay` → **`com-chay`** (đổi trong `data/dishes.json`, `aliases.json` gộp 2 khoá). Có **đường tương thích**: `app.js` thêm `ID_LEGACY`/`idNow()`/`idList()` — mọi chỗ đọc dữ liệu người dùng đã lưu (yêu thích `mgd.favs`, lịch sử `mgd.hist`, đã thấy `mgd.seen`, `mgd.recentDraws`, nhật ký `mgd.diary`, thực đơn `mgd.menu`) và link `#mon=<id>` cũ đều đi qua `idNow()`; `dishById()` cũng chuẩn hoá. Lưu lại là ghi ra id mới.
+- Sau khi sửa: `node tools/data/data-sync-sqlite.mjs` (308/308) → `node tools/data/data-split.mjs` (lite + 4 mảnh khớp) → `data-validate.mjs` exit 0.
+- Tap target: nút **#btnUseGeoVung** trong sheet lọc cao 29px → **≥44px** (`.vung-location-hint button` thêm `min-height:44px; display:inline-flex; align-items:center`).
+
+**c) Dọn `tools/` — 80 file → 50 file (72 → 47 `.mjs`), chia 4 thư mục:**
+- `tools/data/` (14) pipeline · `tools/test/` (31) test + audit · `tools/dev/` (3) probe-static/make-icons/screenshots · `tools/lib/chromium.mjs` (mở chromium dùng chung) · **`tools/README.md`** liệt kê từng script + cách chạy + thứ tự pipeline.
+- Xoá 32 file: snapshot `.snapshot-*.json` (3), `probe.json`, `image-report.json`, `.translate-cache.json`, 20 ảnh `screenshots/*.png`, `debug-*` (4), `diag-*` (3), `probe-close/layout/render/overpass`, `shot-vung`, `fix-images`/`fix-images2`/`strip-wrong-images`, `restore-from-report`, `dedup-images`, `fetch-images` (bị `data-fetch-images` thay), `enrich-wiki`/`enrich-wiki2`/`enrich-sections`/`translate-vi` (bị `data-enrich-info` thay), `data-report` (đọc snapshot đã xoá), `sync-all-to-sqlite`/`sync-vung-sqlite` (bị `data-sync-sqlite` thay), `list-candidates`.
+- **Bỏ hết hard-code đường dẫn máy**: mọi test/dev script dùng `tools/lib/chromium.mjs` (nạp Playwright theo `$PLAYWRIGHT_DIR` → `node_modules` project → `$DSH_HOME/profiles/web`, `$CHROME_BIN` để ép bản chromium); `screenshots.mjs` nhúng font theo `$SHOT_FONT` (không đặt thì chụp thường). Đã grep `var/lib/dsh|ai-workspace|ms-playwright|chromedeps` trong repo → **0 kết quả**.
+- Sửa mọi đường dẫn tương đối theo cấu trúc mới (`new URL('../../', import.meta.url)`, `tools/screenshots/`, `tools/data/aliases.json`, `../../art.js`, `../../lib/nearby-core.js`); `test-all.mjs` chạy với `cwd` = thư mục project.
+- `.gitignore`: `tools/**/.translate-cache.json`, `tools/screenshots/` + `tools/**/screenshots/`, `tools/**/.snapshot-*.json`, `node_modules`, `data/dishes.sqlite`. `.vercelignore`: vẫn loại `tools/`, thêm `data/dishes.sqlite`. `package.json` **vẫn KHÔNG có mục `scripts`**.
+
+**d) Kết quả chạy toàn bộ:** xem mục 24.1 bên dưới.
+
+### 24.1 KẾT QUẢ CUỐI (task-04)
+- `node tools/test/test-all.mjs http://127.0.0.1:4322` (LAN, `node server.js`) — **30/30 file exit 0**.
+- `node tools/test/test-all.mjs http://127.0.0.1:4399` (bản tĩnh, `node tools/dev/probe-static.mjs 4399`) — **30/30 file exit 0**.
+- **Bỏ qua (dịch vụ ngoài, không tính FAIL)**: `test-api` trên bản tĩnh (đúng thiết kế: không có `/api`); Photon chập chờn (`net::ERR_CONNECTION_REFUSED`) → `test-live` bỏ mục Photon, `test-nearby` không lấy được vị trí theo IP, `test-loc-http` geocode địa chỉ đôi lúc không đổi toạ độ; Overpass không trả dữ liệu → `test-nearby-radius` bỏ khối "quán có tiếng" (đã có `test-fame-mock.mjs` chạy bằng dữ liệu giả, PASS); ipapi 429 ở vài lượt.
+- `test-pwa.mjs` (chạy cả LAN và tĩnh) **35/35 check PASS**: ảnh Wikimedia thật trong cache `130127B · image/jpeg`, popup hiện **960×638px** khi online → sau reload → khi offline, **không** rơi về SVG fallback.
+- `node tools/data/data-validate.mjs` → exit 0 (308 món · Lỗi 0 · Cảnh báo 0 · 5/5 file tách khớp từng byte).
+- `node --check` 52 file JS/MJS trong repo → 0 lỗi. `node tools/dev/make-icons.mjs` chạy lại ra icon y hệt (không đổi file).
+- Lưu ý: máy này có tiến trình CŨ đang giữ cổng **4321** (ngoài sandbox, không kill được) nên đã chạy test trên server mới ở **4322** (`PORT=4322 node server.js`); cả 2 server nền đã được dừng sau khi test xong. Không commit/push gì ở lượt này.
