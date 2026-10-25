@@ -5,7 +5,7 @@
 //   · ảnh upload.wikimedia.org       -> CACHE-FIRST, tối đa 150 ảnh (xoá ảnh cũ nhất)
 //   · API ngoài (Photon, Overpass, Open-Meteo, ipapi…) -> KHÔNG cache, luôn ra mạng
 // Đổi VERSION khi deploy để xoá cache cũ trong activate.
-const VERSION = 'mgd-v24-1';
+const VERSION = 'mgd-v24-2';
 const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE = 'data-' + VERSION;
 const IMG_CACHE = 'img-' + VERSION;
@@ -72,12 +72,17 @@ async function cacheFirstImage(req, cacheName, max) {
   const cache = await caches.open(cacheName);
   const hit = await cache.match(req, { ignoreVary: true });
   if (hit) return hit;
-  const res = await fetch(req, { mode: 'no-cors' });
-  if (res && (res.ok || res.type === 'opaque')) {
+  // upload.wikimedia.org trả Access-Control-Allow-Origin: * nên tải kiểu cors để đọc được nội dung.
+  // Bản no-cors là "opaque": blob rỗng -> cache sẽ lưu ảnh trống và cache-first trả ảnh hỏng mãi.
+  let res;
+  try { res = await fetch(req.url, { mode: 'cors', credentials: 'omit' }); }
+  catch (e) { return fetch(req); }                    // CORS lỗi thì cứ tải bình thường, không cache
+  if (res && res.ok && res.type !== 'opaque') {
     try {
       const body = await res.clone().blob();
+      if (!body.size) return res;
       const stamped = new Response(body, {
-        status: res.status === 0 ? 200 : res.status,
+        status: res.status,
         statusText: res.statusText,
         headers: { 'content-type': res.headers.get('content-type') || 'image/jpeg', 'x-cached-at': String(Date.now()) }
       });
