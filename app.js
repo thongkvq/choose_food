@@ -3,6 +3,13 @@
 // Băng chuyền ngang, hãm phanh 2 pha, rung + âm thanh, filter sheet, dock ngón cái
 // ==========================================================================
 import { renderArt } from './art.js';
+// Logic tìm quán (chuẩn hoá tên, khoảng cách, mức bán kính, khớp tên món, "quán có tiếng")
+// nằm trong lib/nearby-core.js — DÙNG CHUNG với server.js, không chép lại ở đây.
+import {
+  clampRadius, dishQueries, dishWords, fameLists, filterByRadius, mapsDir, matchPlace,
+  nearbyUrls, norm, overpassGetUrl, packMatched, photonSearchResult, photonSearchUrl, poisFromOverpass,
+  R_TIERS, sortMatched
+} from './lib/nearby-core.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -15,7 +22,6 @@ const IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 4;
 
-const R_TIERS = [2500, 5000, 10000, 15000];   // 4 mức bán kính tìm quán cho người dùng chọn
 const MEALS = { sang: 'Sáng 🌅', trua: 'Trưa ☀️', xe: 'Xế 🌤️', toi: 'Tối 🌙', khuya: 'Khuya 🌌', vat: 'Ăn vặt 🍿' };
 const REGIONS = { vn: 'Việt 🇻🇳', cn: 'Trung Hoa 🇨🇳', jp: 'Nhật 🇯🇵', kr: 'Hàn 🇰🇷', th: 'Thái 🇹🇭', it: 'Ý 🇮🇹', fr: 'Âu 🇫🇷', us: 'Mỹ 🇺🇸', mx: 'Mexico 🇲🇽', in: 'Ấn 🇮🇳', tr: 'Trung Đông 🇹🇷' };
 // Vùng miền Việt Nam — bộ lọc theo nơi món ĐANG CÓ BÁN, không chỉ nơi món ra đời
@@ -102,8 +108,8 @@ const VUNG_PLACE_RULES = [
   { key: 'bac', names: ['ha noi', 'hanoi', 'ha noi municipality', 'hai phong', 'quang ninh', 'bac ninh', 'bac giang', 'hai duong', 'hung yen', 'thai binh', 'nam dinh', 'ninh binh', 'ha nam', 'vinh phuc', 'phu tho', 'tuyen quang', 'ha giang', 'cao bang', 'bac kan', 'lang son', 'thai nguyen', 'lao cai', 'yen bai', 'dien bien', 'lai chau', 'son la', 'hoa binh'] }
 ];
 function isVietnamPlace(info) {
-  const code = dirNorm(info && (info.countryCode || info.country_code || ''));
-  const country = dirNorm(info && info.country || '');
+  const code = norm(info && (info.countryCode || info.country_code || ''));
+  const country = norm(info && info.country || '');
   if (code && !VN_COUNTRY_CODES.has(code)) return false;
   if (country && !VN_COUNTRY_NAMES.has(country)) return false;
   // GPS path marks Vietnam explicitly; name-only test remains conservative.
@@ -112,15 +118,15 @@ function isVietnamPlace(info) {
 }
 function placeHaystack(info) {
   const values = [info && info.city, info && info.region, info && info.state, info && info.county, info && info.label].filter(Boolean);
-  const normalized = values.map(v => dirNorm(v)).join(' ');
-  const compact = values.map(v => dirNorm(v).replace(/\s+/g, '')).join(' ');
+  const normalized = values.map(v => norm(v)).join(' ');
+  const compact = values.map(v => norm(v).replace(/\s+/g, '')).join(' ');
   return ' ' + normalized + ' ' + compact + ' ';
 }
 function vungFromPlace(info) {
   if (!info || !isVietnamPlace(info)) return null;
   const h = placeHaystack(info);
   for (const rule of VUNG_PLACE_RULES) {
-    if (rule.names.some(name => h.includes(' ' + dirNorm(name) + ' '))) return rule.key;
+    if (rule.names.some(name => h.includes(' ' + norm(name) + ' '))) return rule.key;
   }
   return null;
 }
@@ -368,7 +374,7 @@ function renderNearbyHeader(pos) {
 // private.coffee trả XML lỗi, osm.ch chỉ có dữ liệu Thuỵ Sĩ -> chỉ giữ 2 cái dùng được.
 const FAME_SRC = ['https://overpass.kumi.systems/api/interpreter', 'https://overpass-api.de/api/interpreter'];
 const FAME_TTL = 6 * 60 * 60 * 1000;   // cache 6 giờ: bản tĩnh gọi Overpass khá chậm
-function fameCacheKey(lat, lng, r, dish) { return lat.toFixed(2) + ',' + lng.toFixed(2) + ',' + r + ',' + dirNorm(dish); }
+function fameCacheKey(lat, lng, r, dish) { return lat.toFixed(2) + ',' + lng.toFixed(2) + ',' + r + ',' + norm(dish); }
 function fameCacheGet(lat, lng, r, dish) {
   const c = LS.get('mgd.fame', {});
   const e = c[fameCacheKey(lat, lng, r, dish)];
@@ -381,72 +387,28 @@ function fameCacheSet(lat, lng, r, dish, v) {
   c[fameCacheKey(lat, lng, r, dish)] = { t: Date.now(), v: v };
   LS.set('mgd.fame', c);
 }
-function fameScoreOf(p, branches) {
-  let s = 0; const why = [];
-  if (p.wiki) { s += 4; why.push('có hồ sơ Wikipedia/Wikidata'); }
-  if (p.brand) { s += 3; why.push('thương hiệu ' + p.brand); }
-  if (branches >= 3) { s += 2; why.push(branches + ' chi nhánh trong vùng'); }
-  if (p.website) { s += 2; why.push('có website'); }
-  if (p.open) { s += 1; why.push('có giờ mở cửa'); }
-  if (p.phone) { s += 1; why.push('có điện thoại'); }
-  if (p.address) { s += 1; why.push('có địa chỉ'); }
-  if (p.cuisine) { s += 1; why.push('có loại quán'); }
-  return { s: s, why: why };
-}
-function fameLists(pois, lat, lng, radiusM, dish, kw, cuisine) {
-  const counts = new Map();
-  for (const p of pois) counts.set(p.nname, (counts.get(p.nname) || 0) + 1);
-  const near = pois.map((p) => Object.assign({}, p, { dist: dirDistM(lat, lng, p.lat, p.lng) }))
-    .filter((p) => p.dist <= radiusM)
-    .map((p) => Object.assign(p, { fame: fameScoreOf(p, counts.get(p.nname) || 1).s }));
-  const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
-  const cu = dirNorm(cuisine);
-  const dedup = (arr) => {
-    const by = new Map();
-    for (const p of arr) { const cur = by.get(p.nname); if (!cur || p.dist < cur.dist) by.set(p.nname, p); }
-    return [...by.values()].map((p) => Object.assign({}, p, { branches: counts.get(p.nname) || 1 }));
-  };
-  const match = dedup(near.filter((p) => p.fame >= 4 && (words.some((t) => p.nname.includes(t)) || (cu && p.ncuisine.includes(cu))))
-    .sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 8);
-  const around = dedup(near.filter((p) => p.fame >= 5).sort((a, b) => (b.fame - a.fame) || (a.dist - b.dist))).slice(0, 10);
-  return { famousMatch: match, famousNear: around };
-}
 async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
   const cached = fameCacheGet(lat, lng, radiusM, dish);
   if (cached) return cached;
-  const dLat = radiusM / 111000;
-  const dLng = radiusM / (111320 * Math.cos((lat * Math.PI) / 180));
-  const box = [lat - dLat, lng - dLng, lat + dLat, lng + dLng].map((v) => v.toFixed(6)).join(',');
-  const limit = radiusM <= 2500 ? 500 : radiusM <= 5000 ? 900 : radiusM <= 10000 ? 1600 : 2600;
-  const am = '["amenity"~"^(restaurant|fast_food|cafe|food_court|ice_cream)"]';
-  const ql = '[out:json][timeout:25];(node' + am + '(' + box + ');way' + am + '(' + box + '););out center tags ' + limit + ';';
   let data = null;
+  let empty = null;
   for (const ep of FAME_SRC) {
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), 20000);
     try {
-      const res = await fetch(ep + '?data=' + encodeURIComponent(ql), { signal: ctl.signal, cache: 'no-store' });
-      if (res.ok) { const txt = await res.text(); data = JSON.parse(txt); break; }   // gương lỗi trả XML -> bỏ qua
+      const res = await fetch(overpassGetUrl(ep, lat, lng, radiusM), { signal: ctl.signal, cache: 'no-store' });
+      if (res.ok) {
+        const txt = await res.text();
+        let j = null;
+        try { j = JSON.parse(txt); } catch (e) { continue; }   // gương lỗi trả XML -> thử gương kế tiếp
+        if (!(j.elements || []).length) { empty = j; continue; }   // gương rỗng (vd osm.ch chỉ có dữ liệu Thuỵ Sĩ): thử gương khác
+        data = j; break;
+      }
     } catch (e) { /* thử gương kế tiếp */ } finally { clearTimeout(t); }
   }
+  if (!data && empty) data = empty;
   if (!data) return null;
-  const pois = [];
-  for (const el of data.elements || []) {
-    const tg = el.tags || {};
-    const name = tg.name || tg['name:vi'] || tg['name:en'];
-    const plat = el.lat != null ? el.lat : (el.center && el.center.lat);
-    const plng = el.lon != null ? el.lon : (el.center && el.center.lon);
-    if (!name || plat == null || plng == null) continue;
-    pois.push({
-      name: String(name).slice(0, 90), lat: plat, lng: plng, nname: dirNorm(name), type: tg.amenity || '',
-      cuisine: tg.cuisine || '', ncuisine: dirNorm(tg.cuisine || ''),
-      address: [tg['addr:housenumber'], tg['addr:street'], tg['addr:district'], tg['addr:city']].filter(Boolean).join(' '),
-      phone: tg.phone || tg['contact:phone'] || '', open: tg.opening_hours || '',
-      brand: tg.brand || tg.operator || '', website: tg.website || tg['contact:website'] || '',
-      wiki: tg.wikidata || tg.wikipedia || '',
-      maps: 'https://www.google.com/maps/dir/?api=1&destination=' + plat + ',' + plng + '&travelmode=driving'
-    });
-  }
+  const pois = poisFromOverpass(data.elements).map((p) => Object.assign(p, { maps: mapsDir(p.lat, p.lng) }));
   const lists = fameLists(pois, lat, lng, radiusM, dish, kw, cuisine);
   fameCacheSet(lat, lng, radiusM, dish, lists);
   return lists;
@@ -1693,70 +1655,29 @@ async function dirGeocode(q) {
   LS_PUT(key, out);
   return out;
 }
-const FOOD_KINDS = ['restaurant', 'fast_food', 'cafe', 'food_court', 'ice_cream', 'bar', 'pub', 'bakery', 'deli', 'canteen'];
 async function dirPhotonSearch(query, lat, lng, radiusM) {
-  const dLat = radiusM / 111000;
-  const dLng = dLat / Math.max(0.2, Math.cos(lat * Math.PI / 180));
-  const bbox = (lng - dLng) + ',' + (lat - dLat) + ',' + (lng + dLng) + ',' + (lat + dLat);
-  const j = await (await fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(query) +
-    '&lat=' + lat + '&lon=' + lng + '&limit=20&bbox=' + bbox)).json();
-  const out = [];
-  for (const f of (j.features || [])) {
-    const pr = f.properties || {};
-    const kind = String(pr.osm_value || pr.type || '').toLowerCase();
-    if (pr.osm_key !== 'amenity' || FOOD_KINDS.indexOf(kind) < 0) continue;
-    const co = (f.geometry && f.geometry.coordinates) || [];
-    const name = pr.name || pr.street;
-    if (!name || co.length < 2) continue;
-    out.push({
-      name: String(name).slice(0, 90), lat: co[1], lng: co[0], type: pr.osm_value || '',
-      cuisine: (pr.extra && pr.extra.cuisine) || '',
-      address: [pr.housenumber, pr.street, pr.district, pr.city].filter(Boolean).join(' '),
-      phone: (pr.extra && (pr.extra.phone || pr.extra['contact:phone'])) || ''
-    });
+  const j = await (await fetch(photonSearchUrl(query, lat, lng, radiusM, 20))).json();
+  return photonSearchResult(j);
+}
+async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
+  const words = dishWords(dish, kw);
+  const queries = dishQueries(dish, kw);
+  const rad = clampRadius(radius);   // đúng mức người dùng chọn (2.5/5/10/15km), không tự nới
+  const seen = new Map();
+  const got = await Promise.all(queries.map((q) => dirPhotonSearch(q, lat, lng, rad).catch(() => [])));
+  for (const arr of got) for (const pl of arr) {
+    const k = pl.name + '@' + pl.lat.toFixed(4) + ',' + pl.lng.toFixed(4);
+    if (seen.has(k)) continue;
+    const hit = matchPlace(pl, words, cuisine);
+    if (!hit.ok) continue;
+    seen.set(k, packMatched(pl, lat, lng, hit));
   }
-  return out;
-}
-function dirDistM(a, b, c, d) {
-  const R = 6371000, t = (x) => x * Math.PI / 180;
-  const dLat = t(c - a), dLon = t(d - b);
-  const h = Math.sin(dLat / 2) ** 2 + Math.cos(t(a)) * Math.cos(t(c)) * Math.sin(dLon / 2) ** 2;
-  return Math.round(2 * R * Math.asin(Math.sqrt(h)));
-}
-function dirNorm(s) {
-  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/Đ/g, 'D').replace(/đ/g, 'd')
-    .toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
-}
-async function dirNearby(lat, lng, radius, dish, kw, cuisine, useOverpass) {
-  const words = [...new Set((dirNorm(dish) + ' ' + dirNorm(kw)).split(' ').filter((t) => t.length >= 3))];
-  const queries = [...new Set([dish, (kw || '').split('|')[0], words.slice(0, 2).join(' ')].filter((q) => q && q.trim().length >= 3))].slice(0, 3);
-  let matched = [], usedRadius = radius;
-  for (const rad of [Math.min(radius, 15000)]) {   // đúng mức người dùng chọn, không tự nới
-    const seen = new Map();
-    const got = await Promise.all(queries.map((q) => dirPhotonSearch(q, lat, lng, rad).catch(() => [])));
-    for (const arr of got) for (const pl of arr) {
-      const k = pl.name + '@' + pl.lat.toFixed(4) + ',' + pl.lng.toFixed(4);
-      if (seen.has(k)) continue;
-      const n = dirNorm(pl.name), cu = dirNorm(cuisine);
-      const hitName = words.filter((t) => n.includes(t));
-      const hitCuisine = cu && dirNorm(pl.cuisine).includes(cu) ? [cu] : [];
-      if (!hitName.length && !hitCuisine.length) continue;
-      seen.set(k, Object.assign({}, pl, {
-        dist: dirDistM(lat, lng, pl.lat, pl.lng), score: hitName.length * 3 + hitCuisine.length * 2,
-        maps: 'https://www.google.com/maps/dir/?api=1&destination=' + pl.lat + ',' + pl.lng + '&travelmode=driving'
-      }));
-    }
-    matched = [...seen.values()].filter((p) => p.dist <= rad).sort((a, b) => (b.score - a.score) || (a.dist - b.dist));
-    usedRadius = rad;
-    if (matched.length >= 3 || rad >= 15000) break;
-  }
-  return {
-    center: { lat: lat, lng: lng }, radius: radius, usedRadius: usedRadius,
-    matched: matched.slice(0, 12), nearest: [], sameCuisine: [],
-    mapsUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish + ' gần đây') + '/@' + lat + ',' + lng + ',13z',
-    mapsKeywordUrl: 'https://www.google.com/maps/search/' + encodeURIComponent(dish) + '/@' + lat + ',' + lng + ',13z',
-    osmUrl: 'https://www.openstreetmap.org/#map=14/' + lat + '/' + lng
-  };
+  // Photon trả theo ô vuông nên có quán nhích ra ngoài bán kính — cắt cho đúng mức đã chọn
+  const matched = sortMatched(filterByRadius([...seen.values()], rad));
+  return Object.assign({
+    center: { lat: lat, lng: lng }, radius: rad, usedRadius: rad,
+    matched: matched.slice(0, 12), nearest: [], sameCuisine: []
+  }, nearbyUrls(lat, lng, dish));
 }
 
 /* ============================ KHỞI ĐỘNG ============================ */

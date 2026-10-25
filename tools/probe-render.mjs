@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 import { readFile } from 'node:fs/promises';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
@@ -10,7 +11,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   args: ['--no-sandbox', '--disable-dev-shm-usage'], env: { ...process.env, LD_LIBRARY_PATH: DEPS + ':' + DEPS + '/alsa-lib:' + DEPS + '/gbm' } });
 const ctx = await browser.newContext({ viewport: { width: 458, height: 1017 }, isMobile: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.addStyleTag({ content: css });
 await page.waitForTimeout(1800);
 const res = await page.evaluate(() => {

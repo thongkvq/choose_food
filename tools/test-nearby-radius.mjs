@@ -34,6 +34,12 @@ await ctx.setGeolocation({ latitude: 10.7725, longitude: 106.698 });
 const page = await ctx.newPage();
 const reqs = [];
 page.on('request', (r) => { if (r.url().includes('/api/nearby') || r.url().includes('photon.komoot.io')) reqs.push(r.url()); });
+// Overpass là dịch vụ ngoài hay quá tải -> theo dõi để biết khi nào phải BỎ QUA thay vì báo lỗi sai
+const ovBad = [];
+page.on('requestfailed', (r) => { if (/overpass/.test(r.url())) ovBad.push('failed'); });
+page.on('response', (r) => { if (/overpass/.test(r.url()) && r.status() >= 400) ovBad.push('HTTP ' + r.status()); });
+let apiNb = null;   // phản hồi /api/nearby gần nhất (server LAN) — để biết Overpass phía server có lỗi không
+page.on('response', async (r) => { if (r.url().includes('/api/nearby') && r.status() === 200) { try { apiNb = await r.json(); } catch (e) {} } });
 page.on('pageerror', (e) => console.log('  PAGE ERROR: ' + e.message));
 await page.goto(BASE + '/', { waitUntil: 'networkidle' });
 await page.waitForFunction(() => window.__mgd, null, { timeout: 20000 });
@@ -80,7 +86,13 @@ await page.click('#nearbyOut .rad-chip[data-rad="2500"]');
 await waitDone('2.5km', true);
 s = await snap();
 check('2.5km: quán ≤2500m', s.maxM <= 2500 && /2.5km/.test(s.note), s.note + ' | xa nhất ' + Math.round(s.maxM) + 'm');
-check('2.5km: gửi đúng tham số r', reqs.some((u) => /[?&]r=2500/.test(u)) || BASE.startsWith('https'), reqs.slice(-1)[0] || '');
+// LAN: phải gửi ?r=2500 | bản tĩnh: không có /api nên kiểm bằng bbox Photon (nửa vĩ độ = 2500/111000)
+const photonUrl = reqs.filter((u) => u.includes('photon.komoot.io')).slice(-1)[0] || '';
+const pbox = (photonUrl.match(/bbox=([\d.,-]+)/) || [])[1];
+const halfLat = pbox ? Math.abs(parseFloat(pbox.split(',')[1]) - 10.7725) : null;
+check('2.5km: bán kính đúng ở URL gọi quán',
+  serverMode ? reqs.some((u) => /[?&]r=2500/.test(u)) : (halfLat != null && Math.abs(halfLat - 2500 / 111000) < 0.0005),
+  serverMode ? (reqs.slice(-1)[0] || '') : (photonUrl.slice(0, 90) + ' | nửa vĩ độ ' + halfLat));
 check('lưu localStorage mgd.radius=2500', s.ls === '2500', String(s.ls));
 
 // đổi sang 10km
@@ -111,9 +123,19 @@ const fam = await page.evaluate(() => {
 });
 check('15km: quán ≤15000m', s.maxM <= 15000 && /15km/.test(s.note), s.note + ' | xa nhất ' + Math.round(s.maxM) + 'm');
 check('15km: chip 15km sáng', s.chips.join(',') === '2.5km,5km,10km,15km*', s.chips.join(','));
-check('có khối "quán có tiếng" (' + (serverMode ? 'server' : 'bản tĩnh/Overpass') + ')', fam.titles.length > 0 && fam.n > 0, fam.titles.join(' / ') + ' — ' + fam.n + ' quán');
-check('quán có tiếng trong 15km + có lý do', fam.maxM <= 15000 && fam.why.every((w) => w.length > 2), fam.why.join(' ; ') + ' | xa nhất ' + Math.round(fam.maxM) + 'm');
-check('có ghi rõ nguồn "có tiếng"', /OSM/.test(fam.note) && /không phải điểm đánh giá/.test(fam.note), fam.note.slice(0, 90));
+const famOk = fam.titles.length > 0 && fam.n > 0;
+const famWhyOk = fam.n > 0 && fam.maxM <= 15000 && fam.why.every((w) => w.length > 2);
+const famNoteOk = /OSM/.test(fam.note) && /không phải điểm đánh giá/.test(fam.note);
+const ovServerEmpty = !!(apiNb && !(apiNb.famousMatch || []).length && !(apiNb.famousNear || []).length);
+if (!famOk && (ovBad.length || ovServerEmpty)) {
+  // Overpass là dịch vụ NGOÀI: đang quá tải/chặn thì không kết luận lỗi code.
+  // Khối "quán có tiếng" có test tất định riêng: tools/test-fame-mock.mjs (dữ liệu giả, không cần mạng).
+  console.log('  BỎ QUA: khối "quán có tiếng" — Overpass không trả dữ liệu (' + (ovBad.slice(0, 2).join(', ') || 'server: areaError=' + ((apiNb || {}).areaError || 'rỗng')) + '); dùng tools/test-fame-mock.mjs');
+} else {
+  check('có khối "quán có tiếng" (' + (serverMode ? 'server' : 'bản tĩnh/Overpass') + ')', famOk, fam.titles.join(' / ') + ' — ' + fam.n + ' quán');
+  check('quán có tiếng trong 15km + có lý do', famWhyOk, fam.why.join(' ; ') + ' | xa nhất ' + Math.round(fam.maxM) + 'm');
+  check('có ghi rõ nguồn "có tiếng"', famNoteOk, fam.note.slice(0, 90));
+}
 
 // reload nhớ mức 10km
 await page.reload({ waitUntil: 'networkidle' });

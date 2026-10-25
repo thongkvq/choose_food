@@ -23,13 +23,18 @@ const VUNG = {
     'pho-bo', 'pho-ga', 'pho-chien-phong', 'pho-tron', 'pho-xao', 'mien-ga', 'mien-cua',
     'chao-trai', 'gio-thu', 'com-rang', 'banh-mi-chao', 'banh-mi-chao-bo', 'banh-mi-chao-pho-mai',
     'banh-mi-chao-trung', 'lau-cua', 'lau-de', 'lau-bo-nhung-dam', 'xoi-man', 'oc-nhoi',
-    'bo-sot-vang', 'banh-da-cua', 'bun-thang', 'cha-ruoi', 'bun-moc', 'mien-luon', 'cha-muc', 'pho-cuon'
+    'bo-sot-vang', 'banh-da-cua', 'bun-thang', 'cha-ruoi', 'bun-moc', 'mien-luon', 'cha-muc', 'pho-cuon',
+    // bổ sung v24
+    'banh-tom', 'canh-cua-rau-day'
   ],
   trung: [
     'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'banh-canh', 'banh-canh-tom',
     'banh-xeo', 'banh-xeo-nhat', 'cao-lau', 'mi-quang', 'nem-nuong', 'lau-ga-la-e', 'bun-bo-hue',
     'com-ga', 'bun-cha-ca', 'banh-mi-heo-quay', 'banh-uot',
-    'com-hen', 'banh-canh-ca-loc', 'banh-khoai'
+    'com-hen', 'banh-canh-ca-loc', 'banh-khoai',
+    // bổ sung v24
+    'banh-trang-cuon-thit-heo', 'goi-ca-nam-o', 'tre-binh-dinh', 'banh-ram-it', 'banh-dap',
+    'banh-mi-cha-ca', 'banh-phu-the', 'banh-cay', 'banh-xeo-tom-nhay', 'bun-sua-nha-trang'
   ],
   nam: [
     'banh-bia', 'banh-canh-ghe', 'banh-mi-xui', 'com-nieu', 'banh-cam', 'banh-mi-bo', 'banh-mi-kep-kem',
@@ -39,10 +44,23 @@ const VUNG = {
     'thit-kho-trung', 'goi-cuon', 'hu-tieu-nam-vang', 'hu-tieu-kho', 'tau-hu-ngot', 'banh-trang-tron',
     'banh-mi-thit', 'banh-mi-ga-nuong', 'banh-mi-pate', 'banh-mi-thit-nuong', 'banh-mi-trung',
     'bac-xiu', 'ca-phe-sua-da',
-    'bo-kho-banh-mi'
+    'bo-kho-banh-mi',
+    // bổ sung v24
+    'ga-chien-nuoc-mam', 'suon-nuong-than', 'tom-rang-me', 'banh-bo',
+    'che-buoi', 'banh-lot-nuoc-cot-dua', 'mam-chung-thit'
   ],
-  'tay-nam-bo': ['bun-mam', 'banh-canh-cua', 'lau-ca-keo', 'banh-tet', 'ca-loc-nuong-trui', 'bun-nuoc-leo', 'banh-cong'],
-  'tay-nguyen': ['banh-trang-nuong', 'com-lam']
+  'tay-nam-bo': [
+    'bun-mam', 'banh-canh-cua', 'lau-ca-keo', 'banh-tet', 'ca-loc-nuong-trui', 'bun-nuoc-leo', 'banh-cong',
+    // bổ sung v24
+    'lau-mam', 'bun-ken', 'bun-quay', 'hu-tieu-my-tho', 'banh-tam-bi', 'nem-lai-vung',
+    'banh-bo-thot-not', 'bong-dien-dien-xao-tep', 'ca-linh-chien-gion', 'goi-ca-trich', 'luon-um-la-nhau'
+  ],
+  'tay-nguyen': [
+    'banh-trang-nuong', 'com-lam',
+    // bổ sung v24
+    'pho-kho-gia-lai', 'bun-do-da-lat', 'ga-nuong-ban-don', 'ruou-can', 'ca-suoi-nuong',
+    'tra-atiso-da-lat', 'ca-phe-buon-ma-thuot'
+  ]
 };
 
 // ---------- ĐẶC SẢN ĐỊA PHƯƠNG (không bán phổ biến toàn quốc) ----------
@@ -52,17 +70,24 @@ const DAC_SAN = [
   'cha-com', 'bun-oc', 'cha-ca-la-vong', 'ca-phe-trung', 'banh-duc', 'xoi-xeo',
   'pho-chien-phong', 'chao-trai', 'mien-cua', 'oc-nhoi',
   'banh-da-cua', 'bun-thang', 'cha-ruoi', 'mien-luon', 'cha-muc', 'pho-cuon',
+  'banh-tom',
   // miền Trung
   'banh-ut-tre', 'banh-beo', 'banh-bot-loc', 'banh-can-chay', 'banh-hoi', 'cao-lau',
   'mi-quang', 'banh-mi-heo-quay',
   'com-hen', 'banh-canh-ca-loc', 'banh-khoai',
+  'banh-trang-cuon-thit-heo', 'goi-ca-nam-o', 'tre-binh-dinh', 'banh-ram-it', 'banh-dap',
+  'banh-mi-cha-ca', 'banh-phu-the', 'banh-xeo-tom-nhay', 'bun-sua-nha-trang',
   // miền Nam
   'banh-bia', 'banh-canh-ghe', 'banh-mi-xui', 'banh-mi-kep-kem', 'banh-trang-sua', 'banh-khot',
   // Tây Nam Bộ
   'bun-mam', 'banh-canh-cua', 'lau-ca-keo',
   'ca-loc-nuong-trui', 'bun-nuoc-leo', 'banh-cong',
+  'lau-mam', 'bun-ken', 'bun-quay', 'hu-tieu-my-tho', 'banh-tam-bi', 'nem-lai-vung',
+  'banh-bo-thot-not', 'bong-dien-dien-xao-tep', 'ca-linh-chien-gion', 'goi-ca-trich', 'luon-um-la-nhau',
   // Tây Nguyên
-  'banh-trang-nuong', 'com-lam'
+  'banh-trang-nuong', 'com-lam',
+  'pho-kho-gia-lai', 'bun-do-da-lat', 'ga-nuong-ban-don', 'ruou-can', 'ca-suoi-nuong',
+  'tra-atiso-da-lat', 'ca-phe-buon-ma-thuot'
 ];
 
 const byId = new Map();
@@ -97,7 +122,9 @@ const out = raw.dishes.map((d) => {
   if (dacSan) nDacSan++;
   stats[vung] = (stats[vung] || 0) + 1;
 
-  const { id, name, emoji, region, vungCo: _old, dacSan: _old2, ...rest } = d;
+  // BẮT BUỘC bỏ luôn khoá `vung` cũ, nếu không `...rest` sẽ ghi đè giá trị vừa tính
+  // (bug cũ: bảng VUNG sửa xong chạy lại mà `vung` trong file không đổi).
+  const { id, name, emoji, region, vung: _oldVung, vungCo: _old, dacSan: _old2, ...rest } = d;
   return { id, name, emoji, region, vung, dacSan, vungCo, ...rest };
 });
 

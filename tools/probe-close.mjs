@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -7,7 +8,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   env: { ...process.env, LD_LIBRARY_PATH: DEPS + ':' + DEPS + '/alsa-lib:' + DEPS + '/gbm' } });
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(1000);
 await page.touchscreen.tap(195, 371);
 await page.waitForTimeout(7600);

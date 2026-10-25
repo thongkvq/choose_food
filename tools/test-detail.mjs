@@ -1,3 +1,6 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+import { fileURLToPath } from 'node:url';
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));   // ảnh chụp nằm trong project hiện tại
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +11,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', e => errs.push(e.message));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(1200);
 const b = await page.locator('#btnSpinSingle').boundingBox();
 await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
@@ -33,5 +36,5 @@ if (hasDetail) {
   console.log('   khối chi tiết phải cuộn:', scroll > 2 ? scroll + 'px (có thanh cuộn riêng)' : 'không');
 }
 console.log('lỗi JS:', errs.length ? errs.join(' | ') : 'không');
-await page.screenshot({ path: '/var/lib/dsh/Choose foody/tools/screenshots/popup-detail-390.png' });
+await page.screenshot({ path: SHOT_DIR + 'popup-detail-390.png' });
 await ctx.close(); await browser.close();

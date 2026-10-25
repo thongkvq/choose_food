@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -6,7 +7,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   args: ['--no-sandbox','--disable-dev-shm-usage','--disable-gpu'], env: { ...process.env, LD_LIBRARY_PATH: DEPS + ':' + DEPS + '/alsa-lib:' + DEPS + '/gbm' } });
 const ctx = await browser.newContext({ viewport: { width: 458, height: 1017 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(2200);
 // thử 3 kịch bản thời tiết: tính tỉ lệ món nước / món mát trong 4000 lần quay
 const res = await page.evaluate(() => {

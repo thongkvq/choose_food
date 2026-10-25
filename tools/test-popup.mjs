@@ -1,13 +1,15 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 import { readFile } from 'node:fs/promises';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
 const DEPS = '/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu';
-const ROOT = '/var/lib/dsh/Choose foody';
+import { fileURLToPath } from 'node:url';
+const ROOT = fileURLToPath(new URL('..', import.meta.url));   // project hiện tại, không hard-code đường dẫn cũ
 const NEW_FIELDS = ['rating','stars','review','calories','protein','proteinLabel','priceRange','fullness','bestFor','bestTime','origin','tip','imageVia','imageSource'];
 
 const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',
-  args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process'],
+  args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
   env: { ...process.env, LD_LIBRARY_PATH: DEPS + ':' + DEPS + '/alsa-lib:' + DEPS + '/gbm' } });
 
 // ---------- PHẦN 1: hành vi chạm ----------
@@ -15,7 +17,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
   const errs = []; page.on('pageerror', e => errs.push(e.message));
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(1200);
   const spinning = () => page.evaluate(() => document.querySelector('#btnSpinSingle').disabled);
 
@@ -70,7 +72,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
   const page = await ctx.newPage();
   const errs = []; page.on('pageerror', e => errs.push(e.message));
   await page.route('**/data/dishes.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: old }));
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(1200);
   await page.click('#btnSpinSingle');
   await page.waitForTimeout(7600);

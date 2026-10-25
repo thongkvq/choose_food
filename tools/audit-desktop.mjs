@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
@@ -20,7 +21,7 @@ const browser = await chromium.launch({
 for (const vp of VPS) {
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h } });
   const page = await ctx.newPage();
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
 
   const data = await page.evaluate(() => {

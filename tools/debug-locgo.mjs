@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +9,7 @@ const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, is
 const page = await ctx.newPage();
 page.on('console', m => { if (/loc-go|nearby/.test(m.text())) console.log('   [console]', m.text().slice(0, 160)); });
 page.on('pageerror', e => console.log('   [pageerror]', e.message.slice(0, 160)));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(1200);
 await page.click('#btnSpinSingle');
 await page.waitForTimeout(7600);

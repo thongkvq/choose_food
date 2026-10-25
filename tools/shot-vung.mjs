@@ -1,5 +1,7 @@
 // tools/shot-vung.mjs — chụp sheet "Vùng miền" để soi bố cục
 import { createRequire } from 'module';
+import { fileURLToPath } from 'node:url';
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
 const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
@@ -28,7 +30,7 @@ for (const [w, h, tag] of [[390, 844, 'iphone'], [375, 667, 'se']]) {
              rows: new Set(chips.map(c => Math.round(c.getBoundingClientRect().top))).size, scrollTop };
   });
   console.log(tag, JSON.stringify(m));
-  await page.screenshot({ path: '/tmp/vung-' + tag + '.png' });
+  await page.screenshot({ path: SHOT_DIR + 'vung-' + tag + '.png' });
   await ctx.close();
 }
 await browser.close();

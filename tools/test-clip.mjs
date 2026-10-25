@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -9,7 +10,7 @@ for (const vp of [{ w: 458, h: 1017 }, { w: 390, h: 844 }, { w: 375, h: 667 }]) 
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
   const errs = []; page.on('pageerror', e => errs.push(e.message));
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(1200);
   await page.click('#btnSpinSingle');
   await page.waitForTimeout(7600);

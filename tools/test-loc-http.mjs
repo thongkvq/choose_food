@@ -1,3 +1,6 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+import { fileURLToPath } from 'node:url';
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));   // ảnh chụp nằm trong project hiện tại
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +11,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, permissions: ['geolocation'], geolocation: { latitude: 10.7725, longitude: 106.698 } });
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', e => errs.push(e.message));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(1300);
 console.log('=== HTTP (LAN) ===');
 console.log('secure context:', await page.evaluate(() => window.isSecureContext), '(false = GPS bị chặn, đúng như mong đợi)');
@@ -44,5 +47,5 @@ r = await page.evaluate(() => {
 console.log('nhập địa chỉ → vị trí:', r.info);
 r.shops.forEach(s => console.log('    ' + s));
 console.log('lỗi JS:', errs.length ? errs.join(' | ') : 'không');
-await page.screenshot({ path: '/var/lib/dsh/Choose foody/tools/screenshots/nearby-http-390.png' });
+await page.screenshot({ path: SHOT_DIR + 'nearby-http-390.png' });
 await ctx.close(); await browser.close();

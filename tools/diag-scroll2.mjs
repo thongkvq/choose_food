@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -15,7 +16,7 @@ async function drag(x, yFrom, yTo) {
   await page.waitForTimeout(350);
 }
 async function test(label, setup) {
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(900);
   if (setup) await page.evaluate(setup);
   await page.evaluate(() => window.scrollTo(0, 0));

@@ -3,6 +3,8 @@ const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
 const DEPS = '/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu';
 const CHROME = '/var/lib/dsh/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
+// Mặc định chạy trên HTTPS tự ký (cần certs/ + cổng 8443); truyền base URL khác để chạy trên LAN http hoặc bản tĩnh.
+const TARGET = process.argv[2] || 'https://127.0.0.1:8443/';
 
 async function run(label, url, geo) {
   const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
@@ -66,4 +68,4 @@ async function run(label, url, geo) {
   if (!ok || errs.length) throw new Error('GPS/mapper regression failed');
   await ctx.close(); await browser.close();
 }
-await run('HTTPS + GPS (toạ độ Bến Thành)', 'https://127.0.0.1:8443/', { latitude: 10.7725, longitude: 106.698 });
+await run('GPS (toạ độ Bến Thành) — ' + TARGET, TARGET, { latitude: 10.7725, longitude: 106.698 });

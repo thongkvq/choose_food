@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
@@ -20,7 +21,7 @@ const DESKTOPS = [
 console.log('--- Checking Desktop Sizes ---');
 for (const vp of DESKTOPS) {
   const page = await browser.newPage({ viewport: { width: vp.w, height: vp.h } });
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(800);
 
   const metrics = await page.evaluate(() => {
@@ -50,7 +51,7 @@ for (const vp of DESKTOPS) {
 
 console.log('--- Checking Desktop Interactions & Popups at 1440x900 ---');
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(600);
 
 // 1. Click filter button on desktop
@@ -143,7 +144,7 @@ const MOBILES = [
 
 for (const m of MOBILES) {
   const mPage = await browser.newPage({ viewport: { width: m.w, height: m.h }, isMobile: true, hasTouch: true });
-  await mPage.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await mPage.goto(BASE + '/', { waitUntil: 'load' });
   await mPage.waitForTimeout(600);
 
   // Spin to verify mobile win popup

@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +9,7 @@ const ctx = await browser.newContext({ viewport: { width: 458, height: 1017 }, i
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', e => errs.push(e.message));
 const logs = []; page.on('console', m => logs.push(m.type() + ': ' + m.text().slice(0, 120)));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(2500);
 console.log('pageerror:', errs.length ? errs.join(' || ') : 'không');
 console.log('console:', logs.slice(0, 6).join(' || ') || 'không');

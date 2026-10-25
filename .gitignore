@@ -11,3 +11,7 @@ package-lock.json
 .env
 .env.local
 *.env
+
+# Việc giao harness + bản sao SQLite cục bộ
+.delegate/
+data/dishes.sqlite

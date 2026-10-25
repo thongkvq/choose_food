@@ -1,3 +1,6 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+import { fileURLToPath } from 'node:url';
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));   // ảnh chụp nằm trong project hiện tại
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +11,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
 const ctx = await browser.newContext({ viewport: { width: 458, height: 1017 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', e => errs.push(e.message));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(1200);
 await page.click('#btnSpinSingle');
 await page.waitForTimeout(7600);
@@ -37,5 +40,5 @@ probe.kids.forEach(k => console.log('   ' + String(k.cls).slice(0, 26).padEnd(28
 console.log('--- phần tử bị overflow:hidden cắt chữ:');
 probe.clipped.length ? probe.clipped.forEach(c => console.log('   ' + c.cls + ' : nội dung ' + c.scrollH + 'px > khung ' + c.clientH + 'px')) : console.log('   không có');
 console.log('lỗi JS:', errs.length ? errs.join(' | ') : 'không');
-await page.screenshot({ path: '/var/lib/dsh/Choose foody/tools/screenshots/diag-cover-458.png' });
+await page.screenshot({ path: SHOT_DIR + 'diag-cover-458.png' });
 await ctx.close(); await browser.close();

@@ -166,9 +166,23 @@ console.log("[BỮA DO NGƯỜI DÙNG CHỌN] pool=" + manual.pool + " meals=" +
 // ===== chip vùng hiện số món =====
 const chipTexts = await page.evaluate(() => [...document.querySelectorAll("#vungChips .chip")].map(c => c.textContent));
 console.log("nhãn chip:", chipTexts.join(" | "));
-const countsOk = chipTexts.length === 7 && chipTexts.every(t => /·\s*\d+$/.test(t.replace(/\s+/g, " ").trim()));
-const zeroDim = await page.evaluate(() => document.querySelectorAll("#vungChips .chip.empty").length);
-console.log("  -> có số món trên chip:", countsOk, "| chip 0 món bị mờ:", zeroDim);
+// Số trên chip phải khớp số món thật (tính lại từ data/dishes.json lúc chạy) và chip 0 món phải bị mờ.
+const chipCheck = await page.evaluate(() => {
+  const s = window.__mgd, keep = new Set(s.state.vung);
+  const out = [...document.querySelectorAll("#vungChips .chip")].map((c) => {
+    s.state.vung.clear(); s.state.vung.add(c.dataset.k);
+    const real = s.pool().length;                       // cùng bộ lọc, chỉ khác vùng
+    const shown = Number((c.textContent.match(/·\s*(\d+)\s*$/) || [])[1]);
+    return { k: c.dataset.k, real, shown, empty: c.classList.contains('empty') };
+  });
+  s.state.vung.clear(); keep.forEach((k) => s.state.vung.add(k));
+  return out;
+});
+const countsOk = chipTexts.length === 7 && chipCheck.every((c) => isFinite(c.shown));
+const countsRight = chipCheck.every((c) => c.shown === c.real && c.empty === (c.real === 0));
+const zeroChips = chipCheck.filter((c) => c.real === 0).length;
+console.log("  -> số món trên chip:", JSON.stringify(chipCheck));
+console.log("  -> chip khớp số thật:", countsRight, "| số chip 0 món hiện tại:", zeroChips, "(dữ liệu đổi thì số này đổi theo)");
 await page.click("#btnCloseSheet"); await page.waitForTimeout(300);
 
 await browser.close();
@@ -191,7 +205,7 @@ const ck = {
   cuu0Mon: rescue.pool === 0 && rescue.meals.length === 1 && rescue.mealAuto === true && rescue.disabled === false,
   quaySauKhiCuu: rescueSpin.spinning === false && rescueSpin.modal === true,
   khongTuBoBuaNguoiDung: manual.meals.length === 1 && manual.sheetOpen === true,
-  chipHienSoMon: countsOk && zeroDim > 0,
+  chipHienSoMon: countsOk && countsRight,
   khongLoiJs: errs.length === 0
 };
 console.log('---');

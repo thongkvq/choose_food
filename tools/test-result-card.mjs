@@ -1,3 +1,4 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -10,7 +11,7 @@ for (const vp of VPS) {
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
   const errs = []; page.on('pageerror', e => errs.push(e.message));
-  await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+  await page.goto(BASE + '/', { waitUntil: 'load' });
   await page.waitForTimeout(1100);
   const b = await page.locator('#btnSpinSingle').boundingBox();
   await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);

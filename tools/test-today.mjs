@@ -1,3 +1,6 @@
+const BASE = (process.argv[2] || 'http://127.0.0.1:4321').replace(/\/$/, '');
+import { fileURLToPath } from 'node:url';
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));   // ảnh chụp nằm trong project hiện tại
 import { createRequire } from 'node:module';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
@@ -8,7 +11,7 @@ const browser = await chromium.launch({ executablePath: '/var/lib/dsh/.cache/ms-
 const ctx = await browser.newContext({ viewport: { width: 458, height: 1017 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', e => errs.push(e.message));
-await page.goto('http://127.0.0.1:4321/', { waitUntil: 'load' });
+await page.goto(BASE + '/', { waitUntil: 'load' });
 await page.waitForTimeout(3000);
 
 // 1) chip bối cảnh
@@ -69,5 +72,5 @@ await page.click('[data-act="share-menu"]');
 const d = await dl;
 console.log('\n4. XUẤT ẢNH:', d ? ('tải được ' + d.suggestedFilename()) : '(không có sự kiện download — có thể dùng navigator.share)');
 console.log('\nlỗi JS:', errs.length ? errs.join(' | ') : 'không');
-await page.screenshot({ path: '/var/lib/dsh/Choose foody/tools/screenshots/today-458.png' });
+await page.screenshot({ path: SHOT_DIR + 'today-458.png' });
 await ctx.close(); await browser.close();

@@ -1,4 +1,6 @@
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import { mkdirSync } from 'node:fs';
 const require = createRequire('/srv/ai-workspaces/dsh-home/profiles/web/');
 const { chromium } = require('playwright');
 const DEPS = '/var/lib/dsh/autogame/chromedeps/root/usr/lib/x86_64-linux-gnu';
@@ -31,5 +33,7 @@ console.log('   ', nb.note);
 nb.shops.forEach(s => console.log('     ' + s));
 console.log('4. lỗi JS:', errs.length ? errs.slice(0,3).join(' | ') : 'không');
 console.log('5. request lỗi:', failed.length ? failed.slice(0,3).join(' | ') : 'không');
-await page.screenshot({ path: '/var/lib/dsh/Choose foody/tools/screenshots/vercel-live.png' });
+const SHOT_DIR = fileURLToPath(new URL('./screenshots/', import.meta.url));
+mkdirSync(SHOT_DIR, { recursive: true });   // trước đây ghi vào đường dẫn project cũ -> EROFS
+await page.screenshot({ path: SHOT_DIR + 'vercel-live.png' });
 await ctx.close(); await browser.close();
