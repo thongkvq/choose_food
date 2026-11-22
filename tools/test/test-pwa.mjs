@@ -1,7 +1,7 @@
 import { launchChromium } from '../lib/chromium.mjs';
 // tools/test/test-pwa.mjs — KIỂM TRA PWA / dùng offline.
 // Kiểm tĩnh: manifest.webmanifest (tên, icon 192/512 + maskable, màu theo styles.css), link trong index.html,
-//            sw.js (network-first HTML/JS/CSS, SWR data, cache-first ảnh ≤150, KHÔNG cache API ngoài,
+//            sw.js (network-first HTML/JS/CSS, SWR data, cache-first ảnh ≤300, KHÔNG cache API ngoài,
 //            ảnh tải mode 'cors' + chỉ cache khi res.ok và blob > 0), vercel.json (routes KHÔNG đi cùng
 //            headers/rewrites/redirects/cleanUrls/trailingSlash — Vercel từ chối deploy nếu có cả hai).
 // Kiểm THẬT bằng ảnh Wikimedia thật (không mock): ảnh nằm trong cache với nội dung > 0 byte,
@@ -46,7 +46,7 @@ check('index.html có <link rel="manifest"> + apple-touch-icon PNG', /rel="manif
 check('sw.js: có hằng số VERSION để đổi cache khi deploy', /const VERSION\s*=\s*'[^']+'/.test(swSrc));
 check('sw.js: HTML/JS/CSS dùng network-first', /networkFirst\(req, SHELL_CACHE\)/.test(swCode) && /\.\(\?:html\?\|js\|css\|webmanifest\)/.test(swCode));
 check('sw.js: data/*.json dùng stale-while-revalidate', /staleWhileRevalidate\(req, DATA_CACHE\)/.test(swCode));
-check('sw.js: ảnh upload.wikimedia.org cache-first, giới hạn 150 ảnh', /cacheFirstImage\(req, IMG_CACHE, IMG_MAX\)/.test(swCode) && /const IMG_MAX\s*=\s*150/.test(swCode) && /trim\(/.test(swCode));
+check('sw.js: ảnh upload.wikimedia.org cache-first, giới hạn 300 ảnh', /cacheFirstImage\(req, IMG_CACHE, IMG_MAX\)/.test(swCode) && /const IMG_MAX\s*=\s*300/.test(swCode) && /trim\(/.test(swCode));
 check('sw.js: CHỈ cache ảnh wikimedia, không cache API ngoài', (swCode.match(/url\.hostname\s*===/g) || []).length === 1 && /url\.hostname === 'upload\.wikimedia\.org'/.test(swCode));
 check('sw.js: activate xoá cache cũ', /caches\.keys\(\)/.test(swCode) && /caches\.delete\(n\)/.test(swCode));
 // FIX v24-2: ảnh phải tải mode 'cors' (no-cors -> response opaque -> blob rỗng -> cache ảnh hỏng mãi)
@@ -217,8 +217,8 @@ const back = await page.evaluate(async () => { await new Promise((r) => setTimeo
 check('bật mạng lại -> navigator.onLine = true', back === true);
 if (imageOk) {
   const keys = await page.evaluate(async () => { const n = (await caches.keys()).find((x) => x.startsWith('img-')); if (!n) return []; const c = await caches.open(n); return (await c.keys()).map((k) => k.url); });
-  check('cache ảnh giữ đúng ảnh thật đã dùng và ≤150 ảnh',
-    keys.length >= 1 && keys.length <= 150 && keys.some((u) => u.split('?')[0] === imgSrc.split('?')[0]),
+  check('cache ảnh giữ đúng ảnh thật đã dùng và ≤300 ảnh',
+    keys.length >= 1 && keys.length <= 300 && keys.some((u) => u.split('?')[0] === imgSrc.split('?')[0]),
     keys.length + ' ảnh trong cache');
 }
 check('không lỗi JS toàn luồng PWA/offline', errs.length === 0, errs.join(' | '));

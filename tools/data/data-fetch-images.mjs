@@ -27,6 +27,14 @@ const DENY_TITLES = [
   // "bánh canh cá lóc" KHÔNG phải "cháo cá lóc" (khác món: sợi bánh canh vs cháo gạo)
   'bánh canh cá lóc'
 ];
+// Ghim ĐÚNG file nguồn cho món đã kiểm bằng mắt: khoá id → tên file đã chuẩn hoá (bỏ "File:"/đuôi ảnh).
+// Khi có ghim: chỉ file khớp đúng tên đó được nhận và bỏ qua DENY_TITLES (đã kiểm tay nên không sợ bẫy
+// bỏ dấu, ví dụ "bánh cáy" ~ "bánh cay"); món không ghim giữ nguyên luật cũ.
+// So khớp GIỮ NGUYÊN DẤU + đuôi file (chỉ bỏ tiền tố "File:"): "Bánh cay.JPG" ≠ "Bánh cáy.JPG".
+const PIN_TITLE = {
+  'banh-cay': 'Bánh cay.JPG',
+  'goi-ca-trich': 'Gỏi Cá Trích.jpg'
+};
 // alias quá chung, không dùng để tra ảnh (vẫn giữ trong aliases.json cho việc khác)
 const IMG_SKIP_ALIASES = {
   'mi-ga': ['Instant noodle', 'Mì trứng'],
@@ -73,7 +81,13 @@ const tScore = (d, title) => {
   for (const q of queries(d)) best = Math.max(best, score(q, title), score(d.name, title));
   return best;
 };
-const denied = (title) => DENY_TITLES.some(bad => norm(title).includes(norm(bad)));
+const pinNorm = (title) => String(title).replace(/^\s*File:/i, '').trim().toLowerCase();
+const pinnedOk = (d, title) => !!PIN_TITLE[d.id] && pinNorm(title) === PIN_TITLE[d.id].toLowerCase();
+const denied = (title, d) => {
+  if (d && pinnedOk(d, title)) return false;                 // file đã ghim + kiểm tay
+  return DENY_TITLES.some(bad => norm(title).includes(norm(bad)));
+};
+const keepPin = (d, opts) => PIN_TITLE[d.id] ? opts.filter(o => pinnedOk(d, o.title)) : opts;
 function hashIdx(id, n) { let h = 2166136261; for (let i = 0; i < id.length; i++) { h ^= id.charCodeAt(i); h = Math.imul(h, 16777619); } return Math.abs(h) % n; }
 
 // URL Wikimedia -> thumbnail upload.wikimedia.org đúng bậc cho phép (bỏ thumb.wikimedia.org + query tracking)
@@ -189,16 +203,17 @@ for (const site of ['vi.wikipedia.org', 'en.wikipedia.org']) {
   let hit = 0;
   for (const d of pending) {
     const via = site.split('.')[0] + '-wiki';
-    const opts = [];
+    let opts = [];
     for (const q of candidateTitles(d)) {
       const h = map.get(q);
       if (!h || !h.url) continue;
-      if (denied(h.title)) continue;
+      if (denied(h.title, d)) continue;
       const thumb = toThumb(h.url);
       if (!thumb) continue;
       const sc = Math.max(tScore(d, h.title), score(q, h.title));
       if (sc >= MIN_SCORE) opts.push({ thumb, title: h.title, score: sc, query: q });
     }
+    opts = keepPin(d, opts);
     if (!opts.length) continue;
     opts.sort((a, b) => b.score - a.score);
     if (tryAssign(d, opts, via)) hit++;
@@ -214,8 +229,9 @@ if (misses.length) {
     for (const q of candidateTitles(d).slice(0, 4)) {
       let files = [];
       try { files = await commonsCandidates(q); } catch { continue; }
-      const scored = files.map(f => ({ thumb: toThumb(f.url), title: f.title, score: Math.max(tScore(d, f.title), score(q, f.title)) }))
-        .filter(f => f.thumb && f.score >= MIN_SCORE && !denied(f.title)).sort((a, b) => b.score - a.score);
+      let scored = files.map(f => ({ thumb: toThumb(f.url), title: f.title, score: Math.max(tScore(d, f.title), score(q, f.title)) }))
+        .filter(f => f.thumb && f.score >= MIN_SCORE && !denied(f.title, d)).sort((a, b) => b.score - a.score);
+      scored = keepPin(d, scored);
       if (!scored.length) continue;
       if (tryAssign(d, scored, 'commons')) break;
     }

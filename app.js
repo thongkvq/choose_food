@@ -6,10 +6,26 @@ import { renderArt } from './art.js';
 // Logic tìm quán (chuẩn hoá tên, khoảng cách, mức bán kính, khớp tên món, "quán có tiếng")
 // nằm trong lib/nearby-core.js — DÙNG CHUNG với server.js, không chép lại ở đây.
 import {
-  clampRadius, dishQueries, dishWords, fameLists, filterByRadius, mapsDir, matchPlace,
+  attachHours, clampRadius, dishQueries, dishWords, fameLists, filterByRadius, hoursIndex, mapsDir, matchPlace,
   nearbyUrls, norm, overpassGetUrl, packMatched, photonSearchResult, photonSearchUrl, poisFromOverpass,
   R_TIERS, sortMatched
 } from './lib/nearby-core.js';
+// Giờ mở cửa (OSM opening_hours) — phân tích & tính "đang mở / sắp đóng / đã đóng / chưa rõ"
+import { openStatus } from './lib/opening-hours.js';
+// Quán đã lưu (mgd.savedPlaces) — hàm thuần, giữ ở module riêng cho app.js khỏi phình
+import {
+  hasSaved, loadSaved, placeKey, removeSaved, savedDishIds, savedForDish, setNote, toggleSaved
+} from './lib/saved-places.js';
+// Quay cho nhóm (chuyền tay 1 máy): chuẩn hoá tên, danh sách gợi ý, phép trừ món bị gạch
+import {
+  GROUP_MAX, GROUP_MIN, SUGGEST_N, clampVetoMax, groupSummary, normalizeGroup, parseNames, poolWithoutVeto, suggestDishes, vetoedIds
+} from './lib/group-core.js';
+// Mục tiêu calo/ngân sách: tiến độ "đã dùng / mục tiêu" + hệ số giảm trọng số món vượt mục tiêu
+import {
+  budgetOf, goalFactor, goalHint, hasGoal, normalizeGoals, progressRows, remainingOf, usedToday
+} from './lib/goals-core.js';
+// Thành tựu & chuỗi ngày: tính từ nhật ký, món đã khám phá, yêu thích, thực đơn hôm nay
+import { ACHV, achvCount, computeAchv, mergeUnlocked, newUnlocks, unlockedMap } from './lib/achievements.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -21,9 +37,14 @@ const LS = {
 const IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window;
 // Id CŨ (trước khi đổi sang slug ASCII) -> id MỚI. Mọi chỗ đọc dữ liệu người dùng đã lưu (yêu thích,
 // nhật ký, thực đơn, lịch sử, số món đã thấy) và link #mon=<id> cũ đều đi qua idNow().
-const ID_LEGACY = { 'cơm-chay': 'com-chay' };
+const ID_LEGACY = { 'cơm-chay': 'com-chay', 'banh-plan': 'banh-flan' };
 const idNow = (id) => (id == null ? id : (ID_LEGACY[id] || id));
 const idList = (a) => [...new Set((Array.isArray(a) ? a : []).map(idNow))];
+// quán đã lưu: id món bên trong cũng phải đi qua idNow() như mọi khoá mgd.* khác
+const idListPlaces = (a) => (Array.isArray(a) ? a : []).map((p) =>
+  (p && typeof p === 'object' && Array.isArray(p.dishes)) ? Object.assign({}, p, { dishes: idList(p.dishes) }) : p);
+let savedIdsCache = null;                    // Set id món có quán đã lưu — dựng lại khi danh sách đổi
+function savedSet() { if (!savedIdsCache) savedIdsCache = savedDishIds(state.savedPlaces); return savedIdsCache; }
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOW_END = (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 4;
 
@@ -67,9 +88,24 @@ const state = {
   avoidRecent: LS.get('mgd.avoidRecent', true) !== false,   // mặc định BẬT: giảm trọng số món vừa ăn / vừa quay ra
   recentDraws: idList(LS.get('mgd.recentDraws', [])).slice(0, 10),   // 10 món vừa quay ra (chưa chốt)
   favs: idList(LS.get('mgd.favs', [])), hist: idList(LS.get('mgd.hist', [])), seen: new Set(idList(LS.get('mgd.seen', []))),
+  // tìm quán: chỉ quán đang mở (mặc định TẮT) + quán đã lưu (mgd.savedPlaces)
+  openOnly: LS.get('mgd.openOnly', false) === true,
+  savedPlaces: loadSaved(idListPlaces(LS.get('mgd.savedPlaces', []))),
+  savedOnly: LS.get('mgd.savedOnly', false) === true,
   sound: LS.get('mgd.sound', true), pity: LS.get('mgd.pity', 0),
+  // mục tiêu calo/ngân sách (mgd.goals) — để trống = không dùng
+  goals: normalizeGoals(LS.get('mgd.goals', null)),
+  // quay cho nhóm: danh sách tên gần nhất + số món mỗi người được gạch (mgd.group)
+  group: normalizeGroup(LS.get('mgd.group', null)),
+  achv: LS.get('mgd.achv', { unlocked: {} }),   // thành tựu đã mở khoá (chỉ toast 1 lần)
   lastWinner: null, spinning: false
 };
+// Phiên nhóm đang chạy (không lưu localStorage): {phase, names, vetoMax, turns:[{name,veto[],skipped}], idx}
+let GR = null;
+// Món bị gạch của lượt nhóm đang áp lên pool (Set id). Rỗng = quay bình thường.
+state.groupVeto = new Set();
+// Thông tin nhóm để in ở popup kết quả ({names, veto:[dish]}) — xoá khi đóng popup
+state.groupRun = null;
 function vungCandidates(d) {
   if (!d || d.region !== 'vn' || d.vung === 'ngoai') return [];
   // Chỉ đặc sản gốc: dùng nơi món ra đời; mặc định: dùng nơi món đang bán.
@@ -346,8 +382,13 @@ function introBlock(d) {
 }
 function detailBlock(d) {
   if (!Array.isArray(d.detail) || !d.detail.length) return '';
+  // detailSource = "tong-hop": mục Chi tiết do app tự dựng từ dữ liệu sẵn có của món (task-06),
+  // KHÔNG phải nguyên văn Wikipedia -> phải nói rõ để người đọc biết độ tin cậy.
+  const note = d.detailSource === 'tong-hop'
+    ? '<p class="detail-src">ℹ️ Nội dung tổng hợp, có thể chưa đầy đủ</p>' : '';
   return '<div class="detail">' +
       '<button class="detail-toggle" data-act="detail">📖 Chi tiết (' + d.detail.map(x => esc(x.t)).join(' · ').slice(0, 70) + ') ▾</button>' +
+      note +
       '<div class="detail-body" id="detailBody" hidden>' +
         d.detail.map(x => '<section><h4>' + esc(x.t) + '</h4><p>' + esc(x.body).replace(/\n+/g, '<br>') + '</p></section>').join('') +
       '</div>' +
@@ -442,10 +483,21 @@ function nearbyControlsHTML() {
       '<input id="locInput" type="text" inputmode="text" placeholder="Nhập địa chỉ hoặc lat,lng…" autocomplete="off">' +
       '<button class="loc-go" data-act="loc-go">Tìm</button>' +
     '</div>' +
+    // công tắc chỉ quán đang mở: vẫn giữ quán CHƯA RÕ giờ (không đoán bừa)
+    '<label class="switch f-open-only"><input type="checkbox" id="fOpenOnly"' + (state.openOnly ? ' checked' : '') + '>' +
+      '<span class="track-ui"></span><span class="switch-label">🟢 Chỉ quán đang mở — ẩn quán đã đóng, vẫn giữ quán chưa rõ giờ</span></label>' +
     (secure ? '' :
       '<div class="nearby-note">⚠️ Trang đang chạy <b>http</b> nên trình duyệt chặn GPS — đang dùng vị trí gần đúng theo IP. ' +
       'Muốn dùng <b>toạ độ chính xác của máy</b>: <a class="loc-https" href="' + esc(httpsUrl) + '">mở bản HTTPS</a> ' +
       '(bấm "Nâng cao" → "Tiếp tục truy cập" khi trình duyệt cảnh báo chứng chỉ).</div>');
+}
+// bật/tắt "chỉ quán đang mở": chỉ vẽ lại danh sách đã có, KHÔNG gọi mạng lại
+function setOpenOnly(on) {
+  state.openOnly = !!on;
+  LS.set('mgd.openOnly', state.openOnly);
+  nearbyControlsMemo = nearbyControlsHTML();
+  paintNearby();
+  toast(state.openOnly ? '🟢 Chỉ hiện quán đang mở (quán chưa rõ giờ vẫn hiện)' : '🔎 Hiện lại cả quán đã đóng');
 }
 
 function renderNearbyHeader(pos) {
@@ -500,29 +552,150 @@ async function dirFamous(lat, lng, radiusM, dish, kw, cuisine) {
   if (!data) return null;
   const pois = poisFromOverpass(data.elements).map((p) => Object.assign(p, { maps: mapsDir(p.lat, p.lng) }));
   const lists = fameLists(pois, lat, lng, radiusM, dish, kw, cuisine);
-  fameCacheSet(lat, lng, radiusM, dish, lists);
-  return lists;
+  // kèm index giờ mở cửa (chỉ quán CÓ opening_hours -> nhỏ) để ghép cho cả danh sách quán khớp món
+  const out = Object.assign({}, lists, { hours: hoursIndex(pois) });
+  fameCacheSet(lat, lng, radiusM, dish, out);
+  return out;
 }
 
+/* ---------- một dòng quán: giờ mở cửa + nút lưu (tap ≥44px) ---------- */
+let shopIdx = new Map();          // key -> quán của lượt hiện tại (nút 🔖 tra ngược ra dữ liệu)
+const kmText = (m) => (m < 1000 ? m + ' m' : (m / 1000).toFixed(1) + ' km');
+const typeLabel = (t) => t === 'fast_food' ? 'quán nhanh' : t === 'cafe' ? 'quán cà phê'
+  : t === 'food_court' ? 'khu ăn uống' : t === 'bakery' ? 'tiệm bánh' : t === 'ice_cream' ? 'kem' : 'nhà hàng';
+function shopRowHTML(p, kind) {
+  const key = placeKey(p);
+  const hours = openStatus(p.open, new Date());
+  const saved = hasSaved(state.savedPlaces, key);
+  if (key) shopIdx.set(key, p);
+  const meta = (kind === 'fam'
+    ? [p.cuisine, p.address]
+    : [typeLabel(p.type), p.cuisine, p.address, p.phone]).filter(Boolean).map(esc).join(' · ');
+  const why = kind === 'fam'
+    ? '<span class="fam-why">' + ((p.branches > 1 ? [p.branches + ' chi nhánh'] : []).concat(p.why || [])).slice(0, 3).map(esc).join(' · ') + '</span>'
+    : '';
+  return '<div class="shop-row">' +
+    '<a class="shop' + (kind === 'fam' ? ' fam' : '') + '" href="' + esc(p.maps || '') + '" target="_blank" rel="noopener">' +
+      '<b>' + esc(p.name) + '</b><span class="shop-dist">' + kmText(p.dist) + '</span>' +
+      why +
+      '<span class="shop-meta">' + meta + '</span>' +
+      '<span class="shop-hours' + (hours.state === 'closed' ? ' shut' : hours.state === 'unknown' ? ' unk' : '') + '">' + esc(hours.label) + '</span>' +
+    '</a>' +
+    '<button class="save-btn' + (saved ? ' on' : '') + '" type="button" data-save="' + esc(key) + '"' +
+      ' aria-pressed="' + (saved ? 'true' : 'false') + '" aria-label="' + (saved ? 'Bỏ lưu quán ' : 'Lưu quán ') + esc(p.name) + '"' +
+      ' title="' + (saved ? 'Bỏ lưu quán' : 'Lưu quán') + '">🔖</button>' +
+  '</div>';
+}
 // Khối "quán có tiếng": server trả sẵn, hoặc bản tĩnh tự gọi Overpass ở trên.
-function famousHTML(match, near, already) {
+// hide = công tắc "chỉ quán đang mở" đang bật -> ẩn quán đã đóng, GIỮ quán chưa rõ giờ
+function famousHTML(match, near, already, hide) {
   const list = already || [];
-  const famMatch = (match || []).filter((p) => !list.some((q) => q.name === p.name && Math.abs(q.dist - p.dist) < 50));
-  const famNear = (near || []).filter((p) => !famMatch.some((q) => q.name === p.name));
-  if (!famMatch.length && !famNear.length) return '';
-  return famousBlock('⭐ Quán có tiếng bán món này', famMatch, 'match') +
-    famousBlock('⭐ Quán có tiếng quanh đây', famNear, 'near') +
+  const now = new Date();
+  const closedNow = (p) => openStatus(p.open, now).state === 'closed';
+  const keep = (arr) => (hide ? arr.filter((p) => !closedNow(p)) : arr);
+  const closedN = (arr) => (hide ? arr.filter(closedNow).length : 0);
+  const matchAll = (match || []).filter((p) => !list.some((q) => q.name === p.name && Math.abs(q.dist - p.dist) < 50));
+  const nearAll = (near || []).filter((p) => !matchAll.some((q) => q.name === p.name));
+  const famMatch = keep(matchAll), famNear = keep(nearAll);
+  if (!famMatch.length && !famNear.length) {
+    return hide && (matchAll.length || nearAll.length)
+      ? '<div class="nearby-note">🟢 Quán có tiếng quanh đây đều đã đóng — tắt <b>Chỉ quán đang mở</b> để xem.</div>' : '';
+  }
+  return famousBlock('⭐ Quán có tiếng bán món này', famMatch, 'match', closedN(matchAll)) +
+    famousBlock('⭐ Quán có tiếng quanh đây', famNear, 'near', closedN(nearAll)) +
     '<div class="nearby-note fam-note">"Có tiếng" = có hồ sơ Wikipedia/Wikidata, thương hiệu/chuỗi nhiều chi nhánh, website, giờ mở cửa trên dữ liệu mở OSM — không phải điểm đánh giá của khách.</div>';
 }
-function famousBlock(title, list, kind) {
+function famousBlock(title, list, kind, hiddenN) {
   if (!list || !list.length) return '';
-  return '<div class="fam-title">' + title + '</div>' +
-    list.slice(0, kind === 'match' ? 6 : 5).map((p) =>
-      '<a class="shop fam" href="' + esc(p.maps) + '" target="_blank" rel="noopener">' +
-        '<b>' + esc(p.name) + '</b><span class="shop-dist">' + (p.dist < 1000 ? p.dist + ' m' : (p.dist / 1000).toFixed(1) + ' km') + '</span>' +
-        '<span class="fam-why">' + ((p.branches > 1 ? [p.branches + ' chi nhánh'] : []).concat(p.why || [])).slice(0, 3).map(esc).join(' · ') + '</span>' +
-        '<span class="shop-meta">' + [p.cuisine, p.address].filter(Boolean).map(esc).join(' · ') + '</span>' +
-      '</a>').join('');
+  return '<div class="fam-title">' + title +
+    (hiddenN ? ' <i class="fam-hidden">· ẩn ' + hiddenN + ' quán đã đóng</i>' : '') + '</div>' +
+    list.slice(0, kind === 'match' ? 6 : 5).map((p) => shopRowHTML(p, 'fam')).join('');
+}
+
+/* ---------- vẽ lại danh sách quán từ dữ liệu ĐÃ có (đổi công tắc không gọi mạng) ---------- */
+function paintNearby() {
+  const st = state._nearbyData;
+  if (!st) return;
+  const now = new Date();
+  const closedNow = (p) => openStatus(p.open, now).state === 'closed';
+  shopIdx = new Map();
+  const list = st.list || [];
+  const hidden = state.openOnly ? list.filter(closedNow) : [];
+  const shown = state.openOnly ? list.filter((p) => !closedNow(p)) : list;
+  const slot = $('#nearbyListSlot');
+  if (slot) {
+    slot.innerHTML = shown.slice(0, 10).map((p) => shopRowHTML(p)).join('') ||
+      (state.openOnly && list.length
+        ? '<div class="nearby-note">🟢 Không còn quán nào đang mở trong danh sách này — tắt <b>Chỉ quán đang mở</b> để xem tất cả.</div>' : '');
+  }
+  const note = $('#nearbyCountNote');
+  if (note) {
+    let h = list.length + ' quán <b>' + esc(st.kind) + '</b> trong ~' + st.rad + 'km (bán kính bạn chọn)';
+    if (state.openOnly) {
+      h += '<br>🟢 Đang bật “chỉ quán đang mở”: đã ẩn <b>' + hidden.length + '</b> quán đã đóng' +
+        (hidden.length ? '' : ' (không có quán nào bị ẩn)') + ' — quán chưa rõ giờ vẫn hiện.';
+    }
+    note.innerHTML = h;
+  }
+  const famSlot = $('#famSlot');
+  if (famSlot && st.fam !== undefined) {
+    // fam = undefined: đang tải; null: lấy thất bại; object (kể cả rỗng): đã có dữ liệu
+    famSlot.innerHTML = st.fam
+      ? famousHTML(st.fam.famousMatch, st.fam.famousNear, list, state.openOnly)
+      : (st.fam === null
+        ? '<div class="nearby-note">Chưa lấy được danh sách quán có tiếng (Overpass đang bận) — bấm 🔄 Tìm lại.</div>'
+        : '');
+  }
+}
+
+/* ---------- lưu / bỏ lưu quán ---------- */
+function saveSaved() { LS.set('mgd.savedPlaces', state.savedPlaces); savedIdsCache = null; }
+function asPlace(p) {
+  return { name: p.name, address: p.address || '', lat: p.lat, lng: p.lng, osm: p.osm || '', open: p.open || '', maps: p.maps || '' };
+}
+function toggleSavePlace(p) {
+  const key = placeKey(p);
+  const dishId = state.lastNearbyDish ? state.lastNearbyDish.id : '';
+  if (hasSaved(state.savedPlaces, key)) {
+    state.savedPlaces = removeSaved(state.savedPlaces, key);
+    toast('Đã bỏ lưu quán <b>' + esc(p.name) + '</b>');
+  } else {
+    state.savedPlaces = toggleSaved(state.savedPlaces, asPlace(p), dishId).list;
+    toast('🔖 Đã lưu quán <b>' + esc(p.name) + '</b> — xem trong ♥ Đã lưu');
+  }
+  saveSaved(); paintNearby(); refreshSavedForDish();
+  if (state.savedOnly) { syncPool(); ensurePlayable(false); }
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-save]');
+  if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const p = shopIdx.get(b.dataset.save);
+  if (p) toggleSavePlace(p);
+});
+document.addEventListener('change', (e) => {
+  if (e.target && e.target.id === 'fOpenOnly') setOpenOnly(e.target.checked);
+});
+
+/* ---------- "Quán quen" trong popup món: hiện ngay, không cần mạng ---------- */
+function savedForDishHTML(d) {
+  const list = savedForDish(state.savedPlaces, d && d.id);
+  if (!list.length) return '';
+  return '<div class="saved-here">' +
+    '<div class="saved-here-title">🔖 Quán quen <i>(' + list.length + ' quán đã lưu bán món này)</i></div>' +
+    list.slice(0, 4).map((p) => {
+      const h = openStatus(p.open, new Date());
+      return '<div class="saved-here-row">' +
+        '<a href="' + esc(p.maps || '#') + '" target="_blank" rel="noopener"><b>' + esc(p.name) + '</b>' +
+          (p.address ? '<span class="saved-addr">' + esc(p.address) + '</span>' : '') + '</a>' +
+        '<span class="saved-hours' + (h.state === 'closed' ? ' shut' : h.state === 'unknown' ? ' unk' : '') + '">' + esc(h.label) + '</span>' +
+        (p.note ? '<span class="saved-note">📝 ' + esc(p.note) + '</span>' : '') +
+      '</div>';
+    }).join('') + '</div>';
+}
+function refreshSavedForDish() {
+  const slot = $('#savedForDish');
+  if (slot && state.lastWinner) slot.innerHTML = savedForDishHTML(state.lastWinner);
 }
 
 // Mở app/web giao đồ ăn để tìm & đặt món — CHỈ là link tìm kiếm, KHÔNG lấy dữ liệu quán từ họ.
@@ -591,35 +764,37 @@ async function findNearby(d, forcePos, keepPos) {
     const kind = (j.matched && j.matched.length) ? 'bán đúng món này'
       : (j.sameCuisine && j.sameCuisine.length) ? 'cùng nhóm ẩm thực' : 'quán ăn gần nhất';
     const rad = ((j.usedRadius || j.radius || state.radius) / 1000);
-    const km = (m) => m < 1000 ? m + ' m' : (m / 1000).toFixed(1) + ' km';
     const dishQ = (d.kw && d.kw[0]) || d.name;   // từ khoá để mở app đặt món
+    // giữ dữ liệu lại: đổi công tắc "chỉ quán đang mở" chỉ cần VẼ LẠI, không gọi mạng
+    state._nearbyData = {
+      list: list, kind: kind, rad: rad,
+      fam: famJob ? undefined : ((j.famousMatch || j.famousNear) ? { famousMatch: j.famousMatch, famousNear: j.famousNear } : {})
+    };
     let html = renderNearbyHeader(pos);
-    html += '<div class="nearby-note">' + list.length + ' quán <b>' + kind + '</b> trong ~' + rad + 'km (bán kính bạn chọn)</div>';
+    html += '<div class="nearby-note" id="nearbyCountNote"></div>';
     if (j.areaWarming) html += '<div class="nearby-note">⏳ Khu vực này đang nạp danh sách quán (lần đầu hơi lâu) — bấm <b>🔄 Tìm lại</b> sau ~10 giây là có.</div>';
-    html += list.slice(0, 10).map(p =>
-      '<a class="shop" href="' + esc(p.maps) + '" target="_blank" rel="noopener">' +
-        '<b>' + esc(p.name) + '</b><span class="shop-dist">' + km(p.dist) + '</span>' +
-        '<span class="shop-meta">' + [p.type === 'fast_food' ? 'quán nhanh' : p.type === 'cafe' ? 'quán cà phê' : p.type === 'food_court' ? 'khu ăn uống' : 'nhà hàng',
-          p.cuisine, p.address, p.phone].filter(Boolean).map(esc).join(' · ') + '</span></a>').join('');
+    html += '<div id="nearbyListSlot"></div>';
     // ⭐ Quán có tiếng (dữ liệu mở OSM: thương hiệu/chuỗi, website, giờ mở cửa…)
-    html += '<div id="famSlot">' + famousHTML(j.famousMatch, j.famousNear, list) +
-      (famJob ? '<div class="nearby-note">⏳ Đang lấy danh sách quán có tiếng…</div>' : '') + '</div>';
+    html += '<div id="famSlot">' + (famJob ? '<div class="nearby-note">⏳ Đang lấy danh sách quán có tiếng…</div>' : '') + '</div>';
     html += '<div class="nearby-links">' +
       '<a class="nearby-link primary" href="' + esc(j.mapsKeywordUrl || j.mapsUrl) + '" target="_blank" rel="noopener">🗺️ Google Maps</a>' +
       '<button class="nearby-link" data-act="loc-again">🔄 Tìm lại</button>' +
       '</div>' + deliveryLinks(dishQ);
     out.innerHTML = controls + html;
     out.dataset.done = '1';
+    paintNearby();
     if (btn) { btn.textContent = '📍 Quán gần đây (bấm để ẩn/hiện)'; btn.disabled = false; }
     // bản tĩnh: Overpass chậm nên hiện kết quả chính trước, quán có tiếng đổ vào sau
     if (famJob) {
       const token = (state._nearbyToken = (state._nearbyToken || 0) + 1);
       famJob.then((fam) => {
         if (token !== state._nearbyToken) return false;   // đã có lượt tìm mới hơn
-        const slot = $('#famSlot');
-        if (!slot) return false;
-        const html2 = fam ? famousHTML(fam.famousMatch, fam.famousNear, list) : '';
-        slot.innerHTML = html2 || '<div class="nearby-note">Chưa lấy được danh sách quán có tiếng (Overpass đang bận) — bấm 🔄 Tìm lại.</div>';
+        const st = state._nearbyData;
+        if (!st) return false;
+        st.fam = fam || null;
+        // ghép giờ mở cửa OSM cho quán Photon (cùng osm id, hoặc tên chuẩn hoá giống + ≤60 m)
+        if (fam && fam.hours && fam.hours.length) st.list = attachHours(st.list, fam.hours);
+        paintNearby();
         return true;
       });
     }
@@ -646,12 +821,49 @@ function matchDish(d, ignoreVung, q) {
     (!state.styles.size || state.styles.has(d.style)) &&
     (!state.veg || d.veg === 1) && (!state.mild || d.spicy === 0) &&
     (!state.topRated || d.rating >= 8.5) &&
+    (!state.savedOnly || savedSet().has(d.id)) &&          // chỉ món đã có quán lưu (mgd.savedPlaces)
     d.price <= state.price && d.minutes <= state.time &&
     (!q || (d.name + ' ' + d.descr + ' ' + d.tags.join(' ')).toLowerCase().includes(q));
 }
 function pool() {
   const q = state.q.trim().toLowerCase();
-  return ALL.filter(d => matchDish(d, false, q));
+  const list = ALL.filter(d => matchDish(d, false, q));
+  // Đang chạy lượt quay cho nhóm: bỏ các món bị gạch (chỉ trong lượt đó, đóng popup là trả lại)
+  return state.groupVeto && state.groupVeto.size ? poolWithoutVeto(list, state.groupVeto) : list;
+}
+/* ===== MỤC TIÊU CALO / NGÂN SÁCH =====
+   - "đã dùng hôm nay" = món trong nhật ký HÔM NAY + món đã điền vào thực đơn hôm nay (không tính trùng)
+   - mục tiêu đặt trong panel 📅 Hôm nay, lưu mgd.goals; để trống = không dùng
+   - món vượt phần còn lại bị nhân trọng số (goalFactor), KHÔNG bị loại khỏi pool */
+const priceOf = (d) => PRICE_MID[(d && d.price) || 2] || 40000;
+function usedTodayIds() {
+  const today = todayKey(), out = [];
+  for (const x of state.diary || []) {
+    if (x && x.id && x.ts && todayKey(new Date(x.ts)) === today) out.push(idNow(x.id));
+  }
+  const eaten = new Set(out);
+  for (const m of MEAL_ORDER) {                // món đã vào thực đơn mà chưa ghi nhật ký
+    const id = state.menu && state.menu[m];
+    if (id && !eaten.has(id)) { out.push(id); eaten.add(id); }
+  }
+  return out;
+}
+function goalUsage() { return usedToday(usedTodayIds(), dishById, priceOf); }
+function saveGoals() { LS.set('mgd.goals', state.goals); }
+function setGoal(key, value) {
+  const next = Object.assign({}, state.goals);
+  next[key] = Number(value) || 0;
+  state.goals = normalizeGoals(next);
+  saveGoals(); paintGoalBars(); renderCtxChip();
+  return state.goals;
+}
+function setGoalPriority(on, notify) {
+  state.goals = normalizeGoals(Object.assign({}, state.goals, { priority: !!on }));
+  saveGoals(); renderCtxChip();
+  const el = $('#fGoalPriority'); if (el) el.checked = state.goals.priority;
+  if (notify) toast(state.goals.priority
+    ? '🎯 Đã bật ưu tiên món vừa mục tiêu calo/ngân sách'
+    : '🎲 Quay đều như cũ — không ưu tiên mục tiêu');
 }
 /* ===== TRÁNH MÓN LẶP =====
    - Món đã CHỐT hoặc ghi vào nhật ký (mgd.diary) trong 3 ngày gần nhất: ×0.15
@@ -685,7 +897,10 @@ function setAvoidRecent(on, notify) {
 }
 function drawOne(list, minTier = 0) {
   let c = list.filter(d => d.tier >= minTier); if (!c.length) c = list;
-  const w = c.map(d => TIERS[d.tier].w * (.55 + d.weight / 200) * biasOf(d) * avoidFactor(d));
+  // mục tiêu calo/tiền của hôm nay: tính 1 lần cho cả lượt quay (không tính lại từng món)
+  const used = goalUsage();
+  const gf = (d) => goalFactor(d, state.goals, used, { on: state.goals.priority, priceOf: priceOf });
+  const w = c.map(d => TIERS[d.tier].w * (.55 + d.weight / 200) * biasOf(d) * avoidFactor(d) * gf(d));
   let r = Math.random() * w.reduce((a, b) => a + b, 0);
   for (let i = 0; i < c.length; i++) { r -= w[i]; if (r <= 0) return c[i]; }
   return c[c.length - 1];
@@ -777,6 +992,7 @@ function spin(target, done) {
       addHist(target);
       if (!state.seen.has(target.id)) { state.seen.add(target.id); LS.set('mgd.seen', [...state.seen]); }
       updateProgress();
+      achvLater();                      // kiểm tra thành tựu lúc rảnh — không chặn vòng quay
       setTimeout(() => {
         state.spinning = false;
         $('#btnSpinSingle').disabled = false;
@@ -866,11 +1082,13 @@ function renderWin(d) {
     '<div class="win-col-info">' +
     '<h2 class="win-name">' + d.emoji + ' ' + esc(d.name) + '</h2>' +
     '<p class="win-descr">' + esc(d.descr) + '</p>' +
+    groupResultHTML() +
     '<div id="heavySlot">' + heavyHTML(d) + '</div>' +
     '<div id="infoSlot">' + infoGrid(d) + '</div>' +
     (Array.isArray(d.bestFor) && d.bestFor.length ? '<div class="fit"><span class="fit-label">Hợp với:</span>' + d.bestFor.map(x => '<span class="pill">' + esc(x) + '</span>').join('') + '</div>' : '') +
     '<div id="tipSlot">' + tipHTML(d) + '</div>' +
     '<div class="nearby" id="nearbyBox">' +
+      '<div id="savedForDish">' + savedForDishHTML(d) + '</div>' +
       '<button class="nearby-btn" data-act="nearby">📍 Tìm quán bán món này gần tôi</button>' +
       '<div class="nearby-out" id="nearbyOut"></div>' +
     '</div>' +
@@ -908,6 +1126,7 @@ function openMulti(list) {
     '<button class="sub-btn" data-act="close" style="max-width:96px">Đóng</button></div>';
   list.forEach(d => { addHist(d); state.seen.add(d.id); });
   LS.set('mgd.seen', [...state.seen]); updateProgress();
+  achvLater();
   $('#multiBackdrop').hidden = false;
   document.body.style.overflow = 'hidden';
   sfx.win(list[0].tier); buzz([20, 40, 20]);
@@ -937,6 +1156,7 @@ $('#modalBackdrop').addEventListener('click', (e) => {
     logDiary(d, _meal);
     bumpTaste(d, 1);
     updateDiaryBadge();
+    achvLater();
     burst(innerWidth / 2, innerHeight * .42, 140);
     buzz([30, 50, 80]);
     toast('🎉 ĐÃ CHỐT: <b>' + d.emoji + ' ' + esc(d.name) + '</b> — chúc ngon miệng!', 3000);
@@ -983,6 +1203,7 @@ $('#modalBackdrop').addEventListener('click', (e) => {
     logDiary(d, meal);
     bumpTaste(d, 1);
     updateDiaryBadge();
+    achvLater();
     toast('📅 Đã thêm <b>' + d.emoji + ' ' + esc(d.name) + '</b> vào ' + (MEALS[meal] || meal));
   } else if (act === 'again') { if (d) bumpTaste(d, -1); closeModals(); setTimeout(spinOnce, 140); }
   else if (act === 'fav') { toggleFav(d.id); const on = state.favs.includes(d.id); b.textContent = on ? '♥ Đã lưu' : '♥ Lưu'; b.classList.toggle('fav', on); }
@@ -1008,6 +1229,11 @@ $('#multiBackdrop').addEventListener('click', (e) => {
 function closeModals() {
   $('#modalBackdrop').hidden = true;
   $('#multiBackdrop').hidden = true;
+  // hết lượt nhóm: trả pool về bình thường (món bị gạch chỉ có hiệu lực trong đúng lượt quay đó)
+  if (state.groupVeto && state.groupVeto.size) {
+    state.groupVeto = new Set(); state.groupRun = null;
+    syncPool(); idleTrack();
+  }
   if ($('#filterPanel') && !$('#filterPanel').classList.contains('open')) document.body.style.overflow = '';
   clearShareHash();   // đóng popup thì bỏ #mon=<id> trên URL
 }
@@ -1097,10 +1323,32 @@ function toggleFav(id) {
   toast(i >= 0 ? 'Đã bỏ khỏi yêu thích' : '♥ Đã lưu vào yêu thích');
 }
 function updateFav() { const el = $('#favCount'); if (el) el.textContent = state.favs.length; renderFavStrip(); }
+function savedPlacesHTML() {
+  const list = state.savedPlaces || [];
+  const head = '<div class="drawer-sub"><h4>🔖 Quán đã lưu (<b id="drawerSavedCount">' + list.length + '</b>)</h4>' +
+    '<p class="drawer-sub-note">Bấm 🔖 trên một quán trong kết quả tìm quán để lưu. Giờ mở cửa tính theo đồng hồ máy bạn.</p></div>';
+  if (!list.length) return head + '<p class="drawer-empty">Chưa lưu quán nào.</p>';
+  return head + '<div class="saved-list">' + list.map((p) => {
+    const h = openStatus(p.open, new Date());
+    const dishes = (p.dishes || []).map((id) => dishById(id)).filter(Boolean).slice(0, 3);
+    return '<div class="saved-card" data-key="' + esc(p.key) + '">' +
+      '<div class="saved-card-head"><b>' + esc(p.name) + '</b>' +
+        '<span class="saved-hours' + (h.state === 'closed' ? ' shut' : h.state === 'unknown' ? ' unk' : '') + '">' + esc(h.label) + '</span></div>' +
+      (p.address ? '<div class="saved-addr">' + esc(p.address) + '</div>' : '') +
+      (dishes.length ? '<div class="saved-dishes">🍽️ ' + dishes.map((d) => esc(d.emoji + ' ' + d.name)).join(' · ') + '</div>' : '') +
+      '<input class="sp-note" type="text" maxlength="160" placeholder="Ghi chú: món nào ngon, giờ nào vắng…"' +
+        ' value="' + esc(p.note) + '" data-spnote="' + esc(p.key) + '" aria-label="Ghi chú cho quán ' + esc(p.name) + '">' +
+      '<div class="saved-actions">' +
+        '<a class="saved-btn" href="' + esc(p.maps || '#') + '" target="_blank" rel="noopener">🗺️ Chỉ đường</a>' +
+        '<button class="saved-btn del" type="button" data-sp-rm="' + esc(p.key) + '">✕ Xoá</button>' +
+      '</div>' +
+    '</div>';
+  }).join('') + '</div>';
+}
 function openFavs() {
   const c = $('#drawerContent');
   $('#drawerFavCount').textContent = state.favs.length;
-  c.innerHTML = state.favs.length
+  const favHTML = state.favs.length
     ? state.favs.map(id => {
         const d = dishById(id); if (!d) return '';
         const media = d.image
@@ -1110,6 +1358,7 @@ function openFavs() {
           '<button data-rm="' + d.id + '">Bỏ lưu</button></div>';
       }).join('')
     : '<p class="sub" style="grid-column:1/-1;text-align:center;padding:28px;font-size:13px">Chưa có món yêu thích.<br>Quay rồi bấm ♥ để lưu nhé!</p>';
+  c.innerHTML = favHTML + savedPlacesHTML();
   $('#drawerBackdrop').hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -1124,9 +1373,27 @@ $('#drawerBackdrop').onclick = (e) => {
   if (e.target.id === 'drawerBackdrop') { $('#drawerBackdrop').hidden = true; document.body.style.overflow = ''; return; }
   const rm = e.target.closest('[data-rm]');
   if (rm) { toggleFav(rm.dataset.rm); openFavs(); return; }
+  const sprm = e.target.closest('[data-sp-rm]');
+  if (sprm) {
+    const key = sprm.dataset.spRm;
+    state.savedPlaces = removeSaved(state.savedPlaces, key);
+    saveSaved(); paintNearby(); refreshSavedForDish(); openFavs();
+    toast('Đã xoá quán khỏi danh sách đã lưu');
+    // đang bật lọc "chỉ món có quán đã lưu" mà xoá hết -> ensurePlayable báo rõ vì sao 0 món
+    if (state.savedOnly) { syncPool(); ensurePlayable(false); }
+    return;
+  }
   const cell = e.target.closest('.favcell');
   if (cell) { const d = dishById(cell.dataset.id); if (d) { $('#drawerBackdrop').hidden = true; document.body.style.overflow = ''; openWin(d); } }
 };
+// sửa ghi chú quán đã lưu (sự kiện change — rời ô mới lưu)
+$('#drawerBackdrop').addEventListener('change', (e) => {
+  const inp = e.target.closest('[data-spnote]');
+  if (!inp) return;
+  state.savedPlaces = setNote(state.savedPlaces, inp.dataset.spnote, inp.value);
+  saveSaved(); paintNearby(); refreshSavedForDish();
+  toast('📝 Đã lưu ghi chú cho quán');
+});
 
 /* ============================ BỘ LỌC ============================ */
 function chipRow(host, dict, set) {
@@ -1169,7 +1436,7 @@ function setVnOnly(on, notify) {
   idleTrack();
 }
 function activeFilterCount() {
-  return state.meals.size + state.regions.size + state.styles.size + state.vung.size + (state.veg ? 1 : 0) + (state.mild ? 1 : 0) + (state.topRated ? 1 : 0) + (state.price < 4 ? 1 : 0) + (state.time < 300 ? 1 : 0) + (state.q ? 1 : 0);
+  return state.meals.size + state.regions.size + state.styles.size + state.vung.size + (state.veg ? 1 : 0) + (state.mild ? 1 : 0) + (state.topRated ? 1 : 0) + (state.price < 4 ? 1 : 0) + (state.time < 300 ? 1 : 0) + (state.q ? 1 : 0) + (state.savedOnly ? 1 : 0);
 }
 function syncPool() {
   const p = pool();
@@ -1215,10 +1482,17 @@ function ensurePlayable(openIfZero = true) {
       return true;
     }
   }
-  if (openIfZero) {
-    toast('⚠️ 0 món khớp bộ lọc — bấm <b>Đặt lại</b> hoặc bớt lọc nhé!');
+  if (openIfZero || state.savedOnly) {
+    // nói RÕ vì sao 0 món thay vì để người dùng bấm quay rỗng
+    if (state.savedOnly) {
+      toast('⚠️ Chưa có món nào gắn với quán đã lưu — lưu quán bằng <b>🔖</b> trong kết quả tìm quán, hoặc tắt lọc này.', 4200);
+      const el = $('#poolStatusText');
+      if (el) el.innerHTML = '⚠️ 0 món có quán đã lưu — lưu quán (<b>🔖</b>) hoặc tắt lọc này';
+    } else {
+      toast('⚠️ 0 món khớp bộ lọc — bấm <b>Đặt lại</b> hoặc bớt lọc nhé!');
+    }
     const panel = $('#filterPanel');
-    if (panel && !panel.classList.contains('open')) openSheet();
+    if (panel && !panel.classList.contains('open') && openIfZero) openSheet();
   }
   return false;
 }
@@ -1336,6 +1610,7 @@ function resetFilters(clearChips = true) {
   state.veg = false; state.mild = false; state.topRated = false; state.price = 4; state.time = 300; state.q = ''; state.preset = null;
   state.vnOnly = true; LS.set('mgd.vnOnly', true); state.mealAuto = false;
   state.avoidRecent = true; LS.set('mgd.avoidRecent', true);
+  state.savedOnly = false; LS.set('mgd.savedOnly', false);
   state.vungManual = false; state.vungGeo = null;
   LS.set('mgd.vungManual', false); LS.set('mgd.vungSelection', []); LS.set('mgd.vungGeo', null);
   if (clearChips) $$('#presets .preset').forEach(p => p.classList.remove('on'));
@@ -1345,6 +1620,7 @@ function applyFilterUI() {
   const fv = $('#fVnOnly'); if (fv) fv.checked = state.vnOnly;
   const fa = $('#fAvoidRecent'); if (fa) fa.checked = state.avoidRecent;
   const fg = $('#fVungGocOnly'); if (fg) fg.checked = state.vungGocOnly;
+  const fsp = $('#fHasSavedPlace'); if (fsp) fsp.checked = state.savedOnly;
   const av = $('#fAutoVung'); if (av) av.checked = state.autoVung;
   paintRegionChips();
   const ft = $('#fTop'); if (ft) ft.checked = state.topRated;
@@ -1365,6 +1641,15 @@ const fVungGocEl = $('#fVungGocOnly'); if (fVungGocEl) fVungGocEl.onchange = (e)
 const fAvoidEl = $('#fAvoidRecent'); if (fAvoidEl) fAvoidEl.onchange = (e) => { setAvoidRecent(e.target.checked, true); };
 const fAutoVungEl = $('#fAutoVung'); if (fAutoVungEl) fAutoVungEl.onchange = (e) => { setAutoVung(e.target.checked); if (!e.target.checked) { state.vungGeo = null; LS.set('mgd.vungGeo', null); } };
 const fTopEl = $('#fTop'); if (fTopEl) fTopEl.onchange = (e) => { state.topRated = e.target.checked; syncPool(); };
+// "Chỉ món có quán đã lưu" (nhóm Thêm)
+const fSavedEl = $('#fHasSavedPlace');
+if (fSavedEl) fSavedEl.onchange = (e) => {
+  state.savedOnly = e.target.checked; LS.set('mgd.savedOnly', state.savedOnly);
+  syncPool();
+  if (state.savedOnly && !pool().length) ensurePlayable(false);
+  else if (state.savedOnly) toast('🔖 Chỉ quay <b>' + pool().length + '</b> món đã có quán lưu');
+  idleTrack();
+};
 $('#fPrice').oninput = (e) => { state.price = +e.target.value; $('#priceLabel').textContent = state.price === 4 ? 'Tất cả' : '₫'.repeat(state.price); syncPool(); };
 $('#fTime').oninput = (e) => { state.time = +e.target.value; $('#timeLabel').textContent = state.time === 300 ? '300 phút' : state.time + ' phút'; syncPool(); };
 let searchTimer;
@@ -1391,6 +1676,14 @@ $('#todayBackdrop').addEventListener('click', (e) => {
   }
 });
 $('#todayDialog').addEventListener('keydown', (e) => { if (e.key === 'Escape') closeToday(); });
+// mục tiêu calo/ngân sách: gõ số là lưu ngay — chỉ vẽ lại thanh tiến độ, KHÔNG vẽ lại ô nhập (giữ focus)
+$('#todayBody').addEventListener('input', (e) => {
+  const id = e.target && e.target.id;
+  if (id === 'goalKcal' || id === 'goalMoney' || id === 'goalWeek') goalsFromInputs();
+});
+$('#todayBody').addEventListener('change', (e) => {
+  if (e.target && e.target.id === 'fGoalPriority') setGoalPriority(e.target.checked, true);
+});
 $('#btnSpinMulti').onclick = spinTen;
 const machineEl = $('#rouletteMachine');
 if (machineEl) machineEl.style.pointerEvents = 'none';
@@ -1513,6 +1806,11 @@ function ctxHint() {
     else if (w.temp <= 22) bits.push('lạnh → ưu tiên món nóng');
   }
   bits.push('đang ' + MEAL_LABEL[meal]);
+  // đang ưu tiên mục tiêu calo/tiền -> nói rõ lý do + phần còn lại của hôm nay
+  if (state.goals.priority && hasGoal(state.goals)) {
+    const gh = goalHint(state.goals, goalUsage());
+    if (gh) bits.push('🎯 ưu tiên vừa mục tiêu (' + gh + ')');
+  }
   return { icon: wxIcon(w), text: bits.join(' · '), meal: meal };
 }
 function renderCtxChip() {
@@ -1631,6 +1929,8 @@ function renderToday() {
       '<div><b>' + t.protein + 'g</b><span>đạm</span></div>' +
       '<div><b>' + Math.round(t.money / 1000) + 'k</b><span>tiền/ngày</span></div>' +
     '</div>' +
+    '<div class="sec-h">🎯 Mục tiêu hôm nay</div>' +
+    goalsHTML() +
     '<div class="slots">' + MEAL_ORDER.map(slot).join('') + '</div>' +
     '<div class="advice">' + menuAdvice().map(x => '<div>' + x + '</div>').join('') + '</div>' +
     '<div class="sec-h">🧠 Gu của mày</div>' +
@@ -1642,6 +1942,7 @@ function renderToday() {
           ? day.items.map(it => '<span class="diary-chip">' + it.d.emoji + ' ' + esc(it.d.name) + ' <i>' + (MEALS[it.meal] || '').replace(/\s*\p{Emoji}+/u, '') + '</i></span>').join('')
           : '<span class="diary-empty">chưa ăn gì được ghi</span>') +
         '</div>').join('') + '</div>' +
+    achvHTML() +
     '<div class="today-actions">' +
       '<button class="big-btn" data-act="share-menu">📤 Xuất ảnh thực đơn</button>' +
       '<button class="mini" data-act="clear-diary">🧹 Xoá nhật ký</button>' +
@@ -1738,6 +2039,236 @@ function updateDiaryBadge() {
   b.textContent = String(n); b.hidden = n === 0;
 }
 function closeToday() { const b = $('#todayBackdrop'); if (b) b.hidden = true; document.body.style.overflow = ''; }
+
+
+/* ============================================================================
+   MỤC TIÊU CALO/NGÂN SÁCH · THÀNH TỰU · QUAY CHO NHÓM
+   ============================================================================ */
+
+/* ---------- MỤC TIÊU: thanh tiến độ trong panel Hôm nay ---------- */
+const fmtShort = (n) => (n >= 1000 ? Math.round(n / 1000) + 'k' : String(n));
+function goalBarsHTML(used) {
+  const rows = progressRows(state.goals, used);
+  if (!rows.length) {
+    return '<p class="goal-note">Để trống = không dùng mục tiêu. Nhập kcal và/hoặc tiền mỗi ngày để app ưu tiên món vừa phần còn lại.</p>';
+  }
+  return rows.map((r) => {
+    const val = r.key === 'money' ? fmtShort(r.used) + ' / ' + fmtShort(r.target) : r.used + ' / ' + r.target + ' kcal';
+    const left = r.key === 'money' ? fmtShort(r.left) : r.left + ' kcal';
+    return '<div class="goal-bar' + (r.over ? ' over' : '') + '">' +
+      '<div class="goal-bar-h"><span>' + esc(r.label) + '</span><b>' + esc(val) + '</b></div>' +
+      '<div class="bar"><i style="width:' + r.pct + '%"></i></div>' +
+      '<small>' + (r.over ? '⚠️ đã vượt ' + esc(left) : 'còn ' + esc(left)) + ' · ' + r.pct + '%</small></div>';
+  }).join('');
+}
+function paintGoalBars() { const slot = $('#goalBars'); if (slot) slot.innerHTML = goalBarsHTML(goalUsage()); }
+// đọc 3 ô nhập (kcal/ngày, tiền/ngày, tiền/tuần) — ô trống = 0 = không dùng
+function goalsFromInputs() {
+  const val = (sel) => { const el = $(sel); return el ? el.value : ''; };
+  state.goals = normalizeGoals({ kcal: val('#goalKcal'), money: val('#goalMoney'), week: val('#goalWeek'), priority: state.goals.priority });
+  saveGoals(); paintGoalBars(); renderCtxChip();
+  return state.goals;
+}
+function goalsHTML() {
+  const g = state.goals;
+  return '<div class="goals">' +
+    '<div class="goal-inputs">' +
+      '<label class="goal-inp"><span>Năng lượng / ngày</span>' +
+        '<input id="goalKcal" type="number" inputmode="numeric" min="0" max="6000" step="50" value="' + (g.kcal || '') + '" placeholder="— kcal"></label>' +
+      '<label class="goal-inp"><span>Tiền / ngày</span>' +
+        '<input id="goalMoney" type="number" inputmode="numeric" min="0" max="5000000" step="10000" value="' + (g.money || '') + '" placeholder="— ₫"></label>' +
+      '<label class="goal-inp"><span>Tiền / tuần</span>' +
+        '<input id="goalWeek" type="number" inputmode="numeric" min="0" max="35000000" step="50000" value="' + (g.week || '') + '" placeholder="— ₫"></label>' +
+    '</div>' +
+    '<div id="goalBars">' + goalBarsHTML(goalUsage()) + '</div>' +
+    '<label class="switch goal-sw"><input type="checkbox" id="fGoalPriority"' + (g.priority ? ' checked' : '') + '>' +
+      '<span class="track-ui"></span><span class="switch-label">🎯 Ưu tiên món vừa mục tiêu — món vượt phần còn lại của hôm nay bị giảm trọng số (không loại hẳn)</span></label>' +
+  '</div>';
+}
+
+/* ---------- THÀNH TỰU ---------- */
+function achvCtx() { return { byId: dishById, diary: state.diary, seen: state.seen, favs: state.favs, menu: state.menu }; }
+function achvList() { return computeAchv(achvCtx()); }
+function achvCards(list) {
+  return (list || []).map((a) => '<div class="achv-card' + (a.done ? ' done' : '') + '">' +
+    '<span class="achv-ico">' + (a.done ? a.icon : '🔒') + '</span>' +
+    '<div class="achv-main"><b>' + esc(a.name) + '</b><i>' + esc(a.desc) + '</i>' +
+      '<div class="bar"><i style="width:' + a.pct + '%"></i></div><small>' + a.n + '/' + a.target + '</small></div>' +
+    '</div>').join('');
+}
+function achvHTML() {
+  const list = achvList();
+  return '<div class="sec-h">🏆 Thành tựu (<b id="achvDone">' + achvCount(list) + '</b>/' + list.length + ')</div>' +
+    '<div class="achv" id="achvList">' + achvCards(list) + '</div>';
+}
+function paintAchv() {
+  const list = achvList();
+  const box = $('#achvList'); if (box) box.innerHTML = achvCards(list);
+  const n = $('#achvDone'); if (n) n.textContent = String(achvCount(list));
+}
+// Mở khoá mới -> lưu mgd.achv + toast MỘT lần. Gọi qua idle() để không làm chậm lúc quay.
+function checkAchv(notify) {
+  const fresh = newUnlocks(achvList(), unlockedMap(state.achv));
+  if (!fresh.length) return [];
+  state.achv = mergeUnlocked(state.achv, fresh.map((a) => a.id));
+  LS.set('mgd.achv', state.achv);
+  if (notify) toast('🏆 Mở khoá thành tựu: <b>' + fresh.map((a) => esc(a.icon + ' ' + a.name)).join(' · ') + '</b>', 3600);
+  return fresh;
+}
+const achvLater = () => idle(() => { if (checkAchv(true).length) paintAchv(); });
+
+/* ---------- QUAY CHO NHÓM (chuyền tay một máy) ---------- */
+function groupVetoedDishes() {
+  return [...vetoedIds(GR ? GR.turns : [])].map((id) => dishById(id)).filter(Boolean);
+}
+// Dòng "Cả nhóm: …" + danh sách món bị gạch (thu gọn bằng <details>) trong popup kết quả
+function groupResultHTML() {
+  const gr = state.groupRun;
+  if (!gr) return '';
+  return '<div class="group-line">👥 Cả nhóm: <b>' + esc(groupSummary(gr.names)) + '</b></div>' +
+    '<details class="group-veto"><summary>Món bị gạch (' + gr.veto.length + ') — bấm để xem</summary>' +
+      '<div class="group-veto-list">' + (gr.veto.length
+        ? gr.veto.map((x) => '<span class="pill">' + x.emoji + ' ' + esc(x.name) + '</span>').join('')
+        : '<span class="pill">Không ai gạch món nào</span>') + '</div></details>';
+}
+function groupScreenNamesHTML(names) {
+  return '<div class="turn-who">' + names.map((n, i) => '<span class="turn-chip' + (GR && i === GR.idx ? ' on' : '') + '">' + esc(n) + '</span>').join('') + '</div>';
+}
+function groupPicksHTML() {
+  if (!GR) return '';
+  const q = (GR.query || '').trim().toLowerCase();
+  const src = q ? pool().filter((d) => (d.name + ' ' + (d.tags || []).join(' ')).toLowerCase().includes(q)) : pool();
+  const list = suggestDishes(src, q ? 40 : SUGGEST_N);
+  if (!list.length) return '<p class="goal-note">Không có món nào khớp — đổi từ khoá hoặc nới bộ lọc.</p>';
+  const veto = GR.turns[GR.idx] ? GR.turns[GR.idx].veto : [];
+  return list.map((d) => '<button class="pick' + (veto.includes(d.id) ? ' veto' : '') + '" type="button" data-pick="' + d.id + '"' +
+    ' aria-pressed="' + veto.includes(d.id) + '">' + d.emoji + ' ' + esc(d.name) +
+    '<i>★' + (d.rating ? d.rating.toFixed(1) : '—') + ' · ' + (d.calories || '?') + ' kcal</i></button>').join('');
+}
+function groupTurnHTML() {
+  const turn = GR.turns[GR.idx];
+  return '<div class="turn-head"><b>Lượt của ' + esc(turn.name) + '</b>' +
+      '<i>' + (GR.idx + 1) + '/' + GR.names.length + '</i></div>' +
+    groupScreenNamesHTML(GR.names) +
+    '<p class="turn-note">Gạch tối đa <b>' + GR.vetoMax + '</b> món bạn không muốn ăn — đã gạch <b class="veto-count">' + turn.veto.length + '/' + GR.vetoMax + '</b>. Bỏ gạch bằng cách bấm lại.</p>' +
+    '<div class="search-wrap"><span>🔍</span><input type="search" id="groupSearch" enterkeyhint="search" placeholder="Tìm món…" value="' + esc(GR.query || '') + '"></div>' +
+    '<div class="pick-grid" id="groupPick">' + groupPicksHTML() + '</div>' +
+    '<div class="turn-actions">' +
+      '<button class="mini" type="button" data-gact="skip">⏭ Bỏ qua lượt</button>' +
+      '<button class="mini primary" type="button" data-gact="done">Xong lượt ▸</button>' +
+    '</div>';
+}
+function groupEmptyHTML() {
+  const vd = groupVetoedDishes();
+  return '<div class="turn-head"><b>Hết món để quay</b></div>' +
+    '<p class="turn-note">Cả nhóm đã gạch hết <b>' + vd.length + '</b> món còn lại trong bộ lọc này. Bỏ gạch một món bên dưới, hoặc nới bộ lọc rồi làm lại.</p>' +
+    '<div class="pick-grid">' + vd.map((d) => '<button class="pick veto" type="button" data-gact="unveto" data-id="' + d.id + '">' +
+      d.emoji + ' ' + esc(d.name) + '<i>bỏ gạch ↺</i></button>').join('') + '</div>' +
+    '<div class="turn-actions"><button class="mini" type="button" data-gact="reset">↺ Làm lại từ đầu</button></div>';
+}
+function groupStartHTML() {
+  const g = state.group || { names: [], vetoMax: 2 };
+  return '<p class="turn-note">Chuyền tay một máy: mỗi người gạch vài món mình không muốn ăn, cuối cùng cả nhóm quay chung một lượt trên phần còn lại.</p>' +
+    '<label class="goal-inp wide"><span>Tên mọi người (2–' + GROUP_MAX + ' người, cách nhau bằng dấu phẩy)</span>' +
+      '<input id="groupNames" type="text" autocomplete="off" value="' + esc(g.names.join(', ')) + '" placeholder="An, Bình, Chi"></label>' +
+    '<label class="goal-inp wide"><span>Mỗi người được gạch tối đa (0–5 món)</span>' +
+      '<input id="groupVetoMax" type="number" inputmode="numeric" min="0" max="5" step="1" value="' + g.vetoMax + '"></label>' +
+    '<div class="turn-actions"><button class="mini primary" type="button" data-gact="start">▶ Bắt đầu</button></div>';
+}
+function groupRender() {
+  const body = $('#groupBody');
+  if (!body) return;
+  const title = $('#groupTitle');
+  if (title) title.textContent = '👥 Quay cho nhóm';
+  body.innerHTML = !GR ? groupStartHTML() : GR.phase === 'empty' ? groupEmptyHTML() : groupTurnHTML();
+}
+function openGroup() {
+  GR = null;
+  state.group = normalizeGroup(state.group);
+  groupRender();
+  const bd = $('#groupBackdrop');
+  if (bd) { bd.hidden = false; document.body.style.overflow = 'hidden'; }
+}
+function closeGroup() {
+  const bd = $('#groupBackdrop'); if (bd) bd.hidden = true;
+  if ($('#modalBackdrop').hidden && $('#todayBackdrop').hidden && $('#drawerBackdrop').hidden) document.body.style.overflow = '';
+}
+function groupStart(text, vetoMax) {
+  const names = parseNames(text);
+  if (names.length < GROUP_MIN) {
+    toast('⚠️ Cần ít nhất <b>2</b> người — nhập tên cách nhau bằng dấu phẩy', 3000);
+    return false;
+  }
+  state.group = normalizeGroup({ names: names, vetoMax: vetoMax });
+  LS.set('mgd.group', state.group);
+  state.groupVeto = new Set();
+  GR = { phase: 'turn', names: names, vetoMax: state.group.vetoMax, idx: 0, query: '',
+    turns: names.map((n) => ({ name: n, veto: [], skipped: false })) };
+  groupRender();
+  return true;
+}
+function groupToggle(id) {
+  if (!GR || GR.phase !== 'turn') return false;
+  const turn = GR.turns[GR.idx];
+  const i = turn.veto.indexOf(id);
+  if (i >= 0) turn.veto.splice(i, 1);
+  else if (turn.veto.length >= GR.vetoMax) {
+    toast('Mỗi người chỉ gạch tối đa <b>' + GR.vetoMax + '</b> món');
+    return false;
+  } else turn.veto.push(id);
+  const grid = $('#groupPick'); if (grid) grid.innerHTML = groupPicksHTML();
+  const c = $('.veto-count'); if (c) c.textContent = turn.veto.length + '/' + GR.vetoMax;
+  buzz(8);
+  return true;
+}
+function groupNext() {
+  if (!GR || GR.phase !== 'turn') return;
+  GR.query = '';
+  GR.idx++;
+  if (GR.idx >= GR.names.length) return groupFinish();
+  groupRender();
+}
+function groupSkip() {
+  if (!GR || GR.phase !== 'turn') return;
+  GR.turns[GR.idx].veto = [];
+  GR.turns[GR.idx].skipped = true;
+  groupNext();
+}
+function groupFinish() {
+  if (!GR) return;
+  state.groupVeto = vetoedIds(GR.turns);
+  if (!pool().length) { GR.phase = 'empty'; groupRender(); return; }   // rỗng: báo rõ + cho bỏ gạch
+  GR.phase = 'spin';
+  state.groupRun = { names: GR.names.slice(), veto: groupVetoedDishes() };
+  closeGroup();
+  toast('🎰 Quay cho cả nhóm: <b>' + esc(groupSummary(GR.names)) + '</b>', 2600);
+  setTimeout(spinOnce, 160);
+}
+function groupUnveto(id) {
+  if (!GR) return;
+  for (const t of GR.turns) t.veto = t.veto.filter((x) => x !== id);
+  groupFinish();
+}
+$('#btnGroup').onclick = openGroup;
+$('#groupBackdrop').addEventListener('click', (e) => {
+  if (e.target.id === 'groupBackdrop') return closeGroup();
+  const pick = e.target.closest('[data-pick]');
+  if (pick) return groupToggle(pick.dataset.pick);
+  const b = e.target.closest('[data-gact]');
+  if (!b) return;
+  const act = b.dataset.gact;
+  if (act === 'close') return closeGroup();
+  if (act === 'start') return groupStart(($('#groupNames') || {}).value || '', ($('#groupVetoMax') || {}).value);
+  if (act === 'skip') return groupSkip();
+  if (act === 'done') return groupNext();
+  if (act === 'unveto') return groupUnveto(b.dataset.id);
+  if (act === 'reset') { GR = null; groupRender(); }
+});
+$('#groupBackdrop').addEventListener('input', (e) => {
+  if (e.target.id !== 'groupSearch' || !GR) return;
+  GR.query = e.target.value;
+  const grid = $('#groupPick'); if (grid) grid.innerHTML = groupPicksHTML();
+});
 
 
 /* ============================================================================
@@ -1888,6 +2419,7 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
   state.mealAuto = true;                 // bữa do đồng hồ chọn -> được phép tự bỏ nếu vùng miền không có món
   applyFilterUI(); updatePity(); updateProgress(); updateFav(); renderHist(); syncPool(); idleTrack();
   updateDiaryBadge(); renderCtxChip(); loadWeather();
+  checkAchv(false);                    // đánh dấu thành tựu đã đạt trước đó (không toast lúc boot)
   if (state.autoVung && !state.vungManual) detectVungFromPosition();
   const chip = $('#mealChips .chip[data-k="' + guess + '"]'); if (chip) chip.classList.add('on');
   setTimeout(() => toast('Đang là <b>' + MEALS[guess] + '</b> — đã lọc sẵn cho bạn 👌', 2600), 600);
@@ -1909,7 +2441,21 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
       avoidFactor: avoidFactor, recentEatenIds: recentEatenIds, pushRecentDraw: pushRecentDraw, setAvoidRecent: setAvoidRecent,
       DETAIL: DETAIL, detailChunkOf: detailChunkOf, loadDetailChunk: loadDetailChunk, ensureDetail: ensureDetail, heavyHTML: heavyHTML,
       openWin: openWin, closeModals: closeModals, shareUrlFor: shareUrlFor, openFromHash: openFromHash, dishFromHash: dishFromHash,
-      dishById: dishById, isOffline: isOffline
+      dishById: dishById, isOffline: isOffline,
+      // v24+: giờ mở cửa (opening_hours) + quán đã lưu
+      openStatus: openStatus, setOpenOnly: setOpenOnly, paintNearby: paintNearby,
+      savedPlaces: function () { return state.savedPlaces; }, savedSet: savedSet,
+      savedForDishHTML: savedForDishHTML, openFavs: openFavs, placeKey: placeKey,
+      // v26+: mục tiêu calo/ngân sách · thành tựu · quay cho nhóm
+      goals: function () { return state.goals; }, setGoals: function (g) { state.goals = normalizeGoals(g); saveGoals(); paintGoalBars(); renderCtxChip(); return state.goals; },
+      setGoalPriority: setGoalPriority, goalFactor: goalFactor, goalUsage: goalUsage, goalBarsHTML: goalBarsHTML,
+      goalHint: goalHint, hasGoal: hasGoal, progressRows: progressRows, budgetOf: budgetOf, priceOf: priceOf,
+      usedTodayIds: usedTodayIds, renderToday: renderToday, openToday: openToday, closeToday: closeToday,
+      achvList: achvList, checkAchv: checkAchv, ACHV: ACHV, achvStore: function () { return state.achv; },
+      group: function () { return GR; }, openGroup: openGroup, closeGroup: closeGroup, groupStart: groupStart,
+      groupToggle: groupToggle, groupNext: groupNext, groupSkip: groupSkip, groupFinish: groupFinish, groupUnveto: groupUnveto,
+      groupRun: function () { return state.groupRun; }, groupVeto: function () { return state.groupVeto; },
+      groupSuggest: function () { return suggestDishes(pool(), SUGGEST_N); }, parseNames: parseNames
     };
   } catch (e) {}
 

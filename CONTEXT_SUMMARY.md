@@ -18,32 +18,32 @@ Bổ sung sau đó: quay kiểu **băng chuyền chạy ngang** dừng từ từ
 - **Vanilla JS ES module, không build step, không dependency runtime**; `server.js` là static server + 5 API. Logic tìm quán dùng chung ở `lib/nearby-core.js` (app.js + server.js).
 - **Vercel = web TĨNH thuần** (không serverless, `api/` đã bỏ hẳn): `/api/*` trả 404, client tự chuyển sang gọi thẳng Photon / Open-Meteo / ipapi.co.
 - **SQLite là nguồn dữ liệu gốc**, export ra `data/dishes.json`; frontend chỉ tải `data/dishes-lite.json` + `data/dishes-detail-*.json` (tách 2 tầng, xem mục 24).
-- **308 món** (216 Việt + 92 quốc tế), 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
-- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (278 món có ảnh, 30 món dùng SVG).
+- **307 món** (215 Việt + 92 quốc tế), 6 bữa (sang/trua/xe/toi/khuya/vat), 11 nền ẩm thực, 10 cách chế biến, 4 bậc độ hiếm (45/30/18/7%) + pity 10 lần.
+- **Hình minh hoạ**: 23 template SVG vẽ bằng code (`art.js`) + ảnh thật từ Wikipedia/Wikimedia (280 món có ảnh, 27 món dùng SVG).
 - **Chỉ quay bằng nút** "🎰 QUAY 1 MÓN" / "⚡ x10" (khung quay đã tắt nhận chạm; không còn vuốt-để-quay).
 - **Popup kết quả** tự mở sau khi băng chuyền dừng, render phòng thủ (try/catch + fallback) nên dữ liệu cũ cũng không làm trắng thẻ.
 
 ## 4. Dữ liệu mỗi món (trong data/dishes.json + SQLite)
-| Trường | Nội dung | Độ phủ (308 món) |
+| Trường | Nội dung | Độ phủ (307 món) |
 |---|---|---|
-| name/emoji/region/meals/style/tags/descr | cơ bản | 308 |
-| price/minutes/spicy/veg/weight/tier | thuộc tính gacha | 308 |
-| image + imageVia + imageSource | ảnh thật có nguồn (vi-wiki 124 / en-wiki 45 / commons 109) | 278 |
-| rating + stars + review | điểm 7.1–9.8 + nhận xét | 308 |
-| calories/protein/proteinLabel/fullness/priceRange/bestFor/bestTime/origin/tip | ước tính + gợi ý (ghi rõ "ước tính") | 308 |
-| intro + introSource + wikiUrl + introEn | đoạn mở đầu Wikipedia, **đã dịch sang tiếng Việt** | 274 |
-| facts {originCountry,cuisine,ingredients,type} | Wikidata | 247 |
-| detail[{t,body}] | mục Nguồn gốc/Nguyên liệu/Cách làm/Biến tấu | 169 |
-| vung / dacSan / vungCo | vùng gốc (vn 64 · bac 48 · nam 46 · trung 31 · tây nam bộ 18 · tây nguyên 9 · ngoài VN 92) · 69 đặc sản · vùng đang bán (bắc 164 · trung 167 · nam 170 · tây nam bộ 170 · tây nguyên 156) | 308 |
-| kw[] | từ khoá tra quán | 308 |
+| name/emoji/region/meals/style/tags/descr | cơ bản | 307 |
+| price/minutes/spicy/veg/weight/tier | thuộc tính gacha | 307 |
+| image + imageVia + imageSource | ảnh thật có nguồn (vi-wiki 124 / en-wiki 45 / commons 111) | 280 |
+| rating + stars + review | điểm 7.1–9.8 + nhận xét | 307 |
+| calories/protein/proteinLabel/fullness/priceRange/bestFor/bestTime/origin/tip | ước tính + gợi ý (ghi rõ "ước tính") | 307 |
+| intro + introSource + wikiUrl + introEn | đoạn mở đầu Wikipedia, **đã dịch sang tiếng Việt** | 273 |
+| facts {originCountry,cuisine,ingredients,type} | Wikidata | 246 |
+| detail[{t,body}] | mục Nguồn gốc/Nguyên liệu/Cách làm/Biến tấu (168 wikipedia + 139 tổng hợp) | 307 |
+| vung / dacSan / vungCo | vùng gốc (vn 63 · bac 48 · nam 46 · trung 31 · tây nam bộ 18 · tây nguyên 9 · ngoài VN 92) · 69 đặc sản · vùng đang bán (bắc 163 · trung 166 · nam 169 · tây nam bộ 169 · tây nguyên 155) | 307 |
+| kw[] | từ khoá tra quán | 307 |
 
-**Bảng SQLite `dishes`** có đủ các cột trên (đã đồng bộ 308/308 dòng).
+**Bảng SQLite `dishes`** có đủ các cột trên (đã đồng bộ 307/307 dòng).
 
 ## 5. Files (cấu trúc hiện tại)
 - `index.html` — khung UI: header, băng chuyền, 1 hàng nút [⚙️ Lọc][🎰 QUAY 1 MÓN][⚡ x10], filter sheet, modal kết quả/10-pull, drawer yêu thích, toast.
 - `styles.css` — mobile-first: biến `--card-w/--vp-h`, safe-area, dvh, tap target ≥44px, chế độ gọn cho màn thấp (`max-height:740px`), breakpoint 480/640/1024.
 - `app.js` — gacha (weighted + pity + tránh món lặp), quay băng chuyền (WIN_INDEX, easeOutQuint), popup (điểm/giới thiệu/chi tiết/facts/quán gần đây), bộ lọc + vùng miền, yêu thích, lịch sử, thực đơn/nhật ký, PWA, `#mon=<id>`, `ID_LEGACY` (đổi id cũ → slug ASCII).
-- `art.js` — 23 template SVG. · `lib/nearby-core.js` — logic tìm quán dùng chung app.js/server.js.
+- `art.js` — 23 template SVG. · `lib/nearby-core.js` — logic tìm quán dùng chung app.js/server.js · `lib/opening-hours.js` (giờ mở cửa OSM) · `lib/saved-places.js` (quán đã lưu) · `lib/group-core.js` (quay nhóm) · `lib/goals-core.js` (mục tiêu calo/ngân sách) · `lib/achievements.js` (thành tựu).
 - `server.js` — static + gzip + `/api/whereami` · `/api/weather` · `/api/geocode` · `/api/reverse-geocode` · `/api/nearby` + HTTPS 8443.
 - `sw.js` + `manifest.webmanifest` + `icons/` — PWA (cache shell/data/ảnh).
 - `data/dishes.json` (nguồn gốc) · `data/dishes.sqlite` · `data/dishes-lite.json` · `data/dishes-detail-0..3.json`.
@@ -51,8 +51,8 @@ Bổ sung sau đó: quay kiểu **băng chuyền chạy ngang** dừng từ từ
 
 ## 6. Công cụ trong tools/ (đã dọn + chia thư mục ở task-04)
 Danh sách đầy đủ + cách chạy: **`tools/README.md`**. Tóm tắt:
-- `tools/data/` — pipeline chạy lại được: `data-add-dishes.mjs` · `enrich-vung.mjs` · `data-patch-aliases.mjs` · `data-fetch-images.mjs` (tra ảnh vi→en→Commons, có `TARGETS=`/`DRY=1`) · `data-enrich-info.mjs` · `enrich-dishes.mjs` · `normalize-image-urls.mjs` · `audit-images.mjs` · `verify-images.mjs` · `data-sync-sqlite.mjs` · `data-split.mjs` · `data-validate.mjs` (+ dữ liệu `aliases.json`, `data-new-dishes.json`).
-- `tools/test/` — `test-all.mjs` + 27 `test-*.mjs` + `audit-layout.mjs` · `audit-desktop.mjs` · `verify-desktop-mobile.mjs` (30 file khi chạy test-all).
+- `tools/data/` — pipeline chạy lại được: `data-add-dishes.mjs` · `enrich-vung.mjs` · `data-patch-aliases.mjs` · `data-fetch-images.mjs` (tra ảnh vi→en→Commons, có `TARGETS=`/`DRY=1`) · `data-enrich-info.mjs` · `data-fill-detail.mjs` (mục Chi tiết tự tổng hợp, `detailSource "tong-hop"`) · `enrich-dishes.mjs` · `normalize-image-urls.mjs` · `audit-images.mjs` · `verify-images.mjs` · `data-sync-sqlite.mjs` · `data-split.mjs` · `data-validate.mjs` (+ dữ liệu `aliases.json`, `data-new-dishes.json`).
+- `tools/test/` — `test-all.mjs` + 34 `test-*.mjs` + `audit-layout.mjs` · `audit-desktop.mjs` · `verify-desktop-mobile.mjs` (**37 file** khi chạy test-all).
 - `tools/dev/` — `probe-static.mjs` (server tĩnh mô phỏng Vercel) · `make-icons.mjs` · `screenshots.mjs`.
 - `tools/lib/chromium.mjs` — mở chromium thật cho test/dev; nạp Playwright theo `$PLAYWRIGHT_DIR` → `node_modules` project → `$DSH_HOME/profiles/web`, **không hard-code đường dẫn máy**.
 - Đã xoá ở task-04 (32 file): `.snapshot-*.json`, `probe.json`, `image-report.json`, `.translate-cache.json`, `screenshots/*.png`, `debug-*`, `diag-*`, `probe-close/layout/render/overpass`, `shot-vung`, `fix-images*`, `strip-wrong-images`, `restore-from-report`, `dedup-images`, `fetch-images`, `enrich-wiki*`, `enrich-sections`, `translate-vi`, `data-report`, `sync-all-to-sqlite`, `sync-vung-sqlite`, `list-candidates`.
@@ -60,9 +60,10 @@ Danh sách đầy đủ + cách chạy: **`tools/README.md`**. Tóm tắt:
 ## 7. Tính năng người dùng thấy
 1. **Băng chuyền ngang** 34 thẻ (phone) / 60 (desktop), hãm phanh easeOutQuint, dừng đúng tâm (đo được lệch 0px), tiếng tick + rung theo nhịp.
 2. **Popup kết quả**: ảnh lớn, điểm/10 + sao, nhận xét, **Giới thiệu (Wikipedia)** + Đọc thêm, **📖 Chi tiết** (nguồn gốc/nguyên liệu/cách làm/biến tấu), bảng thông tin (calo, đạm, độ no, giá, vùng miền, quốc gia gốc, ẩm thực, nguyên liệu, loại món, thời gian), "hợp với ai", mẹo, credit ảnh, và **📍 Tìm quán bán món này gần tôi**.
-3. **Quán gần đây**: GPS nếu https, không thì theo IP, hoặc **nhập địa chỉ / lat,lng**; Photon lọc quán có tên khớp món, mở rộng 2.5→5→10km; mỗi quán có khoảng cách, địa chỉ, nút chỉ đường; luôn kèm link Google Maps.
+3. **Quán gần đây**: GPS nếu https, không thì theo IP, hoặc **nhập địa chỉ / lat,lng**; Photon lọc quán có tên khớp món, bán kính tự chọn **2.5/5/10/15km**; mỗi quán có khoảng cách, địa chỉ, **giờ mở cửa** + **🔖 lưu quán**, công tắc **🟢 chỉ quán đang mở**, lọc **chỉ món có quán đã lưu**; luôn kèm link Google Maps + ShopeeFood/GrabFood.
 4. **Lọc**: bữa ăn, ẩm thực, cách chế biến, chay, không cay, **điểm ≥8.5**, ngân sách, thời gian, tìm kiếm + 9 preset nhanh.
 5. **Yêu thích + lịch sử + tiến độ bộ sưu tập + chốt món** (giữ popup kèm ribbon "✓ Đã chốt").
+6. **Quay cho nhóm** (2–8 người, chuyền tay gạch món) · **mục tiêu calo/ngân sách** với thanh tiến độ và ưu tiên món vừa mục tiêu · **14 thành tựu** có tiến độ + toast khi mở khoá.
 
 ## 8. Bug đã gặp & cách xử lý (chi tiết trong memory)
 - `&` trong tên món phá XML SVG → hàm `esc()` cho mọi chỗ nội suy.
@@ -128,12 +129,14 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (đã xoá ở task-04 — bug �
    - Xoá `start` khỏi `package.json`; `api/` vẫn giữ cho server LAN.
 5. **Đã kiểm chứng bằng browser thật trên link deploy**: trang nạp, chip thời tiết 25°C (Open-Meteo trực tiếp), quay ra popup (12 dòng thông tin + giới thiệu), GPS → **8 quán "Bánh canh cua" quanh 3km** (Photon trực tiếp), 0 lỗi JS, 0 request lỗi. Script: `tools/test/test-vercel-live.mjs`.
 
-## 14. Việc còn lại / bước kế tiếp
-- Món chưa có bài Wikipedia (chỉ có điểm + ước tính): xem `node tools/data/data-validate.mjs` (intro 274/308 · facts 247/308 · detail 169/308).
-- 30 món dùng hình vẽ SVG thay ảnh (không tìm được ảnh đúng trên Commons): `TARGETS=id1,id2 node tools/data/data-fetch-images.mjs`.
-- Có thể thêm: lọc theo quán đã lưu, điểm sao quán thật (cần Google Places API — chủ dự án chốt không trả tiền), cache ảnh nhiều hơn 150.
-- **Service worker không chạy trên http LAN** — muốn PWA/offline trên điện thoại phải mở qua HTTPS (8443) hoặc dùng bản Vercel.
-- Muốn GPS thật trên điện thoại: mở **https://192.168.100.13:8443** và bỏ qua cảnh báo chứng chỉ.
+## 14. Việc còn lại / bước kế tiếp (cập nhật ở v26)
+- Dữ liệu — `node tools/data/data-validate.mjs` exit 0 (307 món · Lỗi 0 · Cảnh báo 0 · 5/5 file tách khớp từng byte): ảnh **280/307 (91.2%)**, intro 273, facts 246, **detail 307/307** (168 wikipedia gốc + 139 tổng hợp, popup ghi nhãn "Nội dung tổng hợp, có thể chưa đầy đủ").
+- Còn **27 món dùng hình vẽ SVG**: đã dò vi-wiki + en-wiki + Commons, không có file nào khớp TRỌN tên món (danh sách + lý do trong `.delegate/task-06.result.md`). Muốn thử thêm: `TARGETS=id1,id2 node tools/data/data-fetch-images.mjs`.
+- **intro còn thiếu 34 món**: không có bài Wikipedia khớp trọn tên → giữ trống thay vì bịa (UI ghi nguồn Wikipedia). `facts` 246/307 tương tự (Wikidata không có mục từ).
+- Đã xong (không còn trong danh sách chờ): lọc theo quán đã lưu ✓, cache ảnh **300** (không còn 150) ✓, giờ mở cửa OSM ✓, quay nhóm ✓, mục tiêu calo/ngân sách ✓, thành tựu ✓.
+- Giới hạn đã biết: `opening_hours` chỉ có ở **~15–20%** quán OSM Việt Nam (Sài Gòn 15.0%, Hà Nội 20.0%) nên đa số quán vẫn ⚪ "chưa rõ giờ"; công tắc "chỉ quán đang mở" không áp cho drawer "Quán đã lưu" (luôn hiện đủ, có badge riêng).
+- Điểm sao quán thật vẫn **không có** (OSM không có rating; Google Places cần trả tiền — chủ dự án chốt không trả tiền).
+- **Service worker không chạy trên http LAN** — muốn PWA/offline trên điện thoại phải mở qua HTTPS (8443) hoặc dùng bản Vercel. Muốn GPS thật: mở `https://<IP-LAN>:8443` và bỏ qua cảnh báo chứng chỉ.
 
 ## 15. v16 — Mặc định ẨN món nước ngoài (yêu cầu: "ăn bình thường, bỏ món Hàn/Nhật")
 - Dữ liệu **không bị xoá** (248 món còn nguyên trong SQLite + `data/dishes.json`); chỉ **lọc mặc định**.
@@ -262,3 +265,51 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (đã xoá ở task-04 — bug �
 - `node tools/data/data-validate.mjs` → exit 0 (308 món · Lỗi 0 · Cảnh báo 0 · 5/5 file tách khớp từng byte).
 - `node --check` 52 file JS/MJS trong repo → 0 lỗi. `node tools/dev/make-icons.mjs` chạy lại ra icon y hệt (không đổi file).
 - Lưu ý: máy này có tiến trình CŨ đang giữ cổng **4321** (ngoài sandbox, không kill được) nên đã chạy test trên server mới ở **4322** (`PORT=4322 node server.js`); cả 2 server nền đã được dừng sau khi test xong. Không commit/push gì ở lượt này.
+
+## 25. v26 (task-06 → task-08) — dữ liệu đầy đủ · giờ mở cửa + quán đã lưu · quay nhóm · mục tiêu · thành tựu · tài liệu
+
+**a) task-06 — lấp chỗ trống dữ liệu (chỉ `data/` + `tools/data/`)**
+- Ảnh thật **278 → 280/308**: `banh-cay` → `File:Bánh cay.JPG`, `goi-ca-trich` → `File:Gỏi Cá Trích.jpg` (Commons). Cả hai từng bị bẫy bỏ dấu trong `DENY_TITLES` ("Bánh cáy"≈"bánh cay") → thêm cơ chế `PIN_TITLE` (ghim đúng tên file, so khớp GIỮ NGUYÊN DẤU). SVG còn **28** món.
+- `intro` giữ **274** (34 món không có bài Wikipedia khớp TRỌN tên — thà trống hơn bịa, UI ghi nguồn Wikipedia); `facts` 247.
+- **`detail` 169 → 308/308**: script mới `tools/data/data-fill-detail.mjs` (có `--dry`, `--redo`, `SRC=`) dựng mục *Nguồn gốc / Nguyên liệu / Cách làm / Thưởng thức* từ dữ liệu sẵn có của chính món → 139 món gắn **`detailSource: "tong-hop"`**; 169 món cũ gắn `"wikipedia"`; `facts.type` rác của Wikidata bị loại.
+- `data-split.mjs`: `detailSource` vào `HEAVY_FIELDS` · `data-sync-sqlite.mjs`: cột `detailSource` + tự `ALTER TABLE` khi bảng cũ thiếu · `data-validate.mjs`: enum `wikipedia|tong-hop`, kiểm lite không chứa trường này. Pipeline đã chạy lại: sync-sqlite → split (5/5 khớp) → validate exit 0.
+
+**b) task-07 — tìm quán: giờ mở cửa + quán đã lưu**
+- Module mới: `lib/opening-hours.js` (`parseOpeningHours`, `openStatus`, `isClosedNow`, `fmtMin`) và `lib/saved-places.js` (`placeKey`, `toggleSaved`, `setNote`, `savedForDish`…).
+- `lib/nearby-core.js`: thêm `osmKey`, `hoursIndex`, `openForPlace`, `attachHours` (`HOURS_MATCH_M = 60`), `placesFromPhoton`/`poisFromOverpass` trả `nname` + `osm`, `packPoi` thêm `lat/lng/osm`. `server.js` trả thêm `hoursKnown`.
+- `app.js`: `shopRowHTML` (badge 🟢/🟡/🔴/⚪ + nút 🔖 ≥46px), `paintNearby` (đổi công tắc chỉ vẽ lại, không gọi mạng), `setOpenOnly`, `savedForDishHTML`/`refreshSavedForDish`, `toggleSavePlace`, `savedPlacesHTML` (drawer ♥, ghi chú được), `savedSet()` cho lọc.
+- `index.html`: công tắc `#fHasSavedPlace` (nhóm *Thêm*). `styles.css`: `.shop-row/.save-btn/.shop-hours/.saved-here/.saved-card/.sp-note`. `sw.js`: thêm 2 module vào `SHELL` (**không tăng VERSION**).
+- Giới hạn thật: `opening_hours` chỉ có ở **15–20%** quán OSM VN (Sài Gòn 15.0%, Hà Nội 20.0%) → đa số vẫn ⚪ "chưa rõ giờ"; Photon 0% có `opening_hours` trong `extra` nên Overpass là nguồn duy nhất.
+
+**c) task-08 — quay nhóm · mục tiêu calo/ngân sách · thành tựu · nhãn nội dung tổng hợp**
+- Module thuần mới (đều có test riêng, không DOM): `lib/group-core.js`, `lib/goals-core.js`, `lib/achievements.js`. `sw.js` `SHELL` thêm 3 file (không tăng VERSION — giữ 300 ảnh offline).
+- **Quay nhóm**: nút **👥 Quay nhóm** cạnh 📅 Hôm nay (`#btnGroup` → modal `#groupBackdrop`). Nhập 2–8 tên (`parseNames`: cắt `, ; \n +`, bỏ tên trùng), mỗi người gạch tối đa 0–5 món (mặc định 2) từ **12 món gợi ý** theo bộ lọc hiện tại + ô tìm kiếm + "bỏ qua lượt". Hết lượt → `state.groupVeto` (Set id) lọc trong `pool()` → chạy đúng `spinOnce()` cũ, không viết lại cơ chế quay. Popup thêm `.group-line` "👥 Cả nhóm: An, Bình, Chi" + `<details class="group-veto">` (mặc định thu gọn) liệt kê món bị gạch (hợp các lượt, không trùng). Pool rỗng → màn "Hết món để quay" + nút bỏ gạch từng món. Đóng popup → `closeModals()` xoá `groupVeto`, pool trả lại như cũ.
+- **Mục tiêu calo/ngân sách** (`mgd.goals = {kcal, money, week, priority}`): panel 📅 Hôm nay có 3 ô nhập (kcal/ngày, tiền/ngày, tiền/tuần — trống = 0 = không dùng) + thanh "đã dùng / mục tiêu" (`progressRows`, đỏ khi vượt) + công tắc **🎯 Ưu tiên món vừa mục tiêu** (mặc định BẬT). "Đã dùng" = món trong **nhật ký hôm nay** + món đã điền **thực đơn hôm nay**, không tính trùng (`usedTodayIds`). `goalFactor` nhân **×0.4** vào trọng số `drawOne` cho món vượt phần kcal còn lại, **×0.4** nữa nếu vượt phần tiền (vượt cả hai ×0.16) — **không loại khỏi pool**; chip bối cảnh ghi "🎯 ưu tiên vừa mục tiêu (còn 1500 kcal · 120k hôm nay)".
+  - **Đo thật** (`test-goals.mjs`, 2000 lần `drawOne`/pool 20 món): món 730 kcal với mục tiêu 500 → **205 → 81 lần (39.5% mốc), hệ số 0.40**; món 160k với ngân sách 60k → **30.3% mốc, hệ số 0.40**; vượt cả hai → **0.160**; tắt công tắc → 98.5% mốc, hệ số 1.00; pool toàn món vượt vẫn ra **300/300** (không loại hẳn).
+- **Thành tựu** (`mgd.achv = {unlocked:{id: ts}}`): 14 mục, mỗi mục tiến độ x/y — quay lần đầu · khám phá 50/150 món · chốt 5/20 món · **ăn đủ 5 vùng miền** · chốt 10 món quốc tế · 20 món đặc sản · 5 món chay · **chuỗi 3/7 ngày có nhật ký** (`maxDayStreak`) · **7 ngày liền không lặp món** (`noRepeatRun`) · 10 món yêu thích · đủ 3 bữa hôm nay. Hiện trong panel 📅 Hôm nay (thẻ + thanh tiến độ, 🔒 khi chưa mở); `checkAchv` gọi qua `requestIdleCallback` (`achvLater`) ở các mốc quay/chốt/thêm thực đơn và **làm thinh lúc boot** → toast "🏆 Mở khoá thành tựu" đúng **một lần**.
+- **Nhãn nội dung tổng hợp**: `detailBlock(d)` thêm `<p class="detail-src">ℹ️ Nội dung tổng hợp, có thể chưa đầy đủ</p>` **chỉ khi** `d.detailSource === 'tong-hop'`; món `wikipedia` hoặc không có trường hiển thị y như cũ.
+- **Test mới**: `test-group.mjs` (25 check) · `test-goals.mjs` (20) · `test-achv.mjs` (15) · `test-detailsrc.mjs` (9) · `test-legacy-id.mjs` (22, task-10). Đều in `PASS`/`FAIL` + `KẾT QUẢ:` và tự exit 1 khi FAIL → `test-all` nhận tự động (37 file).
+
+**d) Tài liệu**
+- `README.md`: thêm mục Quay cho nhóm / Mục tiêu / Thành tựu, bảng **khoá localStorage**, 6 module `lib/`, số liệu mới (ảnh 280 · detail 307 · 27 SVG), `data-fill-detail.mjs` trong pipeline, **37 file** test + tên các test mới.
+- `CONTEXT_SUMMARY.md`: mục này (v26) + sửa §5/§6/§7/§14 (độ phủ, tools, tính năng, "việc còn lại" đúng hiện trạng).
+- `.delegate/BRIEF.md`: bản đồ file (dòng mới: app.js 2473, index.html 292, styles.css 928, sw.js 126, 6 module `lib/`), bảng vùng chức năng app.js vẽ lại theo dòng mới, thêm 6 khoá localStorage, `detailSource` trong HEAVY + schema, `goalFactor` trong công thức trọng số, 36 file test, hằng số `SHELL`/VERSION.
+
+**e) Kết quả kiểm chứng** — xem mục 25.1.
+
+**f) task-10 — gộp món trùng `banh-plan` → `banh-flan`**
+- `data/dishes.json`: xoá `banh-plan` ("Bánh plan" — cùng món với "Bánh flan"), `count` 308 → **307**; `banh-flan.kw` thêm **"Bánh plan"** để tìm quán ở miền Nam vẫn ra.
+- `tools/data/aliases.json`: bỏ khoá `banh-plan`, gộp tên tra cứu sang `banh-flan` (`Crème caramel`, `Flan`, `Bánh flan`, `Bánh plan`). `data-patch-aliases.mjs`: thay dòng `'banh-plan'` bằng `'banh-flan': ['Bánh flan', 'Bánh plan']` + ghi chú để chạy lại pipeline không tạo lại khoá cũ.
+- `app.js`: `ID_LEGACY = { 'cơm-chay': 'com-chay', 'banh-plan': 'banh-flan' }` → yêu thích/lịch sử/nhật ký/thực đơn/quán đã lưu/link `#mon=banh-plan` cũ đều về `banh-flan`.
+- Test mới `tools/test/test-legacy-id.mjs` (22 check, không cần mạng): dữ liệu không còn `banh-plan`, kw có "Bánh plan", `#mon=banh-plan` mở popup Bánh flan (hash giữ nguyên), `mgd.favs` chứa id cũ → 1 thẻ Bánh flan, có CẢ HAI id → không nhân đôi, `mgd.hist/seen/recentDraws/diary/menu/savedPlaces` chứa id cũ đều đọc ra `banh-flan`.
+- Pipeline đã chạy: `data-sync-sqlite.mjs` (307 dòng, xoá 1 dòng thừa) → `data-split.mjs` (5/5 file) → `data-validate.mjs` exit 0 (Lỗi 0 · Cảnh báo 0).
+
+### 25.1 KẾT QUẢ CUỐI (task-10, chạy lại toàn bộ sau task-05 → task-09)
+- `node tools/test/test-all.mjs http://127.0.0.1:4322` (LAN, `PORT=4322 node server.js`) — **37/37 file exit 0 · `TẤT CẢ EXIT 0`**.
+- `node tools/test/test-all.mjs http://127.0.0.1:4399` (`node tools/dev/probe-static.mjs 4399`) — **37/37 file exit 0 · `TẤT CẢ EXIT 0`**.
+- Không có `FAIL` nào trên cả 2 base. SKIP theo thiết kế (mạng ngoài, không tính FAIL): `test-api` bỏ khối `/api` trên bản tĩnh; `test-nearby-radius` bỏ khối "quán có tiếng" khi Overpass rỗng; các test phụ thuộc Photon/ipapi tự bỏ mục khi dịch vụ không tới được.
+- Chạy **đồng thời 2 base** thì `test-fame-mock.mjs` có thể FAIL do tải CPU (chờ ảnh/khung quá hạn); chạy riêng trên LAN **PASS** và lần chạy LAN đơn độc sau đó **36/36 exit 0** ⇒ chập chờn do tải, không phải lỗi chức năng.
+- Test mới (cả 2 base đều `KẾT QUẢ: OK`): `test-group` 25 check · `test-goals` 20 · `test-achv` 15 · `test-detailsrc` 9 · `test-legacy-id` 22.
+- `audit-layout.mjs` (375/390/458px): **tràn ngang: không · tap target <44px: không**; `test-clip` / `test-touch` / `verify-desktop-mobile` / `audit-desktop` đều exit 0.
+- `node tools/data/data-validate.mjs` → exit 0 (307 món · Lỗi 0 · Cảnh báo 0 · 5/5 file tách khớp byte): ảnh 280/307 (91.2%) · intro 273 · facts 246 · detail 307/307 (168 wikipedia + 139 tổng hợp) · SQLite 307/307.
+- `node --check` **65 file** JS/MJS → 0 lỗi.

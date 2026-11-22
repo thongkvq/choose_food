@@ -32,6 +32,7 @@ const STYLE = new Set(['ngot', 'kho', 'nuong', 'nuoc', 'hap', 'chien', 'cuon', '
 const ART = new Set(ART_TEMPLATES);
 const VIA = new Set(['vi-wiki', 'en-wiki', 'commons']);
 const PROTEIN_LABEL = new Set(['Thấp', 'Trung bình', 'Vừa', 'Cao', 'Rất cao']);
+const DETAIL_SRC = new Set(['wikipedia', 'tong-hop']);
 const FACT_KEYS = new Set(['originCountry', 'cuisine', 'ingredients', 'type', 'namedAfter']);
 // vungCo KHÔNG nằm trong danh sách này: món ngoài VN hợp lệ khi vungCo = [] (kiểm riêng bên dưới)
 const REQUIRED = ['id', 'name', 'emoji', 'region', 'vung', 'dacSan', 'meals', 'style', 'art', 'c1', 'c2',
@@ -71,7 +72,7 @@ for (const d of dishes) {
   }
   // khoá lạ
   const OPTIONAL = ['vungCo', 'image', 'imageVia', 'imageSource', 'intro', 'introSource', 'wikiUrl',
-    'wikiTitle', 'facts', 'detail', 'introEn'];
+    'wikiTitle', 'facts', 'detail', 'detailSource', 'introEn'];
   for (const k of Object.keys(d)) if (!REQUIRED.includes(k) && !OPTIONAL.includes(k)) warn(id, 'khoá lạ: ' + k);
   if (!REGION.has(d.region)) err(id, 'region lạ: ' + d.region);
   if (!VUNG.has(d.vung)) err(id, 'vung lạ: ' + d.vung);
@@ -132,7 +133,24 @@ for (const d of dishes) {
   if (d.detail) {
     if (!Array.isArray(d.detail) || !d.detail.length) err(id, 'detail phải là mảng không rỗng');
     else for (const s of d.detail) if (!s || !s.t || !s.body) err(id, 'detail thiếu t/body');
-  }
+    if (d.detailSource !== undefined && !DETAIL_SRC.has(d.detailSource)) err(id, 'detailSource lạ: ' + d.detailSource + ' (hợp lệ: wikipedia|tong-hop)');
+    // cảnh báo chống tái phạm: detail tong-hop phải là nội dung viết riêng (tools/data/detail-tong-hop.json),
+    // KHÔNG phải câu mẫu do data-fill-detail cũ sinh theo style/minutes/tags, và không gán gia vị Việt cho món ngoại.
+    if (d.detailSource === 'tong-hop') {
+      const bodies = d.detail.map((s) => String((s && s.body) || ''));
+      for (const pat of ['Thời gian làm món vào khoảng', 'Đặc trưng ghi nhận', 'Phù hợp với tập gym']) {
+        if (bodies.some((b) => b.includes(pat))) warn(id, 'detail tổng hợp còn câu mẫu cũ: "' + pat + '"');
+      }
+      if (d.region !== 'vn' && bodies.some((b) => /nước mắm/i.test(b))) {
+        warn(id, 'detail tổng hợp của món ngoài VN nhắc "nước mắm" — kiểm lại gia vị gốc của món');
+      }
+      if (d.detail.length < 3) warn(id, 'detail tổng hợp chỉ có ' + d.detail.length + ' mục (nên 3–4 mục)');
+      for (const s of d.detail) {
+        const len = String((s && s.body) || '').trim().length;
+        if (len < 60) warn(id, 'detail tổng hợp mục "' + (s && s.t) + '" quá ngắn (' + len + ' ký tự)');
+      }
+    }
+  } else if (d.detailSource) err(id, 'có detailSource nhưng không có detail');
 }
 
 // ---------- khớp SQLite ----------
@@ -159,6 +177,7 @@ else {
       ['bestTime', d.bestTime], ['origin', d.origin], ['tip', d.tip], ['intro', d.intro ?? null],
       ['introSource', d.introSource ?? null], ['wikiUrl', d.wikiUrl ?? null], ['wikiTitle', d.wikiTitle ?? null],
       ['facts', d.facts ? JSON.stringify(d.facts) : null], ['detail', d.detail ? JSON.stringify(d.detail) : null],
+      ['detailSource', d.detailSource ?? null],
       ['introEn', d.introEn ?? null], ['vung', d.vung], ['dacSan', d.dacSan ? 1 : 0],
       ['vungCo', JSON.stringify(d.vungCo || [])]
     ];
@@ -184,7 +203,7 @@ for (const [name, want] of Object.entries(SPLIT.files)) {
 // lite không được chứa trường nặng, detail phải phủ đủ mọi id
 const liteRaw = SPLIT.files[LITE_FILE] || '';
 const liteJson = JSON.parse(liteRaw || '{"dishes":[]}');
-const HEAVY_LEAK = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'tip'];
+const HEAVY_LEAK = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'detailSource', 'tip'];
 for (const d of liteJson.dishes || []) {
   const leaked = HEAVY_LEAK.filter(k => d[k] !== undefined);
   if (leaked.length) err(d.id, 'dishes-lite.json còn trường nặng: ' + leaked.join(', '));

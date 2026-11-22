@@ -8,9 +8,9 @@ import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 // Logic tìm quán dùng CHUNG với app.js (một bản duy nhất, không chép lại)
 import {
-  branchCounts, clampRadius, DEFAULT_RADIUS, dishQueries, dishWords, fameLists, filterByRadius, matchPlace, MAX_RADIUS,
-  nearbyUrls, norm, ovBudgetFor, overpassQuery, packMatched, packPoi, photonSearchResult,
-  photonSearchUrl, poisFromOverpass, sortMatched, withDistance
+  attachHours, branchCounts, clampRadius, DEFAULT_RADIUS, dishQueries, dishWords, fameLists, filterByRadius,
+  hoursIndex, matchPlace, MAX_RADIUS, nearbyUrls, norm, ovBudgetFor, overpassQuery, packMatched, packPoi,
+  photonSearchResult, photonSearchUrl, poisFromOverpass, sortMatched, withDistance
 } from './lib/nearby-core.js';
 
 const ROOT = fileURLToPath(new URL('.', import.meta.url));
@@ -206,19 +206,22 @@ async function nearby(lat, lng, radius, dish, kw, cuisineHint) {
     const counts = branchCounts(all);
     const lists = fameLists(all, lat, lng, Math.min(radius, MAX_RADIUS), dish, kw, cuisineHint);
     return { areaTotal: all.length, nearest: near.slice(0, 12).map((p) => packPoi(p, counts)), sameCuisine: sameCuisine.map((p) => packPoi(p, counts)),
-      famousMatch: lists.famousMatch.map((p) => packPoi(p, counts)), famousNear: lists.famousNear.map((p) => packPoi(p, counts)) };
-  })().catch((e) => ({ areaTotal: 0, nearest: [], sameCuisine: [], areaError: String((e && e.message) || e) }));
+      famousMatch: lists.famousMatch.map((p) => packPoi(p, counts)), famousNear: lists.famousNear.map((p) => packPoi(p, counts)),
+      hours: hoursIndex(all) };   // Photon thường thiếu opening_hours -> ghép từ OSM (cùng osm id / tên + ≤60m)
+  })().catch((e) => ({ areaTotal: 0, nearest: [], sameCuisine: [], hours: [], areaError: String((e && e.message) || e) }));
 
   // bán kính càng lớn Overpass càng lâu -> nới thời gian chờ theo mức người dùng chọn
   const ovBudget = ovBudgetFor(radius);   // ô lạnh 15km ~10s
-  const [ph, ov] = await Promise.all([photonJob, withTimeout(overpassJob, ovBudget, { areaTotal: 0, nearest: [], sameCuisine: [], areaError: 'hết thời gian chờ Overpass', timedOut: true })]);
+  const [ph, ov] = await Promise.all([photonJob, withTimeout(overpassJob, ovBudget, { areaTotal: 0, nearest: [], sameCuisine: [], hours: [], areaError: 'hết thời gian chờ Overpass', timedOut: true })]);
+  const matched = attachHours(ph.matched, ov.hours || []);   // quán Photon + giờ mở cửa của OSM
   // Hết giờ thì vẫn nạp tiếp ở nền (không giới hạn chặt) rồi cache 30 phút:
   // lần bấm 🔄 Tìm lại sau đó là có ngay, lần đầu chỉ chậm.
   let areaWarming = false;
   if (ov.timedOut) { areaWarming = true; getArea(lat, lng, radius, Math.max(60000, ovBudget * 4)).catch(() => {}); }
   return Object.assign({
     center: { lat: lat, lng: lng }, radius: radius, usedRadius: ph.usedRadius,
-    matched: ph.matched, nearest: ov.nearest || [], sameCuisine: ov.sameCuisine || [],
+    matched: matched, nearest: ov.nearest || [], sameCuisine: ov.sameCuisine || [],
+    hoursKnown: matched.filter((p) => p.open).length,   // tỉ lệ quán biết giờ mở cửa (chẩn đoán)
     famousMatch: ov.famousMatch || [], famousNear: ov.famousNear || [],
     areaTotal: ov.areaTotal || 0, areaError: ov.areaError || null, areaWarming: areaWarming
   }, nearbyUrls(lat, lng, dish));

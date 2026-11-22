@@ -7,9 +7,10 @@ const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const FILE = ROOT + 'tools/data/aliases.json';
 
 const PATCH = {
-  // ---- 13 món đang thiếu ảnh (tên tra cứu sát nghĩa, không dùng tên chung chung) ----
+  // ---- 12 món đang thiếu ảnh (tên tra cứu sát nghĩa, không dùng tên chung chung) ----
   'banh-bia': ['Bánh bía', 'Bánh pía', 'Bánh pía Sóc Trăng'],
-  'banh-plan': ['Bánh plan', 'Bánh flan'],
+  // banh-plan (Bánh plan) đã gộp vào banh-flan — KHÔNG tạo lại khoá banh-plan
+  'banh-flan': ['Bánh flan', 'Bánh plan'],
   'cha-com': ['Chả cốm', 'Chả cốm Hà Nội'],
   'nuoc-dau': ['Nước đậu đỏ', 'Chè đậu đỏ'],
   'chao-dau-xanh': ['Cháo đậu xanh', 'Cháo đỗ xanh'],

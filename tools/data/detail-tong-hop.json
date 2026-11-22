@@ -1,0 +1,2504 @@
+{
+ "butter-chicken": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Butter chicken (murgh makhani) ra đời ở Delhi từ những miếng gà tandoori nướng sẵn, được đun lại trong sốt cà chua, bơ và kem cho mềm và thấm. Món là gương mặt quen thuộc nhất của ẩm thực Bắc Ấn mỗi khi ra nước ngoài."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ướp sữa chua, gừng tỏi, garam masala và bột ớt rồi đem nướng. Phần sốt nấu từ bơ, cà chua, kem tươi (hoặc hạt điều xay) và một nhúm cỏ cà ri khô."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà nướng chín tới rồi thả vào sốt cà chua bơ đã nấu sánh, đun liu riu cho thịt ngấm màu đỏ cam đặc trưng. Cuối cùng rắc cỏ cà ri khô tán nhỏ để dậy mùi thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Món ăn kèm naan, cơm basmati hoặc roti, thêm lát hành đỏ, chanh và rau ngò. Vị béo của bơ và kem làm dịu độ cay nên rất dễ ăn."
+  }
+ ],
+ "banh-canh-ghe": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh canh ghẹ là món của các tỉnh ven biển miền Nam, nổi tiếng nhất ở Vũng Tàu, nơi ghẹ tươi được bán ngay tại chợ cá mỗi sáng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Nước dùng nấu từ xương ghẹ và sả, thêm thịt ghẹ gỡ sẵn, hành tím, ớt và tiêu. Sợi bánh canh làm từ bột gạo pha bột năng cho dai."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Ghẹ hấp chín, gỡ thịt để riêng; xương ghẹ giã và lọc lấy nước ngọt, đun cùng sả đập dập. Bột được nhào, cán và cắt sợi, trụng chín rồi chan nước dùng nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Tô bánh canh ăn khi còn nóng, thêm rau răm, ớt sa tế và vài giọt chanh cho dậy vị biển."
+  }
+ ],
+ "banh-ut-tre": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh ít trần là món dân dã của miền Trung, phổ biến ở Bình Định và các tỉnh lân cận. Gọi là trần vì bánh luộc trực tiếp trong nước chứ không gói lá."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Vỏ làm từ bột nếp nhào với nước lá dứa cho có màu xanh nhạt, nhân là tôm thịt băm xào cùng hành và mộc nhĩ. Nước chấm là mắm ớt tỏi pha chua ngọt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột nếp được nhồi mềm, nặn thành miếng dẹt, gói nhân rồi luộc đến khi bánh nổi lên mặt nước. Vớt ra nhúng qua nước lạnh cho vỏ bóng và không dính."
+  },
+  {
+   "t": "Biến tấu",
+   "body": "Ngoài nhân tôm thịt, bánh ít trần còn có bản nhân đậu xanh hoặc dừa cho người ăn chay; ăn nguội hay chiên sơ lại đều được."
+  }
+ ],
+ "canh-ga-ham": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Samgyetang là món gà hầm sâm của Hàn Quốc, thường được ăn vào những ngày nóng nhất mùa hè để bù lại sức lực đã mất."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mỗi con gà non được nhồi gạo nếp, sâm tươi, táo đỏ, hạt dẻ, tỏi và hạt tiêu, sau đó hầm nguyên con trong nồi nước."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà làm sạch, nhồi nhân rồi cột phần bụng lại, hầm liu riu vài giờ đến khi thịt mềm và gạo nếp nở bung. Nước hầm gần như trong, chỉ nêm muối tiêu khi ăn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Gà được dọn nguyên con trong nồi, thực khách múc từng phần, chấm thịt với muối tiêu và ăn cả phần nếp bên trong."
+  }
+ ],
+ "com-nieu": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm niêu là cách nấu cơm bằng niêu đất phổ biến ở miền Nam. Khi ăn, người ta đập vỡ niêu để lấy nguyên khối cơm và lớp cháy vàng dưới đáy."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Chỉ cần gạo tẻ, nước và niêu đất đã nung; phần ăn kèm thường là mỡ hành, tép rang hoặc thịt kho."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gạo vo sạch cho vào niêu, canh nước vừa rồi nung trên than hoặc bếp lửa để cơm chín đều và đóng cháy dưới đáy. Niêu được đập ngay trên bàn để lộ khối cơm còn nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cơm chan mỡ hành, rưới chút nước tương và ăn cùng tép rang, cá kho hoặc canh chua."
+  }
+ ],
+ "elote": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Elote là bắp nướng bán rong quen thuộc khắp Mexico, tên gọi đơn giản chỉ có nghĩa là bắp trong tiếng Tây Ban Nha."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bắp ngọt còn nguyên cùi, phết mayonnaise hoặc crema, lăn phô mai cotija mặn béo, rắc bột ớt và vắt chanh xanh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bắp luộc sơ rồi nướng trên than đến khi hạt săn lại và có vài vết cháy thơm. Khi còn nóng mới phết sốt và lăn phô mai để lớp áo bám đều."
+  },
+  {
+   "t": "Biến tấu",
+   "body": "Khi hạt bắp được tách ra trộn trong cốc thì món gọi là esquites, ăn bằng thìa với nước cốt chanh và ớt."
+  }
+ ],
+ "heo-quay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Heo quay nguyên con là món tiệc quen thuộc của người Hoa, đặc biệt trong các dịp cúng lễ và đám cưới. Miếng da rụm là phần được chờ đợi nhất."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Heo được ướp ngũ vị hương, muối, đường và rượu ở bên trong, trong khi phần da được châm lỗ nhỏ và phết giấm để khi quay nở giòn."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Heo quay trên than hồng hoặc trong lò lớn, trở đều và liên tục phết dầu nóng lên da cho đến khi da vàng rụm, thịt chín mềm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Heo quay được chặt miếng, chấm tương ngọt hoặc tương hoisin; da giòn ăn cùng bánh bao, dưa leo và hành lá."
+  }
+ ],
+ "lau-gao-lut-chay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu chay gạo lứt là biến tấu hiện đại của nồi lẩu rau củ, ra đời từ nhu cầu ăn chay đủ chất mà vẫn nhẹ bụng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Nước dùng nấu từ rau củ, nấm hương, rong biển và củ cải; phần nhúng gồm nấm tươi, đậu hũ, cà rốt, cải thảo và cơm gạo lứt nấu mềm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gạo lứt vo sạch, nấu chín mềm rồi cho vào nồi lẩu cùng nước dùng rau củ đang sôi. Thực khách nhúng rau và nấm vừa chín tới để giữ độ giòn ngọt."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc cơm gạo lứt lẫn nước dùng, chấm đậu hũ với nước tương ớt; món ăn nhẹ bụng và hoàn toàn không dùng mắm mặn."
+  }
+ ],
+ "lau-de": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu dê là món nhậu phổ biến của miền Bắc, nhất là vào mùa lạnh. Thịt dê núi được ưa vì chắc thịt và ít mùi."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt dê thái mỏng ướp sả, gừng, riềng và rượu; nước dùng nấu từ xương dê với sả, gừng và lá tía tô."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xương dê hầm trước cho ngọt nước, sau đó đặt nồi lẩu giữa bàn và nhúng thịt dê đã ướp cùng tía tô, rau cải và đậu hũ."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Miếng dê mềm chấm mắm tôm pha chanh ớt, ăn kèm bún và rau sống, thường dùng cùng rượu."
+  }
+ ],
+ "mien-cua": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Miến cua đi lên từ món canh cua đồng quen thuộc của miền Bắc, khi sợi miến được chan trực tiếp vào nồi nước cua thay vì ăn với cơm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cua đồng giã lọc lấy nước và gạch, miến đậu xanh, hành lá, thì là, tiêu và chút nước mắm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước cua được đun sôi cho gạch cua kết thành váng vàng rồi nêm vừa. Miến trụng mềm cho vào bát và chan nước cua nóng lên."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi còn nóng, thêm hành ngò, tiêu và vài giọt chanh; món thường dùng cho bữa sáng hoặc bữa phụ."
+  }
+ ],
+ "nuoc-dau": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nước đậu đỏ sang Việt Nam từ cách nấu của người Hàn, nơi đậu đỏ được xem là vị ngọt ấm dùng trong cả chè lẫn nước uống."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu đỏ, nước, đường hoặc mật ong, đôi khi thêm gừng hay quế cho ấm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu đỏ vo sạch, ngâm mềm rồi luộc nhừ; phần nước được lọc riêng, nêm ngọt vừa phải và có thể nấu đặc hơn tuỳ khẩu vị."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống nóng vào mùa lạnh, phần đậu có thể múc kèm; người Hàn thường dùng chung với bánh gạo hoặc các món chè truyền thống."
+  }
+ ],
+ "pudding-xoai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Pudding xoài kiểu Thái lấy cảm hứng từ món xoài nếp (khao niao mamuang), thứ tráng miệng mùa hè nổi tiếng nhất của Thái Lan."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Xoài chín thơm, nước cốt dừa, đường, gelatin hoặc bột rau câu; phần ăn kèm là nếp than hấp chín trộn nước cốt dừa và mè rang."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xoài xay nhuyễn, nấu với nước cốt dừa và đường rồi hoà gelatin, đổ khuôn và để lạnh cho đông. Nếp than hấp riêng, trộn nước cốt dừa ấm trước khi dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Pudding lạnh cắt miếng, rưới nước cốt dừa và ăn cùng nếp than để có đủ vị chua ngọt, béo và dai."
+  }
+ ],
+ "shakshuka": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Shakshuka là món trứng nấu trong sốt cà chua, bắt nguồn từ Bắc Phi rồi lan sang Trung Đông và trở thành món sáng quen thuộc ở Israel."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trứng, cà chua chín, ớt chuông, hành tây, tỏi, thì là Ai Cập, paprika và dầu olive; nhiều nơi rắc thêm phô mai feta."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Hành tây, ớt và tỏi xào mềm, thêm cà chua nấu sệt rồi nêm gia vị. Trứng đập thẳng vào sốt, đậy nắp cho lòng trắng đông mà lòng đỏ vẫn mềm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Món được dọn ngay trong chảo, ăn với bánh pita hoặc bánh mì nướng để chấm sốt, rắc ngò tươi lên trên."
+  }
+ ],
+ "sup-mang-tay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Súp măng tây là món khai vị kiểu Pháp từ măng tây nấu với nước dùng và kem; thêm thịt cua là bản nâng cấp thường thấy trong các bữa tối Âu."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Măng tây xanh, bơ, bột mì hoặc khoai tây để tạo độ sánh, nước dùng gà, kem tươi và thịt cua."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Măng tây nấu mềm rồi xay nhuyễn với nước dùng, thêm kem và nêm vừa. Thịt cua xào sơ, đặt lên mặt súp ngay khi dọn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Súp dùng nóng trong bát nhỏ, kèm bánh mì nướng giòn và chút tiêu đen; vị ngọt của cua nổi trên nền măng tây thanh mát."
+  }
+ ],
+ "ruou-vang": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Vang đỏ dùng cùng phô mai là cách thưởng thức quen thuộc của châu Âu, theo chân các bữa tối gia đình sang những buổi tiệc đứng kiểu Tây."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Một chai vang đỏ, vài loại phô mai (cứng, mềm hoặc phô mai xanh), các loại hạt, trái cây khô và bánh quy hay bánh mì."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Vang mở trước cho thở, phô mai lấy ra khỏi tủ lạnh cho mềm bớt rồi bày lên thớt gỗ cùng hạt và trái cây khô. Tất cả chỉ cần bày ra là dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Nhấm phô mai trước rồi nhấp vang để vị béo mặn cân lại vị chát của rượu; vang đỏ hợp nhất với phô mai béo và lâu năm."
+  }
+ ],
+ "vit-tiem-thuoc-bac": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Vịt tiềm thuốc bắc là món hầm bồi bổ của người Hoa, quen thuộc ở các khu người Hoa và trong những bữa ăn cần bù sức."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Vịt làm sạch, thang thuốc bắc gồm đương quy, kỷ tử, táo đỏ, hoài sơn, thêm hạt sen, nấm hương và gừng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Vịt trụng nước sôi hoặc chiên sơ cho da săn rồi cho vào nồi tiềm cùng thuốc bắc và nước. Món được tiềm cách thuỷ nhiều giờ để thịt mềm mà nước dùng vẫn trong."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dùng nóng, múc cả thịt lẫn nước; vị ngọt của thuốc bắc và hạt sen đọng trong nước hầm nên thường ăn kèm cơm trắng."
+  }
+ ],
+ "bia-hoi": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bia hơi là kiểu bia tươi bán theo cốc ở các quán vỉa hè miền Bắc, nổi tiếng nhất là ở Hà Nội vào những chiều hè."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bia ủ từ lúa mạch, hoa bia và nấm men với độ cồn thấp, uống tươi; mồi đi kèm đơn giản nhất là lạc rang muối."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bia sau khi lên men được giữ lạnh trong bồn và rót trực tiếp ra cốc, dùng ngay trong ngày nên hương hoa bia còn tươi."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ngồi ghế nhựa vỉa hè, nhấm lạc rang và uống từng ngụm bia lạnh; mồi thêm có thể là nem chua, mực khô hay đậu phụ."
+  }
+ ],
+ "banh-canh-cua": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh canh cua miền Tây gắn với vùng sông nước Nam Bộ, nơi cua đồng và cá thác lác là nguyên liệu dễ kiếm quanh năm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cua đồng giã lấy riêu, cá thác lác quết chả, bột gạo pha bột năng làm sợi, trứng cút, hành ngò và tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cua giã và lọc lấy nước, đun cho riêu cua đóng thành váng; chả cá thác lác quết dai rồi thả vào nồi nước dùng. Sợi bánh canh nhào từ bột, cắt và trụng chín trước khi chan."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Tô bánh canh ăn nóng, thêm rau đắng, giá, ớt và chanh; sợi bánh dày nên cần chan nước dùng thật nóng mới ngon."
+  }
+ ],
+ "banh-canh-tom": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh canh tôm là món ăn sáng quen của các tỉnh miền Trung, nơi sợi bánh canh bột gạo được làm dày và dai hơn bún."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Tôm tươi, bột gạo pha bột năng, xương heo nấu nước dùng, hành phi, tiêu và rau thơm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Tôm bóc vỏ, xào sơ cho thơm; xương heo hầm làm nước dùng ngọt. Bột nhào rồi cán thành sợi to, trụng chín, xếp vào bát cùng tôm và chan nước dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc hành phi, tiêu và hành ngò lên mặt, ăn khi còn nóng cùng ít ớt sa tế."
+  }
+ ],
+ "banh-gio": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh giò là món sáng của miền Bắc, chiếc bánh thuôn dài gói trong lá chuối với nhân thịt và mộc nhĩ ở giữa."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Vỏ bánh làm từ bột gạo tẻ pha chút bột năng, nhân gồm thịt băm, mộc nhĩ, hành khô và nước mắm; bọc ngoài bằng lá chuối."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nhân xào chín trước, sau đó gói cùng phần bột đã khuấy sệt trong lá chuối và hấp cách thuỷ cho bột chín trong, nhân thấm."
+  },
+  {
+   "t": "Biến tấu",
+   "body": "Ngoài bản nhân thịt, bánh giò còn có bản thêm trứng cút; ăn nóng với tương ớt hoặc nước mắm ớt."
+  }
+ ],
+ "banh-mi-chao-bo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh mì chảo là biến tấu Việt của bánh mì Pháp, khi phần nhân được dọn riêng trong chảo gang nóng thay vì kẹp sẵn vào bánh."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh mì giòn, thịt bò thái mỏng, trứng, pate, xíu mại, hành tây, bơ và tiêu; ăn kèm đồ chua và dưa leo."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chảo gang được nung thật nóng rồi cho bơ, pate và xíu mại vào xào thơm. Bò thái mỏng xào nhanh tay, sau đó đập trứng bên cạnh, rắc tiêu và dọn ngay trên chảo."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Xé bánh mì chấm vào sốt trứng và pate còn sôi, ăn kèm đồ chua cho đỡ ngán; thêm tương ớt tuỳ khẩu vị."
+  }
+ ],
+ "banh-mi-chao-pho-mai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh mì chảo phô mai là bản trẻ hoá của món bánh mì chảo, khi lớp phô mai béo được phủ lên chảo gang nóng cho chảy ra."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh mì, phô mai mozzarella hoặc phô mai lát, trứng, pate, xíu mại, bơ và hành tây."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chảo gang nóng cho bơ, pate và xíu mại xào sơ, đập trứng rồi rải phô mai kín mặt. Đậy nắp một lúc cho phô mai chảy đều rồi rắc tiêu."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Kéo miếng phô mai chảy cùng trứng và bánh mì nóng, ăn ngay khi chảo còn sôi; đồ chua giúp cân lại vị béo."
+  }
+ ],
+ "banh-mi-chao-trung": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh mì chảo trứng là bản đơn giản nhất của món bánh mì chảo, chỉ cần chiếc chảo gang với trứng, pate và xíu mại."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trứng gà, pate gan, xíu mại, bơ, hành lá, tiêu và bánh mì giòn."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chảo gang nóng cho bơ và pate, thêm xíu mại rồi đập trứng, để lửa vừa cho lòng trắng đông mà lòng đỏ vẫn mềm. Rắc hành lá và tiêu trước khi dọn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn kèm bánh mì nóng chấm trứng, thêm đồ chua, dưa leo và tương ớt; món sáng nhanh mà đủ chất."
+  }
+ ],
+ "banh-mi-ngot": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh mì ngọt là biến tấu Việt từ bánh mì Pháp, bán ở các lò bánh mì như món ăn sáng hoặc ăn vặt của trẻ con."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột mì, men, đường, sữa và bơ; nhân là dừa nạo xào với đường và sữa cho dẻo thơm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột được nhào kỹ rồi ủ cho nở gấp đôi, chia phần, gói nhân dừa và nướng đến khi vỏ vàng đều. Bánh ăn ngay khi còn ấm là ngon nhất."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dùng với sữa đặc hoặc sữa tươi vào bữa sáng; bánh để nguội vẫn mềm nhờ phần nhân dừa ẩm."
+  }
+ ],
+ "banh-socola": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh socola nhân chảy (lava cake) là món tráng miệng kiểu Âu nổi tiếng nhờ phần nhân socola còn lỏng trào ra khi cắt."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Socola đen, bơ, trứng, đường, một ít bột mì và muối; ăn kèm kem vani hoặc trái cây tươi."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Socola chảy cùng bơ, trứng đánh với đường rồi trộn đều, thêm bột vừa đủ. Bánh nướng ở nhiệt cao trong thời gian ngắn để vỏ đông lại mà ruột vẫn lỏng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn ngay khi vừa ra lò cùng kem vani, vì để nguội phần nhân sẽ đặc lại và mất độ chảy."
+  }
+ ],
+ "banh-xeo-nhat": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh xèo giòn chay là bản ăn chay của món bánh xèo miền Trung và Nam, thay nhân tôm thịt bằng nấm, đậu hũ và giá."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột gạo, bột nghệ, nước cốt dừa nếu làm kiểu miền Nam, nấm, đậu hũ, giá và hành lá; nước chấm là nước tương pha chua ngọt thay cho nước mắm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột khuấy loãng, tráng mỏng trên chảo nóng cho rìa bánh vàng giòn rồi rải nhân lên, gập đôi lại. Bánh chay chín nhanh nên chỉ cần lửa vừa."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cuốn bánh với cải xanh, rau sống và chấm nước tương chua ngọt; ăn ngay khi còn nóng để giữ độ giòn."
+  }
+ ],
+ "bo-ne": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bò né là món của miền Nam, thịt bò áp nhanh trên chảo gang nóng và dọn kèm trứng, pate, xúc xích ăn với bánh mì."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt bò thái mỏng, trứng, pate, xúc xích, hành tây, bơ, tiêu và bánh mì."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chảo gang phải thật nóng để miếng bò chín tái bên ngoài mà vẫn mềm bên trong. Cho bơ, áp bò vài chục giây mỗi mặt rồi đập trứng bên cạnh, rắc tiêu."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi chảo còn bốc khói, chấm bánh mì vào lòng đỏ trứng; thêm tương ớt và đồ chua cho cân vị."
+  }
+ ],
+ "bo-vien-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bò viên nướng xiên là món ăn vặt theo kiểu người Hoa, bán nhiều ở chợ đêm và các quán nhậu vỉa hè."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt bò xay, chút mỡ, tiêu, tỏi, nước tương và bột năng; khi nướng phết sa tế và rắc mè."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt được quết dai rồi vo viên, xiên que và nướng trên than hồng. Trong lúc nướng phết sa tế để viên thịt bóng và thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng, chấm tương ớt hoặc muối tiêu chanh; món hợp làm mồi nhắm bia."
+  }
+ ],
+ "bo-xao-hanh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bò xào hành tây là món xào nhanh trong mâm cơm Việt, chỉ cần thịt bò, hành tây và lửa thật lớn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt bò thái mỏng ướp tỏi, nước tương hoặc dầu hào, tiêu; hành tây, cần tây và ít ớt chuông."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bò ướp khoảng mười lăm phút rồi xào trên lửa lớn, đảo nhanh tay để thịt chín tới mà không dai. Hành tây cho vào sau cùng để còn giòn ngọt."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dùng với cơm nóng, bánh mì hoặc mì; rắc thêm tiêu đen trước khi dọn."
+  }
+ ],
+ "bun-tron": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bún trộn chay là bản ăn chay của bún trộn, giữ cách trộn rau sống và nước sốt đậm nhưng bỏ hẳn thịt và mắm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bún, đậu hũ chiên, rau sống, dưa leo, cà rốt chua, đậu phộng rang và nước tương mè."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bún trụng qua nước sôi rồi để ráo; đậu hũ chiên vàng cắt miếng. Tất cả xếp vào tô, rưới nước tương mè và rắc đậu phộng trước khi trộn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều ngay trước khi ăn để bún không bị khô, thêm ớt và chanh tuỳ khẩu vị."
+  }
+ ],
+ "canh-bi-do": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Canh bí đỏ thịt bằm là món cơm nhà quen thuộc, dễ nấu và hợp cả người lớn lẫn trẻ nhỏ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bí đỏ, thịt heo băm, hành tím, hành ngò và nước mắm. Bí chọn quả già ruột đặc để nồi canh ngọt và không bị nhạt nước."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt băm xào với hành cho thơm rồi thêm nước và bí đỏ cắt miếng, nấu đến khi bí mềm. Có thể dầm bí cho nồi canh sánh và ngọt hơn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc ra bát, rắc hành ngò và tiêu, ăn nóng với cơm; vị ngọt của bí không cần nêm nhiều đường."
+  }
+ ],
+ "canh-rong-bien": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Miyeokguk là canh rong biển của Hàn Quốc, theo truyền thống được nấu cho người mới sinh và dọn trong bữa ăn ngày sinh nhật."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Rong biển khô, thịt bò, dầu mè, tỏi, nước tương và nước dùng nấu từ cá bào hoặc xương bò."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Rong biển ngâm nở, rửa sạch rồi xào với dầu mè và thịt bò cho thơm. Đổ nước dùng vào nấu thêm chừng hai mươi phút, nêm nước tương vừa ăn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng với cơm trắng, rắc thêm dầu mè; vị ngọt thanh của rong biển hoà với chút béo của thịt bò."
+  }
+ ],
+ "cao-lau": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cao lầu là món riêng của phố cổ Hội An, nổi tiếng đến mức gần như chỉ ăn ngon nhất khi làm tại đây."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sợi cao lầu làm từ gạo ngâm nước tro nên dai và có màu vàng nâu, thịt xá xíu, da heo chiên giòn, giá, rau sống và hẹ."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Sợi cao lầu trụng qua nước sôi cho mềm rồi xếp vào tô cùng thịt xá xíu thái lát và da heo giòn. Chỉ chan một ít nước dùng đặc, không chan ngập như mì nước."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều tô cao lầu trước khi ăn, thêm tương ớt và vài giọt chanh; sợi mì dai là thứ khó tìm lại ở nơi khác."
+  }
+ ],
+ "cheesecake": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cheesecake khởi đầu từ món bánh phô mai kiểu Hy Lạp, về sau được làm lại ở Mỹ với đế bánh quy và phần nhân kem phô mai đặc trưng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Kem phô mai (cream cheese), đường, trứng, kem tươi; đế bánh làm từ bánh quy nghiền trộn bơ."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đế bánh ép chặt đáy khuôn và nướng sơ cho cứng. Nhân phô mai đánh mịn với đường và trứng rồi đổ lên, nướng cách thuỷ hoặc để lạnh cho đông."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Bánh ngon nhất sau khi để lạnh qua đêm, cắt miếng và dùng cùng sốt dâu hoặc trái cây tươi."
+  }
+ ],
+ "chao-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cháo gà là món dễ ăn có mặt khắp Việt Nam, thường được nấu khi người trong nhà mệt hoặc cần bữa nhẹ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gạo tẻ (thêm chút nếp cho sánh), gà ta, nấm hương, gừng, hành lá và tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà luộc lấy nước dùng, thịt gà xé nhỏ. Gạo nấu với nước luộc gà cho nhừ, thêm nấm hương thái mỏng và nêm vừa trước khi tắt bếp."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc cháo ra bát, rắc tiêu, hành lá và gừng sợi; ăn nóng, có thể thêm quẩy cho giòn."
+  }
+ ],
+ "chao-dau-xanh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cháo đậu xanh là món chay dân dã, nấu nhanh và thường được chọn trong những ngày nóng hoặc khi cần ăn nhẹ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gạo tẻ, đậu xanh cà vỏ, nước; ăn kèm dưa món, muối mè hoặc hạt rang."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu xanh ngâm mềm rồi nấu cùng gạo cho đến khi hạt đậu bung và cháo sánh lại. Chỉ cần nêm chút muối, vị bùi của đậu đã đủ ngon."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng hoặc để nguội, dùng cùng dưa món và muối mè; món chay nhẹ bụng nên cũng hay được dùng trong ngày rằm."
+  }
+ ],
+ "che-dau-den": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Chè đậu đen là món chè dân dã của người Việt, nấu từ đậu đen và đường, ăn nóng hay lạnh đều được."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu đen, đường, nước cốt dừa, gừng và chút bột năng để tạo độ sánh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu đen vo sạch, ngâm vài giờ rồi nấu nhừ; thêm đường và gừng, khuấy bột năng cho nước chè hơi sánh. Nước cốt dừa rưới lên khi dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc ra ly, thêm đá nếu ăn lạnh; vị bùi của đậu và chút béo của dừa hợp với những bữa đêm."
+  }
+ ],
+ "cuon-ram": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cuốn rế dùng bánh tráng rế có vân lưới như tấm rế để gói nhân rồi chiên giòn, thường xuất hiện trong mâm cỗ và tiệc cưới ở miền Nam."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh tráng rế, tôm thịt băm, mộc nhĩ, hành tím, trứng và tiêu; chấm cùng tương xoài hoặc tương ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nhân xào chín rồi để nguội, trải bánh tráng rế và cuộn chặt tay. Chiên ngập dầu ở lửa vừa để vỏ lưới vàng đều mà nhân chín bên trong."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Vớt ra giấy thấm dầu, ăn nóng với tương xoài và rau sống; lớp vỏ lưới giòn rụm là điểm hấp dẫn nhất."
+  }
+ ],
+ "ca-ri-chay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cà ri có gốc từ Ấn Độ, khi sang Việt Nam được nấu lại với nước cốt dừa; bản chay dùng rau củ và đậu hũ thay thịt."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột cà ri, nước cốt dừa, khoai môn, khoai lang, cà rốt, đậu hũ, sả và lá cà ri."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột cà ri xào với dầu cho thơm rồi thêm nước cốt dừa và chút nước, đun sôi. Cho khoai và cà rốt vào trước, đậu hũ sau cùng để không nát."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với bánh mì, bún hoặc cơm nóng; thêm rau thơm và ớt cho dậy mùi."
+  }
+ ],
+ "ca-hap-xi-dau": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cá hấp xì dầu là món của người Quảng Đông, nguyên tắc là hấp vừa chín để giữ trọn vị tươi ngọt của cá."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá tươi (cá mú, cá chẽm hoặc cá diêu hồng), gừng, hành lá, xì dầu, dầu mè và dầu ăn nóng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá khứa vài đường, xếp gừng lên mặt rồi hấp khoảng tám đến mười phút. Đổ bỏ nước đọng trong đĩa, rưới xì dầu và chan dầu nóng đã phi hành gừng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng với cơm trắng, rưới nước sốt trên đĩa lên từng miếng cá; thịt cá mềm và ngọt là dấu hiệu hấp vừa."
+  }
+ ],
+ "com-ga-xoi-mo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm gà xối mỡ là món của các quán cơm gà miền Nam, nổi bật ở khâu dùng mỡ nóng xối liên tục lên con gà đã luộc chín."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, mỡ heo hoặc dầu ăn, gừng, hành tím và nước mắm; cơm nấu từ gạo dẻo, ăn kèm dưa leo và canh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà luộc hoặc hấp vừa chín rồi treo lên, dùng mỡ thật nóng xối đều lên da cho vàng bóng và săn lại. Cơm được chan một ít mỡ gà và nước luộc để thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chặt gà ra đĩa, dọn cùng cơm nóng và chén nước mắm gừng; da giòn, thịt ngọt là tiêu chuẩn của món này."
+  }
+ ],
+ "com-gao-lut-ca-hoi": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm gạo lứt cá hồi là món ăn theo lối eatclean phong cách Nhật, ghép cơm gạo lứt với cá hồi áp chảo và rau xanh."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gạo lứt, phi lê cá hồi, bông cải xanh, bơ, chanh, dầu olive, muối và tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gạo lứt ngâm trước cho mềm rồi nấu chín tới. Cá hồi áp chảo phần da cho giòn, bông cải hấp vừa chín; sốt làm từ bơ chảy với nước chanh."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn cơm nóng, đặt cá hồi lên trên và rưới sốt chanh bơ; vắt thêm chanh để át mùi tanh của cá."
+  }
+ ],
+ "com-gao-lut": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm gạo lứt ức gà là công thức ăn kiêng quen thuộc ở các phòng gym Việt Nam, ghép tinh bột chậm với đạm nạc."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gạo lứt, ức gà, bông cải xanh, dầu olive, muối, tiêu và chanh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gạo lứt vo sạch, nấu với lượng nước nhiều hơn cơm trắng vì hạt lâu mềm. Ức gà ướp tiêu rồi áp chảo lửa vừa cho chín đều mà không khô; bông cải luộc vừa tới."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Xếp cơm, gà thái lát và bông cải vào hộp, vắt chanh lên trên; món ăn nguội vẫn giữ được vị nên tiện mang đi làm."
+  }
+ ],
+ "com-heo-quay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm heo quay theo cách người Hoa ở miền Nam: miếng heo quay da rụm đặt lên cơm nóng, ăn kèm dưa leo và đồ chua."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Heo quay, cơm trắng, dưa leo, cà rốt chua, hành ngò và nước tương hoặc nước sốt chan cơm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Heo quay chặt miếng vừa ăn, cơm nấu chín tới và chan một ít nước sốt mặn ngọt quanh đĩa. Xếp dưa leo và đồ chua bên cạnh để cân vị béo."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cắn miếng da heo giòn cùng cơm nóng, chấm tương ngọt; món thường dùng cho bữa trưa đầy đặn."
+  }
+ ],
+ "com-thai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm rang Thái nổi tiếng với cách dọn trong vỏ dứa, thường thấy ở các nhà hàng Thái và những quán cơm rang trong nước."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cơm nguội, dứa, tôm, trứng, hành tây, hạt điều, nho khô và bột cà ri; nêm mắm cá Thái (nam pla) và chút đường."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trứng xào tơi trước, sau đó cho cơm vào đảo lửa lớn cùng bột cà ri cho hạt cơm săn và vàng. Dứa, tôm và hành tây cho vào sau để không ra nước."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc cơm vào vỏ dứa đã khoét ruột, rắc hạt điều và hành lá; vị chua ngọt của dứa làm món rang đỡ ngán."
+  }
+ ],
+ "com-trang-trung": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm trắng trứng chiên là món cứu đói của sinh viên và người ở trọ: chỉ cần cơm nóng, quả trứng và chút nước tương."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cơm trắng, trứng gà, dầu ăn, nước tương và hành lá. Cơm nên còn nóng và hơi khô thì chan nước tương mới không bị nhão."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trứng đập ra chiên trên chảo nóng, để lòng đỏ còn hơi mềm thì dọn lên cơm. Rưới nước tương quanh bát và rắc hành lá."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều lòng đỏ với cơm nóng cho hạt cơm bóng lên, thêm tiêu; ăn kèm dưa leo hay canh đơn giản."
+  }
+ ],
+ "falafel": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Falafel là viên đậu gà chiên, món đường phố quen thuộc của Trung Đông và Bắc Phi; cả Ai Cập lẫn vùng Levant đều nhận là quê hương của món."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu gà khô ngâm qua đêm, hành, tỏi, rau mùi tây, thì là, hạt rau mùi và chút bột nở."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu sống để ráo rồi xay nhuyễn cùng rau thơm và gia vị, vo viên rồi chiên ngập dầu cho vỏ vàng giòn. Nhân phải dùng đậu sống, đậu chín sẽ làm viên bị bở."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Nhồi falafel vào bánh pita cùng salad, dưa chua và sốt tahini; ăn nóng để giữ độ giòn."
+  }
+ ],
+ "ga-hap-gung": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà hấp gừng hành là cách nấu gà giữ nguyên vị ngọt, phổ biến trong các bữa cơm của người Việt và cả trong mâm cỗ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, gừng, hành lá, muối, tiêu và chanh; nước chấm là muối tiêu chanh hoặc nước mắm gừng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà xát muối và gừng cả trong lẫn ngoài, hấp khoảng hai mươi lăm đến ba mươi phút cho chín tới. Để nguội bớt rồi chặt miếng và rưới dầu hành gừng phi thơm lên trên."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm muối tiêu chanh, ăn cùng cơm trắng hoặc xôi; da gà hấp săn vàng, thịt ngọt tự nhiên."
+  }
+ ],
+ "ga-kho-gung": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà kho gừng là món kho quen trong bữa cơm hằng ngày, gừng vừa khử mùi gà vừa làm ấm bụng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt gà chặt miếng, gừng thái sợi, nước mắm, đường, hành tím và tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp nước mắm, đường và gừng khoảng nửa giờ cho thấm. Kho lửa nhỏ với ít nước đến khi nước sốt sánh lại và bám vào từng miếng gà."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn nóng với cơm trắng và canh rau; nước kho còn lại chan cơm rất đưa vị."
+  }
+ ],
+ "ga-nuong-la-chanh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà nướng lá chanh là món nướng của người Việt, dùng lá chanh thái sợi ướp cùng gà để dậy mùi thơm đặc trưng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, lá chanh, sả, gừng, tỏi, nước mắm, đường và chút mật ong."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà khứa vài đường rồi ướp với hỗn hợp lá chanh, sả, gừng và nước mắm ít nhất vài giờ. Nướng trên than hoặc trong lò, phết mật ong cho da bóng và trở đều tay."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chặt miếng, chấm muối tiêu chanh hoặc muối ớt; ăn cùng cơm lam, xôi hoặc rau sống."
+  }
+ ],
+ "kem-bo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Kem bơ là món kem trái cây của miền Nam, bán ở các quán kem và xe đẩy; bản kem dừa thì dùng cơm dừa xiêm thay bơ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bơ sáp chín, sữa đặc, đá, đậu phộng rang; bản kem dừa dùng cơm dừa xiêm, nước cốt dừa và sữa."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bơ bỏ hạt, xay cùng sữa đặc và đá cho sánh mịn rồi múc ra ly. Với kem dừa, cơm dừa được trộn với sữa đặc và đá xay thay vì xay nhuyễn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc đậu phộng rang lên mặt và dùng ngay khi còn lạnh; vị béo của bơ và dừa hợp với cái ngọt đậm của sữa đặc."
+  }
+ ],
+ "kem-tuoi": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Kem tươi kiểu Ý (gelato) khác kem công nghiệp ở chỗ ít không khí và ít chất béo hơn, nên vị nguyên liệu hiện rõ hơn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sữa, đường, lòng đỏ trứng và hương liệu như vani, socola hoặc trái cây tươi."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Hỗn hợp sữa, đường và lòng đỏ được nấu thành custard rồi làm lạnh hẳn. Kem được khuấy chậm trong máy ở nhiệt độ thấp để mịn mà không bị bông xốp."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc bằng thìa dẹt thành từng viên và dùng ngay; gelato ngon nhất khi không quá cứng, nên lấy ra khỏi tủ đông vài phút trước khi ăn."
+  }
+ ],
+ "khoai-lang-chien": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Khoai lang kén là món ăn vặt của người Việt, có tên gọi nhờ hình thoi thuôn hai đầu trông như cái kén."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Khoai lang mật, bột mì hoặc bột chiên giòn, đường, mè và sữa đặc để chấm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Khoai hấp chín, dầm nhuyễn rồi trộn với bột và chút đường cho thành khối dẻo. Nặn thành từng chiếc hình kén và chiên ngập dầu đến khi vàng đều."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Vớt ra giấy thấm dầu, lăn qua mè rang và chấm sữa đặc; ăn nóng để cảm nhận lớp vỏ giòn và ruột khoai bùi."
+  }
+ ],
+ "lau-bo-nhung-dam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu bò nhúng dấm là món của miền Bắc, nồi nước dùng pha dấm gạo tạo vị chua nhẹ để nhúng bò và rau."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt bò thăn thái mỏng, dấm gạo, nước dùng xương, chuối xanh, hành tây, gừng, rau sống và bún."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước dùng được pha với dấm và đun sôi, thêm hành tây và gừng cho thơm. Bò nhúng nhanh trong nước dấm đang sôi, chỉ vài giây mỗi miếng để thịt chín tái và mềm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cuốn bò với bún, chuối xanh và rau sống, chấm nước mắm ớt; vị chua của dấm làm miếng bò béo mà không ngán."
+  }
+ ],
+ "lau-chao-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu cháo gà là cách đưa nồi cháo gà lên bàn nhậu thành món lẩu, phổ biến trong những buổi tụ tập những ngày mưa lạnh."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, gạo tẻ, nấm, rau cải, gừng, hành lá và quẩy. Gạo nấu loãng hơn cháo thường vì còn dùng làm nước lẩu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà luộc hoặc hầm lấy nước dùng ngọt, thịt gà chặt miếng. Gạo nấu với nước gà thành cháo loãng rồi đặt nồi giữa bàn để nhúng rau và gà."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc cháo nóng, rắc tiêu và hành, ăn kèm quẩy giòn; nước cháo ngọt dần khi nhúng thêm gà và nấm."
+  }
+ ],
+ "lau-ga-la-e": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu gà lá é gắn với Nha Trang và vùng duyên hải miền Trung, nơi lá é mọc nhiều và có mùi thơm the đặc trưng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, lá é, sả, ớt, hành tím và bún; nước chấm là mắm ớt hoặc muối tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước dùng nấu từ gà với sả đập dập, nêm vừa rồi đặt nồi giữa bàn. Người ăn nhúng thịt gà và lá é vào nồi đang sôi, ăn nóng với bún."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm gà với mắm ớt, ăn kèm bún và rau; lá é cho vào sau cùng để giữ mùi thơm thay vì nấu quá lâu."
+  }
+ ],
+ "lau-ga-nam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu gà nấm là bản thanh đạm của lẩu gà, dùng nước dùng gà hầm trong với các loại nấm tươi thay vì nhiều gia vị nặng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, nấm hương, nấm kim châm, nấm bào ngư, gừng, hành lá và rau xanh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà chặt miếng hầm với gừng cho ngọt nước, vớt bọt để nước dùng trong. Nấm cho vào sau cùng, chỉ đun vừa chín để giữ mùi thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với bún hoặc mì, chấm thịt gà với muối tiêu chanh; món nhẹ bụng và ít dầu mỡ."
+  }
+ ],
+ "lau-nam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu nấm chay nấu nước dùng hoàn toàn từ rau củ và nấm, phổ biến trong các bữa chay và những ngày rằm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Nấm hương, nấm kim châm, nấm bào ngư, đậu hũ, cà rốt, củ cải, cải thảo và rong biển để lấy vị ngọt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước dùng nấu từ củ cải, cà rốt và rong biển cho ngọt tự nhiên rồi lọc trong. Nấm và rau được nhúng vừa chín để không bị dai."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm đậu hũ và nấm với nước tương ớt; ăn kèm bún, mì hoặc cơm đều hợp."
+  }
+ ],
+ "mi-tom": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mì tôm chua cay là món từ gói mì ăn liền, thứ đã trở thành món cứu đói quen thuộc của nhiều thế hệ ở Việt Nam."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mì gói và gói gia vị, trứng, tôm khô hoặc tôm tươi, rau xanh và ớt sa tế."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước sôi thì cho mì và gói gia vị vào nấu khoảng ba phút cho sợi mì vừa mềm. Tôm khô cho vào từ đầu để ra nước ngọt, trứng đập sau cùng rồi tắt bếp ngay."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay trong bát còn nóng, thêm tiêu và hành lá; món hay được nấu lúc khuya vì nhanh và không cần nhiều nguyên liệu."
+  }
+ ],
+ "mi-xao-gion": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mì xào giòn là món của người Hoa: sợi mì trứng chiên ngập dầu cho phồng giòn rồi rưới sốt rau thịt lên trên."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mì trứng, thịt gà hoặc heo, tôm, cải thìa, nấm, hành tây và bột năng để làm sánh nước sốt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mì trụng sơ rồi chiên trong dầu nóng cho nở phồng thành bánh giòn, vớt ra đĩa. Nhân xào với nước dùng, nêm nước tương và dầu hào rồi chan lên đĩa mì."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn ngay khi vừa chan sốt để còn nghe tiếng rộp rộp; để lâu bánh mì sẽ mềm và mất độ giòn."
+  }
+ ],
+ "nachos": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nachos là món khai vị Mexico gồm bánh tortilla ngô chiên giòn phủ phô mai tan chảy, nổi tiếng khắp châu Mỹ qua các quán bar và rạp phim."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh tortilla ngô, phô mai cheddar hoặc phô mai sợi, ớt jalapeño, salsa, kem chua và đậu đen."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bánh ngô cắt miếng tam giác rồi chiên hoặc nướng giòn. Rải bánh lên khay, phủ phô mai và nướng đến khi phô mai chảy, sau đó thêm salsa, jalapeño và kem chua lên trên."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dùng ngay khi phô mai còn nóng, bốc tay chấm salsa hoặc guacamole; món hợp để cả bàn chia nhau."
+  }
+ ],
+ "so-hap-sa": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nghêu hấp sả là món hải sản dân dã, bán nhiều ở các quán ốc và quán nhậu vỉa hè khắp Việt Nam."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Nghêu tươi, sả đập dập, ớt, gừng, rau răm, chút rượu trắng và nước mắm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nghêu ngâm nước cho nhả cát rồi rửa sạch. Phi sả và ớt cho thơm, đổ nghêu vào xào nhanh rồi đậy nắp cho nghêu há miệng là chín."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm muối tiêu chanh hoặc nước mắm gừng, ăn kèm bánh mì; món hay được gọi khi uống bia."
+  }
+ ],
+ "nuoc-chanh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nước chanh dây là thức giải khát quen ở các quán cà phê và xe nước ven đường Việt Nam, pha từ quả chanh dây chín."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Chanh dây, mật ong hoặc đường, nước lọc và đá. Quả chín vỏ hơi nhăn là loại cho vị chua thơm và nhiều nước nhất."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chanh dây cắt đôi, nạo lấy phần ruột rồi lọc bớt hạt nếu muốn. Pha với nước, nêm mật ong cho dịu vị chua và thêm đá."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống lạnh ngay sau khi pha, có thể thêm vài lá bạc hà; để lâu phần thịt quả sẽ tách nước và bớt thơm."
+  }
+ ],
+ "nuoc-mia": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nước mía là thức giải khát vỉa hè lâu đời của người Việt, ép từ cây mía tươi ngay tại chỗ bán."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mía tươi, quất (tắc), đá và đôi khi thêm chút muối hoặc chanh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mía cạo vỏ, đưa qua máy ép lấy nước rồi lọc bã. Vắt thêm quất và cho đá vào ly ngay trước khi đưa khách."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống ngay khi vừa ép để giữ vị ngọt thanh; vị chua nhẹ của quất giúp nước mía đỡ gắt."
+  }
+ ],
+ "nuoc-rau-ma": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Nước rau má là thức uống giải nhiệt dân dã của người Việt, làm từ lá rau má tươi mọc ở ruộng vườn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Rau má tươi, nước lọc, đường hoặc mật ong và đá. Rau má mua về phải rửa nhiều lần vì thường còn lẫn đất cát."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Rau má nhặt sạch, rửa kỹ rồi xay nhuyễn với nước. Lọc bỏ bã, thêm đường cho vừa và khuấy đều trước khi thêm đá."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống lạnh vào những ngày nắng; vị hơi đắng của rau má đi cùng chút ngọt nên nhiều người thích uống không đường."
+  }
+ ],
+ "pho-tron": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Phở trộn là biến tấu của phở Hà Nội: bánh phở trộn với nước sốt thay vì chan ngập nước dùng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh phở, thịt bò xào, rau sống, đậu phộng rang, hành phi và nước tương hoặc tương đen."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bánh phở trụng mềm rồi để ráo, bò thái mỏng xào lửa lớn cho vừa chín. Trộn bánh phở với nước sốt, xếp bò lên trên và rắc rau, đậu phộng, hành phi."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều trước khi ăn, thường dọn kèm một bát nước dùng nóng riêng để chan thêm cho đỡ khô."
+  }
+ ],
+ "poke-bowl": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Poke bowl bắt nguồn từ món poke của Hawaii, nơi cá tươi được thái hạt lựu ướp dầu và gia vị rồi ăn với cơm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cơm sushi, cá hồi, quả bơ, edamame, rong biển, mè và sốt ponzu hoặc mayonnaise."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cơm nấu chín, trộn nhẹ với dấm đường muối. Cá hồi thái khối vuông, ướp một chút sốt rồi xếp lên cơm cùng bơ và edamame, rưới sốt lần nữa."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều tất cả trước khi ăn và dùng ngay để cá còn tươi; người không ăn cá sống có thể dùng cá áp chảo thay thế."
+  }
+ ],
+ "quay-thua": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Quẩy là món bột chiên có gốc người Hoa, ở Việt Nam gắn với bữa sáng: quẩy nóng chấm cháo hoặc cà phê sữa."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột mì, men nở, nước ấm, muối và dầu chiên. Bột cần nhào đủ dai để quẩy phồng rỗng chứ không đặc ruột."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột nhào kỹ rồi ủ cho nở, cán dẹt và cắt thành thanh. Hai thanh chồng lên nhau, ép giữa rồi kéo dài, chiên trong dầu nóng cho phồng và vàng đều."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn khi còn nóng giòn, chấm cháo, sữa đậu nành hoặc cà phê sữa; để nguội quẩy sẽ mềm và mất ngon."
+  }
+ ],
+ "salad-ca-ngu": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Salad cá ngừ theo cách làm của Pháp vùng Nice, món trộn gồm cá ngừ, trứng luộc, cà chua và olive."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá ngừ đóng hộp hoặc cá ngừ tươi, xà lách, trứng luộc, cà chua bi, olive, dầu olive, chanh và mù tạt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Sốt trộn từ dầu olive, nước chanh, mù tạt và chút muối tiêu. Xà lách rửa sạch để thật ráo rồi trộn nhẹ với cá ngừ, trứng và cà chua."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dùng lạnh ngay sau khi trộn để rau không bị mềm; thêm vài lát bánh mì nướng là thành bữa trưa gọn."
+  }
+ ],
+ "salad-ga-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Salad gà nướng là món trộn kiểu Mỹ, gà nướng hoặc áp chảo thái lát ăn cùng rau xanh và sốt đậm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Ức gà, xà lách, cà chua, dưa leo, hạt rang và sốt mè rang hoặc dầu giấm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp muối tiêu rồi áp chảo cho chín tới, để nghỉ vài phút trước khi thái lát để giữ nước. Rau rửa sạch, để ráo rồi trộn với sốt ngay trước khi dọn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Xếp gà lên mặt salad và rắc hạt rang; nếu mang đi, để sốt riêng để rau không bị nhũn."
+  }
+ ],
+ "sinh-to-bo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Sinh tố bơ là thức uống béo mịn quen thuộc ở Việt Nam, thường được chọn làm bữa sáng nhanh hoặc món giải khát."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bơ sáp chín, sữa đặc hoặc sữa tươi, đá và có thể thêm chút cà phê."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bơ bỏ hạt, lấy phần thịt cho vào máy xay cùng sữa và đá. Xay đến khi hỗn hợp mịn và sánh, nêm thêm sữa đặc tuỳ khẩu vị."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống ngay sau khi xay để không bị tách nước; vị béo của bơ hợp với chút đắng của cà phê."
+  }
+ ],
+ "sinh-to-xoai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Sinh tố xoài là món giải khát từ xoài chín, phổ biến ở các quán sinh tố và xe nước ép Việt Nam."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Xoài chín, sữa chua hoặc sữa tươi, đá và chút đường nếu xoài chưa ngọt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xoài gọt vỏ, cắt miếng rồi xay cùng sữa chua và đá cho mịn. Nêm lại độ ngọt trước khi rót ra ly."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống lạnh, có thể thêm hạt chia hoặc dừa sấy lên mặt; chọn xoài chín cát là ngon nhất vì ít xơ."
+  }
+ ],
+ "som-tam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Som tam là nộm đu đủ xanh của Thái Lan, gắn nhất với vùng Isan ở đông bắc và được giã trong cối đá ngay trước mặt khách."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đu đủ xanh bào sợi, cà chua, đậu que, ớt, tỏi, mắm cá lên men (nam pla), nước cốt chanh, đường thốt nốt, đậu phộng và tôm khô."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Giã tỏi và ớt trong cối cho dậy mùi, thêm đậu que và cà chua giã nhẹ. Cho đu đủ bào vào, nêm mắm cá, chanh, đường rồi trộn đều tay cho thấm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi vừa trộn, thường dùng cùng gà nướng và nếp nướng; vị chua cay mặn ngọt phải cân bằng mới chuẩn."
+  }
+ ],
+ "sup-bi-do": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Súp bí đỏ kem là món khai vị kiểu Pháp, nấu bí đỏ với nước dùng rồi thêm kem tươi cho mịn và béo."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bí đỏ, hành tây, bơ, nước dùng gà hoặc rau củ, kem tươi, hạt bí và chút nhục đậu khấu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Hành tây xào mềm với bơ, thêm bí đỏ và nước dùng nấu đến khi bí nhừ. Xay nhuyễn, thêm kem, nêm vừa rồi đun lại cho nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc ra bát, rưới vài giọt kem và rắc hạt bí rang; dùng nóng với bánh mì nướng."
+  }
+ ],
+ "sup-cua": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Súp cua là món khai vị của người Hoa, phổ biến ở Sài Gòn và các nhà hàng Á với vị ngọt thanh và độ sánh nhẹ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt cua, trứng, bắp ngọt, nấm, bột năng và nước dùng gà. Trứng đánh tan rồi đổ thật chậm để tạo vân mỏng thay vì vón cục."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước dùng nấu sôi, cho bắp và nấm vào trước, sau đó thêm thịt cua. Hoà bột năng cho súp sánh rồi đổ trứng đã đánh tan theo vòng tròn để tạo vân."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc tiêu và hành ngò, dùng nóng; súp cua ngon nhất khi vừa nấu xong vì để lâu sẽ đặc lại."
+  }
+ ],
+ "tra-gung": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Trà gừng mật ong là thức uống dân gian giữ ấm, quen thuộc mỗi khi trời lạnh hoặc người trong nhà bị cảm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gừng tươi, mật ong, chanh, nước nóng và túi trà nếu muốn có vị trà."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gừng thái lát mỏng, hãm với nước sôi khoảng năm phút cho ra hết vị cay. Để bớt nóng rồi mới pha mật ong và vài giọt chanh."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống khi còn ấm, từng ngụm nhỏ; không pha mật ong vào nước đang sôi vì sẽ làm mất vị thơm."
+  }
+ ],
+ "trung-chien-thit": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Trứng chiên thịt bằm là món cơm nhà quen thuộc, chỉ cần trứng, thịt băm và chảo nóng là xong bữa."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trứng gà, thịt heo băm, hành lá, nước mắm và tiêu. Thịt băm xào chín trước rồi mới trộn vào trứng để miếng trứng không bị sống bên trong."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt băm xào sơ với chút nước mắm cho chín rồi trộn vào trứng đã đánh tan. Đổ hỗn hợp vào chảo nóng, chiên vàng đều hai mặt."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cắt miếng, ăn với cơm trắng và dưa leo; rắc tiêu lên mặt trước khi dọn."
+  }
+ ],
+ "trung-hap": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Chawanmushi là món trứng hấp trong chén của Nhật, mặt trứng mịn như kem và thường được dọn làm món khai vị."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trứng, nước dùng dashi, tôm, thịt gà, nấm hương và lá mitsuba."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trứng đánh tan với dashi theo tỉ lệ thường là một phần trứng, ba phần nước dùng rồi lọc bỏ bọt. Hấp trong chén có nắp ở lửa nhỏ để mặt trứng phẳng và không rỗ."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay bằng thìa khi còn nóng; mặt trứng mịn và vị dashi thanh là dấu hiệu hấp đúng lửa."
+  }
+ ],
+ "tau-hu-ngot": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Tàu hũ là món đậu hũ non ngọt có gốc người Hoa, ở Việt Nam quen với tiếng rao đêm và bát tàu hũ nóng chan nước đường gừng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu nành, nước, đường, gừng và thạch đen ăn kèm. Đậu nành phải ngâm và xay lọc kỹ để tàu hũ mịn, không có vị chua."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu nành ngâm, xay và lọc lấy sữa rồi nấu chín. Sữa nóng được cho chất làm đông thực phẩm vào và giữ yên cho đông thành tàu hũ mềm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc tàu hũ ra bát, chan nước đường gừng nóng và thêm thạch đen; ăn khi còn ấm để cảm nhận độ mềm mịn."
+  }
+ ],
+ "xuc-xich-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Xúc xích nướng than là món ăn vặt bán nhiều ở vỉa hè và chợ đêm, chỉ cần xiên que nướng trên bếp than hồng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Xúc xích, muối tiêu chanh hoặc muối ớt và tương ớt để chấm. Chọn loại vỏ mỏng để khi nướng da nứt đẹp và thịt không bị khô."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xúc xích khứa vài đường rồi xiên que, nướng trên than và trở đều tay cho chín và nứt da. Phết chút dầu để vỏ không bị cháy."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn khi vừa xuống vỉ để vỏ còn nứt giòn, chấm tương ớt; món dễ ăn nên hay được gọi kèm khi uống bia."
+  }
+ ],
+ "chao-yen-mach": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Yến mạch nấu sữa ăn với chuối là bữa sáng kiểu Âu, phổ biến vì nhanh, rẻ và giữ bụng no lâu."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Yến mạch cán, sữa tươi hoặc sữa hạt, chuối chín, mật ong và hạnh nhân lát."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Yến mạch nấu với sữa ở lửa nhỏ, khuấy đều tay cho hạt nở và hỗn hợp sánh lại. Múc ra bát, xếp chuối thái lát lên trên cùng hạnh nhân và mật ong."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn khi còn ấm; nếu bận thì ủ yến mạch với sữa trong tủ lạnh qua đêm để sáng hôm sau dùng ngay."
+  }
+ ],
+ "trai-cay-dia": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Đĩa trái cây là cách dọn tráng miệng đơn giản nhất của người Việt, có mặt từ mâm cơm gia đình đến tiệc và quán cà phê."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Dưa hấu, xoài, thơm, thanh long và các loại trái theo mùa; ăn kèm muối ớt nếu thích."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trái cây gọt vỏ, bỏ hạt rồi cắt miếng vừa ăn. Xếp ra đĩa theo màu cho đẹp mắt và dùng ngay sau khi cắt."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ướp lạnh trước khi cắt sẽ ngọt và mát hơn; chấm muối ớt là cách ăn quen của nhiều người miền Nam."
+  }
+ ],
+ "dau-hu-chien": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Đậu hũ chiên sả là món chay quen trong mâm cơm Việt, đậu hũ chiên vàng rồi đảo cùng sả băm cho thơm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu hũ, sả băm, ớt, nước tương và dầu ăn. Đậu hũ phải thấm thật khô trước khi chiên thì vỏ mới giòn và không bắn dầu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu hũ cắt miếng vuông, thấm khô rồi chiên ngập dầu cho vỏ vàng giòn. Sả và ớt băm phi thơm, sau đó đảo đậu vào cho bám mùi."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm nước tương ớt, ăn với cơm trắng hoặc bún; rắc thêm sả phi lên mặt cho thơm."
+  }
+ ],
+ "dau-hu-non": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Đậu hũ non sốt trứng là món của người Hoa, dùng đậu hũ non hấp nóng rồi rưới sốt trứng mặn béo lên trên."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu hũ non, trứng muối hoặc trứng gà, hành phi, dầu mè và nước tương."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu hũ non cắt miếng, hấp nóng cho săn mặt. Trứng muối nghiền nhuyễn nấu với chút nước thành sốt sánh rồi rưới đều lên đậu hũ."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc hành phi và dầu mè, ăn nóng với cơm trắng; vị mặn béo của trứng muối hợp với đậu hũ non mềm."
+  }
+ ],
+ "dau-hu-sot-ca": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Đậu hũ sốt cà là món chay trong bữa cơm hằng ngày, đậu hũ chiên sơ rồi kho với cà chua cho thấm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu hũ, cà chua chín, hành tím, hành lá, nước tương và chút đường."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu hũ chiên sơ cho mặt săn lại; cà chua băm xào nhuyễn thành sốt rồi nêm nước tương và đường. Cho đậu hũ vào kho lửa nhỏ cho ngấm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc hành lá, ăn với cơm nóng; nước sốt cà chua chua ngọt là phần ngon nhất để chan cơm."
+  }
+ ],
+ "oc-nhoi": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Ốc nhồi thịt là món quen của miền Bắc, nhất là Hà Nội, khi thịt ốc được băm lại với thịt heo rồi nhồi vào vỏ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Ốc bươu hoặc ốc nhồi, thịt heo băm, mộc nhĩ, hành tím, sả và mắm gừng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Ốc luộc sơ, lấy thịt băm nhuyễn trộn với thịt heo và mộc nhĩ. Nhồi hỗn hợp trở lại vỏ ốc rồi hấp cùng sả cho chín và thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm mắm gừng pha chanh ớt, ăn nóng; món thường được gọi kèm khi uống rượu."
+  }
+ ],
+ "banh-canh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh canh cua kiểu miền Trung dùng sợi bánh canh bột gạo to bản, nước dùng nấu từ xương heo và riêu cua."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột gạo pha bột năng, cua đồng, chả cá, trứng cút, hành ngò và tiêu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột gạo pha bột năng được nhào, cán thành sợi to bản rồi cắt ngắn, trụng chín ngay trước khi múc ra tô. Nước dùng nấu từ xương heo, cua giã lọc lấy riêu còn chả cá và trứng cút thả vào sau cho nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Sợi bánh to nên chan nước dùng ngập và ăn thật nóng, thêm hành ngò, tiêu và ớt; ở miền Trung món thường có mặt trong bữa sáng."
+  }
+ ],
+ "bo-kho": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bò khô trộn cóc là món ăn vặt gắn với tuổi học trò, bán ở cổng trường và các xe đẩy trong ngõ."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bò khô xé sợi, cóc xanh, xoài xanh, đu đủ khô, tương ớt và muối ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cóc và xoài gọt vỏ, thái miếng vừa ăn. Cho tất cả vào cốc hoặc túi cùng tương ớt rồi lắc đều cho gia vị bám khắp."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay bằng tăm, càng chua cay càng đã miệng; món chỉ mất vài phút là xong nên hay được mua lúc tan học."
+  }
+ ],
+ "che-thai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Chè Thái ở Việt Nam là món chè làm theo phong cách Thái: nước cốt dừa, mít, sầu riêng và thạch, ăn cùng đá."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mít, sầu riêng, thạch lá dứa hoặc thạch trắng, nước cốt dừa, đường và đá."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nước cốt dừa nấu với đường cho tan rồi để nguội. Mít thái sợi, thạch cắt hạt lựu, xếp vào ly cùng đá và chan nước cốt dừa lên."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều trước khi ăn để vị béo của dừa quyện với mít; món ngọt đậm nên thường dùng kèm nhiều đá."
+  }
+ ],
+ "che-ba-mau": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Chè ba màu là món chè của miền Nam, nổi bật ở ba lớp đậu đỏ, đậu xanh và thạch lá dứa xếp cạnh nhau trong ly."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Đậu đỏ, đậu xanh, thạch lá dứa, nước cốt dừa, đường và đá. Ba lớp nguyên liệu được nấu riêng rồi mới xếp vào ly để không lẫn màu."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đậu đỏ và đậu xanh nấu riêng cho mềm, thạch lá dứa làm riêng và cắt hạt lựu. Xếp từng lớp vào ly rồi chan nước cốt dừa lên trên."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Thêm đá và trộn đều; vị bùi của hai loại đậu cân lại vị ngọt của nước cốt dừa."
+  }
+ ],
+ "ca-ri-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cà ri gà là món cà ri nấu với nước cốt dừa, phổ biến ở Ấn Độ và Đông Nam Á; ở Việt Nam món thường được ăn cùng bánh mì."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt gà, bột cà ri, nước cốt dừa, khoai tây, cà rốt, sả và hành tím."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp bột cà ri và gia vị rồi xào săn. Thêm nước cốt dừa và nước, cho khoai tây, cà rốt vào nấu đến khi rau củ mềm và sốt sánh."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn cùng bánh mì, cơm hoặc bún; vị béo của cốt dừa làm món cay dịu lại nên rất dễ ăn."
+  }
+ ],
+ "ca-kho-to": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cá kho tộ là món kho trong nồi đất của miền Nam, cá được kho lửa nhỏ với nước dừa và nước mắm cho sánh lại."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá lóc hoặc cá basa, nước dừa tươi, nước mắm, đường, tiêu, ớt và hành tím."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá làm sạch, ướp nước mắm và đường khoảng nửa giờ. Kho trong tộ đất với nước dừa ở lửa nhỏ đến khi nước rút sánh và cá thấm đậm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm trắng, dưa leo và canh chua; nước kho còn lại chan cơm là phần nhiều người mê nhất."
+  }
+ ],
+ "ca-vien-chien": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cá viên chiên là món ăn vặt bình dân, bán ở cổng trường, chợ và các xe đẩy khắp Việt Nam."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá viên làm từ cá quết dai, dầu ăn và tương ớt để chấm. Cá viên phải để thật ráo nước trước khi chiên, nếu không dầu sẽ bắn và vỏ không giòn."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá viên để ráo rồi chiên ngập dầu ở lửa vừa cho nở và vàng đều bên ngoài. Vớt ra thấm dầu rồi xiên que."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm tương ớt, ăn nóng; món chỉ mất vài phút nên hay được chọn làm ăn vặt chiều."
+  }
+ ],
+ "gyudon": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gyudon là cơm bò Nhật: thịt bò lát mỏng nấu với hành tây trong sốt ngọt mặn rồi chan lên cơm nóng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt bò lát mỏng, hành tây, nước tương, mirin, đường, rượu sake hoặc dashi và trứng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đun dashi với nước tương, mirin và đường cho sôi, thả hành tây vào trước. Cho bò vào sau và nấu vài phút cho vừa chín, không để thịt dai."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chan cả thịt lẫn nước sốt lên cơm nóng, thêm trứng lòng đào và gừng đỏ muối; trộn đều trước khi ăn."
+  }
+ ],
+ "com-curry-nhat": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cà ri Nhật du nhập từ Anh và Ấn rồi được làm lại thành món sốt sánh, ngọt hơn; bản phổ biến nhất là ăn kèm thịt heo chiên xù."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột cà ri Nhật, khoai tây, cà rốt, hành tây, thịt heo và bột chiên xù."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt và rau xào sơ rồi thêm nước nấu cho mềm, sau đó thả roux cà ri vào khuấy cho sốt sánh. Thịt heo lăn bột chiên xù và chiên vàng riêng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chan cà ri lên cơm, đặt miếng katsu bên cạnh, ăn kèm dưa muối chua để đỡ ngấy."
+  }
+ ],
+ "com-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm gà Hội An là món riêng của phố cổ: cơm nấu bằng nước luộc gà với bột nghệ nên có màu vàng ươm đặc trưng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gạo, gà ta, củ nghệ, hành tăm, rau răm và nước mắm. Hành tăm phi thơm là thứ tạo mùi đặc trưng, thiếu nó món sẽ nhạt vị Hội An."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà luộc vừa chín, thịt xé nhỏ trộn với rau răm và hành tăm phi thơm. Gạo được nấu bằng nước luộc gà pha bột nghệ cho hạt cơm vàng và thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn cơm với gà xé, chan nước mắm gừng và ăn kèm canh rau; cơm phải tơi hạt và thơm nghệ mới đúng vị Hội An."
+  }
+ ],
+ "com-rang-hai-san": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cơm rang hải sản là món cơm rang quen thuộc, thường được rang trong chảo gang để có lớp cháy giòn dưới đáy."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cơm nguội, tôm, mực, trứng, hành tây, đậu Hà Lan và nước tương."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trứng xào tơi, hải sản xào sơ cho săn rồi để riêng. Cho cơm vào chảo gang lửa lớn, đảo nhanh cho hạt cơm săn, sau đó trộn hải sản và nêm nước tương."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ép cơm xuống đáy chảo một lúc cho cháy giòn rồi dọn nóng; thêm tương ớt và hành lá."
+  }
+ ],
+ "ga-nuong-mat-ong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà nướng mật ong là món nướng phổ biến ở Việt Nam, mật ong phết lên da tạo lớp bóng và giòn khi gặp than nóng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà ta, mật ong, nước mắm, tỏi, sả và tiêu. Mật ong chỉ phết gần cuối vì đường trong mật rất dễ cháy khi gặp than nóng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp với nước mắm, tỏi và sả ít nhất vài giờ. Nướng trên than, chỉ phết hỗn hợp mật ong pha nước mắm trong khoảng mười phút cuối để da không bị cháy."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chặt miếng, chấm muối tiêu chanh; da bóng vàng, thơm mùi mật ong là dấu hiệu nướng đúng lửa."
+  }
+ ],
+ "ga-sot-cay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà sốt cay Hàn Quốc (yangnyeom) là gà chiên phủ sốt ớt ngọt cay, món đi kèm bia nổi tiếng nhất của Hàn Quốc."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cánh hoặc đùi gà, bột chiên, tương ớt Hàn (gochujang), bột ớt, mật ong, tỏi và mè rang."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp muối tiêu, lăn bột rồi chiên hai lần cho vỏ giòn. Sốt nấu từ gochujang, mật ong và tỏi cho sánh, sau đó đảo gà vào lúc còn nóng cho sốt bám đều."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc mè rang, ăn cùng củ cải muối chua và bia lạnh; sốt cay ngọt nên miếng gà vẫn giòn dù đã áo sốt."
+  }
+ ],
+ "hai-san-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Hải sản nướng than là món tụ tập quen thuộc ở các quán hải sản Việt Nam, thực khách chọn món tươi rồi ngồi chờ nướng ngay tại bàn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Tôm, mực, nghêu và các loại hải sản theo mùa; mỡ hành, muối tiêu chanh và ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Hải sản rửa sạch, ướp sơ với muối tiêu rồi nướng trên vỉ than hồng, trở đều tay để chín mà không khô. Mỡ hành phết lên khi gần chín cho thơm và bóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm muối tiêu chanh, ăn nóng cùng rau sống; món thường được gọi kèm bia và dùng khi còn bốc khói."
+  }
+ ],
+ "hu-tieu-kho": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Hủ tiếu khô là biến thể của hủ tiếu nước theo cách người Hoa ở miền Nam: sợi hủ tiếu trộn nước tương rồi dọn kèm một chén nước dùng riêng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sợi hủ tiếu dai, thịt heo xá xíu hoặc thịt băm, tôm, trứng cút, hẹ, giá và nước tương trộn với mỡ tỏi phi."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Sợi hủ tiếu trụng qua nước sôi rồi để thật ráo. Trộn với nước tương mỡ tỏi cho thấm, xếp thịt, tôm và trứng cút lên mặt, dọn kèm chén nước dùng nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Trộn đều tô hủ tiếu trước khi ăn, chan thêm từng thìa nước dùng cho đỡ khô; thêm ớt và chanh tuỳ khẩu vị."
+  }
+ ],
+ "kho-muc-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Khô mực nướng là món mồi nhậu quen thuộc của người Việt, chỉ cần con khô mực và bếp than là có món lai rai."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Khô mực, tương ớt hoặc muối ớt, đôi khi thêm chanh và vài lát ớt tươi."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Khô mực nướng trên than hồng hoặc trên bếp lò, trở đều cho mực mềm và dậy mùi thơm. Khi ăn đập sơ cho tơi rồi xé thành sợi."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm tương ớt và nhai chậm để cảm nhận vị ngọt của mực; món hợp với bia lạnh và những buổi tối ngồi lâu."
+  }
+ ],
+ "kimbap": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Kimbap là cơm cuộn rong biển của Hàn Quốc, khác sushi ở chỗ cơm trộn dầu mè thay vì dấm và nhân thường là đồ đã nấu chín."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Rong biển khô, cơm trắng, trứng tráng, cà rốt, củ cải muối, thịt băm hoặc giăm bông, dầu mè và mè rang."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cơm trộn dầu mè và chút muối rồi dàn mỏng lên rong biển đặt trên mành tre. Xếp nhân thành hàng rồi cuộn chặt tay, phết dầu mè lên ngoài và cắt lát."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay hoặc mang đi làm, hộp cơm; kimbap thường không chấm gì vì nhân đã nêm vừa."
+  }
+ ],
+ "mi-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mì gà trứng là bản nâng cấp của gói mì ăn liền: thêm trứng, gà xé và rau để thành bữa tử tế trong vài phút."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mì gói và gói gia vị, trứng, thịt gà xé, hành lá và ớt sa tế."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Nấu nước sôi với gói gia vị, cho mì vào chừng ba phút rồi đập trứng để nguyên cho chín tái. Thêm gà xé và hành lá, tắt bếp trước khi mì bị nhũn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay trong bát còn nóng, rắc tiêu và thêm sa tế; món hay được nấu khi trời trở lạnh hoặc lúc trong nhà chỉ còn gói mì."
+  }
+ ],
+ "mi-xao-bo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mì xào bò là món của người Hoa, sợi mì trứng xào lửa lớn với thịt bò và cải ngọt cho hạt mì săn và thơm khói."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mì trứng, thịt bò thái mỏng, cải ngọt, hành tây, nước tương và dầu hào."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mì trụng sơ cho tơi rồi để ráo. Bò xào nhanh trên lửa lớn, sau đó cho mì và rau vào đảo cùng nước tương, dầu hào cho đến khi sợi mì bóng và thấm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng, thêm tiêu và ớt; lửa lớn là yếu tố quyết định để mì không ra nước và bò không dai."
+  }
+ ],
+ "xao-hai-san": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mì xào hải sản giòn là món của người Hoa: bánh mì trứng chiên phồng giòn rồi rưới sốt hải sản lên trên."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mì trứng, tôm, mực, cải thìa, nấm, hành tây và bột năng để làm sánh sốt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mì trụng sơ rồi chiên ngập dầu cho phồng thành bánh giòn. Hải sản và rau xào với nước dùng, nêm nước tương rồi hoà bột năng cho sốt sánh, chan lên bánh mì."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Dọn ngay khi vừa chan để bánh còn giòn; ăn kèm ớt sa tế nếu thích vị cay."
+  }
+ ],
+ "pho-mai-que": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Phô mai que là món ăn vặt có mặt ở hầu hết quán ăn vặt Việt Nam, làm từ thanh phô mai bọc bột chiên xù."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Phô mai mozzarella, bột mì, trứng, bột chiên xù và dầu ăn. Thanh phô mai nên để lạnh trước khi chiên để nhân không chảy ra ngoài."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Phô mai cắt thanh, lăn qua bột mì, trứng rồi bột chiên xù cho áo kín. Chiên ngập dầu thật nhanh đến khi vỏ vàng, tránh chiên lâu vì phô mai sẽ chảy hết ra ngoài."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi còn nóng để kéo sợi, chấm tương ớt hoặc sốt mayonnaise."
+  }
+ ],
+ "suon-xao-chua-ngot": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Sườn xào chua ngọt là món kiểu Hoa quen trong mâm cơm Việt, sườn chiên sơ rồi áo lớp sốt chua ngọt bóng bẩy."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sườn heo, tương cà, dấm hoặc chanh, đường, tỏi, hành lá và mè rang."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Sườn chặt miếng, ướp gia vị rồi chiên sơ cho săn mặt. Pha sốt từ tương cà, dấm và đường, cho sườn vào đảo đến khi sốt sánh và bám đều."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Rắc mè rang, ăn với cơm nóng; vị chua ngọt dịu nên món rất được trẻ con ưa."
+  }
+ ],
+ "tra-dao": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Trà đào cam sả là thức uống quen ở các quán cà phê Việt Nam, pha từ trà, đào, cam và sả."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trà đen, đào ngâm hoặc đào tươi, cam tươi, sả, đường và đá. Sả nấu với đường trước rồi mới pha với trà để mùi thơm không bị át."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Trà hãm rồi để nguội, sả đập dập nấu với đường cho thơm. Pha trà với nước sả, thêm đào, nước cam và đá."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống lạnh, thêm lát cam và một nhánh sả lên mặt ly; vị thơm của sả giúp trà đào đỡ ngọt."
+  }
+ ],
+ "op-la": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Trứng ốp la là món bữa sáng kiểu Tây du nhập vào Việt Nam, và nhanh chóng thành món quen ăn kèm bánh mì."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Trứng gà, dầu hoặc bơ, tiêu, nước tương và bánh mì. Chảo phải nóng trước khi đập trứng để lòng trắng không dính và mép trứng không bị cháy."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Đập trứng vào chảo đã nóng dầu, để lửa vừa cho lòng trắng đông mà lòng đỏ vẫn mềm. Rắc tiêu và dọn ngay."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với bánh mì nóng, rưới chút nước tương hoặc chấm lòng đỏ; món chỉ mất vài phút nên hợp buổi sáng vội."
+  }
+ ],
+ "banh-xeo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh xèo có mặt ở cả miền Trung và miền Nam, bột gạo pha bột nghệ tráng mỏng trên chảo nóng; bản miền Nam làm bánh to, bản miền Trung làm nhỏ và giòn hơn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột gạo, bột nghệ, nước (miền Nam thêm nước cốt dừa), tôm, thịt ba chỉ, giá và hành lá."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột khuấy loãng, tráng một lớp mỏng trên chảo thật nóng cho rìa bánh vàng và giòn. Rải nhân lên, đậy nắp cho chín rồi gập đôi bánh lại."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cuốn bánh với cải xanh, rau sống rồi chấm nước mắm chua ngọt; ăn ngay khi còn nóng để giữ độ giòn."
+  }
+ ],
+ "bun-bo-hue": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bún bò Huế là món của cố đô, khác phở ở chỗ nước dùng nấu với sả và mắm ruốc nên có vị đậm và mùi thơm rất riêng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bún sợi to, bắp bò, chân giò, tiết heo, sả, mắm ruốc, ớt và dầu điều."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xương bò và chân giò hầm với sả cho ngọt nước, nêm mắm ruốc và dầu điều cho nước dùng đỏ cam. Thịt bò tái và tiết được xếp lên bún rồi chan nước dùng nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn kèm rau sống, chanh và ớt; vị cay của ớt và mùi mắm ruốc là hai thứ làm nên bản sắc của tô bún."
+  }
+ ],
+ "ga-ran": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà rán giòn kiểu Hàn Quốc là biến tấu từ gà rán phương Tây, với lớp bột giòn xù và nước chấm cay ăn kèm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà chặt miếng, bột chiên giòn, sữa, muối tiêu, dầu ăn và củ cải muối chua."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ngâm sữa cho mềm rồi lăn bột cho áo đều. Chiên hai lần ở hai mức nhiệt để vỏ giòn xù mà thịt vẫn mọng nước."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng với củ cải muối và sốt cay hoặc sốt tỏi; món thường được gọi kèm bia."
+  }
+ ],
+ "pho-ga": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Phở gà là món phở Hà Nội, khác phở bò ở chỗ nước dùng trong, ngọt từ gà và thơm mùi hành, gừng nướng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bánh phở, gà ta, hành tím, gừng và hành lá nướng, nước mắm và rau thơm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà luộc vừa chín, vớt ra để nguội và chặt miếng. Nước luộc được nêm với hành gừng nướng cho thơm, hớt bọt cho trong; bánh phở trụng nóng rồi chan nước dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Thêm hành lá, rau thơm, chanh và ớt; thịt gà chấm muối tiêu chanh hoặc nước mắm gừng."
+  }
+ ],
+ "pho-kho-gia-lai": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Phở khô Gia Lai là món riêng của vùng đất này: một tô phở trộn khô và một tô nước dùng nóng dọn kèm, khác hẳn phở nước."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sợi phở khô, thịt bò, nước dùng xương, nước tương, mỡ hành, hành phi và rau sống."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Sợi phở khô trụng mềm rồi trộn với nước tương và mỡ hành cho thấm. Thịt bò xào hoặc nhúng vừa chín, xếp lên trên; nước dùng xương nêm đậm và dọn riêng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn tô khô trước, chan thêm nước dùng từng thìa cho vừa miệng; thêm rau sống, chanh và ớt."
+  }
+ ],
+ "ga-nuong-ban-don": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà nướng Bản Đôn là món của vùng Đắk Lắk, gắn với gà thả vườn nướng than và chén muối kiến vàng đặc trưng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Gà thả vườn, sả, ớt, muối, mật ong và lá chanh; ăn kèm cơm lam và muối kiến vàng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà làm sạch, ướp sả ớt và muối trong nhiều giờ rồi xiên hoặc kẹp vỉ nướng trên than hồng. Trở đều tay và phết chút mật ong gần cuối để da bóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Xé thịt chấm muối kiến vàng, ăn cùng cơm lam nướng trong ống tre; vị chua cay của muối kiến là thứ khó quên."
+  }
+ ],
+ "ca-suoi-nuong": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cá suối nướng là món của đồng bào Tây Nguyên, cá nhỏ bắt ở suối được kẹp vào thanh tre nướng trên than hồng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá suối tươi, sả, ớt, muối, lá chuối và thanh tre để kẹp. Cá nhỏ nên để nguyên con, chỉ bỏ ruột và rửa sạch trước khi ướp."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá làm sạch, ướp sả ớt và muối rồi kẹp vào thanh tre. Nướng trên than hồng, trở đều cho chín vàng hai mặt, sau đó có thể bọc lá chuối cho mềm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm muối ớt, ăn cùng cơm lam và rau rừng; món thường xuất hiện trong những bữa ăn có rượu cần."
+  }
+ ],
+ "tra-atiso-da-lat": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Trà atisô là thức uống làm từ hoa atisô trồng nhiều ở Đà Lạt và vùng Lâm Đồng, phơi khô rồi hãm lấy nước."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Hoa atisô khô hoặc tươi, nước sôi; có thể thêm đường hoặc mật ong tuỳ khẩu vị."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Atisô rửa sạch, hãm với nước sôi khoảng mười lăm phút hoặc nấu nhẹ cho ra hết vị. Lọc bỏ bã và uống khi còn ấm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Uống nóng, hoặc để nguội thêm đá; vị đắng nhẹ rồi ngọt hậu nên nhiều người dùng thay trà hằng ngày."
+  }
+ ],
+ "lau-mam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lẩu mắm là món đặc trưng của miền Tây, nước lẩu nấu từ mắm cá linh hoặc cá sặc nên có vị mặn đậm rất riêng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mắm cá linh hoặc cá sặc, sả, ớt, nước dừa, cá kèo, tôm, thịt ba chỉ và cả rổ rau đồng như bông súng, rau đắng, kèo nèo."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mắm nấu với nước dừa cho tan rồi lọc bỏ xương, thêm sả và ớt cho thơm. Nước lẩu sôi thì nhúng cá, tôm, thịt và rau đồng ăn dần."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn cùng bún và rau đồng, chấm với mắm ớt; vị mặn của mắm được làm dịu bởi rau đắng và nước dừa."
+  }
+ ],
+ "bun-ken": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bún kèn là món riêng của Rạch Giá (Kiên Giang): cá lóc rút xương tán nhuyễn nấu cà ri với nước cốt dừa rồi chan lên bún."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá lóc, bột cà ri, nước cốt dừa, bún, bắp chuối, rau thơm và giá."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá lóc hấp chín, gỡ bỏ xương rồi tán nhuyễn cùng gia vị. Phần cá được nấu với bột cà ri và nước cốt dừa đến khi sánh lại, sau đó chan lên bún."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn kèm bắp chuối thái sợi, rau thơm và giá; vị béo của cốt dừa và mùi cà ri làm món có hương vị Nam Bộ rõ rệt."
+  }
+ ],
+ "hu-tieu-my-tho": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Hủ tiếu Mỹ Tho là món nổi tiếng của Tiền Giang, nước dùng nấu từ xương ống heo và phải trong vắt mới đúng chuẩn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Sợi hủ tiếu gạo, xương ống heo, tôm tươi, thịt băm, trứng cút, hẹ và giá."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Xương ống hầm nhiều giờ, hớt bọt liên tục để nước dùng trong và ngọt. Sợi hủ tiếu trụng vừa mềm rồi xếp tôm, thịt và trứng cút lên, chan nước dùng nóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Thêm hẹ, giá, tiêu và chanh ớt; món thường được ăn sáng và phải dùng ngay khi còn nóng."
+  }
+ ],
+ "banh-bo-thot-not": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh bò thốt nốt là món của vùng An Giang, dùng nước thốt nốt thay đường nên bánh có màu vàng nâu và vị ngọt rất riêng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột gạo, nước thốt nốt, nước cốt dừa, men và chút bột nở. Nước thốt nốt lấy từ buồng tươi thì bánh mới có mùi thơm đặc biệt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột trộn với nước thốt nốt và nước cốt dừa rồi ủ cho lên men nhẹ. Hấp cách thuỷ trong khuôn đến khi bánh nở xốp với nhiều rễ tre li ti."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn khi còn ấm, chan thêm nước cốt dừa cho béo; bánh ngon có ruột xốp đều và thơm mùi thốt nốt."
+  }
+ ],
+ "bong-dien-dien-xao-tep": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bông điên điển xào tép là món mùa nước nổi của An Giang, khi hoa điên điển nở vàng dọc các con sông."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bông điên điển, tép đồng, tỏi, nước mắm và dầu ăn. Bông hái buổi sáng và chế biến trong ngày, để lâu sẽ héo và mất vị bùi."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bông điên điển nhặt bỏ cuống, rửa sạch và để thật ráo. Phi tỏi thơm, xào tép cho săn rồi cho bông vào đảo nhanh tay để giữ độ giòn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm nóng hoặc bún; vị bùi ngọt và chút giòn của bông là thứ chỉ có trong mùa nước nổi."
+  }
+ ],
+ "ca-linh-chien-gion": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cá linh chiên giòn là món của miền Tây vào mùa nước nổi, khi cá linh non theo nước về đồng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá linh non, bột chiên giòn, chút bột nghệ, dầu ăn và nước mắm gừng để chấm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá làm sạch, ướp chút muối rồi lăn qua bột cho áo mỏng. Chiên ngập dầu ở lửa vừa cho cá chín đều và giòn rụm cả xương."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm nước mắm gừng, ăn cùng rau sống và bún; cá linh non nhỏ nên ăn được cả con."
+  }
+ ],
+ "luon-um-la-nhau": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Lươn um lá nhàu là món của miền Tây, lá nhàu non được dùng để làm mềm và khử mùi thịt lươn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Lươn đồng, lá nhàu non, củ nghệ, sả, nước cốt dừa và ớt. Lá nhàu chọn lá non cho mềm, lá già sẽ làm món dai và hăng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Lươn làm sạch, cắt khúc rồi ướp nghệ và sả. Um lửa nhỏ với lá nhàu cho đến khi thịt lươn mềm, thêm nước cốt dừa cho béo và sánh."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm nóng hoặc bún; thịt lươn mềm, thơm mùi lá nhàu và có chút cay của ớt."
+  }
+ ],
+ "banh-trang-cuon-thit-heo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh tráng cuốn thịt heo là món của Đà Nẵng, nổi bật ở đĩa thịt ba chỉ luộc thái mỏng cuốn bánh tráng ướt cùng rau sống."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt ba chỉ luộc, bánh tráng ướt, rau sống, dưa leo, chuối chát và mắm nêm."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt luộc để nguội rồi thái thật mỏng. Trải bánh tráng, xếp thịt, rau sống, dưa leo và chuối chát thành hàng rồi cuộn lại."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Chấm mắm nêm pha chanh ớt và tỏi; cuốn vừa ăn để bánh không bị rách."
+  }
+ ],
+ "goi-ca-nam-o": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gỏi cá Nam Ô là món của làng chài Nam Ô (Đà Nẵng), làm từ cá tươi trộn thính, riềng và gừng."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá trích hoặc cá cơm thật tươi, thính gạo rang, riềng, gừng, tỏi, ớt, bánh tráng và mắm gừng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá lọc xương, thái thịt mỏng rồi trộn với thính và các loại gia vị. Để một lúc cho thính ngấm vào cá trước khi dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Cuốn cá với bánh tráng và rau sống, chấm mắm gừng; món chỉ ngon khi cá thật tươi nên thường làm ngay trong ngày."
+  }
+ ],
+ "tre-binh-dinh": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Tré Bình Định là món thịt ủ chua của miền Trung, thịt heo và bì trộn thính rồi gói trong lá ổi cho lên men."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt heo, bì heo, thính gạo rang, riềng, tỏi, ớt và lá ổi. Thính phải rang vừa vàng để dậy mùi thơm mà không bị đắng."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Thịt luộc chín, thái mỏng trộn với bì thái sợi, thính và gia vị. Gói kín trong lá ổi rồi để vài ngày cho chua dịu."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với củ kiệu, dưa leo và nước mắm; vị chua nhẹ của tré hợp làm mồi nhậu hoặc ăn với cơm."
+  }
+ ],
+ "banh-ram-it": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh ram ít là món của Huế, ghép hai loại bánh: một chiếc bánh ram chiên giòn úp lên chiếc bánh ít dẻo nhân tôm thịt."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột nếp làm bánh ít, bột gạo hoặc bột năng làm bánh ram, nhân tôm thịt và nước mắm ớt chua ngọt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bánh ít được nặn vỏ, gói nhân rồi hấp hoặc luộc chín. Bánh ram nặn mỏng và chiên giòn, sau đó úp lên bánh ít trước khi rưới nước mắm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi bánh ram còn giòn, rưới nước mắm ớt lên trên; độ giòn và dẻo tương phản là điểm hấp dẫn của món."
+  }
+ ],
+ "banh-mi-cha-ca": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh mì chả cá Nha Trang là món ăn sáng nổi tiếng của Khánh Hòa, với miếng chả cá chiên vàng kẹp trong bánh mì giòn."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Chả cá làm từ cá tươi quết dai, bánh mì, dưa leo, đồ chua, rau thơm và nước mắm ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chả cá thái miếng rồi chiên vàng hai mặt. Bánh mì nướng giòn, kẹp chả cá cùng rau và rưới nước sốt mắm ớt đặc trưng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn ngay khi bánh còn nóng giòn; nước sốt mặn ngọt cay là thứ làm nên vị riêng của bánh mì chả cá."
+  }
+ ],
+ "banh-cay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh cay là món ăn vặt của miền Trung, làm từ bột khoai mì nắm tay chiên vàng rồi lăn muối ớt."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột khoai mì (sắn), hành lá, muối ớt và dầu ăn. Bột nhào vừa tay, không quá ướt, để khi chiên bánh vẫn dẻo bên trong."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột khoai mì nhào với hành lá và chút muối cho dẻo, nặn thành từng viên dẹt. Chiên ngập dầu đến khi vỏ vàng giòn rồi lăn qua muối ớt."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn nóng, cắn thấy ngoài giòn trong dẻo bùi; vị cay của muối ớt là điểm nhấn của món."
+  }
+ ],
+ "bun-sua-nha-trang": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bún sứa Nha Trang là món của vùng biển Khánh Hòa, nước dùng nấu từ cá và ăn kèm sứa biển giòn sần sật."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bún, sứa biển, chả cá, cà chua, hành tím và nước dùng cá. Sứa phải làm sạch và ngâm đúng cách trước khi trụng để không bị dai."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá nấu lấy nước dùng ngọt trong, thêm cà chua cho có vị chua nhẹ. Sứa được làm sạch và trụng vừa chín, xếp lên bún cùng chả cá rồi chan nước dùng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Thêm ớt, chanh và rau thơm; sứa phải giòn chứ không dai, nên chỉ trụng qua nước sôi."
+  }
+ ],
+ "ga-chien-nuoc-mam": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Gà chiên nước mắm là món cơm nhà của miền Nam: gà chiên vàng rồi đảo nhanh trong sốt nước mắm, đường, tỏi, ớt."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Thịt gà, nước mắm, đường, tỏi, ớt và dầu ăn. Nước mắm pha với đường lượng gần bằng nhau rồi đun hơi keo lại mới bám được vào gà."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Gà ướp sơ rồi chiên vàng đều các mặt. Pha nước mắm với đường, tỏi và ớt, đun cho hơi sánh rồi đảo gà vào cho sốt bám óng ánh."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm nóng, thêm dưa leo; sốt mặn ngọt cay rất đưa cơm nên chỉ cần một món là đủ bữa."
+  }
+ ],
+ "tom-rang-me": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Tôm rang me là món của miền Nam, dùng nước me chua quyện với đường và nước mắm thành lớp sốt bóng bám quanh tôm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Tôm sú, nước me, đường, nước mắm, tỏi và ớt. Me dầm lấy nước rồi lọc bỏ hạt, nêm nếm trước khi cho tôm vào để sốt không chua gắt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Tôm rửa sạch, rang sơ cho săn vỏ. Nấu nước me với đường và nước mắm cho sánh rồi cho tôm vào rang đến khi sốt bám đều và bóng."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm nóng; vị chua dịu của me hoà với vị ngọt tự nhiên của tôm nên món không cần nêm quá đậm."
+  }
+ ],
+ "banh-bo": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bánh bò là món bánh hấp của miền Nam, nổi tiếng với ruột xốp và vô số rễ tre li ti bên trong."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bột gạo, đường, nước cốt dừa, men và chút bột nở. Bột phải ủ đủ thời gian cho lên men thì bánh mới nở xốp và thơm nhẹ."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Bột gạo trộn với nước cốt dừa và đường, ủ cho lên men rồi hấp cách thuỷ trong khuôn. Hơi nước phải đủ mạnh để bánh nở bung thành rễ tre."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với nước cốt dừa hoặc cắt miếng chấm sữa; bánh ngon khi ruột xốp đều, không dai và thơm mùi dừa."
+  }
+ ],
+ "canh-cua-rau-day": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Canh cua rau đay là món hè quen thuộc của miền Bắc, nấu từ cua đồng giã lọc và các loại rau mát."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cua đồng, rau đay, mồng tơi, mướp, hành tím và nước mắm. Cua phải còn sống, giã ngay rồi lọc để nước cua không bị tanh."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cua giã nhuyễn, lọc lấy nước và gạch rồi đun sôi cho gạch đóng thành váng vàng. Cho rau đay, mồng tơi và mướp vào nấu vừa chín, nêm vừa ăn."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc ra bát, ăn với cơm nguội hoặc cơm nóng và cà muối; vị ngọt thanh, mát của rau rất hợp ngày oi."
+  }
+ ],
+ "chao-ca-loc": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Cháo cá lóc là món dân dã của miền Tây, nấu từ cá lóc đồng với gạo tẻ thành nồi cháo trắng sánh."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Cá lóc đồng, gạo tẻ, gừng, hành lá và rau đắng ăn kèm. Cá luộc sơ rồi gỡ thịt, xương giữ lại nấu nước dùng cho ngọt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Cá lóc luộc chín, gỡ thịt để riêng và giữ nước luộc làm nước dùng. Gạo nấu với nước cá cho nhừ, thêm gừng thái sợi rồi cho thịt cá trở lại nồi."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc cháo nóng, rắc tiêu và hành lá, ăn kèm rau đắng; món nhẹ bụng và dễ tiêu nên hay được nấu cho người mệt."
+  }
+ ],
+ "mam-chung-thit": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Mắm chưng thịt là món của miền Tây: mắm cá linh quết với thịt băm và trứng rồi hấp thành miếng vàng ươm."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Mắm cá linh hoặc cá sặc, thịt heo băm, trứng, đường, tỏi và ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Mắm bỏ xương, quết nhuyễn cùng thịt băm, trứng và chút đường cho bớt mặn. Hấp cách thuỷ đến khi mặt mắm đông lại và dậy mùi thơm."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Ăn với cơm trắng nóng, rau sống và dưa leo; vị mặn đậm của mắm là lý do món chỉ cần một miếng nhỏ đã đưa cơm."
+  }
+ ],
+ "bun-quay": [
+  {
+   "t": "Nguồn gốc",
+   "body": "Bún quậy là món của Phú Quốc (Kiên Giang), nổi tiếng với chén nước mắm ớt chanh đường đặc mà thực khách tự quậy trước khi chan vào bún."
+  },
+  {
+   "t": "Nguyên liệu",
+   "body": "Bún, chả tôm và chả cá quết tay, hành tím, tiêu, nước dùng xương và bộ gia vị pha mắm gồm nước mắm, đường, chanh, ớt."
+  },
+  {
+   "t": "Cách làm",
+   "body": "Chả tôm cá được quết dai, vo viên hoặc dàn mỏng rồi thả vào nồi nước dùng xương đang sôi. Thực khách tự pha nước mắm, đường, chanh, ớt trong chén nhỏ, quậy đều rồi chan vào tô bún."
+  },
+  {
+   "t": "Thưởng thức",
+   "body": "Múc chả và nước dùng chan lên bún, thêm hành ngò và tiêu; độ mặn ngọt chua cay do chính thực khách cân nên mỗi tô có vị hơi khác nhau."
+  }
+ ]
+}

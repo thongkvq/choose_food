@@ -2,7 +2,7 @@
 // Chiến lược:
 //   · HTML / JS / CSS / webmanifest  -> NETWORK-FIRST (bản mới lên ngay), offline thì lấy cache
 //   · data/*.json                    -> STALE-WHILE-REVALIDATE (hiện ngay, cập nhật ngầm)
-//   · ảnh upload.wikimedia.org       -> CACHE-FIRST, tối đa 150 ảnh (xoá ảnh cũ nhất)
+//   · ảnh upload.wikimedia.org       -> CACHE-FIRST, tối đa 300 ảnh (xoá ảnh cũ nhất)
 //   · API ngoài (Photon, Overpass, Open-Meteo, ipapi…) -> KHÔNG cache, luôn ra mạng
 // Đổi VERSION khi deploy để xoá cache cũ trong activate.
 const VERSION = 'mgd-v24-2';
@@ -10,10 +10,12 @@ const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE = 'data-' + VERSION;
 const IMG_CACHE = 'img-' + VERSION;
 const KEEP = [SHELL_CACHE, DATA_CACHE, IMG_CACHE];
-const IMG_MAX = 150;
+const IMG_MAX = 300;
 
 const SHELL = [
-  './', 'index.html', 'styles.css', 'app.js', 'art.js', 'lib/nearby-core.js',
+  './', 'index.html', 'styles.css', 'app.js', 'art.js',
+  'lib/nearby-core.js', 'lib/opening-hours.js', 'lib/saved-places.js',
+  'lib/group-core.js', 'lib/goals-core.js', 'lib/achievements.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'
 ];
 const PRECACHE_DATA = ['data/dishes-lite.json'];

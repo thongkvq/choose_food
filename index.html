@@ -44,7 +44,7 @@
     <div class="reel-top">
       <span class="pity" id="pityDisplay">Bảo hiểm SSR <b id="pityVal">0/10</b></span>
       <span class="progress-mini"><i id="colFill"></i></span>
-      <span class="col-text" id="colVal">0/268</span>
+      <span class="col-text" id="colVal">0/308</span>
     </div>
 
     <div class="machine" id="rouletteMachine">
@@ -77,6 +77,7 @@
     <div class="ctx-row">
       <button class="ctx-chip" id="ctxChip" type="button" hidden></button>
       <button class="today-btn" id="btnToday" type="button"><span>📅</span><b>Hôm nay</b><i class="badge" id="diaryBadge" hidden>0</i></button>
+      <button class="today-btn group-btn" id="btnGroup" type="button"><span>👥</span><b>Quay nhóm</b></button>
     </div>
 
     <div class="presets" id="presets" aria-label="Gợi ý nhanh">
@@ -133,8 +134,8 @@
     <h3><span>📷</span> Nguồn ảnh &amp; dữ liệu</h3>
     <p class="note">Ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b>, đối chiếu tên món trước khi hiển thị.
       Món nào không tìm được ảnh đúng sẽ dùng hình vẽ minh hoạ.</p>
-    <p class="note">Vùng cụ thể đếm theo nơi món đang bán: <b>Bắc 151 · Trung 146 · Nam 147 · Tây Nam Bộ 147 · Tây Nguyên 137</b>. <b>Cả nước 61</b> là món có gốc toàn quốc; chế độ gốc chỉ dành cho đặc sản địa phương.</p>
-    <p class="note">176 món Việt (mặc định) + 92 món quốc tế ẩn sẵn · 6 bữa · 11 nền ẩm thực · 10 cách chế biến.</p>
+    <p class="note">Vùng cụ thể đếm theo nơi món đang bán: <b>Bắc 164 · Trung 167 · Nam 170 · Tây Nam Bộ 170 · Tây Nguyên 156</b>. <b>Cả nước 64</b> là món có gốc toàn quốc; chế độ gốc chỉ dành cho đặc sản địa phương.</p>
+    <p class="note">216 món Việt (mặc định) + 92 món quốc tế ẩn sẵn · 6 bữa · 11 nền ẩm thực · 10 cách chế biến.</p>
     <button class="mini-btn wide" id="btnLuckyFooter">🍀 Thử vận may (bỏ hết bộ lọc)</button>
   </footer>
 
@@ -169,6 +170,7 @@
       <div class="fgroup">
         <h3><span>⚙️</span> Thêm</h3>
         <label class="switch f-avoid"><input type="checkbox" id="fAvoidRecent" checked><span class="track-ui"></span><span class="switch-label">🔁 Tránh món đã ăn gần đây — món đã chốt/ghi nhật ký trong 3 ngày và món vừa quay ra sẽ ít xuất hiện lại</span></label>
+        <label class="switch"><input type="checkbox" id="fHasSavedPlace"><span class="track-ui"></span><span class="switch-label">🔖 Chỉ món có quán đã lưu — chỉ quay món mà bạn đã lưu quán (nút 🔖 trong kết quả tìm quán)</span></label>
         <label class="switch"><input type="checkbox" id="fAutoVung" checked><span class="track-ui"></span><span class="switch-label">📍 Tự gợi ý vùng theo vị trí (GPS/IP), không ghi đè vùng đã chọn</span></label>
         <label class="switch"><input type="checkbox" id="fVungGocOnly"><span class="track-ui"></span><span class="switch-label">🏷️ Chỉ đặc sản có nguồn gốc từ vùng đã chọn</span></label>
         <label class="switch"><input type="checkbox" id="fVnOnly" checked><span class="track-ui"></span><span class="switch-label">🇻🇳 Chỉ món Việt — ẩn món nước ngoài (Hàn, Nhật, Âu, Mỹ…)</span></label>
@@ -237,8 +239,8 @@
     </div>
     <div class="side-card full-width">
       <h4>📷 Dữ liệu &amp; Nguồn ảnh</h4>
-      <p class="note">268 món ăn chọn lọc theo 6 bữa, 11 nền ẩm thực và 10 cách chế biến. Hình ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b> đối chiếu tên món trước khi hiển thị.</p>
-      <p class="note" style="margin-top:4px">Dữ liệu phân vùng theo nơi món đang bán: <b>Bắc 151 · Trung 146 · Nam 147 · Tây Nam Bộ 147 · Tây Nguyên 137</b> món.</p>
+      <p class="note">308 món ăn chọn lọc theo 6 bữa, 11 nền ẩm thực và 10 cách chế biến. Hình ảnh món ăn lấy từ <b>Wikipedia</b> và <b>Wikimedia Commons</b> đối chiếu tên món trước khi hiển thị.</p>
+      <p class="note" style="margin-top:4px">Dữ liệu phân vùng theo nơi món đang bán: <b>Bắc 164 · Trung 167 · Nam 170 · Tây Nam Bộ 170 · Tây Nguyên 156</b> món (308 món, 216 món Việt + 92 món quốc tế).</p>
     </div>
   </aside>
 </main>
@@ -269,6 +271,17 @@
       <button class="win-close" data-act="close-today" aria-label="Đóng">✕</button>
     </div>
     <div class="today-body" id="todayBody"></div>
+  </div>
+</div>
+
+<!-- ===== QUAY CHO NHÓM: chuyền tay một máy ===== -->
+<div class="today-backdrop" id="groupBackdrop" hidden>
+  <div class="today-dialog" id="groupDialog">
+    <div class="today-head">
+      <b id="groupTitle">👥 Quay cho nhóm</b>
+      <button class="win-close" data-gact="close" aria-label="Đóng">✕</button>
+    </div>
+    <div class="today-body" id="groupBody"></div>
   </div>
 </div>
 

@@ -15,7 +15,11 @@ const COLS = ['id', 'name', 'emoji', 'region', 'meals', 'style', 'art', 'c1', 'c
   'price', 'minutes', 'spicy', 'veg', 'weight', 'tier', 'image', 'imageVia', 'imageSource',
   'rating', 'stars', 'review', 'calories', 'protein', 'proteinLabel', 'priceRange',
   'fullness', 'bestFor', 'bestTime', 'origin', 'tip', 'intro', 'introSource',
-  'wikiUrl', 'wikiTitle', 'facts', 'detail', 'introEn', 'vung', 'dacSan', 'vungCo'];
+  'wikiUrl', 'wikiTitle', 'facts', 'detail', 'detailSource', 'introEn', 'vung', 'dacSan', 'vungCo'];
+
+// Bảng cũ có thể thiếu cột mới (ví dụ detailSource) → tự thêm trước khi ghi.
+const have = new Set(db.prepare('PRAGMA table_info(dishes)').all().map(r => r.name));
+for (const c of COLS) if (!have.has(c)) { db.exec('ALTER TABLE dishes ADD COLUMN ' + c + ' TEXT'); console.log('thêm cột', c); }
 
 const join = (v, sep) => Array.isArray(v) ? v.join(sep) : (v ?? null);
 const value = (d, c) => {

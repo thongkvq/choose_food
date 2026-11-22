@@ -27,7 +27,7 @@ export const LITE_FIELDS = [
   'bestFor', 'bestTime', 'origin', 'kw'
 ];
 // Trường NẶNG (chỉ popup dùng): giới thiệu Wikipedia, facts Wikidata, mục chi tiết, review dài, tip.
-export const HEAVY_FIELDS = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'tip'];
+export const HEAVY_FIELDS = ['review', 'intro', 'introSource', 'wikiUrl', 'wikiTitle', 'introEn', 'facts', 'detail', 'detailSource', 'tip'];
 
 const pick = (obj, keys) => {
   const out = {};
