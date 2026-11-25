@@ -15,7 +15,7 @@ const IMG_MAX = 300;
 const SHELL = [
   './', 'index.html', 'styles.css', 'app.js', 'art.js',
   'lib/nearby-core.js', 'lib/opening-hours.js', 'lib/saved-places.js',
-  'lib/group-core.js', 'lib/goals-core.js', 'lib/achievements.js',
+  'lib/group-core.js', 'lib/goals-core.js', 'lib/achievements.js', 'lib/search-core.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'
 ];
 const PRECACHE_DATA = ['data/dishes-lite.json'];

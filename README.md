@@ -19,6 +19,8 @@ Vanilla JS ES module, **không build step, không dependency runtime**.
 
 **Bộ lọc** — bữa ăn · ẩm thực · cách chế biến · vùng miền (Bắc/Trung/Nam/Tây Nam Bộ/Tây Nguyên/Cả nước/Ngoài VN, có chế độ "chỉ đặc sản gốc") · chay · không cay · điểm ≥8.5 · ngân sách · thời gian · tìm kiếm · preset nhanh · "chỉ món Việt" (mặc định BẬT).
 
+**Tìm kiếm món** — nút **🔍** ở header (desktop: phím `/`, `Esc` đóng) mở lớp tìm toàn màn hình trên điện thoại / hộp nổi trên desktop. Gõ là ra ngay (debounce ~120 ms, tối đa 30 dòng): **không dấu** ("pho" → Phở, "banh mi" → Bánh mì, "bun bo hue" → Bún bò Huế), tìm cả **tên khác/tên quán (`kw`)**, tags, mô tả, xuất xứ, nhãn vùng/ẩm thực/cách chế biến, và **nguyên liệu + mục Chi tiết** khi món đã tải phần nặng. Kết quả xếp hạng: trùng hẳn tên > tên bắt đầu bằng query > mọi từ là đầu một từ trong tên > khớp `kw` > tags/vùng/ẩm thực > mô tả/xuất xứ/nguyên liệu; query có dấu thì món khớp đúng dấu được cộng điểm; hoà thì theo điểm đánh giá. Mỗi dòng có ảnh/emoji, tên (chữ khớp **tô đậm**), bậc, điểm, giá, vùng + dòng lý do ("tên khác: Bánh plan", "nguyên liệu: tôm", "vùng: Huế"). Bấm một dòng → **mở thẳng popup món**, không quay. Tìm trên **toàn bộ** món (bỏ qua bộ lọc, kể cả "chỉ món Việt") và gắn nhãn **"ngoài bộ lọc"** cho dòng bị bộ lọc hiện tại ẩn. Nút **🎰 Quay trong N kết quả** quay băng chuyền chỉ trên các món đó (chỉ áp cho lượt quay đó, không đổi bộ lọc đã lưu). Ô trống hiện **tìm gần đây** (`mgd.searchHist` ≤8, xoá được) + chip gợi ý; 0 kết quả hiện "Không thấy món …" + "Có phải: …" (Levenshtein ≤1 với từ ≤4 ký tự, ≤2 với từ dài hơn). Ô `#fSearch` trong sheet Lọc cũng dùng chung `fold()` nên lọc pool không dấu và tìm thêm trong `kw`.
+
 **Ngữ cảnh & thói quen** — chip thời tiết thật (Open-Meteo) + bữa theo giờ nhân trọng số (`biasOf`); gu khẩu vị học từ món đã chốt/bỏ qua; **tránh món lặp** (món đã chốt/nhật ký trong 3 ngày ×0.15, món vừa quay ra trong 10 lượt ×0.5); panel **📅 Hôm nay** (thực đơn 3 bữa, tổng kcal/đạm/tiền, gợi ý cân bằng, nhật ký 7 ngày, xuất ảnh canvas 1080×1350).
 
 **Mục tiêu calo / ngân sách** — trong panel 📅 Hôm nay: đặt kcal/ngày, tiền/ngày và/hoặc tiền/tuần (`mgd.goals`, để trống = không dùng), thanh tiến độ "đã dùng / mục tiêu" cộng từ thực đơn + nhật ký hôm nay, và công tắc **🎯 Ưu tiên món vừa mục tiêu** (mặc định BẬT): món vượt phần còn lại bị **×0.4** trọng số trong `drawOne` (vượt cả kcal lẫn tiền ×0.16) — không bị loại khỏi pool; chip bối cảnh ghi rõ lý do + phần còn lại.
@@ -56,6 +58,7 @@ lib/saved-places.js   quán đã lưu (mgd.savedPlaces): thêm/xoá/ghi chú/g�
 lib/group-core.js     quay cho nhóm: chuẩn hoá tên 2–8 người, gợi ý 12 món, trừ món bị gạch
 lib/goals-core.js     mục tiêu kcal/ngân sách: tiến độ "đã dùng / mục tiêu", hệ số ×0.4 cho món vượt
 lib/achievements.js   14 thành tựu + chuỗi ngày, tính thuần từ nhật ký/thực đơn/món đã khám phá
+lib/search-core.js    tìm kiếm món thuần: fold bỏ dấu/đ→d, buildIndex, xếp hạng theo tên/kw/tags/vùng/nguyên liệu, gợi ý gõ sai (Levenshtein)
 server.js       server LAN: static + gzip + /api/whereami · /api/weather · /api/geocode · /api/reverse-geocode · /api/nearby + HTTPS 8443
 sw.js           service worker (cache shell / data / ảnh Wikimedia)
 manifest.webmanifest + icons/   PWA
@@ -89,6 +92,7 @@ tools/          pipeline dữ liệu + test + dev (xem tools/README.md)
 | `mgd.goals` | `{kcal, money, week, priority}` — mục tiêu calo/ngân sách (0 = không dùng) |
 | `mgd.group` | `{names[], vetoMax}` — danh sách tên nhóm gần nhất + số món mỗi người được gạch |
 | `mgd.achv` | `{unlocked:{id: ts}}` — thành tựu đã mở khoá (chỉ toast 1 lần) |
+| `mgd.searchHist` | `string[]` ≤8 — từ khoá tìm kiếm gần đây (hiện khi ô tìm trống, xoá được) |
 | `mgd.openOnly` · `mgd.savedPlaces` · `mgd.savedOnly` | chỉ quán đang mở · quán đã lưu (≤120) · chỉ món có quán đã lưu |
 | `mgd.radius` · `mgd.fame` · `mgd.geo` | bán kính tìm quán · cache quán có tiếng 6h · vị trí theo IP 6h |
 | `mgd.vnOnly` · `mgd.vungSelection` · `mgd.vungManual` · `mgd.vungGeo` · `mgd.autoVung` · `mgd.vungGocOnly` | lọc vùng miền / chỉ món Việt |
@@ -144,7 +148,7 @@ node tools/test/test-all.mjs http://127.0.0.1:4399 # chạy TẤT CẢ test vớ
 node tools/test/test-all.mjs http://127.0.0.1:4322 pwa,split   # chỉ vài file khớp tên
 ```
 
-`test-all.mjs` chạy **37 file** (34 `test-*.mjs` + `audit-layout` + `audit-desktop` + `verify-desktop-mobile`) và in bảng tổng hợp exit code. Test mới của v26: `test-group` (quay nhóm), `test-goals` (mục tiêu calo/ngân sách), `test-achv` (thành tựu), `test-detailsrc` (nhãn nội dung tổng hợp), `test-legacy-id` (id món cũ → món mới); v25: `test-opening-hours`, `test-saved-places`.
+`test-all.mjs` chạy **38 file** (35 `test-*.mjs` + `audit-layout` + `audit-desktop` + `verify-desktop-mobile`) và in bảng tổng hợp exit code. Test mới của v27: `test-search` (38 check — fold/không dấu, xếp hạng, gợi ý gõ sai, nút 🔍, popup, quay trong kết quả, tìm gần đây, `#fSearch`, 375/390/458px + desktop); v26: `test-group` (quay nhóm), `test-goals` (mục tiêu calo/ngân sách), `test-achv` (thành tựu), `test-detailsrc` (nhãn nội dung tổng hợp), `test-legacy-id` (id món cũ → món mới); v25: `test-opening-hours`, `test-saved-places`.
 Test nào cần mạng ngoài (Wikimedia, Photon, Overpass, Open-Meteo, ipapi) sẽ **SKIP kèm lý do** khi dịch vụ đó không tới được — không tính là FAIL.
 
 Playwright/chromium được nạp qua `tools/lib/chromium.mjs` (`$PLAYWRIGHT_DIR` → `node_modules` của project → `$DSH_HOME/profiles/web`; `$CHROME_BIN` để ép bản chromium khác). Không script nào hard-code đường dẫn máy.

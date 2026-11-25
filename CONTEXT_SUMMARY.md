@@ -1,6 +1,6 @@
 # CONTEXT SUMMARY — Món Gì Đây? (web gacha chọn món ăn)
 
-_Cập nhật: sau task-04 (v25). Trạng thái: ĐANG CHẠY, đã verify trên LAN + bản tĩnh. Bản production: https://choose-food-paroda.vercel.app_
+_Cập nhật: sau task-11 (v27). Trạng thái: ĐANG CHẠY, đã verify trên LAN + bản tĩnh. Bản production: https://choose-food-paroda.vercel.app_
 
 ## 1. Yêu cầu gốc (giữ nguyên ý)
 "Web chọn món ăn sáng/trưa/chiều/ăn vặt… quay như gacha, có hình minh hoạ món ăn, món Việt/Tây/Tàu…, món khô/nước/chiên/nướng, hiệu ứng đẹp mắt."
@@ -313,3 +313,32 @@ Công cụ phát hiện: `tools/diag-cover.mjs` (đã xoá ở task-04 — bug �
 - `audit-layout.mjs` (375/390/458px): **tràn ngang: không · tap target <44px: không**; `test-clip` / `test-touch` / `verify-desktop-mobile` / `audit-desktop` đều exit 0.
 - `node tools/data/data-validate.mjs` → exit 0 (307 món · Lỗi 0 · Cảnh báo 0 · 5/5 file tách khớp byte): ảnh 280/307 (91.2%) · intro 273 · facts 246 · detail 307/307 (168 wikipedia + 139 tổng hợp) · SQLite 307/307.
 - `node --check` **65 file** JS/MJS → 0 lỗi.
+
+## 26. v27 (task-11) — tìm kiếm món: ô tìm riêng, không dấu, mở thẳng popup
+
+**a) Module thuần `lib/search-core.js` (324 dòng, không I/O)**
+- `fold(s)`: chữ thường → NFD bỏ dấu → `đ→d` → gộp khoảng trắng. `fold('Đồ nướng') = 'do nuong'`.
+- `buildIndex(dishes)` dựng entry nhẹ: `name/nameWords`, `kw[]`, `tags[]`, `descr`, `origin`, nhãn `VUNG_LABEL`/`REGION_LABEL`/`STYLE_LABEL` (+ alias: "nhật", "hàn", "miền tây", "bắc"…) và `suggWords` cho gợi ý gõ sai. **KHÔNG chụp** `facts.ingredients`/`detail` — lúc tìm mới đọc từ dish (WeakMap cache), nên mảnh nặng tải xong là tìm được ngay, không phải dựng lại index.
+- `searchDishes(index, q, {limit})` → `[{dish, score, why}]`; món phải khớp **đủ mọi từ** của query ở bất kỳ trường nào. Điểm từng từ: tên (khớp từ 600 / đầu từ 580 / chứa 430) > `kw` (520/480/400) > tags 430 > vùng/ẩm thực/cách chế biến 400 > mô tả/xuất xứ 300 > nguyên liệu/chi tiết 260; điểm món = **min** các từ. Cộng thêm: tên trùng hẳn 1000 > tên bắt đầu bằng query 800 > mọi từ là đầu một từ trong tên 700 > tên chứa query 520; `kw` trùng hẳn query +90 ("banh plan" → Bánh flan); query **có dấu** thì mỗi từ khớp đúng dấu +30 (tối đa 90) nên "phở" xếp Phở trên "Phô mai…"; hoà thì `rating × 0.4` rồi tên.
+- `why` ngắn: `tên khác: Bánh plan`, `từ khoá: chay`, `vùng: Miền Trung`, `ẩm thực: Nhật Bản`, `cách chế biến: Lẩu`, `xuất xứ: Huế`, `mô tả: …`, `nguyên liệu: tôm` (cắt 54 ký tự quanh chỗ khớp).
+- `suggestDishes(index, q, n=3)`: Levenshtein trên từ đã bỏ dấu, ngưỡng **≤1 với từ ≤4 ký tự, ≤2 với từ dài hơn** (cắt sớm khi vượt ngưỡng), xếp theo tổng khoảng cách rồi `rating`. `searchWithSuggest` trả `{query, results, suggestions}` (chỉ gợi ý khi 0 kết quả).
+
+**b) Giao diện (`index.html` + `styles.css` + `app.js` vùng 1681–1864)**
+- Nút **🔍 `#btnSearch`** ở header (44×44, `aria-label="Tìm kiếm món"`; máy ≤420px thu logo 34px + h1 14px để 4 nút không tràn). Lớp `#searchBackdrop` → `#searchDialog`: **toàn màn hình** trên mobile, **hộp nổi 640px / max 74vh** trên desktop ≥1024px. Mở bằng nút hoặc phím `/`, đóng bằng ✕ / bấm nền / `Esc`; `openSearch()` tự focus ô nhập; `closeSearch()` chỉ mở khoá `body.overflow` khi không còn lớp nào mở.
+- Gõ → `renderSearch()` debounce **120 ms**, tối đa **30 dòng**: ảnh 54px (fallback emoji), tên **tô đậm phần khớp** (`hlName`, fold giữ nguyên số ký tự), `why`, bậc R/SR/SSR/UR + ★ + giá + vùng, ♥ nếu đã lưu, nhãn **"ngoài bộ lọc"** khi `!matchDish(d,false,'')`.
+- Bấm dòng → `openSearchResult()`: lưu từ khoá, đóng lớp tìm, `openWin(d)` (đúng đường link `#mon=`), **không quay**.
+- **Tìm trên TOÀN BỘ món**, bỏ qua mọi bộ lọc kể cả "chỉ món Việt" → "pizza" vẫn ra kèm nhãn "ngoài bộ lọc"; `state.vnOnly` không đổi.
+- **🎰 Quay trong N kết quả** (`spinInResults`): đặt `state.searchOnly = Set(id)` → `pool()` trả đúng các món đó (bỏ qua bộ lọc) → `spinOnce()` cũ; băng chuyền dừng thì `spin()` xoá `searchOnly` + `syncPool()` (test: món trúng ∈ kết quả, pool về 85/85 như trước). Nút ẩn khi <2 kết quả.
+- Ô trống: **Tìm gần đây** (`mgd.searchHist` ≤8, mỗi từ có ✕ 44px + "Xoá hết") và 8 chip gợi ý (phở, bún, cơm, bánh mì, lẩu, chè, món chay, đồ nướng). 0 kết quả: "Không thấy món …" + "Có phải: …" (bấm để tìm lại).
+- Ô `#fSearch` trong sheet Lọc dùng chung `fold()` qua `dishFoldText()` (cache WeakMap): "pho" lọc ra món Phở, tìm thêm trong `kw` + `origin`; hành vi còn lại giữ nguyên.
+
+**c) Khác**: `sw.js` thêm `lib/search-core.js` vào `SHELL` (**không tăng VERSION** `mgd-v24-2`). Hook `window.__mgd` thêm `fold, buildIndex, searchDishes(q,opts), searchWithSuggest, searchIndex, openSearch, closeSearch, renderSearch, searchInput, searchHist, searchOnly, spinInResults, hlName, syncPool`. Phím tắt: `/` mở tìm kiếm, `Esc` đóng (trong ô nhập cũng đóng), `F` vẫn mở ô tìm của sheet Lọc; `isOverlayOpen` đã tính lớp tìm (Space/T không quay khi đang tìm).
+
+**d) Test**: `tools/test/test-search.mjs` — **38 check PASS** (unit 14 + UI 24): fold có `đ`, "pho"→Phở, "phở" > "phô…", "banh mi", "bun bo hue", query nhiều từ, `kw` "banh plan" → Bánh flan, vùng/ẩm thực/cách chế biến/tag, gợi ý "phoo"/"bun bo hu", rác/rỗng không lỗi, ≤30 dòng; UI: nút 🔍 44px, focus, chip, tô đậm, bấm dòng mở đúng popup, pizza xuyên bộ lọc + nhãn, quay trong kết quả (đúng món + pool trả lại), tìm gần đây sau reload + xoá, tìm theo `facts.ingredients` khi đã tải mảnh, `#fSearch` không dấu, 375/390/458px không tràn ngang & tap ≥44px, desktop `/` mở + `Esc` đóng. Test chặn mạng ngoài (open-meteo/ipapi/photon/overpass) nên không phụ thuộc dịch vụ.
+
+### 26.1 KẾT QUẢ CUỐI (task-11)
+- `node tools/test/test-all.mjs http://127.0.0.1:4322` (LAN, `PORT=4322 node server.js`) — **38/38 file exit 0 · `TẤT CẢ EXIT 0`** (gồm `test-search` 38 check OK).
+- `node tools/test/test-all.mjs http://127.0.0.1:4399` (`node tools/dev/probe-static.mjs 4399`) — **38/38 file exit 0 · `TẤT CẢ EXIT 0`**.
+- `audit-layout` (375/390/458px): tràn ngang **không** · tap target <44px **không** (header 4 nút vẫn đủ chỗ).
+- `node --check` **67 file** JS/MJS → 0 lỗi. `node tools/data/data-validate.mjs` → exit 0 (307 món · 5/5 file tách khớp byte, dữ liệu không đổi).
+- 5 ví dụ query thật (top 3): `pho` → Phở bò · Phở gà · Phở chiên phồng; `banh mi` → Bánh mì thịt · Bánh mì chảo · Bánh mì kẹp kem; `lau` → Lẩu cay Tứ Xuyên · Lẩu mắm miền Tây · Lẩu dê tía tô; `tom` → Tôm rang me · Tom Yum · Bánh xèo tôm nhảy; `nhat` → Ramen Nhật · Trứng hấp kiểu Nhật · Cơm cà ri Nhật.

@@ -32,6 +32,7 @@
     </div>
   </div>
   <div class="head-actions">
+    <button class="icon-btn" id="btnSearch" type="button" aria-label="Tìm kiếm món" title="Tìm kiếm món (/)">🔍</button>
     <button class="icon-btn" id="btnFav" aria-label="Món đã lưu">♥<b class="badge" id="favCount">0</b></button>
     <button class="icon-btn" id="btnSound" aria-label="Bật tắt âm thanh"><span id="soundIcon">🔊</span></button>
     <button class="icon-btn" id="btnTheme" aria-label="Đổi sáng tối"><span id="themeIcon">🌙</span></button>
@@ -282,6 +283,22 @@
       <button class="win-close" data-gact="close" aria-label="Đóng">✕</button>
     </div>
     <div class="today-body" id="groupBody"></div>
+  </div>
+</div>
+
+<!-- ===== TÌM KIẾM MÓN: toàn màn hình (mobile) / hộp nổi (desktop) ===== -->
+<div class="search-backdrop" id="searchBackdrop" hidden>
+  <div class="search-dialog" id="searchDialog" role="dialog" aria-modal="true" aria-label="Tìm kiếm món ăn">
+    <div class="search-head">
+      <div class="search-field">
+        <span aria-hidden="true">🔍</span>
+        <input type="search" id="searchInput" enterkeyhint="search" autocomplete="off" autocapitalize="off"
+          spellcheck="false" placeholder="Tìm món: phở, bánh mì, lẩu…" aria-label="Tìm món ăn">
+        <button class="search-clear" id="btnSearchClear" type="button" aria-label="Xoá nội dung tìm" hidden>✕</button>
+      </div>
+      <button class="search-close" id="btnCloseSearch" type="button" aria-label="Đóng tìm kiếm">✕</button>
+    </div>
+    <div class="search-body" id="searchBody"></div>
   </div>
 </div>
 

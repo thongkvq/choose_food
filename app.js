@@ -26,6 +26,8 @@ import {
 } from './lib/goals-core.js';
 // Thành tựu & chuỗi ngày: tính từ nhật ký, món đã khám phá, yêu thích, thực đơn hôm nay
 import { ACHV, achvCount, computeAchv, mergeUnlocked, newUnlocks, unlockedMap } from './lib/achievements.js';
+// Tìm kiếm món (thuần): bỏ dấu tiếng Việt, xếp hạng theo tên/kw/tags/vùng/nguyên liệu + gợi ý gõ sai
+import { buildIndex, fold, searchDishes, searchWithSuggest } from './lib/search-core.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -98,6 +100,10 @@ const state = {
   // quay cho nhóm: danh sách tên gần nhất + số món mỗi người được gạch (mgd.group)
   group: normalizeGroup(LS.get('mgd.group', null)),
   achv: LS.get('mgd.achv', { unlocked: {} }),   // thành tựu đã mở khoá (chỉ toast 1 lần)
+  // tìm kiếm: từ khoá gần đây (mgd.searchHist ≤8) + phạm vi quay tạm của "Quay trong N kết quả"
+  searchHist: (Array.isArray(LS.get('mgd.searchHist', [])) ? LS.get('mgd.searchHist', []) : [])
+    .filter((x) => typeof x === 'string' && x.trim()).slice(0, 8),
+  searchOnly: null,
   lastWinner: null, spinning: false
 };
 // Phiên nhóm đang chạy (không lưu localStorage): {phase, names, vetoMax, turns:[{name,veto[],skipped}], idx}
@@ -823,11 +829,26 @@ function matchDish(d, ignoreVung, q) {
     (!state.topRated || d.rating >= 8.5) &&
     (!state.savedOnly || savedSet().has(d.id)) &&          // chỉ món đã có quán lưu (mgd.savedPlaces)
     d.price <= state.price && d.minutes <= state.time &&
-    (!q || (d.name + ' ' + d.descr + ' ' + d.tags.join(' ')).toLowerCase().includes(q));
+    (!q || dishFoldText(d).includes(fold(q)));
+}
+// Ô tìm trong sheet Lọc: dùng CHUNG fold() với lớp tìm kiếm -> gõ không dấu vẫn ra ("pho" -> Phở),
+// và tìm thêm trong kw (tên khác/tên quán) + origin.
+const dishFoldCache = new WeakMap();
+function dishFoldText(d) {
+  let f = dishFoldCache.get(d);
+  if (!f) {
+    f = fold([d.name, d.descr, (d.tags || []).join(' '), (d.kw || []).join(' '), d.origin || ''].join(' '));
+    dishFoldCache.set(d, f);
+  }
+  return f;
 }
 function pool() {
   const q = state.q.trim().toLowerCase();
-  const list = ALL.filter(d => matchDish(d, false, q));
+  // "Quay trong N kết quả" (từ lớp tìm kiếm): quay ĐÚNG các món đó, bỏ qua bộ lọc đang bật,
+  // chỉ có hiệu lực cho lượt quay này (xoá ngay khi băng chuyền dừng).
+  const list = state.searchOnly && state.searchOnly.size
+    ? ALL.filter(d => state.searchOnly.has(d.id))
+    : ALL.filter(d => matchDish(d, false, q));
   // Đang chạy lượt quay cho nhóm: bỏ các món bị gạch (chỉ trong lượt đó, đóng popup là trả lại)
   return state.groupVeto && state.groupVeto.size ? poolWithoutVeto(list, state.groupVeto) : list;
 }
@@ -995,6 +1016,8 @@ function spin(target, done) {
       achvLater();                      // kiểm tra thành tựu lúc rảnh — không chặn vòng quay
       setTimeout(() => {
         state.spinning = false;
+        // hết lượt: trả pool về bộ lọc người dùng (phạm vi tìm kiếm chỉ dùng cho đúng lượt quay này)
+        if (state.searchOnly) { state.searchOnly = null; syncPool(); }
         $('#btnSpinSingle').disabled = false;
         $('#btnSpinMulti').disabled = pool().length < 2;
         done && done();
@@ -1655,6 +1678,190 @@ $('#fTime').oninput = (e) => { state.time = +e.target.value; $('#timeLabel').tex
 let searchTimer;
 $('#fSearch').oninput = (e) => { clearTimeout(searchTimer); searchTimer = setTimeout(() => { state.q = e.target.value; syncPool(); }, 180); };
 
+/* ============================ TÌM KIẾM MÓN ============================
+   - Tìm trên TOÀN BỘ món (bỏ qua bộ lọc đang bật), xếp hạng bằng lib/search-core.js.
+   - Bấm một dòng -> mở thẳng popup món (openWin), không quay.
+   - "🎰 Quay trong N kết quả" -> đặt state.searchOnly cho ĐÚNG lượt quay đó rồi gọi spinOnce(). */
+const SEARCH_CHIPS = ['phở', 'bún', 'cơm', 'bánh mì', 'lẩu', 'chè', 'món chay', 'đồ nướng'];
+const SEARCH_MAX = 30;
+let SEARCH_IDX = null, searchTimer2 = 0;
+const searchIndex = () => (SEARCH_IDX || (SEARCH_IDX = buildIndex(ALL)));
+// dòng bị bộ lọc hiện tại ẩn (bỏ qua chính ô tìm của sheet Lọc) -> gắn nhãn "ngoài bộ lọc"
+const outsideFilters = (d) => !matchDish(d, false, '');
+
+function saveSearchTerm(q) {
+  const t = String(q || '').replace(/\s+/g, ' ').trim();
+  if (t.length < 2) return;
+  const f = fold(t);
+  state.searchHist = [t, ...state.searchHist.filter((x) => fold(x) !== f)].slice(0, 8);
+  LS.set('mgd.searchHist', state.searchHist);
+}
+function removeSearchTerm(q) {
+  const f = fold(q);
+  state.searchHist = state.searchHist.filter((x) => fold(x) !== f);
+  LS.set('mgd.searchHist', state.searchHist);
+}
+// tô đậm phần khớp trong tên: fold() giữ nguyên số ký tự với tiếng Việt (mỗi dấu là 1 code point)
+function hlName(name, q) {
+  const raw = String(name || ''), fq = fold(q), nf = fold(raw);
+  if (!fq || nf.length !== raw.length) return esc(raw);
+  const mark = new Array(raw.length).fill(false);
+  for (const tok of fq.split(' ').filter(Boolean)) {
+    let i = nf.indexOf(tok);
+    while (i >= 0) { for (let k = i; k < i + tok.length; k++) mark[k] = true; i = nf.indexOf(tok, i + tok.length); }
+  }
+  let out = '', buf = '', on = false;
+  for (let i = 0; i < raw.length; i++) {
+    if (mark[i] !== on) { out += on ? '<b class="hl">' + esc(buf) + '</b>' : esc(buf); buf = ''; on = mark[i]; }
+    buf += raw[i];
+  }
+  out += on ? '<b class="hl">' + esc(buf) + '</b>' : esc(buf);
+  return out;
+}
+function searchRowHTML(d, why, q) {
+  const t = TIERS[d.tier] || TIERS[1];
+  const media = d.image
+    ? '<img src="' + thumb(d.image, 500) + '" alt="" loading="lazy" decoding="async"' +
+      ' onerror="this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;block&quot;">' +
+      '<span style="display:none">' + esc(d.emoji) + '</span>'
+    : esc(d.emoji);
+  const loc = d.region === 'vn' ? vungLabel(d.vung) : (REGIONS[d.region] || d.region);
+  const price = '₫'.repeat(Math.max(1, Math.min(4, Number(d.price) || 1)));
+  return '<button class="srow" type="button" data-id="' + esc(d.id) + '" aria-label="Mở ' + esc(d.name) + '">' +
+    '<span class="s-th">' + media + '</span>' +
+    '<span class="s-main">' +
+      '<span class="s-name">' + d.emoji + ' ' + hlName(d.name, q) + '</span>' +
+      (why ? '<span class="s-why">' + esc(why) + '</span>' : '') +
+      '<span class="s-info"><b style="color:' + t.color + '">' + t.short + '</b>' +
+        '<i>★ ' + (Number(d.rating) ? Number(d.rating).toFixed(1) : '—') + '</i>' +
+        '<i>' + price + '</i><i>' + esc(loc || '') + '</i>' +
+        (state.favs.includes(d.id) ? '<span class="s-fav">♥</span>' : '') +
+        (outsideFilters(d) ? '<span class="s-off">ngoài bộ lọc</span>' : '') +
+      '</span>' +
+    '</span>' +
+  '</button>';
+}
+function searchEmptyHTML(q, suggestions) {
+  let html = '<p class="search-note search-empty">Không thấy món “<b>' + esc(q) + '</b>”.</p>';
+  if (suggestions && suggestions.length) {
+    html += '<div class="search-sugg"><b>Có phải: …</b>' +
+      suggestions.map((d) => '<button class="sugg" type="button" data-term="' + esc(d.name) + '">' +
+        d.emoji + ' ' + esc(d.name) + ' <span class="s-why">— bấm để tìm</span></button>').join('') +
+      '</div>';
+  } else {
+    html += '<p class="search-note">Thử từ khoá ngắn hơn (vd “phở”, “bún”, “lẩu”) hoặc bỏ dấu.</p>';
+  }
+  return html;
+}
+function searchIdleHTML() {
+  let html = '';
+  if (state.searchHist.length) {
+    html += '<div class="search-sec"><span>Tìm gần đây</span>' +
+      '<button type="button" data-act="hist-clear">Xoá hết</button></div><div class="search-hist">' +
+      state.searchHist.map((t) => '<span class="shist">' +
+        '<button class="shist-go" type="button" data-term="' + esc(t) + '">' + esc(t) + '</button>' +
+        '<button class="shist-rm" type="button" data-act="hist-rm" data-term="' + esc(t) + '"' +
+          ' aria-label="Xoá từ khoá ' + esc(t) + '">✕</button></span>').join('') + '</div>';
+  }
+  html += '<div class="search-sec"><span>Gợi ý</span></div><div class="search-chips">' +
+    SEARCH_CHIPS.map((t) => '<button class="schip" type="button" data-term="' + esc(t) + '">' + esc(t) + '</button>').join('') +
+    '</div>' +
+    '<p class="search-note">Tìm trên toàn bộ ' + (ALL.length || 0) + ' món — bỏ qua bộ lọc đang bật. Bấm một dòng để mở thẳng thông tin món.</p>';
+  return html;
+}
+function renderSearch(value) {
+  const body = $('#searchBody'); if (!body) return;
+  const q = String(value == null ? '' : value).trim();
+  const clear = $('#btnSearchClear'); if (clear) clear.hidden = !q;
+  if (!q) { body.innerHTML = searchIdleHTML(); return; }
+  const { results, suggestions } = searchWithSuggest(searchIndex(), q, { limit: SEARCH_MAX });
+  if (!results.length) { body.innerHTML = searchEmptyHTML(q, suggestions); return; }
+  body.innerHTML =
+    '<div class="search-sec"><span>' + results.length + ' kết quả' + (results.length >= SEARCH_MAX ? ' · 30 đầu' : '') + '</span></div>' +
+    results.map((r) => searchRowHTML(r.dish, r.why, q)).join('') +
+    (results.length >= 2
+      ? '<button class="search-spin" type="button" data-act="spin">🎰 Quay trong ' + results.length + ' kết quả</button>'
+      : '');
+}
+function openSearch(prefill) {
+  const back = $('#searchBackdrop'); if (!back) return;
+  const inp = $('#searchInput');
+  if (inp && typeof prefill === 'string') inp.value = prefill;
+  back.hidden = false;
+  document.body.style.overflow = 'hidden';
+  renderSearch(inp ? inp.value : '');
+  if (inp) setTimeout(() => {
+    try { inp.focus({ preventScroll: true }); inp.setSelectionRange(inp.value.length, inp.value.length); } catch (e) {}
+  }, 20);
+  buzz(8);
+}
+function closeSearch() {
+  const back = $('#searchBackdrop');
+  if (!back || back.hidden) return;
+  back.hidden = true;
+  const inp = $('#searchInput'); if (inp) { try { inp.blur(); } catch (e) {} }
+  const anyOpen = !$('#modalBackdrop').hidden || !$('#multiBackdrop').hidden ||
+    ($('#todayBackdrop') && !$('#todayBackdrop').hidden) ||
+    ($('#groupBackdrop') && !$('#groupBackdrop').hidden) ||
+    !$('#drawerBackdrop').hidden ||
+    ($('#filterPanel') && $('#filterPanel').classList.contains('open') && window.innerWidth < 1024);
+  if (!anyOpen) document.body.style.overflow = '';
+}
+function openSearchResult(id) {
+  const d = dishById(id); if (!d) return;
+  saveSearchTerm(($('#searchInput') || {}).value || '');
+  closeSearch();
+  openWin(d);
+}
+function spinInResults() {
+  const ids = $$('#searchBody .srow').map((b) => b.dataset.id).filter(Boolean);
+  if (ids.length < 2) return;
+  saveSearchTerm(($('#searchInput') || {}).value || '');
+  state.searchOnly = new Set(ids);
+  closeSearch();
+  syncPool();
+  setTimeout(spinOnce, 140);
+}
+$('#btnSearch').onclick = () => openSearch();
+$('#btnCloseSearch').onclick = () => closeSearch();
+$('#searchBackdrop').addEventListener('click', (e) => { if (e.target.id === 'searchBackdrop') closeSearch(); });
+$('#btnSearchClear').onclick = () => {
+  const inp = $('#searchInput');
+  if (inp) { inp.value = ''; renderSearch(''); try { inp.focus(); } catch (e) {} }
+};
+$('#searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimer2);
+  const v = e.target.value;
+  searchTimer2 = setTimeout(() => renderSearch(v), 120);   // debounce ~120ms
+});
+$('#searchInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const q = e.target.value.trim();
+    if (!q) return;
+    saveSearchTerm(q);
+    const first = $('#searchBody .srow');
+    if (first) openSearchResult(first.dataset.id);
+  } else if (e.key === 'Escape') {
+    e.preventDefault();
+    closeSearch();
+  }
+});
+$('#searchBody').addEventListener('click', (e) => {
+  const row = e.target.closest('.srow');
+  if (row) return openSearchResult(row.dataset.id);
+  const b = e.target.closest('[data-act], [data-term]');
+  if (!b) return;
+  const act = b.dataset.act;
+  if (act === 'spin') return spinInResults();
+  if (act === 'hist-rm') { removeSearchTerm(b.dataset.term || ''); renderSearch(($('#searchInput') || {}).value || ''); return; }
+  if (act === 'hist-clear') { state.searchHist = []; LS.set('mgd.searchHist', []); renderSearch(''); return; }
+  if (b.dataset.term) {
+    const inp = $('#searchInput');
+    if (inp) { inp.value = b.dataset.term; renderSearch(inp.value); try { inp.focus(); } catch (err) {} }
+  }
+});
+
 /* ============================ NÚT QUAY ============================ */
 // CHỈ quay bằng nút: "QUAY 1 MÓN" hoặc "x10". Khung quay không nhận chạm.
 $('#btnSpinSingle').onclick = spinOnce;
@@ -1707,19 +1914,24 @@ $('#btnTheme').onclick = () => {
 addEventListener('keydown', (e) => {
   const t = e.target;
   if (t && typeof t.matches === 'function' && t.matches('input,textarea')) {
-    if (e.key === 'Escape') t.blur();
+    if (e.key === 'Escape') {
+      if (t.id === 'searchInput') { e.preventDefault(); closeSearch(); return; }
+      t.blur();
+    }
     return;
   }
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   if (e.key === 'Escape') {
     closeModals();
     closeSheet();
+    closeSearch();
     closeToday();
+    if ($('#groupBackdrop') && !$('#groupBackdrop').hidden) closeGroup();
     $('#drawerBackdrop').hidden = true;
     document.body.style.overflow = '';
     return;
   }
-  const isOverlayOpen = !$('#modalBackdrop').hidden || !$('#multiBackdrop').hidden || !$('#todayBackdrop').hidden || !$('#drawerBackdrop').hidden || ($('#filterPanel') && $('#filterPanel').classList.contains('open') && window.innerWidth < 1024);
+  const isOverlayOpen = !$('#modalBackdrop').hidden || !$('#multiBackdrop').hidden || !$('#todayBackdrop').hidden || !$('#drawerBackdrop').hidden || ($('#searchBackdrop') && !$('#searchBackdrop').hidden) || ($('#filterPanel') && $('#filterPanel').classList.contains('open') && window.innerWidth < 1024);
   if (isOverlayOpen) return;
 
   if (e.key === ' ') {
@@ -1728,9 +1940,12 @@ addEventListener('keydown', (e) => {
   } else if (e.key.toLowerCase() === 't') {
     e.preventDefault();
     spinTen();
-  } else if (e.key === '/' || e.key.toLowerCase() === 'f') {
+  } else if (e.key === '/') {
     e.preventDefault();
-    const search = $('#fSearch');
+    openSearch();                                   // desktop: "/" mở lớp tìm kiếm món
+  } else if (e.key.toLowerCase() === 'f') {
+    e.preventDefault();
+    const search = $('#fSearch');                   // F: ô tìm trong sheet Lọc (như cũ)
     if (search) {
       if (window.innerWidth < 1024) openSheet();
       search.focus();
@@ -2455,7 +2670,16 @@ async function dirNearby(lat, lng, radius, dish, kw, cuisine) {
       group: function () { return GR; }, openGroup: openGroup, closeGroup: closeGroup, groupStart: groupStart,
       groupToggle: groupToggle, groupNext: groupNext, groupSkip: groupSkip, groupFinish: groupFinish, groupUnveto: groupUnveto,
       groupRun: function () { return state.groupRun; }, groupVeto: function () { return state.groupVeto; },
-      groupSuggest: function () { return suggestDishes(pool(), SUGGEST_N); }, parseNames: parseNames
+      groupSuggest: function () { return suggestDishes(pool(), SUGGEST_N); }, parseNames: parseNames,
+      // v27+: tìm kiếm món (lib/search-core.js) + lớp tìm kiếm
+      fold: fold, buildIndex: buildIndex, searchWithSuggest: searchWithSuggest,
+      searchDishes: function (q, o) { return searchDishes(searchIndex(), q, o); },
+      searchIndex: function () { return searchIndex(); },
+      openSearch: openSearch, closeSearch: closeSearch, renderSearch: renderSearch,
+      searchInput: function () { return ($('#searchInput') || {}).value || ''; },
+      searchHist: function () { return state.searchHist.slice(); },
+      searchOnly: function () { return state.searchOnly; },
+      spinInResults: spinInResults, hlName: hlName, syncPool: syncPool
     };
   } catch (e) {}
 
